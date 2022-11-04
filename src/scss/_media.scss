@@ -1,0 +1,17 @@
+.is-mobile {
+  @include tablet {
+    display: none;
+  }
+}
+
+.is-touch {
+  @include desktop {
+    display: none;
+  }
+}
+
+.is-desktop {
+  @include touch {
+    display: none;
+  }
+}
