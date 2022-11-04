@@ -1,10 +1,11 @@
 :root {
-  //--font-primary: "YandexSans", sans-serif;
-  //--font-secondary: "OpenSans", sans-serif;
+  --font-primary: "TTNorms", sans-serif;
 
-  //--primary-color: #ffef59;
-  //--bg-color: #262835;
-  //--white-color: #ffffff;
+  --primary-color: #ffffff;
+  --black-color: #1a1a1a;
+  --white-color: #ffffff;
+
+  --disabled-color: #838696;
 
   --gap: 20px;
 
@@ -13,8 +14,8 @@
   //--header: 58px;
 }
 
-//@include desktop {
-//  :root {
-//    //--header: 92px;
-//  }
-//}
+@include desktop {
+  :root {
+    //--header: 92px;
+  }
+}

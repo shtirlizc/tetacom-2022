@@ -6,8 +6,8 @@
 
 * {
   &::selection {
-    //background-color: var(--primary-color);
-    //color: var(--grey-50);
+    background-color: var(--primary-color);
+    color: var(--black-color);
   }
 }
 
@@ -24,8 +24,10 @@ html,
 body {
   margin: 0;
   padding: 0;
-  //font-family: var(--font-primary);
-  //color: var(--grey-50);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  color: var(--primary-color);
+  background-color: var(--black-color);
   -webkit-font-smoothing: antialiased;
   font-size: 20px;
 }
