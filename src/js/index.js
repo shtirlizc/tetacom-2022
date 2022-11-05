@@ -8,10 +8,12 @@
 
 import { PageYOffset } from "./pageYOffset";
 import { startScreenVideo } from "./start-screen-video";
+import { Slider } from "./swiper";
 
 window.addEventListener("load", () => {
   PageYOffset.init();
   startScreenVideo();
+  Slider.init();
   // mobileMenu();
   // textField();
   // phoneMask();

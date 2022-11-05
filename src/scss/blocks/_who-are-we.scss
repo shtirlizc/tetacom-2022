@@ -4,6 +4,7 @@
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   gap: var(--gap);
+  padding: var(--space5x) 0;
 
   &__info {
   }
@@ -16,16 +17,19 @@
   }
 
   &__photos {
-    &__img {
-      height: 684px;
-    }
+    max-width: 50vw;
+    border-radius: 320px;
+    overflow: hidden;
+  }
 
-    img {
-      max-width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: grayscale(100%);
-      border-radius: 320px;
-    }
+  &__img {
+    height: 420px;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
   }
 }

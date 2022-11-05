@@ -1,0 +1,19 @@
+._projects {
+  &__list {
+    @include clr;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    aspect-ratio: 1;
+
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 2px dashed yellow;
+    }
+  }
+}

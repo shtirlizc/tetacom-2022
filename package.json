@@ -27,6 +27,7 @@
   "dependencies": {
     "gumshoejs": "^5.1.2",
     "imask": "^6.4.3",
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "swiper": "^8.4.4"
   }
 }

@@ -1,0 +1,13 @@
+._competencies {
+  padding: calc(2 * var(--space5x)) 0;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__slider {
+    margin-top: 60px;
+
+    text-align: center;
+  }
+}
