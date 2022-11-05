@@ -1,0 +1,30 @@
+._feedback-teaser {
+  padding: 64px 40px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-image: url("../img/feedback.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &__title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 22px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 0;
+    margin-top: auto;
+  }
+
+  &__call {
+    margin-bottom: 0;
+    margin-top: 22px;
+  }
+}
