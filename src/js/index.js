@@ -7,9 +7,11 @@
 // import { Form } from "./modal";
 
 import { PageYOffset } from "./pageYOffset";
+import { startScreenVideo } from "./start-screen-video";
 
 window.addEventListener("load", () => {
   PageYOffset.init();
+  startScreenVideo();
   // mobileMenu();
   // textField();
   // phoneMask();

@@ -1,15 +1,40 @@
 ._start-screen {
+  position: relative;
   min-height: 100vh;
   padding: 113px 0 113px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  overflow: hidden;
   background-image: linear-gradient(
       180deg,
       rgba(26, 26, 26, 0.13) 0%,
       #1a1a1a 100%
     ),
     linear-gradient(0deg, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4));
+
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity calc(4 * var(--delay)) ease-in-out;
+
+    &.hidden {
+      opacity: 0;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__content {
+    transform: translateZ(0);
+  }
 
   &__title {
     font-weight: 500;
