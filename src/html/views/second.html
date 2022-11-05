@@ -1,9 +1,14 @@
-<% var data = {
-  title: "Второй заголовок | Проект",
-  author: "Harrix"
-}; %>
-<%= _.template(require('./../includes/header.html').default)(data) %>
+<!DOCTYPE html>
+<% var data = { title: "Второй заголовок | Проект", author: "Marat" }; %>
 
-<div class="container">Вторая страница.</div>
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
 
-<%= _.template(require('./../includes/footer.html').default)(data) %>
+  <body>
+    <%= _.template(require('./../includes/header.html').default)(data) %>
+    <div class="container">Вторая страница.</div>
+
+    <%= _.template(require('./../includes/footer.html').default)(data) %> <%=
+    _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>
