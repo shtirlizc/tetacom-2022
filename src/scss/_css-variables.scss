@@ -1,7 +1,8 @@
 :root {
   --font-primary: "TTNorms", sans-serif;
 
-  --primary-color: #ffffff;
+  --primary-color: #005ff9;
+  --secondary-color: #ffffff;
   --black-color: #1a1a1a;
   --white-color: #ffffff;
 
@@ -10,6 +11,12 @@
   --scrollbar-track-color: transparent;
   --scrollbar-color: rgba(128, 128, 128, 0.5);
   --scrollbar-side: 6px;
+
+  --space: 8px;
+  --space2x: calc(var(--space) * 2);
+  --space3x: calc(var(--space) * 3);
+  --space4x: calc(var(--space) * 4);
+  --space5x: calc(var(--space) * 5);
 
   --gap: 20px;
 

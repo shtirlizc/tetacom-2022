@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<% var data = { title: "Первый заголовок | Проект", author: "Marat" }; %>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
 
 <html lang="ru">
   <%= _.template(require('./../includes/head.html').default)(data) %>
 
   <body>
-    <%= _.template(require('./../includes/header.html').default)(data) %>
-    <div class="container">Первая страница.</div>
+    <%=
+    _.template(require('./../includes/components/header.html').default)(data) %>
 
-    <%= _.template(require('./../includes/footer.html').default)(data) %> <%=
-    _.template(require('./../includes/scripts.html').default)(data) %>
+    <main>
+      <div class="_container">
+        <%=
+        _.template(require('./../includes/blocks/start-screen.html').default)(data)
+        %> <%=
+        _.template(require('./../includes/blocks/who-are-we.html').default)(data)
+        %> <%=
+        _.template(require('./../includes/blocks/about-numbers.html').default)(data)
+        %>
+      </div>
+    </main>
+
+    <%=
+    _.template(require('./../includes/components/footer.html').default)(data) %>
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
   </body>
 </html>

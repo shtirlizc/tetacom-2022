@@ -6,7 +6,10 @@
 // import { Modal } from "./modal";
 // import { Form } from "./modal";
 
+import { PageYOffset } from "./pageYOffset";
+
 window.addEventListener("load", () => {
+  PageYOffset.init();
   // mobileMenu();
   // textField();
   // phoneMask();

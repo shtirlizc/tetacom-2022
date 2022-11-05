@@ -1,0 +1,32 @@
+._about-numbers {
+  min-height: 100vh;
+  padding: calc(2 * var(--space5x)) 0;
+
+  &__title {
+    text-align: center;
+  }
+
+  &__body {
+    @include clr;
+
+    margin-top: calc(2 * var(--space5x));
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70px var(--space3x);
+  }
+
+  &__item {
+    text-align: center;
+
+    &-number {
+      display: block;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 85px;
+    }
+
+    &-text {
+      display: block;
+    }
+  }
+}

@@ -2,9 +2,13 @@
   margin: 0 auto;
   width: 100%;
   max-width: $container-full;
-  padding: 0 calc(var(--gap) / 2);
+  padding: 0 var(--space2x);
 
-  @include fullhd {
-    padding: 0;
+  @include tablet-only {
+    padding: 0 var(--space4x);
+  }
+
+  @include desktop {
+    padding: 0 calc(var(--space3x) * 2);
   }
 }

@@ -1,0 +1,71 @@
+._header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1;
+  transition: background-color var(--delay) ease-in-out;
+
+  &.active {
+    background-color: var(--black-color);
+  }
+
+  &__content {
+    padding: var(--space) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include desktop {
+      padding: var(--space4x) 0;
+    }
+  }
+
+  &__logo {
+    svg {
+      path {
+        transition: fill var(--delay) ease-in-out;
+      }
+    }
+
+    &:hover {
+      svg {
+        path {
+          fill: var(--primary-color);
+        }
+      }
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 100px;
+  }
+
+  &__menu {
+    @include clr();
+
+    display: flex;
+    align-items: center;
+    gap: 60px;
+
+    &-item {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    &-link {
+      display: inline-block;
+      padding: var(--space2x) 0;
+      color: var(--white-color);
+      transition: color var(--delay) ease-in-out;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
