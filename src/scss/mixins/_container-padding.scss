@@ -1,0 +1,11 @@
+@mixin container-padding {
+  padding: 0 var(--space2x);
+
+  @include tablet-only {
+    padding: 0 var(--space4x);
+  }
+
+  @include desktop {
+    padding: 0 calc(var(--space3x) * 2);
+  }
+}

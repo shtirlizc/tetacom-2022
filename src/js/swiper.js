@@ -19,5 +19,11 @@ export const Slider = {
       },
       effect: "fade",
     });
+
+    new Swiper(".js-partners-swiper", {
+      loop: true,
+      slidesPerView: 4.5,
+      spaceBetween: 20,
+    });
   },
 };

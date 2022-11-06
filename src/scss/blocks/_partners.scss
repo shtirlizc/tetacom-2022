@@ -1,0 +1,28 @@
+._partners {
+  padding: calc(2 * var(--space5x)) 0;
+
+  &__title {
+  }
+
+  &__body {
+    margin-top: var(--space5x);
+  }
+
+  &__slider {
+    height: 120px;
+    @include container-padding;
+  }
+
+  &__item {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 0;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
