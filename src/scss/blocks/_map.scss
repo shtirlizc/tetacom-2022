@@ -1,0 +1,7 @@
+._map {
+  height: 70vh;
+
+  ymaps[class$="-inner-panes"] > ymaps:not(ymaps[class$="-places-pane"]) {
+    filter: invert(90%) grayscale(100%);
+  }
+}

@@ -7,14 +7,14 @@
   textarea {
     @include clean;
 
-    background-color: var(--white-color);
-    border-radius: 22px;
+    background-color: var(--black-color);
+    border-radius: var(--space);
     height: 44px;
     width: 100%;
-    border: 1px solid var(--black-color);
+    border: 1px solid var(--disabled-color);
     padding: 1px var(--padding) 0;
     font-family: var(--font-primary);
-    color: var(--black-color);
+    color: var(--white-color);
     font-size: 14px;
     display: flex;
     align-items: center;

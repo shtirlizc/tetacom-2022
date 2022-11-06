@@ -8,6 +8,7 @@ export const Slider = {
       loop: true,
       slidesPerView: 3,
       spaceBetween: 30,
+      centeredSlides: true,
     });
 
     new Swiper(".js-who-are-we-swiper", {
@@ -15,15 +16,15 @@ export const Slider = {
       loop: true,
       speed: 1000,
       autoplay: {
-        delay: 5000,
+        delay: 4000,
       },
       effect: "fade",
     });
 
     new Swiper(".js-partners-swiper", {
       loop: true,
-      slidesPerView: 4.5,
-      spaceBetween: 20,
+      slidesPerView: "auto",
+      spaceBetween: 60,
     });
   },
 };

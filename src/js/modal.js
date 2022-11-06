@@ -36,8 +36,10 @@ export const Modal = {
     });
   },
 
-  handleEscape() {
-    this.closeAll();
+  handleEscape(event) {
+    if (event.code === "Escape") {
+      this.closeAll();
+    }
   },
 
   open(currentModal) {

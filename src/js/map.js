@@ -8,21 +8,25 @@ export function map() {
       var myMap = new ymaps.Map(
           "map",
           {
-            center: [54.736984, 55.946816],
+            center: [54.737484, 55.946786],
             zoom: 17,
           },
           {
             searchControlProvider: "yandex#search",
-          },
+          }
         ),
         // Создаём макет содержимого.
         MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>',
+          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
         ),
         myPlacemark = new ymaps.Placemark(
           myMap.getCenter(),
           {
-            hintContent: "Тетаком: облачные сервисы для нефтегазовой отрасли",
+            hintContent: `
+              +7 (917) 791-90-73
+              info@tetacom.pro
+              Уфа, ул. Карла Маркса, 44, офис 46
+              `,
           },
           {
             // Опции.
@@ -31,11 +35,11 @@ export function map() {
             // Своё изображение иконки метки.
             iconImageHref: "img/placemark.svg",
             // Размеры метки.
-            iconImageSize: [50, 60],
+            iconImageSize: [62, 64],
             // Смещение левого верхнего угла иконки относительно
             // её "ножки" (точки привязки).
-            iconImageOffset: [-25, -60],
-          },
+            iconImageOffset: [-31, -32],
+          }
         );
 
       myMap.behaviors.disable("scrollZoom");

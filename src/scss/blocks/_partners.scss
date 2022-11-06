@@ -9,8 +9,13 @@
   }
 
   &__slider {
-    height: 120px;
     @include container-padding;
+
+    height: 120px;
+
+    .swiper-slide {
+      width: auto;
+    }
   }
 
   &__item {
@@ -19,6 +24,7 @@
     display: flex;
     align-items: center;
     font-size: 0;
+    cursor: pointer;
 
     img {
       max-width: 100%;

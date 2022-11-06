@@ -5,9 +5,11 @@
     text-align: center;
   }
 
-  &__slider {
+  &__body {
     margin-top: 60px;
+  }
 
-    text-align: center;
+  &__slider {
+    @include container-padding;
   }
 }
