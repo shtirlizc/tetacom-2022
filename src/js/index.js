@@ -1,10 +1,10 @@
-// import { textField } from "./textField";
-// import { phoneMask } from "./phoneMask";
+import { textField } from "./textField";
+import { phoneMask } from "./phoneMask";
 // import { mobileMenu } from "./mobileMenu";
 // import { gumshoe } from "./gumshoe";
 // import { map } from "./map";
-// import { Modal } from "./modal";
-// import { Form } from "./modal";
+import { Modal } from "./modal";
+import { Form } from "./modal";
 
 import { PageYOffset } from "./pageYOffset";
 import { startScreenVideo } from "./start-screen-video";
@@ -15,10 +15,10 @@ window.addEventListener("load", () => {
   startScreenVideo();
   Slider.init();
   // mobileMenu();
-  // textField();
-  // phoneMask();
+  textField();
+  phoneMask();
   // gumshoe();
   // map();
-  // Modal.init();
-  // Form.init();
+  Modal.init();
+  Form.init();
 });

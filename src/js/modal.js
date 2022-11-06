@@ -36,17 +36,23 @@ export const Modal = {
     });
   },
 
+  handleEscape() {
+    this.closeAll();
+  },
+
   open(currentModal) {
     currentModal.style.display = "flex";
     setTimeout(() => {
       currentModal.classList.add("open");
     }, 100);
-    body.classList.add("desktop-modal");
+    body.classList.add("modal");
+    document.addEventListener("keydown", this.handleEscape.bind(this));
   },
 
   close(currentModal) {
     currentModal.classList.remove("open");
-    body.classList.remove("desktop-modal");
+    body.classList.remove("modal");
+    document.removeEventListener("keydown", this.handleEscape.bind(this));
     setTimeout(() => {
       currentModal.style.display = "none";
     }, 500);
@@ -60,7 +66,8 @@ export const Modal = {
         modal.style.display = "none";
       }, 500);
     });
-    body.classList.remove("desktop-modal");
+    body.classList.remove("modal");
+    document.removeEventListener("keydown", this.handleEscape.bind(this));
   },
 
   onSubmit() {

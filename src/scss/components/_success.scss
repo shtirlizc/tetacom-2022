@@ -1,0 +1,14 @@
+._success {
+  color: var(--black-color);
+
+  &__title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__image {
+    text-align: center;
+    margin-top: 32px;
+  }
+}
