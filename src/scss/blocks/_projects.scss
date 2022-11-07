@@ -9,6 +9,10 @@
   &__item {
     aspect-ratio: 1;
 
+    &:nth-child(1) {
+      background-color: var(--primary-color);
+    }
+
     &-link {
       display: block;
       width: 100%;
