@@ -15,7 +15,7 @@
     padding: 1px var(--padding) 0;
     font-family: var(--font-primary);
     color: var(--white-color);
-    font-size: 14px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     transition: border var(--delay) ease-in-out;
@@ -46,7 +46,7 @@
       padding: 0 var(--padding);
       font-weight: 400;
       color: var(--disabled-color);
-      font-size: 14px;
+      font-size: 16px;
       display: flex;
       align-items: center;
       transform: translate(10px);

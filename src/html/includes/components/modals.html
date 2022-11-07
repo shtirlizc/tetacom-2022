@@ -2,7 +2,6 @@
   <div class="_modal__bg"></div>
   <div class="_modal__wrap">
     <div class="_feedback">
-      <h3 class="_feedback__title">Обратный звонок</h3>
       <div class="_feedback__form">
         <form action="" class="_form js-form">
           <div class="_form__group">
@@ -14,20 +13,23 @@
                 placeholder=" "
                 required
               />
-              <label for="name">Имя</label>
+              <label for="name">
+                Ваше имя&nbsp;<span class="_required">*</span>
+              </label>
             </div>
           </div>
           <div class="_form__group">
             <div class="_input">
               <input
-                type="tel"
+                type="email"
                 name="name"
                 id="phone"
-                class="js-phone-mask"
                 placeholder=" "
                 required
               />
-              <label for="phone">Телефон</label>
+              <label for="phone"
+                >Почта&nbsp;<span class="_required">*</span></label
+              >
             </div>
           </div>
           <div class="_form__group">
@@ -38,14 +40,18 @@
                 placeholder=" "
                 required
               ></textarea>
-              <label for="message">Сообщение</label>
+              <label for="message">Ваш комментарий</label>
             </div>
           </div>
           <div class="_form__group">
-            <p class="_feedback__help">
-              Нажимая на кнопку, вы соглашаетесь с
-              <a href="">политикой конфиденциальности</a>
-            </p>
+            <div class="_checkbox">
+              <input type="checkbox" name="policy" id="policy" required />
+              <label for="policy">
+                Я согласен на обработку персональных данных и соглашаюсь с
+                <a href="">политикой конфиденциальности</a>
+                <span class="_required">*</span>
+              </label>
+            </div>
           </div>
           <div class="_form__group">
             <button class="_btn _btn--light-bg">Отправить</button>
@@ -60,7 +66,7 @@
   <div class="_modal__bg" id="close-all-modals"></div>
   <div class="_modal__wrap">
     <div class="_success">
-      <h3 class="_success__title">Ваша заявка успешно отправлена</h3>
+      <h3 class="_success__title">Ваш комментари отправлен</h3>
       <div class="_success__image">
         <svg width="120" height="120" x="0px" y="0px" viewBox="0 0 507.2 507.2">
           <circle style="fill: #32ba7c" cx="253.6" cy="253.6" r="253.6" />
