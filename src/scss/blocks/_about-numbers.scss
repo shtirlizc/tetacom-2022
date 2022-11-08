@@ -1,5 +1,5 @@
 ._about-numbers {
-  padding: calc(2 * var(--space5x)) 0;
+  padding: calc(3 * var(--space5x)) 0;
 
   &__title {
     text-align: center;
@@ -11,7 +11,8 @@
     margin-top: calc(2 * var(--space5x));
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 70px var(--space3x);
+    gap: 70px 0;
+    padding: 0 calc(2 * var(--space3x));
   }
 
   &__item {

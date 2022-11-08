@@ -1,7 +1,7 @@
 ._who-are-we {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 35% 65%;
   align-items: center;
   gap: var(--gap);
   padding: var(--space5x) 0;
@@ -14,16 +14,25 @@
 
   &__description {
     margin-top: var(--space5x);
+
+    p {
+      margin-block-end: 1.4em;
+    }
   }
 
   &__photos {
-    max-width: 50vw;
-    border-radius: 320px;
-    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+
+    &-content {
+      max-width: 720px;
+      border-radius: 330px;
+      overflow: hidden;
+    }
   }
 
   &__img {
-    height: 420px;
+    height: 684px;
   }
 
   img {
