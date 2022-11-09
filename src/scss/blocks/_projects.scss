@@ -4,6 +4,10 @@
 
     display: grid;
 
+    @include tablet-only {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
     @include desktop {
       grid-template-columns: repeat(3, 1fr);
     }
@@ -11,10 +15,6 @@
 
   &__item {
     aspect-ratio: 1;
-
-    &:nth-child(1) {
-      background-color: var(--primary-color);
-    }
 
     &-link {
       display: block;

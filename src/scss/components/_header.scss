@@ -60,7 +60,7 @@
       opacity: 0.8;
     }
 
-    @include tablet {
+    @include desktop {
       display: none;
     }
   }
@@ -71,7 +71,7 @@
     align-items: center;
     gap: 100px;
 
-    @include mobile {
+    @include touch {
       position: fixed;
       right: -241px;
       bottom: 0;
@@ -100,7 +100,7 @@
     align-items: center;
     gap: 60px;
 
-    @include mobile {
+    @include touch {
       gap: 20px;
     }
 
@@ -115,7 +115,7 @@
       color: var(--white-color);
       transition: color var(--delay) ease-in-out;
 
-      @include mobile {
+      @include touch {
         padding: calc(1.5 * var(--space)) 0;
       }
 
@@ -125,14 +125,14 @@
     }
 
     &--mobile {
-      @include mobile {
+      @include touch {
         display: block;
       }
     }
   }
 
   &__hamburger {
-    @include tablet {
+    @include desktop {
       display: none;
     }
   }

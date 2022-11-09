@@ -15,10 +15,15 @@ export const Slider = {
         clickable: true,
       },
       breakpoints: {
+        769: {
+          slidesPerView: 2.1,
+          spaceBetween: 30,
+        },
         1081: {
           slidesPerView: 3,
           spaceBetween: 30,
           centeredSlides: true,
+          pagination: false,
         },
       },
     });

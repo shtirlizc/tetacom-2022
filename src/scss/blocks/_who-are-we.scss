@@ -2,7 +2,7 @@
   display: grid;
   padding: var(--space5x) 0;
 
-  @include desktop {
+  @include tablet {
     grid-template-columns: 35% 65%;
     align-items: center;
     gap: var(--gap);
@@ -35,18 +35,22 @@
   }
 
   &__photos {
-    @include desktop {
+    @include tablet {
       display: flex;
       justify-content: flex-end;
     }
 
     &-content {
-      max-width: calc(100vw - var(--space4x));
+      max-width: 520px;
+      width: calc(100vw - var(--space4x));
       border-radius: calc(100vw / 2);
       overflow: hidden;
+      margin: auto;
 
       @include tablet {
+        margin-right: 0;
         max-width: 720px;
+        width: 100%;
         border-radius: 330px;
       }
     }
@@ -54,9 +58,16 @@
 
   &__img {
     height: calc(100vw - var(--space4x) - var(--space3x));
+    max-height: 480px;
 
-    @include tablet {
+    @include tablet-only {
+      height: 420px;
+      max-height: 420px;
+    }
+
+    @include desktop {
       height: 684px;
+      max-height: 684px;
     }
   }
 

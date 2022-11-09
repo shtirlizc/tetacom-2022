@@ -16,11 +16,16 @@
     display: grid;
     gap: var(--space5x);
 
+    @include tablet {
+      margin-top: var(--space5x);
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space5x) 0;
+    }
+
     @include desktop {
       margin-top: calc(2 * var(--space5x));
-      grid-template-columns: repeat(3, 1fr);
-      gap: 70px 0;
       padding: 0 calc(2 * var(--space3x));
+      gap: 70px 0;
     }
   }
 

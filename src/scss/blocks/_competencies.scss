@@ -20,7 +20,7 @@
   &__slider {
     @include container-padding;
 
-    @include mobile {
+    @include touch {
       padding-bottom: var(--space5x);
     }
   }

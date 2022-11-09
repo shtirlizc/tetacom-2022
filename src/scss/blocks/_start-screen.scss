@@ -14,7 +14,7 @@
     linear-gradient(0deg, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4));
   padding: 124px 0 96px;
 
-  @include desktop {
+  @include tablet {
     --gradient-area: 300px;
 
     min-height: calc(100vh + var(--gradient-area));
@@ -52,7 +52,7 @@
         var(--black-color) 50%
       );
 
-      @include desktop {
+      @include tablet {
         background-image: linear-gradient(
           to bottom,
           transparent,
@@ -71,6 +71,11 @@
     font-size: 36px;
     line-height: 42px;
 
+    @include tablet-only {
+      font-size: 68px;
+      line-height: 1.2em;
+    }
+
     @include desktop {
       font-size: 100px;
       line-height: 118px;
@@ -81,6 +86,11 @@
     font-size: 12px;
     line-height: 20px;
     margin: 0 0 78px;
+
+    @include tablet-only {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
 
     @include desktop {
       font-size: 22px;
