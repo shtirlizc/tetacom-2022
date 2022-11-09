@@ -18,6 +18,12 @@ html {
   &.modal {
     overflow: hidden;
   }
+
+  &.mobile-menu {
+    @include mobile {
+      overflow: hidden;
+    }
+  }
 }
 
 html,
