@@ -7,6 +7,7 @@ import { Form } from "./modal";
 import { PageYOffset } from "./pageYOffset";
 import { startScreenVideo } from "./start-screen-video";
 import { Slider } from "./swiper";
+import { PauseVideo } from "./pauseVideo";
 
 window.addEventListener("load", () => {
   PageYOffset.init();
@@ -18,4 +19,5 @@ window.addEventListener("load", () => {
   map();
   Modal.init();
   Form.init();
+  PauseVideo.init();
 });
