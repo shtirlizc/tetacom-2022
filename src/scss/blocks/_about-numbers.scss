@@ -1,5 +1,9 @@
 ._about-numbers {
-  padding: calc(3 * var(--space5x)) 0;
+  padding: calc(2 * var(--space5x)) 0;
+
+  @include desktop {
+    padding: calc(3 * var(--space5x)) 0;
+  }
 
   &__title {
     text-align: center;
@@ -8,11 +12,16 @@
   &__body {
     @include clr;
 
-    margin-top: calc(2 * var(--space5x));
+    margin-top: var(--space3x);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 70px 0;
-    padding: 0 calc(2 * var(--space3x));
+    gap: var(--space5x);
+
+    @include desktop {
+      margin-top: calc(2 * var(--space5x));
+      grid-template-columns: repeat(3, 1fr);
+      gap: 70px 0;
+      padding: 0 calc(2 * var(--space3x));
+    }
   }
 
   &__item {
@@ -27,6 +36,11 @@
 
     &-text {
       display: block;
+
+      @include mobile {
+        font-size: 16px;
+        line-height: 28px;
+      }
     }
   }
 }

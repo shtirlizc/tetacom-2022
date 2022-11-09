@@ -10,9 +10,14 @@
 
   &__title {
     font-weight: 500;
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 24px;
+    line-height: 28px;
     margin-bottom: 22px;
+
+    @include tablet {
+      font-size: 32px;
+      line-height: 38px;
+    }
   }
 
   &__description {

@@ -3,7 +3,10 @@
     @include clr;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   &__item {

@@ -1,9 +1,7 @@
 ._start-screen {
-  --gradient-area: 300px;
+  --gradient-area: 100%;
 
   position: relative;
-  min-height: calc(100vh + var(--gradient-area));
-  padding: 12.25vh 0 calc(12.25vh + var(--gradient-area));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -14,19 +12,13 @@
       #1a1a1a 100%
     ),
     linear-gradient(0deg, rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4));
+  padding: 124px 0 96px;
 
-  &::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: var(--gradient-area);
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(
-      to bottom,
-      transparent,
-      var(--black-color) 80%
-    );
+  @include desktop {
+    --gradient-area: 300px;
+
+    min-height: calc(100vh + var(--gradient-area));
+    padding: 12.25vh 0 calc(12.25vh + var(--gradient-area));
   }
 
   &__video {
@@ -46,6 +38,28 @@
       height: 100%;
       object-fit: cover;
     }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: var(--gradient-area);
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(
+        to bottom,
+        transparent,
+        var(--black-color) 50%
+      );
+
+      @include desktop {
+        background-image: linear-gradient(
+          to bottom,
+          transparent,
+          var(--black-color) 80%
+        );
+      }
+    }
   }
 
   &__content {
@@ -54,13 +68,24 @@
 
   &__title {
     font-weight: 500;
-    font-size: 100px;
-    line-height: 118px;
+    font-size: 36px;
+    line-height: 42px;
+
+    @include desktop {
+      font-size: 100px;
+      line-height: 118px;
+    }
   }
 
   &__description {
-    margin: 0 0 clamp(110px, 24vh, 220px);
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 12px;
+    line-height: 20px;
+    margin: 0 0 78px;
+
+    @include desktop {
+      font-size: 22px;
+      line-height: 32px;
+      margin: 0 0 clamp(110px, 24vh, 220px);
+    }
   }
 }

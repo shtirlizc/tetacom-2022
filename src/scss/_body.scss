@@ -35,8 +35,12 @@ body {
   background-color: var(--black-color);
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 28px;
+
+  @include desktop {
+    font-size: 16px;
+  }
 }
 
 h1,

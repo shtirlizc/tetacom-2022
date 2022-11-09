@@ -1,15 +1,27 @@
 ._competencies {
-  padding: calc(3 * var(--space5x)) 0;
+  padding: var(--space5x) 0;
+
+  @include desktop {
+    padding: calc(3 * var(--space5x)) 0;
+  }
 
   &__title {
     text-align: center;
   }
 
   &__body {
-    margin-top: 60px;
+    margin-top: var(--space4x);
+
+    @include desktop {
+      margin-top: 60px;
+    }
   }
 
   &__slider {
     @include container-padding;
+
+    @include mobile {
+      padding-bottom: var(--space5x);
+    }
   }
 }

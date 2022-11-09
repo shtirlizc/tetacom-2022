@@ -1,11 +1,19 @@
 ._partners {
-  padding: calc(2 * var(--space5x)) 0;
+  padding: var(--space5x) 0;
+
+  @include desktop {
+    padding: calc(2 * var(--space5x)) 0;
+  }
 
   &__title {
   }
 
   &__body {
-    margin-top: var(--space5x);
+    margin-top: 10px;
+
+    @include desktop {
+      margin-top: var(--space5x);
+    }
   }
 
   &__slider {

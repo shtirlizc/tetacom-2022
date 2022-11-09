@@ -1,5 +1,10 @@
 ._title {
   font-weight: 500;
-  font-size: 58px;
-  line-height: 68px;
+  font-size: 40px;
+  line-height: 47px;
+
+  @include desktop {
+    font-size: 58px;
+    line-height: 68px;
+  }
 }

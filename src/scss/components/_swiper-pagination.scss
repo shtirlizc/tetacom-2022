@@ -1,0 +1,22 @@
+._swiper-pagination {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space5x);
+  bottom: calc(var(--space) / 2);
+
+  .swiper-pagination-bullet {
+    opacity: 1;
+    background-color: var(--disabled-color);
+    width: var(--space);
+    height: var(--space);
+    border-radius: 50%;
+    transition: transform var(--delay) ease-in-out;
+
+    &-active {
+      background-color: var(--white-color);
+      transform: scale(1.5);
+    }
+  }
+}

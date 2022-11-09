@@ -1,38 +1,63 @@
 ._who-are-we {
-  min-height: 100vh;
   display: grid;
-  grid-template-columns: 35% 65%;
-  align-items: center;
-  gap: var(--gap);
   padding: var(--space5x) 0;
+
+  @include desktop {
+    grid-template-columns: 35% 65%;
+    align-items: center;
+    gap: var(--gap);
+    min-height: 100vh;
+  }
 
   &__info {
   }
 
   &__title {
+    @include mobile {
+      text-align: center;
+    }
   }
 
   &__description {
-    margin-top: var(--space5x);
+    margin-top: var(--space2x);
+
+    @include desktop {
+      margin-top: var(--space5x);
+    }
 
     p {
-      margin-block-end: 1.4em;
+      margin-block-end: 1.6em;
+
+      @include desktop {
+        margin-block-end: 1.4em;
+      }
     }
   }
 
   &__photos {
-    display: flex;
-    justify-content: flex-end;
+    @include desktop {
+      display: flex;
+      justify-content: flex-end;
+    }
 
     &-content {
-      max-width: 720px;
-      border-radius: 330px;
+      max-width: calc(100vw - var(--space4x));
+      border-radius: calc(100vw / 2);
       overflow: hidden;
+
+      @include tablet {
+        max-width: 720px;
+        border-radius: 330px;
+      }
     }
   }
 
   &__img {
-    height: 684px;
+    height: calc(100vw - var(--space4x) - var(--space3x));
+
+    @include tablet {
+      height: 684px;
+    }
   }
 
   img {
