@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "gsap": "^3.11.3",
     "imask": "^6.4.3",
     "normalize.css": "^8.0.1",
     "swiper": "^8.4.4"
