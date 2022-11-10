@@ -25,7 +25,7 @@ window.addEventListener("load", () => {
 
   const tween = gsap.to(".box", { rotation: 27, x: 100, duration: 1 });
 
-  document.getElementById("start").addEventListener("click", () => {
+  document.getElementById("start")?.addEventListener("click", () => {
     console.log("play");
     tween.play();
   });
