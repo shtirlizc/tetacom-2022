@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
+
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
+
+  <body>
+    <div class="wrap">
+      <div class="box green"></div>
+      <div class="box orange"></div>
+      <div class="box grey"></div>
+
+      <button type="button" id="start">Start</button>
+    </div>
+
+    <div style="width: 100vw">
+      <video loop autoplay muted playsinline style="width: 100%">
+        <source src="uploads/start-screen.webm" type="video/webm" />
+        <source src="uploads/start-screen.mp4" type="video/mp4;codecs=hvc1" />
+      </video>
+    </div>
+
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>
