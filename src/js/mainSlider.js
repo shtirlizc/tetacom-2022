@@ -15,8 +15,8 @@ export const MainSlider = {
     this.mainSwiper = new Swiper(".js-main-swiper", {
       modules: [Pagination],
       loop: true,
-      slidesPerView: 1.1,
-      spaceBetween: 24,
+      slidesPerView: "auto",
+      spaceBetween: 0,
       speed: 300,
       slideToClickedSlide: true,
       pagination: {
@@ -25,14 +25,13 @@ export const MainSlider = {
         clickable: true,
       },
       breakpoints: {
-        // 769: {
-        //   slidesPerView: 2.1,
-        //   spaceBetween: 30,
-        // },
-        1081: {
-          slidesPerView: "auto",
-          spaceBetween: 120,
+        769: {
           centeredSlides: true,
+          speed: 600,
+          spaceBetween: 60,
+        },
+        1081: {
+          spaceBetween: 120,
           pagination: false,
           speed: 900,
         },
@@ -146,8 +145,6 @@ export const MainSlider = {
           ease: "back.out(0.8)",
         });
       });
-
-      console.log("points", this.points);
 
       if (isNextDirection) {
         const [firstElement] = pointElements;

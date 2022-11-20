@@ -2,8 +2,8 @@
   &__track {
     position: relative;
     display: flex;
-    justify-content: center;
     align-items: center;
+    padding: 0 var(--space2x);
     background-image: linear-gradient(
       to right,
       var(--white-color) 50%,
@@ -12,6 +12,11 @@
     background-size: 14px 1px;
     background-repeat: repeat-x;
     background-position: 50%;
+
+    @include tablet {
+      padding: 0;
+      justify-content: center;
+    }
 
     &::before,
     &::after {
@@ -56,7 +61,6 @@
         height: 16px;
         border-radius: 50%;
         top: calc(50% - 8px);
-        left: 300px;
       }
     }
   }
@@ -64,7 +68,7 @@
   &__title {
     @include clean;
 
-    width: 346px;
+    width: 280px;
     height: 54px;
     border-radius: 30px;
     padding: 16px 20px 16px 28px;
@@ -80,6 +84,10 @@
     cursor: pointer;
     overflow: hidden;
     transition: border-color calc(2 * var(--delay)) var(--timing-func);
+
+    @include tablet {
+      width: 346px;
+    }
 
     &:hover {
       border-color: var(--primary-color);
@@ -127,13 +135,20 @@
 
   &__swiper {
     margin-top: var(--space5x);
+    padding-bottom: var(--space5x);
   }
 
   &__slide {
-    width: 372px;
+    padding: 0 var(--space2x);
+    width: 280px;
     cursor: pointer;
     opacity: 0.2;
     transition: opacity calc(2 * var(--delay)) var(--timing-func);
+
+    @include tablet {
+      padding: 0;
+      width: 372px;
+    }
 
     &.swiper-slide-active {
       opacity: 1;
