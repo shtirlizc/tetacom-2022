@@ -9,7 +9,7 @@
       var(--white-color) 50%,
       var(--black-color) 50%
     );
-    background-size: 14px 1px;
+    background-size: 12px 1px;
     background-repeat: repeat-x;
     background-position: 50%;
 
@@ -134,8 +134,12 @@
   }
 
   &__swiper {
-    margin-top: var(--space5x);
-    padding-bottom: var(--space5x);
+    margin-top: 20px;
+    padding-bottom: var(--space4x);
+
+    @include tablet {
+      margin-top: 44px;
+    }
   }
 
   &__slide {

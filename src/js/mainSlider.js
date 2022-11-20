@@ -29,6 +29,7 @@ export const MainSlider = {
           centeredSlides: true,
           speed: 600,
           spaceBetween: 60,
+          pagination: false,
         },
         1081: {
           centeredSlides: true,

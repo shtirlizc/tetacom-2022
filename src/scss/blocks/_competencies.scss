@@ -1,8 +1,12 @@
 ._competencies {
-  padding: var(--space5x) 0;
+  padding: var(--space5x) 0 102px;
 
   @include desktop {
-    padding: calc(3 * var(--space5x)) 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 200px 0 344px;
   }
 
   &__title {
