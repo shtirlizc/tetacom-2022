@@ -31,6 +31,7 @@ export const MainSlider = {
           spaceBetween: 60,
         },
         1081: {
+          centeredSlides: true,
           spaceBetween: 120,
           pagination: false,
           speed: 900,
@@ -43,12 +44,13 @@ export const MainSlider = {
         },
         slidePrevTransitionStart: (swiper) => {
           this.changeTitle(Array.from(swiper.slides), false);
-          this.updatePoints(false);
+          this.movePoints(false);
         },
         slideNextTransitionStart: (swiper) => {
           this.changeTitle(Array.from(swiper.slides), true);
-          this.updatePoints(true);
+          this.movePoints(true);
         },
+        resize: this.updatePoints.bind(this),
       },
     });
   },
@@ -130,7 +132,29 @@ export const MainSlider = {
     gsap.fromTo(point, { scale: 0 }, { scale: 1, delay: 0.5 });
   },
 
-  updatePoints(isNextDirection) {
+  updatePoints(swiper) {
+    const [first, second] = swiper.slidesGrid;
+    this.pointsStep = second - first;
+    this.points.length = 0;
+    const pointElements = this.pointsWrapper.querySelectorAll("span");
+
+    swiper.slides.map((slide, index) => {
+      if (!index) {
+        this.slideWidth = parseInt(slide.offsetWidth);
+      }
+
+      const left =
+        slide.getBoundingClientRect().left +
+        window.scrollX +
+        this.slideWidth / 2 -
+        this.pointRadius;
+      this.points.push(left);
+
+      pointElements[index].style.left = `${left}px`;
+    });
+  },
+
+  movePoints(isNextDirection) {
     const pointsStep = this.pointsStep;
     const offset = isNextDirection ? -1 * pointsStep : pointsStep;
 
