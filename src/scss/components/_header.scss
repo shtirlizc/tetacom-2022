@@ -5,10 +5,16 @@
   width: 100%;
   background-color: transparent;
   z-index: 10;
-  transition: background-color var(--delay) var(--timing-func);
+  transition: background-color calc(2 * var(--delay)) var(--timing-func),
+    backdrop-filter calc(2 * var(--delay)) var(--timing-func);
 
   &.active {
     background-color: var(--black-color);
+
+    @include desktop {
+      background-color: rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(40px);
+    }
   }
 
   &__content {

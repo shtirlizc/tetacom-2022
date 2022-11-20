@@ -21,7 +21,7 @@ html {
   }
 
   &.mobile-menu {
-    @include mobile {
+    @include touch {
       overflow: hidden;
     }
   }
