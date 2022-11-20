@@ -16,8 +16,9 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   border: 1px solid var(--primary-color);
-  transition: border-color var(--delay) ease-in-out,
-    color var(--delay) ease-in-out, background-color var(--delay) ease-in-out;
+  transition: border-color var(--delay) var(--timing-func),
+    color var(--delay) var(--timing-func),
+    background-color var(--delay) var(--timing-func);
 
   &:hover {
     background-color: transparent;

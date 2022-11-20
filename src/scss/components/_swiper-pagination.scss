@@ -12,7 +12,7 @@
     width: var(--space);
     height: var(--space);
     border-radius: 50%;
-    transition: transform var(--delay) ease-in-out;
+    transition: transform var(--delay) var(--timing-func);
 
     &-active {
       background-color: var(--white-color);

@@ -16,12 +16,4 @@
       margin-top: 60px;
     }
   }
-
-  &__slider {
-    @include container-padding;
-
-    @include touch {
-      padding-bottom: var(--space5x);
-    }
-  }
 }

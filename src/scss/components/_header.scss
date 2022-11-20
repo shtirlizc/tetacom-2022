@@ -5,7 +5,7 @@
   width: 100%;
   background-color: transparent;
   z-index: 10;
-  transition: background-color var(--delay) ease-in-out;
+  transition: background-color var(--delay) var(--timing-func);
 
   &.active {
     background-color: var(--black-color);
@@ -28,7 +28,7 @@
 
     svg {
       path {
-        transition: fill var(--delay) ease-in-out;
+        transition: fill var(--delay) var(--timing-func);
       }
     }
 
@@ -50,7 +50,7 @@
     background-color: var(--black-color);
     display: none;
     opacity: 0;
-    transition: opacity calc(1.5 * var(--delay)) ease-in-out;
+    transition: opacity calc(1.5 * var(--delay)) var(--timing-func);
 
     &.active {
       display: block;
@@ -85,7 +85,7 @@
       padding: calc(2 * var(--space3x)) var(--space3x);
       overflow-x: hidden;
       overflow-y: scroll;
-      transition: right calc(1.5 * var(--delay)) ease-in-out;
+      transition: right calc(1.5 * var(--delay)) var(--timing-func);
     }
 
     &.active {
@@ -107,13 +107,19 @@
     &-item {
       font-weight: 700;
       font-size: 14px;
+
+      &.active {
+        > a {
+          color: var(--primary-color);
+        }
+      }
     }
 
     &-link {
       display: inline-block;
       padding: var(--space2x) 0;
       color: var(--white-color);
-      transition: color var(--delay) ease-in-out;
+      transition: color var(--delay) var(--timing-func);
 
       @include touch {
         padding: calc(1.5 * var(--space)) 0;

@@ -6,12 +6,13 @@
   &:hover {
     ._project-teaser__content-category {
       transform: translateY(var(--space)) scale(1.25);
-      transition: transform calc(2 * var(--delay)) var(--delay) ease-in-out;
+      transition: transform calc(2 * var(--delay)) var(--delay)
+        var(--timing-func);
     }
 
     ._project-teaser__content-title {
       transform: translateY(var(--space3x)) scale(1.1);
-      transition: transform calc(2 * var(--delay)) ease-in-out;
+      transition: transform calc(2 * var(--delay)) var(--timing-func);
     }
   }
 
@@ -41,7 +42,7 @@
     &-title {
       display: block;
       transform-origin: top left;
-      transition: transform calc(2 * var(--delay)) ease-in-out;
+      transition: transform calc(2 * var(--delay)) var(--timing-func);
     }
 
     &-category {

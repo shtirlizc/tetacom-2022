@@ -10,10 +10,12 @@ import { PageYOffset } from "./pageYOffset";
 import { startScreenVideo } from "./start-screen-video";
 import { Slider } from "./swiper";
 import { PauseVideo } from "./pauseVideo";
+import { MainSlider } from "./mainSlider";
 
 window.addEventListener("load", () => {
   PageYOffset.init();
   startScreenVideo();
+  MainSlider.init();
   Slider.init();
   mobileMenu();
   textField();

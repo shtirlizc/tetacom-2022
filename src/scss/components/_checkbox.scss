@@ -27,7 +27,7 @@
         height: 14px;
         top: 5px;
         left: 1px;
-        transition: border-color var(--delay) ease-in-out;
+        transition: border-color var(--delay) var(--timing-func);
       }
 
       &::after {
@@ -41,7 +41,7 @@
         top: 8px;
         left: 3px;
         transform: rotate(-45deg) scale(0);
-        transition: transform var(--delay) ease-in-out;
+        transition: transform var(--delay) var(--timing-func);
       }
 
       a {

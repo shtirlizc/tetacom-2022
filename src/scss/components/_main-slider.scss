@@ -1,0 +1,151 @@
+._main-slider {
+  &__track {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(
+      to right,
+      var(--white-color) 50%,
+      var(--black-color) 50%
+    );
+    background-size: 14px 1px;
+    background-repeat: repeat-x;
+    background-position: 50%;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 25%;
+      height: 100%;
+      top: 0;
+      z-index: 1;
+    }
+
+    &::before {
+      left: 0;
+      background-image: linear-gradient(
+        to right,
+        var(--black-color),
+        transparent
+      );
+    }
+
+    &::after {
+      right: 0;
+      background-image: linear-gradient(
+        to left,
+        var(--black-color),
+        transparent
+      );
+    }
+
+    &-points {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      span {
+        position: absolute;
+        background-color: var(--white-color);
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        top: calc(50% - 8px);
+        left: 300px;
+      }
+    }
+  }
+
+  &__title {
+    @include clean;
+
+    width: 346px;
+    height: 54px;
+    border-radius: 30px;
+    padding: 16px 20px 16px 28px;
+    border: 1px solid var(--white-color);
+    background-color: var(--black-color);
+    color: var(--white-color);
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transform: translateZ(0);
+    z-index: 2;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color calc(2 * var(--delay)) var(--timing-func);
+
+    &:hover {
+      border-color: var(--primary-color);
+
+      ._main-slider__title-arrow {
+        transform: translate(10px);
+
+        svg {
+          path {
+            stroke: var(--primary-color);
+          }
+        }
+      }
+    }
+
+    &-text {
+      position: relative;
+      width: 100%;
+      height: 20px;
+      font-size: 16px;
+      text-align: left;
+
+      span {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+
+    &-arrow {
+      transition: transform calc(2 * var(--delay)) var(--timing-func);
+
+      svg {
+        path {
+          transition: stroke calc(2 * var(--delay)) var(--timing-func);
+        }
+      }
+    }
+  }
+
+  &__swiper {
+    margin-top: var(--space5x);
+  }
+
+  &__slide {
+    width: 372px;
+    cursor: pointer;
+    opacity: 0.2;
+    transition: opacity calc(2 * var(--delay)) var(--timing-func);
+
+    &.swiper-slide-active {
+      opacity: 1;
+    }
+
+    &.swiper-slide-prev,
+    &.swiper-slide-next {
+      opacity: 0.6;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

@@ -1,33 +1,7 @@
-import Swiper, { Autoplay, EffectFade, Pagination } from "swiper";
+import Swiper, { Autoplay, EffectFade } from "swiper";
 
 export const Slider = {
-  buttons: document.querySelector(".js-competencies-swiper"),
-
   init() {
-    new Swiper(".js-competencies-swiper", {
-      modules: [Pagination],
-      loop: true,
-      slidesPerView: 1.1,
-      spaceBetween: 20,
-      pagination: {
-        el: "._swiper-pagination",
-        type: "bullets",
-        clickable: true,
-      },
-      breakpoints: {
-        769: {
-          slidesPerView: 2.1,
-          spaceBetween: 30,
-        },
-        1081: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          centeredSlides: true,
-          pagination: false,
-        },
-      },
-    });
-
     new Swiper(".js-who-are-we-swiper", {
       modules: [Autoplay, EffectFade],
       loop: true,
