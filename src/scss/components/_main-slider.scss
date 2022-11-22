@@ -4,11 +4,7 @@
     display: flex;
     align-items: center;
     padding: 0 var(--space2x);
-    background-image: linear-gradient(
-      to right,
-      var(--white-color) 50%,
-      var(--black-color) 50%
-    );
+    background-image: linear-gradient(to right, #c6c6c6 50%, transparent 50%);
     background-size: 12px 1px;
     background-repeat: repeat-x;
     background-position: 50%;

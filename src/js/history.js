@@ -6,6 +6,11 @@ gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export const History = {
   init() {
+    this.horizontalScroll();
+    this.setDatesHeight();
+  },
+
+  horizontalScroll() {
     const panelsContainer = document.querySelector("#panels-container");
     let tween;
 
@@ -48,6 +53,22 @@ export const History = {
         scrub: 1,
         end: () => "+=" + (panelsContainer.offsetWidth - innerWidth),
       },
+    });
+  },
+  setDatesHeight() {
+    let maxHeight = 0;
+    const dates = document.querySelectorAll("._history-timeline__date");
+
+    dates.forEach((item) => {
+      const height = parseInt(item.offsetHeight);
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
+    dates.forEach((item) => {
+      if (parseInt(item.offsetHeight) < maxHeight) {
+        item.style.height = `${maxHeight}px`;
+      }
     });
   },
 };

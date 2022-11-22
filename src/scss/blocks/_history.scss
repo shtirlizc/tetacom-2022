@@ -1,6 +1,4 @@
 ._history {
-  background-color: var(--primary-color);
-
   &__container {
     height: 100vh;
     display: flex;
@@ -9,9 +7,26 @@
   }
 
   &__panel {
+    position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
-    border-right: 1px solid #f00;
+
+    padding-top: var(--space5x);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 400%;
+    transform: translateY(-50%);
+    font-weight: 400;
+    font-size: 220px;
+    line-height: 200px;
+    text-align: center;
+    letter-spacing: 5px;
   }
 }
