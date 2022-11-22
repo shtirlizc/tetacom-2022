@@ -36,26 +36,3 @@
 @import "blocks/partners";
 @import "blocks/history";
 @import "blocks/map";
-
-.wrap {
-  padding: 200px 100px;
-  border: 2px dashed red;
-
-  .box {
-    display: block;
-    width: 50px;
-    height: 50px;
-
-    &.green {
-      background-color: green;
-    }
-
-    &.orange {
-      background-color: orange;
-    }
-
-    &.grey {
-      background-color: grey;
-    }
-  }
-}

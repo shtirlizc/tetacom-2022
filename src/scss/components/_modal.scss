@@ -28,7 +28,7 @@
     top: 0;
     left: 0;
     opacity: 0;
-    transition: opacity var(--delay) var(--timing-func);
+    transition: opacity calc(2 * var(--delay)) var(--timing-func);
   }
 
   &__wrap {
@@ -43,7 +43,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     transform: scale(0.75);
-    transition: opacity var(--delay) var(--timing-func),
-      transform var(--delay) var(--timing-func);
+    transition: opacity calc(2 * var(--delay)) var(--timing-func),
+      transform calc(2 * var(--delay)) var(--timing-func);
   }
 }
