@@ -5,7 +5,8 @@
   width: 100%;
   background-color: transparent;
   z-index: 10;
-  transition: background-color calc(2 * var(--delay)) var(--timing-func),
+  transition: top calc(3 * var(--delay)) var(--timing-func),
+    background-color calc(2 * var(--delay)) var(--timing-func),
     backdrop-filter calc(2 * var(--delay)) var(--timing-func);
 
   &.active {
@@ -15,6 +16,10 @@
       background-color: rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(40px);
     }
+  }
+
+  &.hidden {
+    top: calc(-20 * var(--space));
   }
 
   &__content {

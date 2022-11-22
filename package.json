@@ -27,6 +27,7 @@
   "dependencies": {
     "gsap": "^3.11.3",
     "imask": "^6.4.3",
+    "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
     "swiper": "^8.4.4"
   }
