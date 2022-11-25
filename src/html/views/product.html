@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
+
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
+
+  <body>
+    <%=
+    _.template(require('./../includes/components/header.html').default)(data) %>
+
+    <main class="_product-page">
+      <div class="_container">
+        <div class="_product-page__start">
+          <h1 class="_product-page__start-title">Симулятор ОПЗ</h1>
+          <p class="_product-page__start-description">
+            Расчетный инструмент для анализа, проектирования и оптимизации<br />
+            ключевых параметров обработок призабойной зоны скважины в<br />
+            карбонатных и терригенных коллекторах
+          </p>
+          <div class="_product-page__start-try">
+            <a href="#" rel="noopener noreferrer" class="_btn">Купить</a>
+            <a href="#" rel="noopener noreferrer" class="_btn _btn--outline">
+              Попробовать
+            </a>
+          </div>
+          <div class="_product-page__start-demo">
+            <iframe
+              width="100%"
+              src="https://www.youtube.com/embed/5yx6BWlEVcY"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <section class="_product-page__slider">
+        <%=
+        _.template(require('./../includes/blocks/competencies.html').default)(data)
+        %>
+      </section>
+
+      <div class="_container">
+        <section class="_product-page__capabilities">
+          <%=
+          _.template(require('./../includes/blocks/capabilities.html').default)(data)
+          %>
+        </section>
+
+        <section class="_product-page__feedback">
+          <h2 class="_product-page__feedback-title">
+            ваши предложения<br />по разработке
+          </h2>
+          <div class="_product-page__feedback-actions">
+            <button type="button" class="_btn">Предложить идею</button>
+          </div>
+        </section>
+
+        <section class="_product-page__more-info">
+          <%=
+          _.template(require('./../includes/blocks/start-list.html').default)(data)
+          %>
+        </section>
+
+        <section class="_product-page__feedback">
+          <h2 class="_product-page__feedback-title">
+            Вы всё ещё думаете?<br />Попробуйте
+          </h2>
+          <div class="_product-page__feedback-actions">
+            <button
+              type="button"
+              class="_btn js-open-modal"
+              data-target="modal-feedback"
+            >
+              Задать вопрос
+            </button>
+            <a href="#" rel="noopener noreferrer" class="_btn _btn--outline">
+              Попробовать
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <%= _.template(require('./../includes/blocks/map.html').default)(data) %>
+    <%=
+    _.template(require('./../includes/components/modals.html').default)(data) %>
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>
