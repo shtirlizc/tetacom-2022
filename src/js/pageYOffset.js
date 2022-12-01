@@ -9,6 +9,8 @@ export const PageYOffset = {
     if (this.header) {
       if (this.value > this.showHeaderOffset) {
         this.add();
+      } else {
+        this.header.classList.remove("hidden");
       }
 
       document.addEventListener(

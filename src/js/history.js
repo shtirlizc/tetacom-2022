@@ -54,7 +54,58 @@ export const History = {
         end: () => "+=" + (panelsContainer.offsetWidth - innerWidth),
       },
     });
+
+    const trigger = window.innerWidth / 2;
+    document.addEventListener("scroll", () => {
+      document
+        .querySelectorAll("._history-timeline__progressbar")
+        .forEach((progress) => {
+          const startPoint = progress.querySelector(
+            "._history-timeline__progressbar-start"
+          );
+          const endPoint = progress.querySelector(
+            "._history-timeline__progressbar-end"
+          );
+
+          if (progress.getBoundingClientRect().left < trigger) {
+            gsap.to(startPoint, {
+              backgroundColor: "var(--primary-color)",
+            });
+          } else {
+            gsap.to(startPoint, {
+              backgroundColor: "var(--hard-grey)",
+            });
+          }
+
+          if (progress.getBoundingClientRect().left > trigger) {
+            gsap.to(endPoint, {
+              width: 0,
+              duration: 0.15,
+            });
+          }
+
+          if (
+            progress.getBoundingClientRect().right >= trigger &&
+            progress.getBoundingClientRect().left < trigger
+          ) {
+            gsap.to(endPoint, {
+              width: trigger - progress.getBoundingClientRect().left,
+              background: null,
+              duration: 0.15,
+            });
+          }
+
+          if (progress.getBoundingClientRect().right < trigger) {
+            gsap.to(endPoint, {
+              width: "100%",
+              background: "var(--primary-color)",
+              duration: 0.15,
+            });
+          }
+        });
+    });
   },
+
   setDatesHeight() {
     let maxHeight = 0;
     const dates = document.querySelectorAll("._history-timeline__date");
