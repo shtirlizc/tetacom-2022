@@ -1,34 +1,36 @@
-import { gsap } from "gsap";
-import ScrollToPlugin from "gsap/dist/ScrollToPlugin";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 export const History = {
+  panelsContainer: document.querySelector('#panels-container'),
+
   init() {
-    this.horizontalScroll();
-    this.setDatesHeight();
+    if (this.panelsContainer) {
+      this.horizontalScroll();
+      this.setDatesHeight();
+    }
   },
 
   horizontalScroll() {
-    const panelsContainer = document.querySelector("#panels-container");
     let tween;
 
     /* Main navigation */
-    document.querySelectorAll(".anchor").forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
+    document.querySelectorAll('.anchor').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        let targetElem = document.querySelector(e.target.getAttribute("href")),
+        let targetElem = document.querySelector(e.target.getAttribute('href')),
           y = targetElem;
         if (
           targetElem &&
-          panelsContainer.isSameNode(targetElem.parentElement)
+          this.panelsContainer.isSameNode(targetElem.parentElement)
         ) {
           let totalScroll = tween.scrollTrigger.end - tween.scrollTrigger.start,
             totalMovement = (panels.length - 1) * targetElem.offsetWidth;
           y = Math.round(
             tween.scrollTrigger.start +
-              (targetElem.offsetLeft / totalMovement) * totalScroll
+              (targetElem.offsetLeft / totalMovement) * totalScroll,
           );
         }
         gsap.to(window, {
@@ -42,65 +44,71 @@ export const History = {
     });
 
     /* Panels */
-    const panels = gsap.utils.toArray("#panels-container ._history__panel");
+    const panels = gsap.utils.toArray('#panels-container ._history__panel');
     tween = gsap.to(panels, {
       xPercent: -100 * (panels.length - 1),
-      ease: "none",
+      ease: 'none',
       scrollTrigger: {
-        trigger: "#panels-container",
+        trigger: '#panels-container',
         pin: true,
-        start: "top top",
+        start: 'top top',
         scrub: 1,
-        end: () => "+=" + (panelsContainer.offsetWidth - innerWidth),
+        end: () => '+=' + (this.panelsContainer.offsetWidth - innerWidth),
       },
     });
 
     const trigger = window.innerWidth / 2;
-    document.addEventListener("scroll", () => {
+    document.addEventListener('scroll', () => {
       document
-        .querySelectorAll("._history-timeline__progressbar")
+        .querySelectorAll('._history-timeline__progressbar')
         .forEach((progress) => {
           const startPoint = progress.querySelector(
-            "._history-timeline__progressbar-start"
+            '._history-timeline__progressbar-start',
           );
           const endPoint = progress.querySelector(
-            "._history-timeline__progressbar-end"
+            '._history-timeline__progressbar-end',
           );
 
           if (progress.getBoundingClientRect().left < trigger) {
             gsap.to(startPoint, {
-              backgroundColor: "var(--primary-color)",
+              backgroundColor: 'var(--primary-color)',
             });
           } else {
             gsap.to(startPoint, {
-              backgroundColor: "var(--hard-grey)",
+              backgroundColor: 'var(--hard-grey)',
             });
           }
 
           if (progress.getBoundingClientRect().left > trigger) {
-            gsap.to(endPoint, {
-              width: 0,
-              duration: 0.15,
-            });
+            if (endPoint) {
+              gsap.to(endPoint, {
+                width: 0,
+                duration: 0.15,
+              });
+            }
           }
 
           if (
             progress.getBoundingClientRect().right >= trigger &&
             progress.getBoundingClientRect().left < trigger
           ) {
-            gsap.to(endPoint, {
-              width: trigger - progress.getBoundingClientRect().left,
-              background: null,
-              duration: 0.15,
-            });
+            if (endPoint) {
+              gsap.to(endPoint, {
+                width: trigger - progress.getBoundingClientRect().left,
+                background: null,
+                duration: 0.15,
+              });
+            }
           }
 
           if (progress.getBoundingClientRect().right < trigger) {
-            gsap.to(endPoint, {
-              width: "100%",
-              background: "var(--primary-color)",
-              duration: 0.15,
-            });
+            if (endPoint) {
+              gsap.to(endPoint, {
+                width: '100%',
+                background: 'var(--primary-color)',
+                duration: 0.15,
+              });
+            }
           }
         });
     });
@@ -108,7 +116,7 @@ export const History = {
 
   setDatesHeight() {
     let maxHeight = 0;
-    const dates = document.querySelectorAll("._history-timeline__date");
+    const dates = document.querySelectorAll('._history-timeline__date');
 
     dates.forEach((item) => {
       const height = parseInt(item.offsetHeight);
