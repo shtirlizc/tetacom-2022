@@ -11,6 +11,7 @@ import { PauseVideo } from './pauseVideo';
 import { MainSlider } from './mainSlider';
 import { History } from './history';
 import { Capabilities } from './capabilities';
+import { ProductDemoPlayer } from './productDemoPlayer';
 
 window.addEventListener('load', () => {
   PageYOffset.init();
@@ -26,4 +27,5 @@ window.addEventListener('load', () => {
   PauseVideo.init();
   History.init();
   Capabilities.init();
+  ProductDemoPlayer.init();
 });
