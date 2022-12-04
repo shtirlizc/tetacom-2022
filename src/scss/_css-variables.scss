@@ -1,5 +1,5 @@
 :root {
-  --font-primary: "TTNorms", sans-serif;
+  --font-primary: 'TTNorms', sans-serif;
 
   --primary-color: #005ff9;
   --secondary-color: #ffffff;
@@ -25,6 +25,8 @@
 
   --delay: 0.2s;
   --timing-func: cubic-bezier(0.21, 0, 0.29, 1);
+
+  --plyr-color-main: var(--primary-color);
 
   //--header: 58px;
 }

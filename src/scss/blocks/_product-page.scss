@@ -26,10 +26,20 @@
     &-demo {
       margin-top: 135px;
 
-      iframe {
+      .plyr {
         aspect-ratio: 16/9;
         border-radius: 20px;
         border: 1px solid var(--primary-color);
+
+        &__control[data-plyr='play'] {
+          padding: 55px;
+          opacity: 1;
+
+          svg {
+            width: 30px;
+            height: 30px;
+          }
+        }
       }
     }
   }
