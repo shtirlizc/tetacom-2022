@@ -1,6 +1,7 @@
 import { gsap } from 'gsap';
 
 export const Capabilities = {
+  leftPoints: [0, 356, 110, 0, 300],
   offsetTop: 120,
   difference: 200,
   track: document.querySelector('.js-sticky-track'),
@@ -28,7 +29,19 @@ export const Capabilities = {
         });
       });
 
+      const trackY = this.track.getBoundingClientRect().y;
+      const divider =
+        this.cardsHeightMap[this.cardsHeightMap.length - 1].height +
+        trackY -
+        this.offsetTop;
+
       this.toUnFixedCards();
+
+      if (trackY < 0) {
+        this.currentCardNumber = this.cards.length - 1;
+        this.toFixedCards();
+        this.shiftCards(Math.abs(divider - this.difference));
+      }
 
       document.addEventListener('scroll', () => {
         const trackY = this.track.getBoundingClientRect().y;
@@ -71,18 +84,20 @@ export const Capabilities = {
   },
 
   toFixedCards() {
-    this.cards.forEach((card) => {
+    this.cards.forEach((card, index) => {
+      const top = index * this.difference + this.offsetTop;
+
       const clientRect = card.getBoundingClientRect();
       card.style.position = 'fixed';
       card.style.left = `${clientRect.x}px`;
-      card.style.top = `${clientRect.y}px`;
+      card.style.top = `${top}px`;
     });
   },
 
   toUnFixedCards() {
     this.cards.forEach((card, index) => {
       const top = index * this.difference;
-      const left = index % 2 ? 300 : 0;
+      const left = this.leftPoints[index % 5];
 
       card.style.position = 'absolute';
       card.style.top = `${top}px`;
