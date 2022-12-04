@@ -1,4 +1,5 @@
 import { gsap } from 'gsap';
+import { debounce } from 'lodash';
 
 export const Capabilities = {
   leftPoints: [0, 356, 110, 0, 300],
@@ -10,64 +11,107 @@ export const Capabilities = {
   currentCardNumber: null,
 
   init() {
-    if (window.innerWidth > 1080 && this.track) {
-      this.track.style.marginBottom = '50vh';
+    if (this.track) {
+      this.setMode();
 
-      this.cards = Array.from(this.track.children);
-      const trackHeight = this.cards.reduce((sum, element) => {
-        return sum + element.offsetHeight;
-      }, 0);
-      this.track.style.height = `${trackHeight}px`;
+      window.addEventListener('resize', debounce(this.setMode.bind(this), 50));
+    }
+  },
 
-      this.cards.forEach((card, index) => {
-        const lastItem = this.cardsHeightMap[this.cardsHeightMap.length - 1];
-        this.cardsHeightMap.push({
-          index,
-          height: lastItem
-            ? card.offsetHeight + lastItem.height
-            : card.offsetHeight,
-        });
+  setMode() {
+    this.calcCardsHeight();
+
+    if (window.innerWidth > 1080) {
+      this.setup();
+    } else {
+      this.destroySticky();
+    }
+  },
+
+  destroySticky() {
+    this.track.style.marginBottom = '0';
+    this.track.style.height = `auto`;
+    document.removeEventListener(
+      'scroll',
+      this.listenTrackScrolling.bind(this),
+    );
+
+    this.cards.forEach((card) => {
+      card.removeAttribute('style');
+      gsap.to(card, {
+        transform: `translate(0)`,
       });
+    });
+  },
 
-      const trackY = this.track.getBoundingClientRect().y;
-      const divider =
-        this.cardsHeightMap[this.cardsHeightMap.length - 1].height +
-        trackY -
-        this.offsetTop;
+  calcCardsHeight() {
+    this.cardsHeightMap.length = 0;
 
-      this.toUnFixedCards();
+    this.cards.forEach((card, index) => {
+      const lastItem = this.cardsHeightMap[this.cardsHeightMap.length - 1];
+      this.cardsHeightMap.push({
+        index,
+        height: lastItem
+          ? card.offsetHeight + lastItem.height
+          : card.offsetHeight,
+      });
+    });
+  },
 
-      if (trackY < 0) {
-        this.currentCardNumber = this.cards.length - 1;
+  setup() {
+    this.track.style.marginBottom = '50vh';
+
+    this.cards = Array.from(this.track.children);
+    const trackHeight = this.cards.reduce((sum, element) => {
+      return sum + element.offsetHeight;
+    }, 0);
+    this.track.style.height = `${trackHeight}px`;
+
+    this.calcCardsHeight();
+
+    const trackY = this.track.getBoundingClientRect().y;
+    const divider =
+      this.cardsHeightMap[this.cardsHeightMap.length - 1].height +
+      trackY -
+      this.offsetTop;
+
+    this.toUnFixedCards();
+
+    if (trackY < 0) {
+      this.currentCardNumber = this.cards.length - 1;
+      this.toFixedCards();
+      this.shiftCards(Math.abs(divider - this.difference));
+    }
+
+    document.addEventListener('scroll', this.listenTrackScrolling.bind(this));
+  },
+
+  listenTrackScrolling() {
+    const trackY = this.track.getBoundingClientRect().y;
+
+    if (
+      trackY <= this.offsetTop &&
+      trackY + parseInt(this.track.style.height) > this.offsetTop
+    ) {
+      if (this.currentCardNumber === null) {
         this.toFixedCards();
-        this.shiftCards(Math.abs(divider - this.difference));
       }
 
-      document.addEventListener('scroll', () => {
-        const trackY = this.track.getBoundingClientRect().y;
-
-        if (trackY <= this.offsetTop && trackY + trackHeight > this.offsetTop) {
-          if (this.currentCardNumber === null) {
-            this.toFixedCards();
-          }
-
-          this.currentCardNumber = this.cardsHeightMap.find(
-            (card) => card.height > Math.abs(trackY - this.offsetTop),
-          ).index;
-        } else {
-          if (trackY > 0) {
-            if (this.currentCardNumber !== null) {
-              this.toUnFixedCards();
-            }
-
-            this.currentCardNumber = null;
-          }
-        }
-
+      this.currentCardNumber = this.cardsHeightMap.find(
+        (card) => card.height > Math.abs(trackY - this.offsetTop),
+      ).index;
+    } else {
+      if (trackY > 0) {
         if (this.currentCardNumber !== null) {
-          this.scrollTracking();
+          this.toUnFixedCards();
         }
-      });
+
+        this.currentCardNumber = null;
+      }
+    }
+
+    if (this.currentCardNumber !== null) {
+      this.scrollTracking();
     }
   },
 
@@ -95,6 +139,8 @@ export const Capabilities = {
   },
 
   toUnFixedCards() {
+    console.log('toUnFixedCards');
+
     this.cards.forEach((card, index) => {
       const top = index * this.difference;
       const left = this.leftPoints[index % 5];
