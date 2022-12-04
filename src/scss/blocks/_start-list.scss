@@ -1,18 +1,30 @@
 ._start-list {
   &__item {
-    display: grid;
-    gap: 12vw;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 60px;
+    @include desktop {
+      display: grid;
+      gap: 12vw;
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 60px;
+    }
 
     &:not(:last-child) {
-      margin-bottom: 30vh;
+      margin-bottom: var(--space5x);
+
+      @include desktop {
+        margin-bottom: 30vh;
+      }
     }
 
     &-title {
       font-weight: 500;
-      font-size: 58px;
-      line-height: 68px;
+
+      font-size: 36px;
+      line-height: 1.2em;
+
+      @include tablet {
+        font-size: 58px;
+        line-height: 68px;
+      }
     }
 
     &-list {
@@ -21,11 +33,20 @@
       padding-top: var(--space4x);
 
       li {
-        font-size: 20px;
-        line-height: 32px;
+        font-size: 16px;
+        line-height: 1.5em;
+
+        @include tablet {
+          font-size: 20px;
+          line-height: 32px;
+        }
 
         &:not(:last-child) {
-          margin-bottom: 36px;
+          margin-bottom: 1.2em;
+
+          @include tablet {
+            margin-bottom: 36px;
+          }
         }
       }
     }

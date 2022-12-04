@@ -10,7 +10,7 @@ export const Capabilities = {
   currentCardNumber: null,
 
   init() {
-    if (this.track) {
+    if (window.innerWidth > 1080 && this.track) {
       this.track.style.marginBottom = '50vh';
 
       this.cards = Array.from(this.track.children);

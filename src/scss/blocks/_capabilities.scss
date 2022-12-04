@@ -9,25 +9,54 @@
   &__items {
     position: relative;
     margin-top: var(--space5x);
+
+    @include touch {
+      display: grid;
+      gap: var(--space3x);
+      justify-content: center;
+    }
   }
 
   &__item {
-    position: absolute;
-    left: 0;
     background-color: var(--primary-color);
     color: var(--white-color);
-    max-width: 808px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    border-radius: 28px;
-    padding: var(--space4x) var(--space5x);
-    transform-style: preserve-3d;
+    gap: 25px;
+    border-radius: 14px;
+    padding: var(--space3x);
+    max-width: calc(var(--space) * 50);
+
+    @include tablet {
+      max-width: 628px;
+    }
+
+    @include desktop {
+      position: absolute;
+      left: 0;
+      padding: var(--space4x) var(--space5x);
+      gap: 50px;
+      border-radius: 28px;
+      transform-style: preserve-3d;
+    }
+
+    @include widescreen {
+      max-width: 680px;
+    }
+
+    @include fullhd {
+      max-width: 808px;
+    }
 
     &-title {
       font-weight: 500;
-      font-size: 32px;
-      line-height: 38px;
+      font-size: 24px;
+      line-height: 1.2em;
+
+      @include tablet {
+        font-size: 32px;
+        line-height: 38px;
+      }
     }
 
     &-picture {
@@ -39,9 +68,14 @@
     }
 
     &-description {
-      font-size: 20px;
-      line-height: 32px;
+      font-size: 16px;
+      line-height: 1.5em;
       margin: 0;
+
+      @include tablet {
+        font-size: 20px;
+        line-height: 32px;
+      }
     }
 
     &--black {
