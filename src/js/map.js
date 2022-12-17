@@ -1,23 +1,23 @@
 export function map() {
-  if (document.getElementById("map")) {
+  if (document.getElementById('map')) {
     ymaps.ready(init);
   }
 
   function init() {
     ymaps.ready(function () {
       var myMap = new ymaps.Map(
-          "map",
+          'map',
           {
             center: [54.737484, 55.946786],
             zoom: 17,
           },
           {
-            searchControlProvider: "yandex#search",
-          }
+            searchControlProvider: 'yandex#search',
+          },
         ),
         // Создаём макет содержимого.
         MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+          '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>',
         ),
         myPlacemark = new ymaps.Placemark(
           myMap.getCenter(),
@@ -31,20 +31,20 @@ export function map() {
           {
             // Опции.
             // Необходимо указать данный тип макета.
-            iconLayout: "default#image",
+            iconLayout: 'default#image',
             // Своё изображение иконки метки.
-            iconImageHref: "img/placemark.svg",
+            iconImageHref: '/dist/img/placemark.svg',
             // Размеры метки.
             iconImageSize: [62, 64],
             // Смещение левого верхнего угла иконки относительно
             // её "ножки" (точки привязки).
             iconImageOffset: [-31, -32],
-          }
+          },
         );
 
-      myMap.behaviors.disable("scrollZoom");
+      myMap.behaviors.disable('scrollZoom');
       myMap.geoObjects.add(myPlacemark);
-      myMap.options.set("suppressMapOpenBlock", true);
+      myMap.options.set('suppressMapOpenBlock', true);
     });
   }
 }
