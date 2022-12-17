@@ -21,9 +21,17 @@
         %>
       </div>
 
+      <section class="_competencies">
+        <h2 class="_competencies__title _title">компетенции</h2>
+
+        <div class="_competencies__body">
+          <%=
+          _.template(require('./../includes/blocks/main-slider.html').default)(data)
+          %>
+        </div>
+      </section>
+
       <%=
-      _.template(require('./../includes/blocks/competencies.html').default)(data)
-      %> <%=
       _.template(require('./../includes/blocks/projects.html').default)(data) %>
       <%=
       _.template(require('./../includes/blocks/partners.html').default)(data) %>

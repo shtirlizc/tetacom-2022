@@ -34,9 +34,12 @@
       </div>
 
       <section class="_product-page__slider">
-        <%=
-        _.template(require('./../includes/blocks/competencies.html').default)(data)
-        %>
+        <h2 class="_product-page__slider-title _title">компетенции</h2>
+        <div class="_product-page__slider-body">
+          <%=
+          _.template(require('./../includes/blocks/main-slider.html').default)(data)
+          %>
+        </div>
       </section>
 
       <div class="_container">
