@@ -73,6 +73,16 @@
   }
 
   &__slider {
+    padding: var(--space5x) 0 102px;
+
+    @include desktop {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 200px 0 280px;
+    }
+
     &-title {
       text-align: center;
     }
