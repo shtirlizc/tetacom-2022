@@ -3,11 +3,22 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const CELL_WIDTH = 612;
+const TITLE_WIDTH = 4 * CELL_WIDTH;
+const LAST_CELL_WIDTH = CELL_WIDTH;
+
 export const History = {
   panelsContainer: document.querySelector('#panels-container'),
 
   init() {
     if (this.panelsContainer) {
+      const containerWidth =
+        parseInt(this.panelsContainer.dataset.slidesCount) * CELL_WIDTH +
+        TITLE_WIDTH +
+        LAST_CELL_WIDTH;
+
+      this.panelsContainer.style.width = `${containerWidth}px`;
+
       this.horizontalScroll();
       this.setDatesHeight();
     }
