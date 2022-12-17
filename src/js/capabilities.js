@@ -139,8 +139,6 @@ export const Capabilities = {
   },
 
   toUnFixedCards() {
-    console.log('toUnFixedCards');
-
     this.cards.forEach((card, index) => {
       const top = index * this.difference;
       const left = this.leftPoints[index % 5];
