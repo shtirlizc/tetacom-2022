@@ -22,12 +22,13 @@
       font-weight: 500;
       font-size: 16px;
       line-height: 1.5em;
-      margin: var(--space3x) 0 0;
+      margin: var(--space3x) auto 0;
+      max-width: 720px;
 
       @include tablet {
         font-size: 20px;
         line-height: 32px;
-        margin: var(--space5x) 0 0;
+        margin: var(--space5x) auto 0;
       }
     }
 
