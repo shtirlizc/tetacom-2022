@@ -27,7 +27,7 @@
       }
     }
 
-    &-list {
+    ul {
       @include clr;
 
       padding-top: var(--space4x);
