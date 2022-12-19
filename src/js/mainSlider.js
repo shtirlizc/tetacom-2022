@@ -3,6 +3,8 @@ import Swiper, { Pagination } from 'swiper';
 
 export const MainSlider = {
   mainSwiper: null,
+  slidesCount: document.querySelectorAll('.js-main-swiper .swiper-slide')
+    .length,
   nextButton: document.getElementById('js-main-swiper-next'),
   slideWidth: 0,
 
@@ -12,10 +14,15 @@ export const MainSlider = {
   pointRadius: 8,
 
   init() {
-    if (document.querySelectorAll('.js-main-swiper .swiper-slide').length) {
+    if (this.slidesCount) {
+      if (this.slidesCount === 1) {
+        document.querySelector('._main-slider__title-arrow').style.display =
+          'none';
+      }
+
       this.mainSwiper = new Swiper('.js-main-swiper', {
         modules: [Pagination],
-        loop: true,
+        loop: this.slidesCount > 1,
         slidesPerView: 'auto',
         spaceBetween: 0,
         speed: 300,
