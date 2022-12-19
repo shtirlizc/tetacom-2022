@@ -98,10 +98,10 @@
   }
 
   &__partners {
-    padding: var(--space5x) 0;
+    padding: calc(2 * var(--space5x)) 0 var(--space5x);
 
     @include tablet {
-      padding: 40vh 0 30vh;
+      padding: 50vh 0 20vh;
     }
   }
 
