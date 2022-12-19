@@ -97,6 +97,14 @@
     }
   }
 
+  &__partners {
+    padding: var(--space5x) 0;
+
+    @include tablet {
+      padding: 40vh 0 30vh;
+    }
+  }
+
   &__feedback {
     padding: var(--space5x) 0;
 
