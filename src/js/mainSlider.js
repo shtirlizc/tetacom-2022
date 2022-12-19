@@ -1,64 +1,66 @@
-import { gsap } from "gsap";
-import Swiper, { Pagination } from "swiper";
+import { gsap } from 'gsap';
+import Swiper, { Pagination } from 'swiper';
 
 export const MainSlider = {
   mainSwiper: null,
-  nextButton: document.getElementById("js-main-swiper-next"),
+  nextButton: document.getElementById('js-main-swiper-next'),
   slideWidth: 0,
 
-  pointsWrapper: document.querySelector("._main-slider__track-points"),
+  pointsWrapper: document.querySelector('._main-slider__track-points'),
   points: [],
   pointsStep: 0,
   pointRadius: 8,
 
   init() {
-    this.mainSwiper = new Swiper(".js-main-swiper", {
-      modules: [Pagination],
-      loop: true,
-      slidesPerView: "auto",
-      spaceBetween: 0,
-      speed: 300,
-      slideToClickedSlide: true,
-      pagination: {
-        el: "._swiper-pagination",
-        type: "bullets",
-        clickable: true,
-      },
-      breakpoints: {
-        769: {
-          centeredSlides: true,
-          speed: 600,
-          spaceBetween: 60,
-          pagination: false,
+    if (document.querySelectorAll('.js-main-swiper .swiper-slide').length) {
+      this.mainSwiper = new Swiper('.js-main-swiper', {
+        modules: [Pagination],
+        loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        speed: 300,
+        slideToClickedSlide: true,
+        pagination: {
+          el: '._swiper-pagination',
+          type: 'bullets',
+          clickable: true,
         },
-        1081: {
-          centeredSlides: true,
-          spaceBetween: 120,
-          pagination: false,
-          speed: 900,
+        breakpoints: {
+          769: {
+            centeredSlides: true,
+            speed: 600,
+            spaceBetween: 60,
+            pagination: false,
+          },
+          1081: {
+            centeredSlides: true,
+            spaceBetween: 120,
+            pagination: false,
+            speed: 900,
+          },
         },
-      },
-      on: {
-        init: (swiper) => {
-          this.createPoints(swiper);
-          this.watch();
+        on: {
+          init: (swiper) => {
+            this.createPoints(swiper);
+            this.watch();
+          },
+          slidePrevTransitionStart: (swiper) => {
+            this.changeTitle(Array.from(swiper.slides), false);
+            this.movePoints(false);
+          },
+          slideNextTransitionStart: (swiper) => {
+            this.changeTitle(Array.from(swiper.slides), true);
+            this.movePoints(true);
+          },
+          resize: this.updatePoints.bind(this),
         },
-        slidePrevTransitionStart: (swiper) => {
-          this.changeTitle(Array.from(swiper.slides), false);
-          this.movePoints(false);
-        },
-        slideNextTransitionStart: (swiper) => {
-          this.changeTitle(Array.from(swiper.slides), true);
-          this.movePoints(true);
-        },
-        resize: this.updatePoints.bind(this),
-      },
-    });
+      });
+    }
   },
 
   watch() {
     if (this.nextButton) {
-      this.nextButton.addEventListener("click", this.toNextSlide.bind(this));
+      this.nextButton.addEventListener('click', this.toNextSlide.bind(this));
     }
   },
 
@@ -70,16 +72,16 @@ export const MainSlider = {
 
   changeTitle(slides, isNextDirection) {
     const currentSlideTitle = slides.find((slide) =>
-      slide.classList.contains("swiper-slide-active")
+      slide.classList.contains('swiper-slide-active'),
     ).dataset.title;
     const nextButton = this.nextButton;
-    const textWrapper = nextButton.querySelector("._main-slider__title-text");
-    const prevTextElement = textWrapper.querySelector("span");
+    const textWrapper = nextButton.querySelector('._main-slider__title-text');
+    const prevTextElement = textWrapper.querySelector('span');
 
     if (prevTextElement.innerText !== currentSlideTitle) {
-      const nextText = document.createElement("span");
+      const nextText = document.createElement('span');
       nextText.innerText = currentSlideTitle;
-      nextText.style.opacity = "0";
+      nextText.style.opacity = '0';
 
       textWrapper.appendChild(nextText);
 
@@ -87,7 +89,7 @@ export const MainSlider = {
       gsap.fromTo(
         nextText,
         { opacity: 0, y: isNextDirection ? -1 * y : y },
-        { opacity: 1, y: 0 }
+        { opacity: 1, y: 0 },
       );
       gsap.to(prevTextElement, {
         opacity: 0,
@@ -120,9 +122,9 @@ export const MainSlider = {
   },
 
   createPoint(left, putToStart = false) {
-    const point = document.createElement("span");
+    const point = document.createElement('span');
     point.style.left = `${left}px`;
-    point.style.transform = "scale(0)";
+    point.style.transform = 'scale(0)';
 
     if (putToStart) {
       this.pointsWrapper.prepend(point);
@@ -137,7 +139,7 @@ export const MainSlider = {
     const [first, second] = swiper.slidesGrid;
     this.pointsStep = second - first;
     this.points.length = 0;
-    const pointElements = this.pointsWrapper.querySelectorAll("span");
+    const pointElements = this.pointsWrapper.querySelectorAll('span');
 
     swiper.slides.map((slide, index) => {
       if (!index) {
@@ -160,14 +162,14 @@ export const MainSlider = {
     const offset = isNextDirection ? -1 * pointsStep : pointsStep;
 
     if (this.points.length) {
-      const pointElements = this.pointsWrapper.querySelectorAll("span");
+      const pointElements = this.pointsWrapper.querySelectorAll('span');
 
       pointElements.forEach((point) => {
         const currentLeft = parseInt(point.style.left);
         gsap.to(point, {
           left: currentLeft + offset,
           duration: 0.9,
-          ease: "back.out(0.8)",
+          ease: 'back.out(0.8)',
         });
       });
 
