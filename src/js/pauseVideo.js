@@ -1,5 +1,5 @@
 export const PauseVideo = {
-  videos: document.querySelectorAll("video"),
+  videos: document.querySelectorAll('.js-autoplay'),
 
   init() {
     // play when video on page
@@ -15,9 +15,9 @@ export const PauseVideo = {
       },
       {
         root: null,
-        rootMargin: "0px",
+        rootMargin: '0px',
         threshold: 0.1,
-      }
+      },
     );
 
     if (this.videos.length) {
@@ -27,8 +27,8 @@ export const PauseVideo = {
     }
 
     // pause when tab is inactive
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "visible") {
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
         this.play();
       } else {
         this.pause();
