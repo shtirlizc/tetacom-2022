@@ -46,7 +46,12 @@
         margin-top: 135px;
       }
 
-      .plyr {
+      img {
+        max-width: 100%;
+      }
+
+      .plyr,
+      img {
         aspect-ratio: 16/9;
         border-radius: 20px;
         border: 1px solid var(--primary-color);
