@@ -42,6 +42,10 @@
     &-demo {
       margin-top: var(--space5x);
 
+      &:empty {
+        display: none;
+      }
+
       @include tablet {
         margin-top: 135px;
       }
