@@ -9,18 +9,24 @@
     margin-bottom: 0;
   }
 
+  &__title {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
   &__body {
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     gap: var(--space5x);
     flex-wrap: wrap;
+    align-items: center;
 
     @include tablet {
       justify-content: space-between;
       flex-direction: row;
       gap: 40px 20px;
-      align-items: center;
     }
 
     @include desktop {
