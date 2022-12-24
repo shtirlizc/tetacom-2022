@@ -103,11 +103,6 @@
   }
 
   &__partners {
-    padding: var(--space5x) 0;
-
-    @include tablet {
-      padding: 30vh 0;
-    }
   }
 
   &__feedback {
