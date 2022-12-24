@@ -1,28 +1,36 @@
 ._partners {
-  padding: var(--space5x) 0;
+  padding: calc(3 * var(--space5x)) 0;
+  margin-bottom: -40vh;
 
   @include desktop {
-    padding: calc(2 * var(--space5x)) 0;
-  }
-
-  &__title {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    margin-bottom: -25vh;
   }
 
   &__body {
-    margin-top: 10px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space5x);
+    flex-wrap: wrap;
+
+    @include tablet {
+      justify-content: space-between;
+      flex-direction: row;
+      gap: 40px 20px;
+      align-items: center;
+    }
 
     @include desktop {
       margin-top: var(--space5x);
+      gap: 40px 80px;
     }
-  }
 
-  &__slider {
-    @include container-padding;
-
-    height: 120px;
-
-    .swiper-slide {
-      width: auto;
+    @include fullhd {
+      justify-content: flex-start;
+      gap: 40px 160px;
     }
   }
 
@@ -32,7 +40,6 @@
     display: flex;
     align-items: center;
     font-size: 0;
-    cursor: pointer;
 
     img {
       max-width: 100%;
