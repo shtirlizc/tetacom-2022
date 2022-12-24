@@ -76,16 +76,20 @@
     opacity: 0;
     transition: opacity calc(1.5 * var(--delay)) var(--timing-func);
 
+    @include desktop {
+      display: none;
+    }
+
     &.active {
-      display: block;
+      @include touch {
+        display: block;
+      }
     }
 
     &.visible {
-      opacity: 0.8;
-    }
-
-    @include desktop {
-      display: none;
+      @include touch {
+        opacity: 0.8;
+      }
     }
   }
 
@@ -154,7 +158,7 @@
   &__submenu {
     @include clr;
 
-    padding: 0 var(--space);
+    padding: var(--space) var(--space2x);
 
     &-item {
       &.active {

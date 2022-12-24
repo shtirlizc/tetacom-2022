@@ -17,32 +17,41 @@
     display: none;
 
     &.active {
-      display: block;
+      @include desktop {
+        display: block;
+      }
     }
   }
 
   &__body {
-    position: absolute;
-    top: calc(100% + 4px);
-    right: -4px;
-    background-color: var(--black-color);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
-    border-radius: 4px;
-    overflow: hidden;
-    display: none;
-    z-index: 21;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity var(--delay) var(--timing-func),
-      transform var(--delay) var(--timing-func);
+    @include desktop {
+      position: absolute;
+      top: calc(100% + 4px);
+      left: -4px;
+      background-color: var(--black-color);
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      border-radius: 4px;
+      width: max-content;
+      overflow: hidden;
+      display: none;
+      z-index: 21;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity var(--delay) var(--timing-func),
+        transform var(--delay) var(--timing-func);
+    }
 
     &.active {
-      display: block;
+      @include desktop {
+        display: block;
+      }
     }
 
     &.visible {
-      opacity: 1;
-      transform: translateY(0);
+      @include desktop {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
