@@ -1,27 +1,43 @@
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { debounce } from 'lodash';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const CELL_WIDTH = 612;
-const TITLE_WIDTH = 4 * CELL_WIDTH;
-const LAST_CELL_WIDTH = CELL_WIDTH;
+const MOBILE_CELL_WIDTH = 320;
+const DESKTOP_CELL_WIDTH = 612;
 
 export const History = {
   panelsContainer: document.querySelector('#panels-container'),
 
   init() {
     if (this.panelsContainer) {
-      const containerWidth =
-        parseInt(this.panelsContainer.dataset.slidesCount) * CELL_WIDTH +
-        TITLE_WIDTH +
-        LAST_CELL_WIDTH;
+      this.setup();
 
-      this.panelsContainer.style.width = `${containerWidth}px`;
-
-      this.horizontalScroll();
-      this.setDatesHeight();
+      window.addEventListener('resize', debounce(this.setup.bind(this), 50));
     }
+  },
+
+  setup() {
+    if (window.innerWidth < 769) {
+      this.calcContainerWidth(MOBILE_CELL_WIDTH);
+    } else {
+      this.calcContainerWidth(DESKTOP_CELL_WIDTH);
+    }
+  },
+
+  calcContainerWidth(cellWidth) {
+    const titleWidth = 4 * cellWidth;
+    const lastCellWidth = cellWidth;
+    const containerWidth =
+      parseInt(this.panelsContainer.dataset.slidesCount) * cellWidth +
+      titleWidth +
+      lastCellWidth;
+
+    this.panelsContainer.style.width = `${containerWidth}px`;
+
+    this.horizontalScroll();
+    this.setDatesHeight();
   },
 
   horizontalScroll() {
