@@ -1,3 +1,16 @@
+@mixin menu-link {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 14px;
+  padding: var(--space2x) 0;
+  color: var(--white-color);
+  transition: color var(--delay) var(--timing-func);
+
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+
 ._header {
   position: fixed;
   top: 0;
@@ -116,9 +129,6 @@
     }
 
     &-item {
-      font-weight: 700;
-      font-size: 14px;
-
       &.active {
         > a {
           color: var(--primary-color);
@@ -127,17 +137,10 @@
     }
 
     &-link {
-      display: inline-block;
-      padding: var(--space2x) 0;
-      color: var(--white-color);
-      transition: color var(--delay) var(--timing-func);
+      @include menu-link();
 
       @include touch {
         padding: calc(1.5 * var(--space)) 0;
-      }
-
-      &:hover {
-        color: var(--primary-color);
       }
     }
 
@@ -145,6 +148,26 @@
       @include touch {
         display: block;
       }
+    }
+  }
+
+  &__submenu {
+    @include clr;
+
+    padding: 0 var(--space);
+
+    &-item {
+      &.active {
+        > a {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    &-link {
+      @include menu-link();
+
+      padding: calc(var(--space) / 2) 0;
     }
   }
 

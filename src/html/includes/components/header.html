@@ -39,8 +39,22 @@
           <li class="_header__menu-item active">
             <a class="_header__menu-link" href="">Главная</a>
           </li>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="">Продукты</a>
+          <li class="_header__menu-item _dropdown">
+            <button type="button" class="_dropdown__open-btn js-dropdown">
+              <span class="_header__menu-link">Продукты</span>
+            </button>
+
+            <div class="_dropdown__bg"></div>
+            <div class="_dropdown__body">
+              <ul class="_header__submenu">
+                <li class="_header__submenu-item">
+                  <a href="#" class="_header__submenu-link">Русский</a>
+                </li>
+                <li class="_header__submenu-item">
+                  <a href="#" class="_header__submenu-link">English</a>
+                </li>
+              </ul>
+            </div>
           </li>
           <li class="_header__menu-item">
             <a class="_header__menu-link" href="">Команда</a>
@@ -49,6 +63,25 @@
             <a class="_header__menu-link" href="">Контакты</a>
           </li>
         </ul>
+
+        <!-- <div class="_header__lang _dropdown">
+          <button type="button" class="_header__lang-btn js-dropdown">
+            <span class="_header__lang-flag _header__lang-flag--en"></span>
+            <span class="_header__lang-value">EN</span>
+          </button>
+
+          <div class="_dropdown__bg"></div>
+          <div class="_dropdown__body">
+            <ul class="_list">
+              <li>
+                <a href="#" class="_lang _lang--ru">Русский</a>
+              </li>
+              <li>
+                <a href="#" class="_lang _lang--en">English</a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
 
         <ul class="_header__menu">
           <li class="_header__menu-item">

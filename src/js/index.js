@@ -12,6 +12,7 @@ import { MainSlider } from './mainSlider';
 import { History } from './history';
 import { Capabilities } from './capabilities';
 import { ProductDemoPlayer } from './productDemoPlayer';
+import { Dropdown } from './dropdown';
 
 window.addEventListener('load', () => {
   PageYOffset.init();
@@ -28,4 +29,5 @@ window.addEventListener('load', () => {
   History.init();
   Capabilities.init();
   ProductDemoPlayer.init();
+  Dropdown.init();
 });
