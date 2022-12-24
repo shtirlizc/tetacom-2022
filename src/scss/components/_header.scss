@@ -134,7 +134,7 @@
 
     &-item {
       &.active {
-        > a {
+        ._header__menu-link {
           color: var(--primary-color);
         }
       }
@@ -162,7 +162,7 @@
 
     &-item {
       &.active {
-        > a {
+        ._header__submenu-link {
           color: var(--primary-color);
         }
       }
