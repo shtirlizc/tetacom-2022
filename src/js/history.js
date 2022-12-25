@@ -4,7 +4,7 @@ import { debounce } from 'lodash';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MOBILE_CELL_WIDTH = 320;
+const MOBILE_CELL_WIDTH = 360;
 const DESKTOP_CELL_WIDTH = 612;
 
 export const History = {

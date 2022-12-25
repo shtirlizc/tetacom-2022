@@ -1,12 +1,10 @@
 ._partners {
   padding: calc(3 * var(--space5x)) 0;
-  margin-bottom: -40vh;
 
   @include desktop {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    margin-bottom: 0;
   }
 
   &__title {
