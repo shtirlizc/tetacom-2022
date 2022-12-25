@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
+
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
+
+  <body>
+    <%=
+    _.template(require('./../includes/components/header.html').default)(data) %>
+
+    <main class="_team-page">
+      <div class="_team-page__start">
+        <div class="_team-page__start-bg">
+          <img
+            src="uploads/team/team.jpg"
+            srcset="uploads/team/team@2x.jpg 2x"
+            alt="Команда tetacom"
+            loading="lazy"
+          />
+        </div>
+        <div class="_container">
+          <div class="_team-page__start-content">
+            <h1 class="_team-page__start-title">Наша<br />команда</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="_container">
+        <div class="_team-page__ceo">
+          <div class="_team-page__ceo-item">
+            <div class="_team-page__ceo-member">
+              <div class="_team-page__ceo-member-photo">
+                <img
+                  src="uploads/team/sitdikov-marat.png"
+                  alt="Ситдиков Марат"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__ceo-member-desc">
+                <span class="_team-page__ceo-member-name"
+                  >Ситдиков<br />Марат</span
+                >
+                <span class="_team-page__ceo-member-status">CEO</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="_team-page__ceo-item">
+            <div class="_team-page__ceo-member">
+              <div class="_team-page__ceo-member-photo">
+                <img
+                  src="uploads/team/sharifullin-andrey.png"
+                  alt="Шарифуллин Андрей"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__ceo-member-desc">
+                <span class="_team-page__ceo-member-name">
+                  Шарифуллин<br />Андрей
+                </span>
+                <span class="_team-page__ceo-member-status">
+                  CEO, co-founder
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="_team-page__department">
+          <h2 class="_team-page__department-title">Дизайн и проектирование</h2>
+
+          <div class="_team-page__department-list">
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/dima-chumak.png"
+                  alt="Чумак Дмитрий"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Чумак Дмитрий</div>
+            </div>
+
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/tartigin-stanislav.png"
+                  alt="Тартыгин Станислав"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Тартыгин Станислав</div>
+            </div>
+
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/dvoeglazov-nikita.png"
+                  alt="Двоеглазов Никита"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Двоеглазов Никита</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="_team-page__department">
+          <h2 class="_team-page__department-title">Дизайн и проектирование</h2>
+
+          <div class="_team-page__department-list">
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/dima-chumak.png"
+                  alt="Чумак Дмитрий"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Чумак Дмитрий</div>
+            </div>
+
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/tartigin-stanislav.png"
+                  alt="Тартыгин Станислав"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Тартыгин Станислав</div>
+            </div>
+
+            <div class="_team-page__member">
+              <div class="_team-page__member-photo">
+                <img
+                  src="uploads/team/dvoeglazov-nikita.png"
+                  alt="Двоеглазов Никита"
+                  loading="lazy"
+                />
+              </div>
+              <div class="_team-page__member-name">Двоеглазов Никита</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%= _.template(require('./../includes/blocks/map.html').default)(data) %>
+    <%=
+    _.template(require('./../includes/components/modals.html').default)(data) %>
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>
