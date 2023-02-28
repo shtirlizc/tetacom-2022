@@ -16,7 +16,7 @@
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 25%;
       height: 100%;
@@ -26,20 +26,12 @@
 
     &::before {
       left: 0;
-      background-image: linear-gradient(
-        to right,
-        var(--black-color),
-        transparent
-      );
+      background-image: linear-gradient(to right, var(--bg-color), transparent);
     }
 
     &::after {
       right: 0;
-      background-image: linear-gradient(
-        to left,
-        var(--black-color),
-        transparent
-      );
+      background-image: linear-gradient(to left, var(--bg-color), transparent);
     }
 
     &-points {
@@ -52,7 +44,7 @@
 
       span {
         position: absolute;
-        background-color: var(--white-color);
+        background-color: var(--text-color);
         width: 16px;
         height: 16px;
         border-radius: 50%;
@@ -68,9 +60,9 @@
     height: 54px;
     border-radius: 30px;
     padding: 16px 20px 16px 28px;
-    border: 1px solid var(--white-color);
-    background-color: var(--black-color);
-    color: var(--white-color);
+    border: 1px solid var(--text-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
@@ -79,14 +71,14 @@
     z-index: 2;
     cursor: pointer;
     overflow: hidden;
-    transition: border-color calc(2 * var(--delay)) var(--timing-func);
+    transition: color calc(2 * var(--delay)) var(--timing-func);
 
     @include tablet {
       width: 346px;
     }
 
     &:hover {
-      border-color: var(--primary-color);
+      color: var(--primary-color);
 
       ._main-slider__title-arrow {
         transform: translate(10px);
@@ -123,6 +115,7 @@
 
       svg {
         path {
+          stroke: var(--text-color);
           transition: stroke calc(2 * var(--delay)) var(--timing-func);
         }
       }

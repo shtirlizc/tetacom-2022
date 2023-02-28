@@ -28,7 +28,7 @@
       position: absolute;
       top: calc(100% + 4px);
       left: -4px;
-      background-color: var(--black-color);
+      background-color: var(--white-color);
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
       border-radius: 4px;
       width: max-content;
@@ -39,6 +39,13 @@
       transform: translateY(-10px);
       transition: opacity var(--delay) var(--timing-func),
         transform var(--delay) var(--timing-func);
+    }
+
+    &--right {
+      @include desktop {
+        left: auto;
+        right: -4px;
+      }
     }
 
     &.active {

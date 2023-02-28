@@ -31,9 +31,7 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: var(--font-primary);
-  color: var(--white-color);
-  background-color: var(--black-color);
+  font-family: var(--font-primary), sans-serif;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: 12px;
@@ -45,6 +43,11 @@ body {
 }
 
 body {
+  --bg-color: var(--white-color);
+  --text-color: var(--black-color);
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
   overflow-x: hidden;
 }
 

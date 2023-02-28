@@ -34,13 +34,4 @@
     font-size: 14px;
     line-height: 16px;
   }
-
-  &--outline {
-    background-color: transparent;
-    border-color: var(--white-color);
-
-    &:hover {
-      border-color: var(--primary-color);
-    }
-  }
 }

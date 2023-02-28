@@ -1,0 +1,35 @@
+._project-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 4px 20px 4px 4px;
+  border-radius: 22px;
+  transition: background-color var(--delay) ease-in-out;
+
+  &__icon {
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #353749;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 26px;
+      height: 26px;
+      object-fit: cover;
+    }
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+}

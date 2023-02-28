@@ -1,85 +1,37 @@
 ._who-are-we {
-  display: grid;
-  padding: var(--space5x) 0;
-
-  @include tablet {
-    grid-template-columns: 35% 65%;
-    align-items: center;
-    gap: var(--gap);
-    min-height: 100vh;
+  &__info {
+    position: relative;
+    padding-left: 220px;
   }
 
-  &__info {
+  &__block-name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    font-size: 16px;
+    line-height: 19px;
   }
 
   &__title {
-    @include mobile {
-      text-align: center;
-    }
+    margin: 0;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
   }
 
   &__description {
-    margin-top: var(--space2x);
-
-    @include desktop {
-      margin-top: var(--space5x);
-    }
-
-    p {
-      margin-block-end: 1.6em;
-
-      @include desktop {
-        margin-block-end: 1.4em;
-      }
-    }
+    margin: 56px 0 0;
+    font-size: 18px;
+    line-height: 28px;
   }
 
-  &__photos {
-    @include tablet {
-      display: flex;
-      justify-content: flex-end;
-    }
+  &__image {
+    margin-top: 180px;
 
-    &-content {
-      max-width: 520px;
-      width: calc(100vw - var(--space4x));
-      border-radius: calc(100vw / 2);
-      overflow: hidden;
-      margin: auto;
-
-      @include tablet {
-        margin-right: 0;
-        max-width: 720px;
-        width: 100%;
-        border-radius: 330px;
-      }
-    }
-  }
-
-  &__img {
-    height: calc(100vw - var(--space4x) - var(--space3x));
-    max-height: 480px;
-
-    @include tablet-only {
-      height: 420px;
-      max-height: 420px;
-    }
-
-    @include desktop {
-      height: 684px;
-      max-height: 684px;
-    }
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    border-radius: calc(100vw / 2);
-
-    @include tablet {
-      border-radius: 330px;
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 }

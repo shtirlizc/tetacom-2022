@@ -1,9 +1,9 @@
 @mixin menu-link {
   display: inline-block;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 14px;
   padding: var(--space2x) 0;
-  color: var(--white-color);
+  color: var(--black-color);
   transition: color var(--delay) var(--timing-func);
 
   &:hover {
@@ -94,10 +94,27 @@
   }
 
   &__navigation {
+    --padd: 48px;
+
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    gap: 100px;
+    gap: calc(2 * var(--padd) + 1px);
+
+    > *:not(:last-child) {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: calc(-1 * var(--padd) - 1px);
+        width: 1px;
+        height: 16px;
+        transform: translateY(-50%);
+        background-color: #0000001a;
+      }
+    }
 
     @include touch {
       position: fixed;
@@ -172,6 +189,19 @@
       @include menu-link();
 
       padding: calc(var(--space) / 2) 0;
+    }
+  }
+
+  &__lang {
+    &-btn {
+      @include clean;
+      @include menu-link;
+
+      cursor: pointer;
+
+      &:hover {
+        color: var(--primary-color);
+      }
     }
   }
 
