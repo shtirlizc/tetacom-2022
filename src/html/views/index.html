@@ -27,15 +27,9 @@
         </div>
       </section>
 
-      <%=
-      _.template(require('./../includes/blocks/projects.html').default)(data) %>
-      <%=
       _.template(require('./../includes/blocks/partners.html').default)(data) %>
-      <%= _.template(require('./../includes/blocks/history.html').default)(data)
-      %>
     </main>
 
-    <%= _.template(require('./../includes/blocks/map.html').default)(data) %>
     <%=
     _.template(require('./../includes/components/modals.html').default)(data) %>
     <%= _.template(require('./../includes/scripts.html').default)(data) %>
