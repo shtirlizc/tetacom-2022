@@ -27,6 +27,12 @@
         </div>
       </section>
 
+      <section>
+        <%=
+        _.template(require('./../includes/blocks/capabilities.html').default)(data)
+        %>
+      </section>
+
       _.template(require('./../includes/blocks/partners.html').default)(data) %>
     </main>
 
