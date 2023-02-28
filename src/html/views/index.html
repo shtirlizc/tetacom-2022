@@ -27,13 +27,17 @@
         </div>
       </section>
 
-      <section>
-        <%=
-        _.template(require('./../includes/blocks/capabilities.html').default)(data)
-        %>
-      </section>
+      <div class="_container">
+        <section class="_project-teasers">
+          <%=
+          _.template(require('./../includes/blocks/capabilities.html').default)(data)
+          %>
+        </section>
 
-      _.template(require('./../includes/blocks/partners.html').default)(data) %>
+        <%=
+        _.template(require('./../includes/blocks/feedback.html').default)(data)
+        %>
+      </div>
     </main>
 
     <%=

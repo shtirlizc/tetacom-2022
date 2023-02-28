@@ -1,7 +1,19 @@
 ._form {
   &__group {
     &:not(:last-child) {
-      margin-bottom: var(--space2x);
+      margin-bottom: var(--space4x);
+    }
+  }
+
+  &__rules {
+    text-align: center;
+    margin: 0;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.6);
+
+    a {
+      color: var(--primary-color);
     }
   }
 }

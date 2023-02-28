@@ -29,6 +29,10 @@
     transform: translateY(1px);
   }
 
+  &--block {
+    width: 100%;
+  }
+
   &--nav-menu {
     height: 40px;
     font-size: 14px;
