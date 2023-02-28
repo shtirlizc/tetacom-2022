@@ -1,5 +1,5 @@
 ._footer {
-  padding: 60px 0 80px;
+  padding: 80px 0;
   background-color: #1d212d;
 
   &__title {
@@ -27,7 +27,7 @@
   }
 
   &__email {
-    margin: 100px 0 0;
+    margin: 97px 0 0;
 
     a {
       font-weight: 500;
@@ -43,7 +43,7 @@
   }
 
   &__phone {
-    margin: 8px 0 0;
+    margin: 5px 0 0;
 
     a {
       font-weight: 500;
@@ -57,7 +57,8 @@
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 40px;
-    align-items: center;
+    align-items: flex-end;
+    margin-top: 82px;
   }
 
   &__menu {
@@ -66,7 +67,6 @@
     display: flex;
     align-items: center;
     gap: 12px 48px;
-    margin-top: 88px;
 
     &-item {
       &.active {

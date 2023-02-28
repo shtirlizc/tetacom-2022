@@ -57,9 +57,10 @@
   }
 
   textarea {
+    @include hide-scrollbar;
+
     resize: none;
-    min-height: 72px;
-    padding: 20px 10px;
+    padding: 10px;
   }
 
   &__border {
@@ -72,6 +73,6 @@
     background-color: var(--primary-color);
     width: 100%;
     transform: scaleX(0);
-    transition: transform var(--delay) var(--timing-func);
+    transition: transform calc(1.5 * var(--delay)) var(--timing-func);
   }
 }

@@ -5,7 +5,7 @@
     padding: 60px 110px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 144px;
+    gap: 130px;
     align-items: center;
     background: #f8f8f8;
     border-radius: 20px;
@@ -28,5 +28,6 @@
   }
 
   &__form {
+    padding-left: 58px;
   }
 }

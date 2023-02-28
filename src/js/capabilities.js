@@ -2,9 +2,9 @@ import { gsap } from 'gsap';
 import { debounce } from 'lodash';
 
 export const Capabilities = {
-  leftPoints: [0, 356, 110, 0, 300],
+  leftPoints: [13, 103, 33, 83, 300],
   offsetTop: 120,
-  difference: 200,
+  difference: 140,
   track: document.querySelector('.js-sticky-track'),
   cards: [],
   cardsHeightMap: [],

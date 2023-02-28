@@ -36,19 +36,23 @@
   }
 
   &__content {
-    padding: 7px 0;
+    padding: 8px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     @include desktop {
-      padding: 22px 0;
+      padding: 20px 0;
     }
   }
 
   &__logo {
     height: 26px;
     z-index: 1;
+
+    @include desktop {
+      transform: translateY(-3px);
+    }
 
     svg {
       path {
@@ -143,7 +147,7 @@
 
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 48px;
 
     @include touch {
       gap: 20px;

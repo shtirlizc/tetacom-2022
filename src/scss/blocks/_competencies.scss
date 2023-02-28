@@ -2,11 +2,7 @@
   padding: var(--space5x) 0 102px;
 
   @include desktop {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 200px 0 280px;
+    padding: 72px 0 65px;
   }
 
   &__title {
@@ -17,7 +13,7 @@
     margin-top: var(--space4x);
 
     @include desktop {
-      margin-top: 60px;
+      margin-top: 48px;
     }
   }
 }

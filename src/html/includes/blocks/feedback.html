@@ -26,20 +26,21 @@
                   placeholder=" "
                   required
                 />
-                <label for="name">Ваше имя</label>
+                <label for="name">Имя</label>
                 <span class="_input__border"></span>
               </div>
             </div>
             <div class="_form__group">
               <div class="_input">
                 <input
-                  type="text"
+                  class="js-phone-mask"
+                  type="tel"
                   name="phone"
                   id="phone"
                   placeholder=" "
                   required
                 />
-                <label for="phone">+7 (___) ___-__-__</label>
+                <label for="phone">Телефон</label>
                 <span class="_input__border"></span>
               </div>
             </div>
@@ -56,7 +57,7 @@
                 <span class="_input__border"></span>
               </div>
             </div>
-            <div class="_form__group">
+            <div class="_form__group _form__group--bottom-large">
               <div class="_input">
                 <textarea
                   name="message"
@@ -68,7 +69,7 @@
                 <span class="_input__border"></span>
               </div>
             </div>
-            <div class="_form__group">
+            <div class="_form__group _form__group--bottom-large">
               <button type="submit" class="_btn _btn--block">
                 Оставить заявку
               </button>

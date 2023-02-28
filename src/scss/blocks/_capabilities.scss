@@ -3,9 +3,6 @@
   --grey: #8792a9;
   --purple: #8a6eba;
 
-  max-width: 1160px;
-  margin: auto;
-
   &__items {
     position: relative;
     margin-top: var(--space5x);
@@ -22,11 +19,11 @@
     grid-template-columns: 1fr 430px;
     border-radius: 20px;
     color: var(--white-color);
-    max-width: calc(var(--space) * 50);
+    width: calc(var(--space) * 50);
     overflow: hidden;
 
     @include tablet {
-      max-width: 628px;
+      width: 628px;
     }
 
     @include desktop {
@@ -36,15 +33,15 @@
     }
 
     @include widescreen {
-      max-width: 680px;
+      width: 680px;
     }
 
     @include fullhd {
-      max-width: 808px;
+      width: 1190px;
     }
 
     &-info {
-      padding: 90px 60px;
+      padding: 92px 60px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
