@@ -1,0 +1,98 @@
+._footer {
+  padding: 60px 0 80px;
+  background-color: #1d212d;
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    color: var(--white-color);
+  }
+
+  &__briefing {
+    margin: 36px 0 0;
+
+    a {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 33px;
+      color: var(--primary-color);
+      text-decoration-line: underline;
+
+      &:hover {
+        text-decoration-line: none;
+      }
+    }
+  }
+
+  &__email {
+    margin: 100px 0 0;
+
+    a {
+      font-weight: 500;
+      font-size: 28px;
+      line-height: 33px;
+      color: rgba(255, 255, 255, 0.6);
+      transition: color var(--delay) var(--timing-func);
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  &__phone {
+    margin: 8px 0 0;
+
+    a {
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 47px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+  }
+
+  &__menu {
+    @include clr;
+
+    display: flex;
+    align-items: center;
+    gap: 12px 48px;
+    margin-top: 88px;
+
+    &-item {
+      &.active {
+        a {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    &-link {
+      display: inline-block;
+      padding: 12px 0;
+      font-size: 14px;
+      color: var(--white-color);
+      transition: color var(--delay) var(--timing-func);
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+
+  &__copyright {
+    margin: 0;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--white-color);
+  }
+}

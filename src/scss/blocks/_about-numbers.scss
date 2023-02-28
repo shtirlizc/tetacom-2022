@@ -1,5 +1,6 @@
 ._about-numbers {
   padding: calc(2 * var(--space5x)) 0;
+  background-color: #f8f8f8;
 
   @include desktop {
     padding: calc(3 * var(--space5x)) 0;

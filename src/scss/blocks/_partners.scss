@@ -29,11 +29,11 @@
 
     @include desktop {
       margin-top: var(--space5x);
+      justify-content: space-between;
       gap: 40px 80px;
     }
 
     @include fullhd {
-      justify-content: flex-start;
       gap: 40px 160px;
     }
   }
