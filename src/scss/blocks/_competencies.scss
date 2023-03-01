@@ -1,9 +1,5 @@
 ._competencies {
-  padding: var(--space5x) 0 102px;
-
-  @include desktop {
-    padding: 72px 0 65px;
-  }
+  padding: 72px 0 65px;
 
   &__title {
     text-align: center;

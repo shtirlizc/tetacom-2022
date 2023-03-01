@@ -15,25 +15,26 @@
   }
 
   &__item {
-    display: grid;
-    grid-template-columns: 1fr 430px;
     border-radius: 20px;
     color: var(--white-color);
-    width: calc(var(--space) * 50);
+    width: calc(100vw - 32px);
     overflow: hidden;
 
     @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 430px;
       width: 628px;
     }
 
     @include desktop {
+      width: 880px;
       position: absolute;
       left: 0;
       transform-style: preserve-3d;
     }
 
     @include widescreen {
-      width: 680px;
+      width: 920px;
     }
 
     @include fullhd {
@@ -46,12 +47,25 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: flex-start;
+
+      @include mobile {
+        padding: 32px;
+      }
+
+      @include tablet-only {
+        padding: 44px 32px;
+      }
     }
 
     &-title {
       font-weight: 500;
       font-size: 40px;
       line-height: 47px;
+
+      @include touch {
+        font-size: 32px;
+        line-height: 1.1em;
+      }
     }
 
     &-link {
@@ -86,6 +100,10 @@
     }
 
     &-picture {
+      @include mobile {
+        display: none;
+      }
+
       img,
       video {
         width: 100%;

@@ -1,5 +1,5 @@
 ._hamburger {
-  --color: var(--white-color);
+  --color: var(--text-color);
   --animation: calc(3 * var(--delay));
   --scale: 0.5;
 
@@ -38,7 +38,7 @@
     transform-origin: 100% 0;
 
     &:before {
-      content: "";
+      content: '';
       display: block;
       width: 30px;
       height: 34px;

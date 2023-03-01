@@ -15,7 +15,7 @@
     transition: transform var(--delay) var(--timing-func);
 
     &-active {
-      background-color: var(--white-color);
+      background-color: var(--text-color);
       transform: scale(1.5);
     }
   }

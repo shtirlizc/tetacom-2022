@@ -2,12 +2,21 @@
   padding: 80px 0;
   background-color: #1d212d;
 
+  @include mobile {
+    text-align: center;
+  }
+
   &__title {
     margin: 0;
     font-weight: 500;
     font-size: 40px;
     line-height: 47px;
     color: var(--white-color);
+
+    @include mobile {
+      font-size: 32px;
+      line-height: 1.1em;
+    }
   }
 
   &__briefing {
@@ -20,6 +29,11 @@
       color: var(--primary-color);
       text-decoration-line: underline;
 
+      @include mobile {
+        font-size: 24px;
+        line-height: 1.2em;
+      }
+
       &:hover {
         text-decoration-line: none;
       }
@@ -29,12 +43,21 @@
   &__email {
     margin: 97px 0 0;
 
+    @include mobile {
+      margin-top: 64px;
+    }
+
     a {
       font-weight: 500;
       font-size: 28px;
       line-height: 33px;
       color: rgba(255, 255, 255, 0.6);
       transition: color var(--delay) var(--timing-func);
+
+      @include mobile {
+        font-size: 24px;
+        line-height: 1.2em;
+      }
 
       &:hover {
         color: var(--primary-color);
@@ -50,15 +73,26 @@
       font-size: 40px;
       line-height: 47px;
       color: rgba(255, 255, 255, 0.6);
+
+      @include mobile {
+        font-size: 32px;
+        line-height: 1.1em;
+      }
     }
   }
 
   &__bottom {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
-    align-items: flex-end;
-    margin-top: 82px;
+    @include touch {
+      margin-top: 40px;
+    }
+
+    @include desktop {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: flex-end;
+      margin-top: 82px;
+    }
   }
 
   &__menu {
@@ -67,6 +101,11 @@
     display: flex;
     align-items: center;
     gap: 12px 48px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 0;
+    }
 
     &-item {
       &.active {
@@ -94,5 +133,9 @@
     font-size: 14px;
     line-height: 16px;
     color: var(--white-color);
+
+    @include touch {
+      margin-top: 48px;
+    }
   }
 }

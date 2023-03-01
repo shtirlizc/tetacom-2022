@@ -19,15 +19,13 @@
   background-color: transparent;
   z-index: 10;
   transition: top calc(3 * var(--delay)) var(--timing-func),
-    background-color calc(2 * var(--delay)) var(--timing-func),
-    backdrop-filter calc(2 * var(--delay)) var(--timing-func);
+    background-color calc(2 * var(--delay)) var(--timing-func);
 
   &.active {
-    background-color: var(--black-color);
+    background-color: var(--bg-color);
 
     @include desktop {
       background-color: rgba(0, 0, 0, 0.05);
-      backdrop-filter: blur(20px);
     }
   }
 
@@ -52,6 +50,18 @@
 
     @include desktop {
       transform: translateY(-3px);
+    }
+
+    &-desktop {
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &-mobile {
+      @include tablet {
+        display: none;
+      }
     }
 
     svg {
@@ -92,7 +102,7 @@
 
     &.visible {
       @include touch {
-        opacity: 0.8;
+        opacity: 0.5;
       }
     }
   }
@@ -117,6 +127,10 @@
         height: 16px;
         transform: translateY(-50%);
         background-color: #0000001a;
+
+        @include touch {
+          display: none;
+        }
       }
     }
 
@@ -126,7 +140,7 @@
       bottom: 0;
       width: 240px;
       height: 100%;
-      background-color: var(--black-color);
+      background-color: var(--bg-color);
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
