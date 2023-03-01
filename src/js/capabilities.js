@@ -2,7 +2,7 @@ import { gsap } from 'gsap';
 import { debounce } from 'lodash';
 
 export const Capabilities = {
-  leftPoints: [13, 103, 33, 83, 300],
+  leftPoints: [13, 103, 33, 83, 200],
   offsetTop: 120,
   difference: 140,
   track: document.querySelector('.js-sticky-track'),
