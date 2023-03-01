@@ -9,13 +9,25 @@
               <input
                 type="text"
                 name="name"
-                id="name"
+                id="modal-name"
                 placeholder=" "
                 required
               />
-              <label for="name">
-                Ваше имя&nbsp;<span class="_required">*</span>
-              </label>
+              <label for="modal-name">Имя</label>
+              <span class="_input__border"></span>
+            </div>
+          </div>
+          <div class="_form__group">
+            <div class="_input">
+              <input
+                class="js-phone-mask"
+                type="tel"
+                name="phone"
+                id="modal-phone"
+                placeholder=" "
+                required
+              />
+              <label for="modal-phone">Телефон</label>
               <span class="_input__border"></span>
             </div>
           </div>
@@ -24,40 +36,36 @@
               <input
                 type="email"
                 name="email"
-                id="email"
+                id="modal-email"
                 placeholder=" "
                 required
               />
-              <label for="email">
-                Почта&nbsp;<span class="_required">*</span>
-              </label>
+              <label for="modal-email">E-mail</label>
               <span class="_input__border"></span>
             </div>
           </div>
-          <div class="_form__group">
+          <div class="_form__group _form__group--bottom-large">
             <div class="_input">
               <textarea
                 name="message"
-                id="message"
+                id="modal-message"
                 placeholder=" "
                 required
               ></textarea>
-              <label for="message">Ваш комментарий</label>
+              <label for="modal-message">Комментарий</label>
               <span class="_input__border"></span>
             </div>
           </div>
-          <div class="_form__group">
-            <div class="_checkbox">
-              <input type="checkbox" name="policy" id="policy" required />
-              <label for="policy">
-                Я согласен на обработку персональных данных и соглашаюсь с
-                <a href="">политикой конфиденциальности</a>
-                <span class="_required">*</span>
-              </label>
-            </div>
+          <div class="_form__group _form__group--bottom-large">
+            <button type="submit" class="_btn _btn--block">
+              Оставить заявку
+            </button>
           </div>
           <div class="_form__group">
-            <button class="_btn _btn--light-bg">Отправить</button>
+            <p class="_form__rules">
+              Заполняя форму, вы соглашаетесь на
+              <a href="#">обработку персональных данных</a>
+            </p>
           </div>
         </form>
       </div>
