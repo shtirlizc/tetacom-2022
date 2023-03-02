@@ -22,11 +22,11 @@
     background-color calc(2 * var(--delay)) var(--timing-func);
 
   &.active {
-    background-color: var(--bg-color);
-
-    @include desktop {
-      background-color: rgba(0, 0, 0, 0.05);
-    }
+    background-image: linear-gradient(
+      180deg,
+      var(--bg-color) 0%,
+      transparent 100%
+    );
   }
 
   &.hidden {
