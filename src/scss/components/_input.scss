@@ -1,5 +1,5 @@
 ._input {
-  --padding: 10px;
+  --padding: 11px;
 
   position: relative;
 
@@ -8,7 +8,7 @@
     @include clean;
 
     background-color: transparent;
-    height: 36px;
+    height: 44px;
     width: 100%;
     border: none;
     border-bottom: 2px solid var(--text-color);
@@ -28,7 +28,7 @@
 
     &:focus {
       + label {
-        transform: translateY(-16px) scale(0.7);
+        transform: translateY(-20px) scale(0.7);
       }
 
       ~ ._input__border {
@@ -50,7 +50,7 @@
       display: flex;
       align-items: center;
       transform-origin: left top;
-      transform: translateY(-16px) scale(0.7);
+      transform: translateY(-20px) scale(0.7);
       pointer-events: none;
       transition: transform var(--delay) var(--timing-func);
     }

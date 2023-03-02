@@ -1,6 +1,7 @@
 ._footer {
   padding: 80px 0;
   background-color: #1d212d;
+  overflow: hidden;
 
   @include mobile {
     text-align: center;
@@ -40,23 +41,18 @@
   }
 
   &__email {
-    margin: 97px 0 0;
+    margin: 98px 0 0;
 
     @include mobile {
       margin-top: 64px;
     }
 
     a {
-      font-weight: 500;
-      font-size: 28px;
-      line-height: 33px;
+      font-size: 16px;
+      line-height: 175%;
+      font-feature-settings: 'liga' off;
       color: rgba(255, 255, 255, 0.6);
       transition: color var(--delay) var(--timing-func);
-
-      @include mobile {
-        font-size: 24px;
-        line-height: 1.2em;
-      }
 
       &:hover {
         color: var(--primary-color);
@@ -65,7 +61,7 @@
   }
 
   &__phone {
-    margin: 5px 0 0;
+    margin: 7px 0 0;
 
     a {
       font-weight: 500;
@@ -90,8 +86,8 @@
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 40px;
-      align-items: flex-end;
-      margin-top: 82px;
+      align-items: center;
+      margin-top: 80px;
     }
   }
 
@@ -118,7 +114,9 @@
     &-link {
       display: inline-block;
       padding: 12px 0;
+      font-weight: 500;
       font-size: 14px;
+      font-feature-settings: 'liga' off;
       color: var(--white-color);
       transition: color var(--delay) var(--timing-func);
 
