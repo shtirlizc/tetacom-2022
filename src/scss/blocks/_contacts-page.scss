@@ -1,0 +1,97 @@
+._contacts-page {
+  padding: 180px 0 150px;
+  min-height: 100vh;
+  display: grid;
+  gap: 40px;
+
+  @include mobile {
+    padding: 80px 0;
+  }
+
+  @include tablet-only {
+    padding: 120px 0;
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr 40vw;
+    grid-template-rows: min-content auto;
+    gap: 80px 20px;
+  }
+
+  @include desktop {
+    grid-template-columns: 1fr 530px;
+    gap: 130px 20px;
+  }
+
+  &__info {
+    @include desktop {
+      padding-right: 30%;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    font-feature-settings: 'liga' off;
+  }
+
+  &__description {
+    margin: 60px 0 0;
+    font-size: 18px;
+    line-height: 156%;
+    font-feature-settings: 'liga' off;
+
+    @include mobile {
+      margin: 30px 0 0;
+    }
+  }
+
+  &__links {
+  }
+
+  &__bottom {
+    display: grid;
+    gap: 20px;
+
+    @include tablet {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &-item {
+    }
+
+    &-name {
+      margin: 0;
+      font-size: 18px;
+      line-height: 156%;
+      font-feature-settings: 'liga' off;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    &-value {
+      margin: 16px 0 0;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 28px;
+      line-height: 33px;
+
+      @include touch {
+        font-size: 22px;
+        line-height: 1.2em;
+      }
+
+      a {
+        color: inherit;
+        transition: color var(--delay) var(--timing-func);
+
+        &:hover {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
+
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
+
+  <body>
+    <%=
+    _.template(require('./../includes/components/header.html').default)(data) %>
+
+    <main>
+      <div class="_container">
+        <div class="_contacts-page">
+          <div class="_contacts-page__info">
+            <h1 class="_contacts-page__title">
+              Мы готовы ответить на ваши вопросы
+            </h1>
+            <p class="_contacts-page__description">
+              Если у вас остались какие-то вопросы - просто свяжитесь с нами.
+              Расскажем про наши продукты, обучим персонал, рассмотрим ваши идеи
+              по разработке продуктов
+            </p>
+          </div>
+
+          <div class="_contacts-page__links">
+            <ul class="_link-block">
+              <li class="_link-block__item">
+                <h3 class="_link-block__title">Заказать демонстрацию</h3>
+                <p class="_link-block__description">
+                  Покажем продукты и обучим специалистов
+                </p>
+                <a href="#" class="_link-block__link">Заказать демонстрацию</a>
+              </li>
+              <li class="_link-block__item">
+                <h3 class="_link-block__title">Телеграм</h3>
+                <p class="_link-block__description">@slava.nikulin</p>
+                <a
+                  href="tg://resolve?domain=slava.nikulin"
+                  class="_link-block__link"
+                >
+                  @slava.nikulin
+                </a>
+              </li>
+              <li class="_link-block__item">
+                <h3 class="_link-block__title">E-mail</h3>
+                <p class="_link-block__description">info@tetacom.pro</p>
+                <a href="mailto:info@tetacom.pro" class="_link-block__link">
+                  info@tetacom.pro
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="_contacts-page__bottom">
+            <div class="_contacts-page__bottom-item">
+              <p class="_contacts-page__bottom-name">Адрес</p>
+              <address class="_contacts-page__bottom-value">
+                Иннополис,<br />
+                ул. Университетская, 7<br />
+                офис 503
+              </address>
+            </div>
+            <div class="_contacts-page__bottom-item">
+              <p class="_contacts-page__bottom-name">Телефон</p>
+              <p class="_contacts-page__bottom-value">
+                <a href="tel:8 800 250-02-24">8 800 250-02-24</a>
+              </p>
+            </div>
+            <div class="_contacts-page__bottom-item">
+              <p class="_contacts-page__bottom-name">E-mail</p>
+              <p class="_contacts-page__bottom-value">
+                <a href="mailto:info@tetacom.pro">info@tetacom.pro</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%=
+    _.template(require('./../includes/components/footer.html').default)(data) %>
+    <%=
+    _.template(require('./../includes/components/modals.html').default)(data) %>
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>

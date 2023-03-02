@@ -14,10 +14,10 @@
   }
 
   &__body {
+    margin-top: 60px;
   }
 
   &__filter {
-    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -38,22 +38,10 @@
   }
 
   &__items {
-    @include clr;
-
     margin-top: 36px;
-    display: grid;
-    gap: 16px;
   }
 
   &__item {
-    position: relative;
-    padding: 20px 24px 23px;
-    background-color: #f8f8f8;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: background-color var(--delay) var(--timing-func),
-      color var(--delay) var(--timing-func);
-
     &.hidden {
       display: none;
     }
@@ -61,33 +49,6 @@
     &:hover {
       background-color: var(--primary-color);
       color: var(--white-color);
-    }
-
-    &-title {
-      margin: 0;
-      font-weight: 500;
-      font-size: 32px;
-      line-height: 38px;
-
-      @include mobile {
-        font-size: 28px;
-        line-height: 1.2em;
-      }
-    }
-
-    &-description {
-      margin: 15px 0 0;
-      font-size: 16px;
-      line-height: 20px;
-    }
-
-    &-link {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      font-size: 0;
     }
   }
 }
