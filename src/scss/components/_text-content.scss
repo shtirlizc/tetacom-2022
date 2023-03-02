@@ -1,0 +1,117 @@
+._text-content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1.45em 0 1.15em;
+
+    &:first-child,
+    &:last-child {
+      margin-top: 0;
+    }
+  }
+
+  ol,
+  ul,
+  p {
+    &:first-child,
+    &:last-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 52px;
+    font-feature-settings: 'liga' off;
+  }
+
+  h2 {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    font-feature-settings: 'liga' off;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 34px;
+    font-feature-settings: 'liga' off;
+  }
+
+  h4 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+    font-feature-settings: 'liga' off;
+  }
+
+  h5 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    font-feature-settings: 'liga' off;
+  }
+
+  h6 {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    font-feature-settings: 'liga' off;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 30px;
+    font-feature-settings: 'liga' off;
+    margin: 1em 0;
+  }
+
+  ul,
+  ol {
+    @include clr;
+
+    margin: 1em 0;
+    padding-left: 12px;
+
+    li {
+      font-size: 18px;
+      line-height: 28px;
+      font-feature-settings: 'liga' off;
+      padding-left: 16px;
+
+      &:not(:last-child) {
+        margin-bottom: 0.9em;
+      }
+    }
+  }
+
+  ul {
+    li {
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 14px;
+        left: 0;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: var(--text-color);
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  a {
+    color: var(--primary-color);
+  }
+}
