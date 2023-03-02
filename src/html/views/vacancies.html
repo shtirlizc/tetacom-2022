@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<% var data = { title: "Tetacom", author: "Marat" }; %>
+
+<html lang="ru">
+  <%= _.template(require('./../includes/head.html').default)(data) %>
+
+  <body>
+    <%=
+    _.template(require('./../includes/components/header.html').default)(data) %>
+
+    <main>
+      <div class="_container">
+        <div class="_vacancies-page" style="opacity: 0">
+          <h1 class="_vacancies-page__title _page-title">Вакансии</h1>
+
+          <div class="_vacancies-page__body">
+            <div class="_vacancies-page__filter">
+              <button type="button" class="_btn _btn--small" data-type="all">
+                Все вакансии
+                <span class="_vacancies-page__filter-number"></span>
+              </button>
+            </div>
+
+            <ul class="_vacancies-page__items">
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="dev"
+                data-vacancy-name="Отдел разработки"
+              >
+                <h3 class="_vacancies-page__item-title">Backend-разработчик</h3>
+                <p class="_vacancies-page__item-description">
+                  .NET Framework, React, CSS
+                </p>
+                <a href="#" class="_vacancies-page__item-link">
+                  Backend-разработчик
+                </a>
+              </li>
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="dev"
+                data-vacancy-name="Отдел разработки"
+              >
+                <h3 class="_vacancies-page__item-title">
+                  Frontend-разработчик
+                </h3>
+                <p class="_vacancies-page__item-description">
+                  Опыт: от 3 до 5 лет
+                </p>
+                <a href="#" class="_vacancies-page__item-link">
+                  Frontend-разработчик
+                </a>
+              </li>
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="dev"
+                data-vacancy-name="Отдел разработки"
+              >
+                <h3 class="_vacancies-page__item-title">UX/UI-дизайнер</h3>
+                <p class="_vacancies-page__item-description">
+                  Figma, Adobe Photoshop, Adobe Illustrator
+                </p>
+                <a href="#" class="_vacancies-page__item-link">
+                  UX/UI-дизайнер
+                </a>
+              </li>
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="dev"
+                data-vacancy-name="Отдел разработки"
+              >
+                <h3 class="_vacancies-page__item-title">QA-инженер</h3>
+                <p class="_vacancies-page__item-description">
+                  .NET Framework, React, CSS
+                </p>
+                <a href="#" class="_vacancies-page__item-link">QA-инженер</a>
+              </li>
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="sale"
+                data-vacancy-name="Отдел продаж"
+              >
+                <h3 class="_vacancies-page__item-title">
+                  Менеджер по продажам
+                </h3>
+                <p class="_vacancies-page__item-description">
+                  Опыт: можно без опыта
+                </p>
+                <a href="#" class="_vacancies-page__item-link">
+                  Менеджер по продажам
+                </a>
+              </li>
+              <li
+                class="_vacancies-page__item"
+                data-vacancy="manager"
+                data-vacancy-name="Project-менеджер"
+              >
+                <h3 class="_vacancies-page__item-title">Бизнес-аналитик</h3>
+                <p class="_vacancies-page__item-description">
+                  .NET Framework, React, CSS
+                </p>
+                <a href="#" class="_vacancies-page__item-link">
+                  Бизнес-аналитик
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%=
+    _.template(require('./../includes/components/footer.html').default)(data) %>
+    <%=
+    _.template(require('./../includes/components/modals.html').default)(data) %>
+    <%= _.template(require('./../includes/scripts.html').default)(data) %>
+  </body>
+</html>

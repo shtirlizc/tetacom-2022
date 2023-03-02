@@ -8,6 +8,7 @@ import { MainSlider } from './mainSlider';
 import { Capabilities } from './capabilities';
 import { ProductDemoPlayer } from './productDemoPlayer';
 import { Dropdown } from './dropdown';
+import { Vacancies } from './vacancies';
 
 window.addEventListener('load', () => {
   PageYOffset.init();
@@ -20,4 +21,5 @@ window.addEventListener('load', () => {
   Capabilities.init();
   ProductDemoPlayer.init();
   Dropdown.init();
+  Vacancies.init();
 });

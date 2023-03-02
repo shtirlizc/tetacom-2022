@@ -24,8 +24,10 @@
     color: var(--primary-color);
   }
 
-  &:active {
-    transform: translateY(1px);
+  &--small {
+    height: 36px;
+    border-radius: 18px;
+    padding: 0 18px;
   }
 
   &--block {
@@ -34,5 +36,15 @@
 
   &--nav-menu {
     height: 36px;
+  }
+
+  &--text {
+    border-color: transparent;
+    background-color: transparent;
+    color: var(--text-color);
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 }
