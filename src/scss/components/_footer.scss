@@ -20,23 +20,22 @@
   }
 
   &__briefing {
+    @include clean;
+
     margin: 36px 0 0;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 33px;
+    color: var(--primary-color);
+    text-decoration-line: underline;
 
-    a {
-      font-weight: 500;
-      font-size: 28px;
-      line-height: 33px;
-      color: var(--primary-color);
-      text-decoration-line: underline;
+    @include mobile {
+      font-size: 24px;
+      line-height: 1.2em;
+    }
 
-      @include mobile {
-        font-size: 24px;
-        line-height: 1.2em;
-      }
-
-      &:hover {
-        text-decoration-line: none;
-      }
+    &:hover {
+      text-decoration-line: none;
     }
   }
 
@@ -70,12 +69,13 @@
 
     a {
       font-weight: 500;
-      font-size: 40px;
-      line-height: 47px;
+      font-size: 32px;
+      line-height: 38px;
+      font-feature-settings: 'liga' off;
       color: rgba(255, 255, 255, 0.6);
 
       @include mobile {
-        font-size: 32px;
+        font-size: 28px;
         line-height: 1.1em;
       }
     }
