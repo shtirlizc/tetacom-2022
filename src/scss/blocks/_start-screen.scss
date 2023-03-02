@@ -97,14 +97,21 @@
 
   &__projects {
     margin-top: 133px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 26px;
 
     @include mobile {
-      flex-direction: column;
       margin-top: 80px;
-      align-items: center;
+    }
+
+    .swiper {
+      padding: 0 var(--space2x);
+
+      @include fromto($container-full + 40px, 1440px) {
+        padding: 0 calc((100vw - #{$container-full}) / 2);
+      }
+
+      @include fullhd {
+        padding: 0 calc((100vw - #{$container-full}) / 2);
+      }
     }
   }
 }

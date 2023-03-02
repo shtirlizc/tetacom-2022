@@ -9,6 +9,7 @@ import { Capabilities } from './capabilities';
 import { ProductDemoPlayer } from './productDemoPlayer';
 import { Dropdown } from './dropdown';
 import { Vacancies } from './vacancies';
+import { StartScreeSwiper } from './start-scree-swiper';
 
 window.addEventListener('load', () => {
   PageYOffset.init();
@@ -22,4 +23,5 @@ window.addEventListener('load', () => {
   ProductDemoPlayer.init();
   Dropdown.init();
   Vacancies.init();
+  StartScreeSwiper.init();
 });

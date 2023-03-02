@@ -9,10 +9,12 @@
     _.template(require('./../includes/components/header.html').default)(data) %>
 
     <main>
+      <%=
+      _.template(require('./../includes/blocks/start-screen.html').default)(data)
+      %>
+
       <div class="_container">
         <%=
-        _.template(require('./../includes/blocks/start-screen.html').default)(data)
-        %> <%=
         _.template(require('./../includes/blocks/who-are-we.html').default)(data)
         %>
       </div>
