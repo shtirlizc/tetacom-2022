@@ -1,5 +1,4 @@
 ._vacancies-page {
-  min-height: 100vh;
   padding: 180px 0 164px;
 
   @include mobile {
@@ -28,6 +27,13 @@
       line-height: 16px;
       padding-left: 9px;
       color: rgba(255, 255, 255, 0.5);
+      transition: color var(--delay) var(--timing-func);
+    }
+
+    ._btn:hover {
+      ._vacancies-page__filter-number {
+        color: var(--primary-color);
+      }
     }
 
     ._btn--text {
