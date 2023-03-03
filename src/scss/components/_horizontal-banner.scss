@@ -1,0 +1,41 @@
+._horizontal-banner {
+  background-color: var(--primary-color);
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: center;
+  overflow: hidden;
+
+  &__info {
+    padding: 60px 0 60px 60px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    font-feature-settings: 'liga' off;
+    color: var(--white-color);
+  }
+
+  &__description {
+    margin: 64px 0 0;
+    font-size: 18px;
+    line-height: 156%;
+    font-feature-settings: 'liga' off;
+    color: var(--white-color);
+  }
+
+  &__image {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}

@@ -4,89 +4,181 @@
 <html lang="ru">
   <%= _.template(require('./../includes/head.html').default)(data) %>
 
-  <body>
+  <body class="full-height">
     <%=
     _.template(require('./../includes/components/header.html').default)(data) %>
 
-    <main class="_product-page">
-      <div class="_container">
-        <div class="_product-page__start">
-          <h1 class="_product-page__start-title">Симулятор ОПЗ</h1>
-          <p class="_product-page__start-description">
-            Расчетный инструмент для анализа, проектирования и оптимизации<br />
-            ключевых параметров обработок призабойной зоны скважины в<br />
-            карбонатных и терригенных коллекторах
+    <main>
+      <div class="_product-page">
+        <div class="_container">
+          <h1 class="_product-page__title _page-title">
+            Симулятор гидроразрыва пласта
+          </h1>
+          <p class="_product-page__description">
+            Расчетный инструмент для проектирования и оптимизации ключевых
+            технико-экономических параметров проведения ГРП
           </p>
-          <div class="_product-page__start-try">
-            <a href="#" rel="noopener noreferrer" class="_btn">Купить</a>
-            <a href="#" rel="noopener noreferrer" class="_btn _btn--outline">
-              Попробовать
-            </a>
+          <div class="_product-page__actions">
+            <a href="#" class="_btn _btn--outline">Вход в сервис</a>
+            <button type="button" class="_btn">Заказать демонстрацию</button>
           </div>
-          <div class="_product-page__start-demo">
-            <video id="product-demo" playsinline muted data-poster="">
-              <source src="uploads/project-teasers/5.mp4" type="video/mp4" />
-            </video>
-            <!-- <img
-              src="uploads/project-teasers/remote-monitoring-and-analitics-teaser.svg"
+
+          <div class="_product-page__picture">
+            <img
+              src="uploads/products/grp/grp.jpg"
+              srcset="
+                uploads/products/grp/grp.jpg    1x,
+                uploads/products/grp/grp@2x.jpg 2x
+              "
               alt=""
-              loading="lazy"
-            /> -->
+            />
           </div>
+
+          <section class="_product-page__prompt-1 _prompt-block">
+            <p class="_prompt-block__hint">Кто мы?</p>
+
+            <h2 class="_prompt-block__title _title">
+              Мы использовали Pseudo3D-модель
+            </h2>
+
+            <p class="_prompt-block__description">
+              Модель развития трещины ГРП, численная модель кислотного
+              растворения КГРП, с усовершенствованной модель оценки остаточной
+              проводимости закрепленной трещины КГРП (Nasr-el-Din
+              (Nierode-Kruk)). Возможность учета термодинамических эффектов в
+              скважине и трещине ГРП
+            </p>
+          </section>
+
+          <section class="_product-page__banners">
+            <article class="_product-page__banners-wide _horizontal-banner">
+              <div class="_horizontal-banner__info">
+                <h3 class="_horizontal-banner__title">
+                  Расчет геометрии трещины с использованием продвинутой P3D
+                  модели
+                </h3>
+                <p class="_horizontal-banner__description">
+                  Проведение расчётов ГРП трещин с исходными данными.
+                  Возможность удобного размещение планшета геометрии трещин ГРП.
+                  Блок многовариантных расчетов с варьированием геомеханических
+                  и технологических параметров ГРП.
+                </p>
+              </div>
+              <div class="_horizontal-banner__image">
+                <img
+                  src="uploads/products/grp/banner-1.png"
+                  srcset="
+                    uploads/products/grp/banner-1.png    1x,
+                    uploads/products/grp/banner-1@2x.png 2x
+                  "
+                  alt=""
+                />
+              </div>
+            </article>
+            <article class="_vertical-banner">
+              <h3 class="_vertical-banner__title">Планшет геомеханики</h3>
+              <p class="_vertical-banner__description">
+                Построение 1D-геомеханической и петрофизической модели пласта.
+                Автоматическая подгрузка лабораторных исследований керна, данных
+                специальных методов ГИС (АКШ, ГГкП). Работа с данными – линейные
+                преобразования, растяжения значений.
+              </p>
+              <div class="_vertical-banner__image">
+                <img src="uploads/products/grp/banner-2.svg" alt="" />
+              </div>
+            </article>
+            <article class="_vertical-banner">
+              <h3 class="_vertical-banner__title">Загрузка данных ГИС</h3>
+              <p class="_vertical-banner__description">
+                Интерпретация литотипов и петрофизических свойств пласта по
+                данным ГИС. Возможность корректировки и построение данных ГИС, с
+                последующей выгрузкой данных).
+              </p>
+              <div class="_vertical-banner__image">
+                <img src="uploads/products/grp/banner-2.svg" alt="" />
+              </div>
+            </article>
+          </section>
+
+          <section class="_product-page__prompt-2 _prompt-block">
+            <p class="_prompt-block__hint">Кто мы?</p>
+
+            <h2 class="_prompt-block__title _title">
+              Мы использовали Pseudo3D-модель
+            </h2>
+
+            <p class="_prompt-block__description">
+              Модель развития трещины ГРП, численная модель кислотного
+              растворения КГРП, с усовершенствованной модель оценки остаточной
+              проводимости закрепленной трещины КГРП (Nasr-el-Din
+              (Nierode-Kruk)). Возможность учета термодинамических эффектов в
+              скважине и трещине ГРП
+            </p>
+          </section>
         </div>
-      </div>
 
-      <section class="_product-page__slider">
-        <h2 class="_product-page__slider-title _title">компетенции</h2>
-        <div class="_product-page__slider-body">
-          <%=
-          _.template(require('./../includes/blocks/main-slider.html').default)(data)
-          %>
-        </div>
-      </section>
-
-      <div class="_container">
-        <section class="_product-page__capabilities">
-          <%=
-          _.template(require('./../includes/blocks/capabilities.html').default)(data)
-          %>
-        </section>
-
-        <section class="_product-page__feedback">
-          <h2 class="_product-page__feedback-title">
-            ваши предложения<br />по разработке
-          </h2>
-          <div class="_product-page__feedback-actions">
-            <button type="button" class="_btn">Предложить идею</button>
-          </div>
-        </section>
-
-        <section class="_product-page__more-info">
-          <%=
-          _.template(require('./../includes/blocks/start-list.html').default)(data)
-          %>
-        </section>
-
-        <section class="_product-page__feedback">
-          <h2 class="_product-page__feedback-title">
-            Вы всё ещё думаете?<br />Попробуйте
-          </h2>
-          <div class="_product-page__feedback-actions">
-            <button
-              type="button"
-              class="_btn js-open-modal"
-              data-target="modal-feedback"
-            >
-              Задать вопрос
-            </button>
-            <a href="#" rel="noopener noreferrer" class="_btn _btn--outline">
-              Попробовать
-            </a>
+        <section class="_product-page__modules">
+          <div class="_container">
+            <h2 class="_product-page__modules-title">Модули симулятора</h2>
+            <div class="_product-page__modules-body">
+              <div class="_product-page__module">
+                <div class="_product-page__module-image">
+                  <img src="uploads/products/grp/module-1.svg" alt="" />
+                </div>
+                <h3 class="_product-page__module-title">Построение модели</h3>
+                <p class="_product-page__module-description">
+                  Расчет протравленной и остаточной ширины трещины, динамики
+                  снижения проводимости в процессе эксплуатации
+                </p>
+              </div>
+              <div class="_product-page__module">
+                <div class="_product-page__module-image">
+                  <img src="uploads/products/grp/module-2.svg" alt="" />
+                </div>
+                <h3 class="_product-page__module-title">
+                  Интерпретация данных ГИС
+                </h3>
+                <p class="_product-page__module-description">
+                  Загрузка данных, обработка данных ГИС/РИГИС
+                </p>
+              </div>
+              <div class="_product-page__module">
+                <div class="_product-page__module-image">
+                  <img src="uploads/products/grp/module-3.svg" alt="" />
+                </div>
+                <h3 class="_product-page__module-title">Расчёты</h3>
+                <p class="_product-page__module-description">
+                  Прогнозирование динамики забойного и устьевого давлений в
+                  процессе проведения ГРП
+                </p>
+              </div>
+              <div class="_product-page__module">
+                <div class="_product-page__module-image">
+                  <img src="uploads/products/grp/module-4.svg" alt="" />
+                </div>
+                <h3 class="_product-page__module-title">Аналитика</h3>
+                <p class="_product-page__module-description">
+                  Построение прогнозных режимов работы скважины после ГРП
+                </p>
+              </div>
+              <div class="_product-page__module">
+                <div class="_product-page__module-image">
+                  <img src="uploads/products/grp/module-5.svg" alt="" />
+                </div>
+                <h3 class="_product-page__module-title">Тестовые закачки</h3>
+                <p class="_product-page__module-description">
+                  Прогнозирование динамики забойного и устьевого давлений в
+                  процессе проведения ГРП
+                </p>
+              </div>
+            </div>
           </div>
         </section>
       </div>
     </main>
 
+    <%=
+    _.template(require('./../includes/components/footer.html').default)(data) %>
     <%=
     _.template(require('./../includes/components/modals.html').default)(data) %>
     <%= _.template(require('./../includes/scripts.html').default)(data) %>

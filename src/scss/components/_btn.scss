@@ -54,4 +54,14 @@
       color: var(--primary-color);
     }
   }
+
+  &--outline {
+    color: var(--text-color);
+    border-color: var(--text-color);
+    background-color: transparent;
+
+    &:hover {
+      border-color: var(--primary-color);
+    }
+  }
 }
