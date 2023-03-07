@@ -1,14 +1,21 @@
 ._horizontal-banner {
   background-color: var(--primary-color);
   border-radius: 20px;
-  display: grid;
-  grid-template-columns: 1fr 420px;
-  gap: 40px;
-  align-items: center;
   overflow: hidden;
+
+  @include tablet {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 40px;
+    align-items: center;
+  }
 
   &__info {
     padding: 60px 0 60px 60px;
+
+    @include mobile {
+      padding: 20px;
+    }
   }
 
   &__title {
@@ -24,12 +31,21 @@
     font-size: 18px;
     line-height: 156%;
     color: var(--white-color);
+
+    @include mobile {
+      margin-top: 32px;
+    }
   }
 
   &__image {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    align-self: stretch;
+
+    @include mobile {
+      display: none;
+    }
 
     img {
       max-width: 100%;

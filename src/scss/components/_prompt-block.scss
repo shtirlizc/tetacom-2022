@@ -39,6 +39,7 @@
 
     @include mobile {
       padding-right: 0;
+      margin-top: 32px;
     }
 
     @include tablet-only {

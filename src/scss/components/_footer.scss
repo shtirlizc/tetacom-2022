@@ -31,6 +31,7 @@
     line-height: 33px;
     color: var(--primary-color);
     text-decoration-line: underline;
+    cursor: pointer;
 
     @include mobile {
       font-size: 24px;
@@ -69,10 +70,15 @@
       font-size: 32px;
       line-height: 38px;
       color: rgba(255, 255, 255, 0.6);
+      transition: color var(--delay) var(--timing-func);
 
       @include mobile {
         font-size: 28px;
         line-height: 1.1em;
+      }
+
+      &:hover {
+        color: var(--primary-color);
       }
     }
   }

@@ -1,14 +1,31 @@
 ._product-page {
   padding: 220px 0 0;
 
+  @include mobile {
+    padding: 80px 0 0;
+  }
+
+  @include tablet-only {
+    padding: 120px 0 0;
+  }
+
   &__title {
     margin: 0;
+
+    @include mobile {
+      text-align: center;
+    }
   }
 
   &__description {
     margin: 45px 0 0;
     font-size: 18px;
     line-height: 21px;
+
+    @include mobile {
+      text-align: center;
+      margin-top: 32px;
+    }
 
     @include desktop {
       padding-right: 40%;
@@ -20,6 +37,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+
+    @include mobile {
+      justify-content: center;
+      margin-top: 40px;
+    }
   }
 
   &__picture {
@@ -27,6 +49,14 @@
     border: 2px solid #353749;
     border-radius: 20px;
     overflow: hidden;
+
+    @include mobile {
+      margin-top: 64px;
+    }
+
+    @include tablet-only {
+      margin-top: 92px;
+    }
 
     img {
       width: 100%;
@@ -36,6 +66,10 @@
 
   &__prompt-1 {
     margin-top: 160px;
+
+    @include mobile {
+      margin-top: 64px;
+    }
   }
 
   &__banners {
@@ -43,25 +77,49 @@
 
     margin-top: 160px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: min-content min-content;
     gap: 20px;
-    padding-bottom: calc(var(--image-width) / 2);
+
+    @include mobile {
+      --image-width: 240px;
+
+      margin-top: 64px;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: min-content min-content;
+      padding-bottom: calc(var(--image-width) / 4);
+    }
+
+    @include desktop {
+      padding-bottom: calc(var(--image-width) / 2);
+    }
 
     &-wide {
-      grid-column-start: 1;
-      grid-column-end: 3;
+      @include tablet {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
     }
   }
 
   &__prompt-2 {
     margin-top: 84px;
+
+    @include touch {
+      margin-top: 40px;
+    }
   }
 
   &__modules {
     margin-top: 180px;
     padding: 100px 0 140px;
     background-color: #f8f8f8;
+
+    @include mobile {
+      margin-top: 80px;
+      padding: 50px 0 70px;
+    }
 
     &-title {
       margin: 0;
@@ -72,10 +130,19 @@
     }
 
     &-body {
-      margin-top: 140px;
+      margin-top: 100px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 128px 20px;
+      gap: 100px 20px;
+
+      @include tablet-only {
+        margin-top: 140px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 128px 20px;
+      }
+
+      @include desktop {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   }
 
@@ -103,6 +170,10 @@
       font-weight: 500;
       font-size: 24px;
       line-height: 28px;
+
+      @include mobile {
+        margin: -70px 0 0;
+      }
     }
 
     &-description {
