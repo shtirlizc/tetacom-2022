@@ -1,5 +1,5 @@
 @mixin menu-link {
-  display: inline-block;
+  display: block;
   font-weight: 500;
   font-size: 14px;
   padding: var(--space2x) 0;
@@ -186,6 +186,7 @@
     &--mobile {
       @include touch {
         display: block;
+        width: 100%;
       }
     }
   }
