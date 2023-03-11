@@ -1,0 +1,45 @@
+._info-block {
+  &__item {
+    display: grid;
+    gap: 40px;
+
+    @include desktop {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 60px;
+
+      @include desktop {
+        margin-bottom: 180px;
+      }
+    }
+  }
+
+  &__title {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 47px;
+    margin: 0;
+  }
+
+  &__list {
+    @include clr;
+
+    background-color: #f8f8f8;
+    border-radius: 16px;
+    padding: 20px 24px;
+
+    &-item {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 28px;
+
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
