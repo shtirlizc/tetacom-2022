@@ -1,6 +1,6 @@
 import Swiper, { FreeMode } from 'swiper';
 
-export const StartScreeSwiper = {
+export const StartScreenSwiper = {
   init() {
     document
       .querySelectorAll('.js-start-screen-swiper .swiper-slide')

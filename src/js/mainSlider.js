@@ -8,11 +8,6 @@ export const MainSlider = {
   nextButton: document.getElementById('js-main-swiper-next'),
   slideWidth: 0,
 
-  pointsWrapper: document.querySelector('._main-slider__track-points'),
-  points: [],
-  pointsStep: 0,
-  pointRadius: 8,
-
   init() {
     if (this.slidesCount) {
       if (this.slidesCount === 1) {
@@ -47,19 +42,15 @@ export const MainSlider = {
           },
         },
         on: {
-          init: (swiper) => {
-            this.createPoints(swiper);
+          init: () => {
             this.watch();
           },
           slidePrevTransitionStart: (swiper) => {
             this.changeTitle(Array.from(swiper.slides), false);
-            this.movePoints(false);
           },
           slideNextTransitionStart: (swiper) => {
             this.changeTitle(Array.from(swiper.slides), true);
-            this.movePoints(true);
           },
-          resize: this.updatePoints.bind(this),
         },
       });
     }
@@ -105,92 +96,6 @@ export const MainSlider = {
           prevTextElement.remove();
         },
       });
-    }
-  },
-
-  createPoints(swiper) {
-    const [first, second] = swiper.slidesGrid;
-    this.pointsStep = second - first;
-
-    swiper.slides.map((slide, index) => {
-      if (!index) {
-        this.slideWidth = parseInt(slide.offsetWidth);
-      }
-
-      const left =
-        slide.getBoundingClientRect().left +
-        window.scrollX +
-        this.slideWidth / 2 -
-        this.pointRadius;
-      this.points.push(left);
-
-      this.createPoint(left);
-    });
-  },
-
-  createPoint(left, putToStart = false) {
-    const point = document.createElement('span');
-    point.style.left = `${left}px`;
-    point.style.transform = 'scale(0)';
-
-    if (putToStart) {
-      this.pointsWrapper.prepend(point);
-    } else {
-      this.pointsWrapper.appendChild(point);
-    }
-
-    gsap.fromTo(point, { scale: 0 }, { scale: 1, delay: 0.5 });
-  },
-
-  updatePoints(swiper) {
-    const [first, second] = swiper.slidesGrid;
-    this.pointsStep = second - first;
-    this.points.length = 0;
-    const pointElements = this.pointsWrapper.querySelectorAll('span');
-
-    swiper.slides.map((slide, index) => {
-      if (!index) {
-        this.slideWidth = parseInt(slide.offsetWidth);
-      }
-
-      const left =
-        slide.getBoundingClientRect().left +
-        window.scrollX +
-        this.slideWidth / 2 -
-        this.pointRadius;
-      this.points.push(left);
-
-      pointElements[index].style.left = `${left}px`;
-    });
-  },
-
-  movePoints(isNextDirection) {
-    const pointsStep = this.pointsStep;
-    const offset = isNextDirection ? -1 * pointsStep : pointsStep;
-
-    if (this.points.length) {
-      const pointElements = this.pointsWrapper.querySelectorAll('span');
-
-      pointElements.forEach((point) => {
-        const currentLeft = parseInt(point.style.left);
-        gsap.to(point, {
-          left: currentLeft + offset,
-          duration: 0.9,
-          ease: 'back.out(0.8)',
-        });
-      });
-
-      if (isNextDirection) {
-        const [firstElement] = pointElements;
-        firstElement.remove();
-        const leftPosition = this.points[this.points.length - 1];
-        this.createPoint(leftPosition);
-      } else {
-        const lastElement = pointElements[pointElements.length - 1];
-        lastElement.remove();
-        const [leftPosition] = this.points;
-        this.createPoint(leftPosition, true);
-      }
     }
   },
 };
