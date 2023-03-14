@@ -11,6 +11,8 @@ import { Dropdown } from './dropdown';
 import { Vacancies } from './vacancies';
 import { StartScreeSwiper } from './start-scree-swiper';
 
+window.Modal = Modal;
+
 window.addEventListener('load', () => {
   PageYOffset.init();
   MainSlider.init();

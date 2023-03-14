@@ -75,18 +75,13 @@ export const Modal = {
       }, 500);
     });
     body.classList.remove('modal');
-    document.removeEventListener('keydown', this.handleEscape.bind(this));
+
+    if (this?.handleEscape) {
+      document.removeEventListener('keydown', this.handleEscape.bind(this));
+    }
   },
 
   onSubmit() {
-    const inputs = document.getElementsByClassName('_input');
-    Array.from(inputs).forEach((input) => {
-      const [inputTag] = input.getElementsByTagName('input');
-      const [textareaTag] = input.getElementsByTagName('textarea');
-      const currentTag = inputTag || textareaTag;
-      currentTag.classList.remove('valid');
-    });
-
     Modal.findModal('modal-success');
   },
 };
