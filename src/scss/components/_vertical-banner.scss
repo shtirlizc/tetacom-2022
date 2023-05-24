@@ -7,7 +7,6 @@
 
   @include mobile {
     padding: 20px;
-    margin-bottom: calc(var(--image-width) / 4);
   }
 
   &__title {
@@ -49,5 +48,9 @@
       width: 100%;
       height: auto;
     }
+  }
+
+  &--has-image {
+    margin-bottom: calc(var(--image-width) / 4);
   }
 }
