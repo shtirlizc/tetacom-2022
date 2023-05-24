@@ -1,26 +1,28 @@
 ._prompt-block {
-  position: relative;
-  padding-left: 220px;
+  --padding-left: 200px;
+
+  display: grid;
+  grid-template-columns: var(--padding-left) 1fr;
+  gap: 20px;
 
   @include mobile {
-    padding-left: 0;
-    padding-top: 60px;
+    grid-template-columns: 1fr;
   }
 
   @include tablet-only {
-    padding-left: 120px;
+    --padding-left: 120px;
   }
 
   &__hint {
-    position: absolute;
-    top: 6px;
-    left: 0;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    padding-top: 6px;
     margin: 0;
     font-size: 16px;
-    line-height: 19px;
+    line-height: 1.4em;
 
     @include mobile {
-      top: 0;
+      padding-top: 0;
     }
   }
 
@@ -44,6 +46,14 @@
 
     @include tablet-only {
       padding-right: 20%;
+    }
+  }
+
+  &--full-width {
+    grid-template-columns: 1fr;
+
+    ._prompt-block__description {
+      padding-right: 0;
     }
   }
 }
