@@ -103,15 +103,10 @@
   }
 
   &__prompt-2 {
-    margin-top: 84px;
-
-    @include touch {
-      margin-top: 40px;
-    }
   }
 
   &__modules {
-    margin-top: 180px;
+    margin-top: 220px;
     padding: 100px 0 140px;
     background-color: #f8f8f8;
 
