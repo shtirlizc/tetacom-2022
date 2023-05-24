@@ -1,21 +1,22 @@
-import { debounce } from "lodash";
+import { debounce } from 'lodash';
+import { Dropdown } from './dropdown';
 
 export const PageYOffset = {
   showHeaderOffset: 50, // min value is 1
   value: window.scrollY,
-  header: document.querySelector("._header"),
+  header: document.querySelector('._header'),
 
   init() {
     if (this.header) {
       if (this.value > this.showHeaderOffset) {
         this.add();
       } else {
-        this.header.classList.remove("hidden");
+        this.header.classList.remove('hidden');
       }
 
       document.addEventListener(
-        "scroll",
-        debounce(this.calcScroll.bind(this), 50)
+        'scroll',
+        debounce(this.calcScroll.bind(this), 50),
       );
     }
   },
@@ -30,19 +31,22 @@ export const PageYOffset = {
     }
 
     if (scrollY > this.value) {
-      this.header.classList.add("hidden");
+      this.header.classList.add('hidden');
+      this.header.querySelectorAll('._dropdown').forEach((dropdown) => {
+        Dropdown.close(dropdown);
+      });
     } else {
-      this.header.classList.remove("hidden");
+      this.header.classList.remove('hidden');
     }
 
     this.value = scrollY;
   },
 
   add() {
-    this.header.classList.add("active");
+    this.header.classList.add('active');
   },
 
   remove() {
-    this.header.classList.remove("active");
+    this.header.classList.remove('active');
   },
 };
