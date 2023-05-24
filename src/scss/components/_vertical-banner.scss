@@ -19,13 +19,23 @@
   }
 
   &__description {
-    margin: 50px 0 -20%;
+    margin-top: 50px;
     font-size: 18px;
     line-height: 156%;
     color: #000000;
+    padding-bottom: 60px;
 
     @include mobile {
-      margin: 32px 0 -10%;
+      margin-top: 32px;
+    }
+
+    &:has(+ ._vertical-banner__image) {
+      margin-bottom: -20%;
+      padding-bottom: 0;
+
+      @include mobile {
+        margin-bottom: -10%;
+      }
     }
   }
 
