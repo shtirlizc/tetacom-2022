@@ -30,7 +30,8 @@ export const PageYOffset = {
       this.remove();
     }
 
-    if (scrollY > this.value) {
+    const scrollYValue = this.value > 0 ? this.value : 0;
+    if (scrollY > scrollYValue) {
       this.header.classList.add('hidden');
       this.header.querySelectorAll('._dropdown').forEach((dropdown) => {
         Dropdown.close(dropdown);
