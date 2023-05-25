@@ -51,6 +51,8 @@
   }
 
   &--has-image {
-    margin-bottom: calc(var(--image-width) / 4);
+    @include mobile {
+      margin-bottom: calc(var(--image-width) / 4);
+    }
   }
 }
