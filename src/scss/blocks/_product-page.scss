@@ -46,9 +46,6 @@
 
   &__picture {
     margin-top: 162px;
-    border: 2px solid #353749;
-    border-radius: 20px;
-    overflow: hidden;
 
     @include mobile {
       margin-top: 64px;
@@ -61,6 +58,12 @@
     img {
       width: 100%;
       height: auto;
+    }
+
+    &--cover {
+      border: 2px solid #353749;
+      border-radius: 20px;
+      overflow: hidden;
     }
   }
 
