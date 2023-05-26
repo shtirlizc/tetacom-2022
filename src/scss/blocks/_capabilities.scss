@@ -17,8 +17,6 @@
     overflow: hidden;
 
     @include tablet {
-      display: grid;
-      grid-template-columns: 1fr 430px;
       width: 628px;
     }
 
@@ -35,6 +33,13 @@
 
     @include fullhd {
       width: 1190px;
+    }
+
+    &-content {
+      @include tablet {
+        display: grid;
+        grid-template-columns: 1fr 430px;
+      }
     }
 
     &-info {
