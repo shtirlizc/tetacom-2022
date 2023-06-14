@@ -8,6 +8,8 @@ import { MainSlider } from './mainSlider';
 import { Capabilities } from './capabilities';
 import { ProductDemoPlayer } from './productDemoPlayer';
 import { Dropdown } from './dropdown';
+import { Notification } from './notification';
+import { Cookie } from './cookie';
 import { Vacancies } from './vacancies';
 import { StartScreenSwiper } from './start-screen-swiper';
 
@@ -24,6 +26,8 @@ window.addEventListener('load', () => {
   Capabilities.init();
   ProductDemoPlayer.init();
   Dropdown.init();
+  Notification.init();
   Vacancies.init();
   StartScreenSwiper.init();
+  Cookie.init();
 });
