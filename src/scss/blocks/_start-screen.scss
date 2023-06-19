@@ -63,23 +63,35 @@
       &::before {
         content: '';
         position: absolute;
-        top: -2px;
+        top: 0;
         left: 0;
         width: 20px;
         height: 100%;
-        background-image: url('../img/link-icon.svg');
+        background-image: url('../img/pdf-icon.svg');
         background-position: left center;
         background-repeat: no-repeat;
-        transition: transform var(--delay) ease-in-out;
 
         @include mobile {
           display: none;
         }
       }
 
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        right: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--primary-color);
+        transition: width calc(1.5 * var(--delay)) ease-in-out;
+      }
+
       &:hover {
-        &::before {
-          transform: translate(4px);
+        &::after {
+          right: auto;
+          left: 0;
+          width: 100%;
         }
       }
     }
