@@ -2,14 +2,14 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
-  border-radius: 25px;
+  padding: 4px 20px 4px 4px;
+  border-radius: 26px;
   transition: background-color var(--delay) var(--timing-func);
 
   &__icon {
-    flex: 0 0 30px;
-    width: 30px;
-    height: 30px;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
     display: flex;
     justify-content: center;
     align-items: center;

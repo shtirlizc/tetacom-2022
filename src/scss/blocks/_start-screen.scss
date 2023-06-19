@@ -103,6 +103,10 @@
       margin-top: 80px;
     }
 
+    .swiper-wrapper {
+      align-items: center;
+    }
+
     .swiper {
       padding: 0 var(--space2x);
 
@@ -112,6 +116,18 @@
 
       @include fullhd {
         padding: 0 calc((100vw - #{$container-full}) / 2);
+      }
+    }
+
+    .swiper-slide {
+      height: 52px;
+      display: flex;
+      align-items: center;
+
+      &.swiper-slide-active {
+        @include widescreen {
+          flex-grow: 1;
+        }
       }
     }
   }
