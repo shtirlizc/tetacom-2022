@@ -40,6 +40,8 @@
 @import 'components/notification';
 @import 'components/not-found';
 @import 'components/news-preview';
+@import 'components/author-date';
+@import 'components/tag-list';
 
 // blocks
 @import 'blocks/start-screen';
@@ -61,3 +63,4 @@
 @import 'blocks/contacts-page';
 
 @import 'blocks/news-page';
+@import 'blocks/news-page-inner';

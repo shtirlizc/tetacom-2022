@@ -32,6 +32,20 @@
     padding: 0 18px;
   }
 
+  &--icon {
+    height: 52px;
+    border-radius: 26px;
+    padding: 0;
+
+    span {
+      height: 52px;
+
+      rect {
+        fill: var(--primary-color);
+      }
+    }
+  }
+
   &--block {
     width: 100%;
   }
