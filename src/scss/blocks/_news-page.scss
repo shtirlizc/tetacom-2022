@@ -1,0 +1,29 @@
+._news-page {
+  padding: 180px 0 164px;
+
+  @include mobile {
+    padding: 80px 0;
+  }
+
+  @include tablet-only {
+    padding: 120px 0;
+  }
+
+  &__title {
+  }
+
+  &__filter {
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__feed {
+    margin-top: 60px;
+    display: grid;
+    gap: 60px;
+    padding-right: 35%;
+  }
+}
