@@ -36,7 +36,8 @@
     margin-top: 35px;
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    align-items: center;
+    gap: 20px;
   }
 
   &__content {
