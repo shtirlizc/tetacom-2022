@@ -7,13 +7,27 @@
   gap: 12px;
 
   &__item {
-    color: rgba(0, 0, 0, 0.7);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 16px;
-    padding: 8px 16px;
-    border-radius: 16px;
-    background-color: #f8f8f8;
-    cursor: default;
+    span,
+    a {
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      padding: 8px 16px;
+      border-radius: 16px;
+      background-color: #f8f8f8;
+    }
+
+    span {
+      cursor: default;
+    }
+
+    a {
+      transition: color var(--delay) ease-in-out;
+
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
   }
 }
