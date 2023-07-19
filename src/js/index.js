@@ -12,7 +12,6 @@ import { Notification } from './notification';
 import { Cookie } from './cookie';
 import { Vacancies } from './vacancies';
 import { StartScreenSwiper } from './start-screen-swiper';
-import { newsTags } from './newsTags';
 
 window.Modal = Modal;
 
@@ -31,5 +30,4 @@ window.addEventListener('load', () => {
   Vacancies.init();
   StartScreenSwiper.init();
   Cookie.init();
-  newsTags();
 });
