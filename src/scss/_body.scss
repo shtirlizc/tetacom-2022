@@ -3,6 +3,7 @@
 *::after {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  font-feature-settings: 'liga' off;
 }
 
 * {
@@ -48,7 +49,6 @@ body {
 
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-feature-settings: 'liga' off;
   overflow-x: hidden;
 
   &._full-height {
