@@ -35,6 +35,13 @@
     margin-top: 60px;
     display: grid;
     gap: 60px;
-    padding-right: 35%;
+
+    @include tablet {
+      padding-right: 20%;
+    }
+
+    @include desktop {
+      padding-right: 35%;
+    }
   }
 }
