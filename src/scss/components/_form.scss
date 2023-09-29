@@ -1,13 +1,13 @@
 ._form {
   &__group {
-    &:not(:last-child) {
-      margin-bottom: var(--space4x);
-    }
+    margin-bottom: var(--space4x);
 
     &--bottom-large {
-      &:not(:last-child) {
-        margin-bottom: 44px;
-      }
+      margin-bottom: 44px;
+    }
+
+    &--last {
+      margin-bottom: 0;
     }
   }
 
