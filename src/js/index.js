@@ -13,6 +13,7 @@ import { Cookie } from './cookie';
 import { Vacancies } from './vacancies';
 import { StartScreenSwiper } from './start-screen-swiper';
 import { Slider } from './slider';
+import { AccordionBlock } from './accordion';
 
 window.Modal = Modal;
 
@@ -32,4 +33,5 @@ window.addEventListener('load', () => {
   StartScreenSwiper.init();
   Cookie.init();
   Slider.init();
+  AccordionBlock.init();
 });

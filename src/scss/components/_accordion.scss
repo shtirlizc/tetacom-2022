@@ -1,0 +1,18 @@
+._accordion {
+  &__item {
+    //padding: 28px 24px;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__header {
+    color: var(--black-color);
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__panel {
+  }
+}

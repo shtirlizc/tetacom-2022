@@ -25,6 +25,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "accordion-js": "^3.3.4",
     "gsap": "^3.11.3",
     "imask": "^6.4.3",
     "lodash": "^4.17.21",
