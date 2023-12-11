@@ -21,6 +21,11 @@
     color var(--delay) var(--timing-func),
     background-color var(--delay) var(--timing-func);
 
+  svg rect,
+  svg path {
+    transition: all var(--delay) var(--timing-func);
+  }
+
   &:hover {
     background-color: transparent;
     color: var(--primary-color);
@@ -42,6 +47,23 @@
 
       rect {
         fill: var(--primary-color);
+      }
+    }
+  }
+
+  &--circle {
+    width: 52px;
+
+    &:hover {
+      span {
+        rect {
+          fill: transparent;
+        }
+
+        path {
+          fill: var(--primary-color);
+          stroke: var(--primary-color);
+        }
       }
     }
   }

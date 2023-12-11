@@ -1,0 +1,73 @@
+._acid-treatments-and-reagents-page {
+  padding: 180px 0;
+  display: grid;
+  gap: 160px;
+
+  @include mobile {
+    padding: 80px 0;
+  }
+
+  @include tablet-only {
+    padding: 120px 0;
+  }
+
+  &__start {
+  }
+
+  &__point {
+    margin: 0;
+    color: var(--grey-color);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 114%;
+  }
+
+  &__title {
+    margin-top: 10px;
+  }
+
+  &__description {
+    margin: 0;
+    margin-top: 44px;
+    font-size: 18px;
+    line-height: 155%;
+  }
+
+  &__props {
+    @include clr;
+
+    margin-top: 60px;
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 45px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+
+    &-item {
+      display: grid;
+      gap: 4px;
+    }
+
+    &-value {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &-key {
+      color: var(--grey-color);
+      font-size: 18px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 72px;
+  }
+
+  &__price {
+  }
+
+  &__feedback {
+  }
+}

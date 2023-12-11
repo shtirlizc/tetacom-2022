@@ -1,6 +1,7 @@
 ._horizontal-banner {
   border-radius: 20px;
   overflow: hidden;
+  color: var(--white-color);
 
   @include tablet {
     display: grid;
@@ -22,17 +23,56 @@
     font-weight: 500;
     font-size: 32px;
     line-height: 38px;
-    color: var(--white-color);
   }
 
   &__description {
     margin: 64px 0 0;
-    font-size: 18px;
-    line-height: 156%;
-    color: var(--white-color);
 
     @include mobile {
       margin-top: 32px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 156%;
+    }
+
+    ul,
+    ol {
+      padding: 0;
+      padding-left: 20px;
+      margin: 1em 0;
+
+      li {
+        font-size: 18px;
+        line-height: 156%;
+
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  &__bottom-title {
+    margin: 54px 0 0;
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  &__action {
+    margin-top: 54px;
+    width: max-content;
+
+    &-buttom {
+    }
+
+    &-text {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 16px;
+      line-height: 175%;
+      padding: 0 50px;
     }
   }
 
