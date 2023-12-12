@@ -1,6 +1,6 @@
 ._accordion {
   &__item {
-    //padding: 28px 24px;
+    padding: 28px 24px;
 
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -8,11 +8,71 @@
   }
 
   &__header {
+  }
+
+  &__button {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 0 72px 0 0;
+    background: none;
+    border: none;
     color: var(--black-color);
     font-size: 32px;
     font-weight: 500;
+    cursor: pointer;
+    transition: color var(--delay) var(--timing-func);
+
+    &-icon {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      font-size: 0;
+      border-radius: 28px;
+      border: 2px solid var(--black-color);
+      padding: 12px 20px;
+      max-height: 100%;
+      transition: height var(--delay) var(--timing-func),
+        border var(--delay) var(--timing-func);
+
+      svg {
+        transition: transform var(--delay) var(--timing-func);
+
+        path {
+          transition: stroke var(--delay) var(--timing-func);
+        }
+      }
+    }
+
+    &:hover {
+      color: var(--primary-color);
+
+      ._accordion__button-icon {
+        border-color: var(--primary-color);
+      }
+
+      svg {
+        path {
+          stroke: var(--primary-color);
+        }
+      }
+    }
+
+    &[aria-expanded='true'] {
+      svg {
+        transform: rotate(45deg);
+      }
+    }
   }
 
   &__panel {
+    overflow: hidden;
+
+    &-content {
+      padding-top: 24px;
+    }
   }
 }

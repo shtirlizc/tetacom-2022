@@ -7,8 +7,19 @@
   h6 {
     margin: 1.45em 0 1.15em;
 
-    &:first-child,
+    &:first-child {
+      margin-top: 0;
+    }
+
     &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ol,
+  ul,
+  p {
+    &:first-child {
       margin-top: 0;
     }
   }
@@ -16,9 +27,8 @@
   ol,
   ul,
   p {
-    &:first-child,
     &:last-child {
-      margin-top: 0;
+      margin-bottom: 0;
     }
   }
 
