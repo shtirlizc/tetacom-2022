@@ -3,6 +3,34 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
-    margin: 0 0 44px;
+    margin: 0;
+  }
+
+  &__description {
+    @include clr;
+
+    margin-top: 24px;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-key {
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 14px;
+      line-height: 114%;
+    }
+
+    &-value {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 200%;
+    }
+  }
+
+  &__form {
+    margin-top: 36px;
   }
 }

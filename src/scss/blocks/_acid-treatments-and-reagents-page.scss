@@ -65,7 +65,32 @@
     margin-top: 72px;
   }
 
+  &__resume {
+    padding: 60px 110px;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 84px;
+  }
+
   &__price {
+    &-title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    &-subtitle {
+      margin: 24px 0 0;
+      color: var(--primary-color);
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    &-text {
+      margin-top: 44px;
+    }
   }
 
   &__feedback {
