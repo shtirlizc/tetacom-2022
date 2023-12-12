@@ -1,5 +1,5 @@
 ._acid-treatments-and-reagents-page {
-  padding: 180px 0;
+  padding: 224px 0 180px;
   display: grid;
   gap: 160px;
 
@@ -31,12 +31,16 @@
     margin-top: 44px;
     font-size: 18px;
     line-height: 155%;
+
+    @include desktop {
+      padding-right: 40%;
+    }
   }
 
   &__props {
     @include clr;
 
-    margin-top: 60px;
+    margin-top: 58px;
     padding-top: 16px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -70,8 +74,8 @@
     border-radius: 20px;
     background-color: #f8f8f8;
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 84px;
+    gap: 48px;
+    grid-template-columns: 3fr 2fr;
   }
 
   &__price {
@@ -82,14 +86,14 @@
     }
 
     &-subtitle {
-      margin: 24px 0 0;
+      margin: 29px 0 0;
       color: var(--primary-color);
       font-size: 32px;
       font-weight: 500;
     }
 
     &-text {
-      margin-top: 44px;
+      margin-top: 47px;
     }
   }
 

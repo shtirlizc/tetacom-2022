@@ -1,10 +1,14 @@
 ._course-program {
   &__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 500;
   }
 
   &__list {
     display: grid;
-    gap: 12px;
+    gap: 15px;
+    margin-top: 44px;
   }
 
   &__item {
@@ -16,7 +20,7 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 175%;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     &-title {
@@ -26,7 +30,7 @@
     }
 
     &-text {
-      margin-top: 28px;
+      margin-top: 34px;
     }
   }
 }

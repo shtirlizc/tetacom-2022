@@ -1,6 +1,6 @@
 ._accordion {
   &__item {
-    padding: 28px 24px;
+    padding: 30px 24px;
 
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -33,7 +33,7 @@
       font-size: 0;
       border-radius: 28px;
       border: 2px solid var(--black-color);
-      padding: 12px 20px;
+      padding: 9px 17px;
       max-height: 100%;
       transition: height var(--delay) var(--timing-func),
         border var(--delay) var(--timing-func);
