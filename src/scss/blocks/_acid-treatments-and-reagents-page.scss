@@ -5,10 +5,12 @@
 
   @include mobile {
     padding: 80px 0;
+    gap: 64px;
   }
 
   @include tablet-only {
     padding: 120px 0;
+    gap: 100px;
   }
 
   &__start {
@@ -40,12 +42,18 @@
   &__props {
     @include clr;
 
-    margin-top: 58px;
     padding-top: 16px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 45px;
-    border-top: 2px solid rgba(0, 0, 0, 0.1);
+    gap: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 36px;
+
+    @include desktop {
+      border-top-width: 2px;
+      gap: 45px;
+      margin-top: 58px;
+    }
 
     &-item {
       display: grid;
@@ -65,8 +73,13 @@
 
   &__actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
-    margin-top: 72px;
+    margin-top: 36px;
+
+    @include desktop {
+      margin-top: 72px;
+    }
   }
 
   &__resume {
@@ -75,7 +88,20 @@
     background-color: #f8f8f8;
     display: grid;
     gap: 48px;
-    grid-template-columns: 3fr 2fr;
+
+    @include mobile {
+      padding: 16px;
+      border-radius: 12px;
+    }
+
+    @include tablet {
+      padding: 32px;
+      grid-template-columns: 3fr 2fr;
+    }
+
+    @include desktop {
+      padding: 60px 110px;
+    }
   }
 
   &__price {

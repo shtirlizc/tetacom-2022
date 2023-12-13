@@ -2,7 +2,12 @@
   &__title {
     margin: 0;
     font-size: 40px;
+    line-height: 1em;
     font-weight: 500;
+
+    @include mobile {
+      text-align: center;
+    }
   }
 
   &__list {
@@ -27,6 +32,11 @@
       margin: 0;
       font-size: 32px;
       font-weight: 500;
+
+      @include mobile {
+        font-size: 32px;
+        line-height: 1em;
+      }
     }
 
     &-text {

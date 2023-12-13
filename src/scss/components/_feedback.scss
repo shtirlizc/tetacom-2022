@@ -13,7 +13,7 @@
 
     &-item {
       display: flex;
-      align-items: center;
+      align-items: baseline;
       gap: 8px;
 
       &:not(:last-child) {
@@ -21,16 +21,18 @@
       }
     }
 
-    &-key {
-      color: rgba(0, 0, 0, 0.4);
+    &-key,
+    &-value {
       font-size: 14px;
       line-height: 114%;
     }
 
+    &-key {
+      color: rgba(0, 0, 0, 0.4);
+    }
+
     &-value {
-      font-size: 14px;
       font-weight: 500;
-      line-height: 200%;
     }
   }
 

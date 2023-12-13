@@ -2,6 +2,10 @@
   &__item {
     padding: 30px 24px;
 
+    @include mobile {
+      padding: 16px;
+    }
+
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -23,6 +27,11 @@
     cursor: pointer;
     transition: color var(--delay) var(--timing-func);
 
+    @include mobile {
+      font-size: 20px;
+      padding: 0 52px 0 0;
+    }
+
     &-icon {
       position: absolute;
       right: 0;
@@ -34,9 +43,12 @@
       border-radius: 28px;
       border: 2px solid var(--black-color);
       padding: 9px 17px;
-      max-height: 100%;
       transition: height var(--delay) var(--timing-func),
         border var(--delay) var(--timing-func);
+
+      @include mobile {
+        padding: 8px;
+      }
 
       svg {
         transition: transform var(--delay) var(--timing-func);
