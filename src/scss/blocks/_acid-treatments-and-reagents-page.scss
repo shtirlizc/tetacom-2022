@@ -88,6 +88,8 @@
     background-color: #f8f8f8;
     display: grid;
     gap: 48px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
 
     @include mobile {
       padding: 16px;
