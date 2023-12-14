@@ -6,6 +6,11 @@
       margin-bottom: 44px;
     }
 
+    &--center {
+      display: flex;
+      justify-content: center;
+    }
+
     &--last {
       margin-bottom: 0;
     }
