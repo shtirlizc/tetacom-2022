@@ -17,15 +17,37 @@
   }
 
   &__item {
-    padding: 20px 24px;
     border-radius: 16px;
     background: #f8f8f8;
+    overflow: hidden;
+
+    &-header {
+      border: none;
+      width: 100%;
+      display: grid;
+      gap: 15px;
+      text-align: left;
+      padding: 20px 24px;
+      cursor: pointer;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: background-color var(--delay) var(--timing-func);
+
+      &:hover {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+      }
+    }
+
+    &-date,
+    &-title {
+      transition: color var(--delay) var(--timing-func);
+    }
 
     &-date {
       font-size: 16px;
       font-weight: 400;
       line-height: 175%;
-      margin-bottom: 15px;
     }
 
     &-title {
@@ -34,13 +56,21 @@
       font-weight: 500;
 
       @include mobile {
-        font-size: 32px;
+        font-size: 20px;
         line-height: 1em;
       }
     }
 
     &-text {
-      margin-top: 34px;
+      overflow: hidden;
+    }
+
+    &-content {
+      padding: 24px;
+
+      &:empty {
+        display: none;
+      }
     }
   }
 }

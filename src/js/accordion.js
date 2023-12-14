@@ -6,5 +6,9 @@ export const AccordionBlock = {
       duration: 250,
       showMultiple: true,
     });
+    new Accordion(Array.from(document.querySelectorAll('.js-accordion')), {
+      duration: 250,
+      showMultiple: true,
+    });
   },
 };
