@@ -1,11 +1,11 @@
 ._accordion {
+  --padding: 30px 24px;
+
+  @include mobile {
+    --padding: 16px;
+  }
+
   &__item {
-    padding: 30px 24px;
-
-    @include mobile {
-      padding: 16px;
-    }
-
     &:not(:last-child) {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -16,9 +16,10 @@
 
   &__button {
     position: relative;
+    padding: var(--padding);
+    padding-right: 72px;
     width: 100%;
     text-align: left;
-    padding: 0 72px 0 0;
     background: none;
     border: none;
     color: var(--black-color);
@@ -29,7 +30,7 @@
 
     @include mobile {
       font-size: 20px;
-      padding: 0 52px 0 0;
+      padding-right: 52px;
     }
 
     &-icon {
@@ -84,7 +85,8 @@
     overflow: hidden;
 
     &-content {
-      padding-top: 24px;
+      padding: var(--padding);
+      padding-top: 0;
     }
   }
 }
