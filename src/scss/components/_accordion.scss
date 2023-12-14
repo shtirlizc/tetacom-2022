@@ -87,6 +87,10 @@
     &-content {
       padding: var(--padding);
       padding-top: 0;
+
+      &:empty {
+        display: none;
+      }
     }
   }
 }
