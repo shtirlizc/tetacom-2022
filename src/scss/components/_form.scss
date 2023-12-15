@@ -1,18 +1,15 @@
 ._form {
-  &__group {
-    margin-bottom: var(--space4x);
+  display: grid;
+  gap: var(--space4x);
 
+  &__group {
     &--bottom-large {
-      margin-bottom: 44px;
+      margin-bottom: 12px;
     }
 
     &--center {
       display: flex;
       justify-content: center;
-    }
-
-    &--last {
-      margin-bottom: 0;
     }
   }
 

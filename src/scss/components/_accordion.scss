@@ -17,7 +17,7 @@
   &__button {
     position: relative;
     padding: var(--padding);
-    padding-right: 72px;
+    padding-right: 92px;
     width: 100%;
     text-align: left;
     background: none;
@@ -30,12 +30,12 @@
 
     @include mobile {
       font-size: 20px;
-      padding-right: 52px;
+      padding-right: 72px;
     }
 
     &-icon {
       position: absolute;
-      right: 0;
+      right: 22px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;

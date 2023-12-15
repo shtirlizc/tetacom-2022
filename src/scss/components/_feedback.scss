@@ -9,7 +9,7 @@
   &__description {
     @include clr;
 
-    margin-top: 24px;
+    margin-top: 32px;
 
     &-item {
       display: flex;
@@ -17,7 +17,7 @@
       gap: 8px;
 
       &:not(:last-child) {
-        margin-bottom: 4px;
+        margin-bottom: 16px;
       }
     }
 
@@ -37,6 +37,6 @@
   }
 
   &__form {
-    margin-top: 36px;
+    margin-top: 40px;
   }
 }
