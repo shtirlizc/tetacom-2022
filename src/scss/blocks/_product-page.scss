@@ -55,6 +55,35 @@
       margin-top: 92px;
     }
 
+    a {
+      display: inline-block;
+
+      &[data-video] {
+        position: relative;
+        overflow: hidden;
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background-image: url('../../img/icon-youtube.svg');
+          background-position: center;
+          background-repeat: no-repeat;
+          pointer-events: none;
+          transition: transform var(--delay) ease-in-out;
+        }
+
+        &:hover {
+          &::after {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
     img {
       width: 100%;
       height: auto;
