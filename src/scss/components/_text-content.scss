@@ -111,9 +111,23 @@
 
   img {
     max-width: 100%;
+    width: 100%;
+    cursor: pointer;
+
+    .auto {
+      width: auto;
+    }
   }
 
   a {
     color: var(--primary-color);
+  }
+
+  iframe {
+    aspect-ratio: 16 / 9;
+    margin: auto;
+    width: 100%;
+    height: auto;
+    border: none;
   }
 }

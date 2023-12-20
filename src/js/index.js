@@ -14,6 +14,7 @@ import { Vacancies } from './vacancies';
 import { StartScreenSwiper } from './start-screen-swiper';
 import { Slider } from './slider';
 import { AccordionBlock } from './accordion';
+import { textContent } from './textContent';
 
 window.Modal = Modal;
 
@@ -34,4 +35,5 @@ window.addEventListener('load', () => {
   Cookie.init();
   Slider.init();
   AccordionBlock.init();
+  textContent();
 });
