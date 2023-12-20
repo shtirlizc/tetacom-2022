@@ -57,6 +57,7 @@
 
     a {
       display: inline-block;
+      width: 100%;
 
       &[data-video] {
         position: relative;
@@ -69,7 +70,7 @@
           height: 100%;
           top: 0;
           left: 0;
-          background-image: url('../../img/icon-youtube.svg');
+          background-image: url(/dist/img/icon-youtube.svg);
           background-position: center;
           background-repeat: no-repeat;
           pointer-events: none;
