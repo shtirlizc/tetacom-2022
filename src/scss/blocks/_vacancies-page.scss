@@ -9,7 +9,27 @@
     padding: 120px 0;
   }
 
-  &__title {
+  &__description {
+    margin-top: 28px;
+    display: grid;
+    gap: 0.5em;
+
+    p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 155%;
+
+      a {
+        color: var(--text-color);
+        transition: color var(--delay), border-color var(--delay);
+        border-bottom: 1px solid var(--text-color);
+
+        &:hover {
+          color: var(--primary-color);
+          border-bottom-color: transparent;
+        }
+      }
+    }
   }
 
   &__body {
