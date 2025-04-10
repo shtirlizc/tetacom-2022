@@ -1,0 +1,25 @@
+.is-mobile {
+  /* tablet */
+  @media (width >= 768px) {
+    display: none;
+  }
+}
+
+.is-touch {
+  /* desktop */
+  @media (width >= 1080px) {
+    display: none;
+  }
+}
+
+.is-desktop {
+  /* mobile */
+  @media (width < 768px) {
+    display: none;
+  }
+
+  /* tablet-only */
+  @media (width >= 768px) and (width < 1080px) {
+    display: none;
+  }
+}

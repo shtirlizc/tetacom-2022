@@ -1,0 +1,44 @@
+/* 768-1080px - tablet */
+/* 1081-1140 - desktop */
+/* 1141-1440 - widescreen */
+/* 1441px и выше - fullhd */
+
+/* mobile */
+@media (width < 768px) {
+  /* media query rules */
+}
+
+/* tablet */
+@media (width >= 768px) {
+  /* media query rules */
+}
+
+/* tablet-only */
+@media (width >= 768px) and (width < 1080px) {
+  /* media query rules */
+}
+
+/* desktop */
+@media (width >= 1080px) {
+  /* media query rules */
+}
+
+/* desktop-only */
+@media (width >= 1080px) and (width < 1140px) {
+  /* media query rules */
+}
+
+/* widescreen */
+@media (width >= 1140px) {
+  /* media query rules */
+}
+
+/* widescreen-only */
+@media (width >= 1140px) and (width < 1440px) {
+  /* media query rules */
+}
+
+/* fullhd */
+@media (width >= 1440px) {
+  /* media query rules */
+}

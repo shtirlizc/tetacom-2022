@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tetacom.pro/sitemap.xml
