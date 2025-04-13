@@ -18,6 +18,11 @@
   /* media query rules */
 }
 
+/* touche */
+@media (width < 1080px) {
+  /* media query rules */
+}
+
 /* desktop */
 @media (width >= 1080px) {
   /* media query rules */

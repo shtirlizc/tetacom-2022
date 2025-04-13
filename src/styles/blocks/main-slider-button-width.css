@@ -1,0 +1,11 @@
+.main-slider-button-width {
+  display: block;
+  width: 280px;
+  margin: auto;
+  text-align: left;
+
+  /* tablet */
+  @media (width >= 768px) {
+    width: 346px;
+  }
+}

@@ -1,3 +1,47 @@
 ---
 import "@/styles/_global.css";
+
+let siteUrl: string = import.meta.env.SITE;
+const title = "Тетаком";
+const description = "Тетаком: облачные сервисы для нефтегазовой отрасли";
+const keywords: string[] = [];
+const image = "cover.jpg";
+
+siteUrl = siteUrl.substring(-1) === "/" ? siteUrl : `${siteUrl}/`;
 ---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+  <meta name="generator" content={Astro.generator} />
+
+  <link rel="sitemap" href="/sitemap.xml" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords.join(",")} />
+
+  <meta property="og:url" content={siteUrl} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:image" content={`${siteUrl}${image}`} />
+  <meta property="og:image:type" content="image/jpg" />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="На ковре" />
+  <meta property="og:locale" content="ru_RU" />
+
+  <meta name="twitter:url" content={siteUrl} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${image}`} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="light dark" />
+</head>

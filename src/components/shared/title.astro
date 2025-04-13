@@ -1,0 +1,17 @@
+---
+interface Props {
+  TagName?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+
+const { TagName = "h2" } = Astro.props;
+---
+
+<TagName><slot /></TagName>
+
+<style>
+  .title {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 47px;
+  }
+</style>

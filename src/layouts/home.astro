@@ -1,12 +1,20 @@
 ---
 import Head from "@/components/shared/head.astro";
+import Header from "@/components/shared/header.astro";
+import Footer from "@/components/shared/footer.astro";
+import Modals from "@/components/shared/modals/_index.astro";
 ---
 
 <html lang="ru">
   <Head />
 
   <body>
+    <Header />
+
     <slot />
+
+    <Footer />
+    <Modals />
   </body>
 </html>
 
