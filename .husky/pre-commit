@@ -1,3 +1,0 @@
-# .husky/pre-commit
-npm run test
-git update-index --again

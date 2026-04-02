@@ -1,64 +1,12 @@
 ---
-import Home from "@/layouts/home.astro";
-import Feedback from "@/components/pages/home/feedback.astro";
-import Partners from "@/components/pages/home/partners.astro";
-import AboutNumbers from "@/components/pages/home/about-numbers.astro";
-import StartScreen from "@/components/pages/home/start-screen.astro";
-import WhoAreWe from "@/components/pages/home/who-are-we.astro";
-import Container from "@/components/shared/container.astro";
-import MainSlider from "@/components/pages/home/main-slider.astro";
-import Capabilities from "@/components/pages/home/capabilities.astro";
-import Title from "@/components/shared/title.astro";
+import Layout from "../layouts/layout.astro";
 ---
 
-<Home>
-  <main>
-    <StartScreen />
-
-    <Container>
-      <WhoAreWe />
-    </Container>
-
-    <section class="competencies">
-      <h2 class="competencies__title">
-        <Title>
-          <span class="main-slider-button-width">Компетенции</span>
-        </Title>
-      </h2>
-
-      <div class="competencies__body">
-        <MainSlider />
-      </div>
-    </section>
-
-    <Container>
-      <section>
-        <Capabilities />
-      </section>
-
-      <Feedback />
-      <Partners />
-    </Container>
-
-    <AboutNumbers />
-  </main>
-</Home>
-
-<style>
-  .competencies {
-    padding: 72px 0 79px;
-
-    & .competencies__title {
-      text-align: center;
-    }
-
-    & .competencies__body {
-      margin-top: var(--space4x);
-
-      /* desktop */
-      @media (width >= 1080px) {
-        margin-top: 48px;
-      }
-    }
-  }
-</style>
+<Layout>
+  <h1>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis,
+    dolor hic laborum veritatis voluptas! Adipisci aspernatur dicta dolorem,
+    doloremque doloribus fugiat, harum iure laborum nam porro tempora veniam
+    voluptas.
+  </h1>
+</Layout>
