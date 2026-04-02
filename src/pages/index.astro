@@ -3,10 +3,19 @@ import Layout from "../layouts/layout.astro";
 ---
 
 <Layout>
-  <h1>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A blanditiis,
-    dolor hic laborum veritatis voluptas! Adipisci aspernatur dicta dolorem,
-    doloremque doloribus fugiat, harum iure laborum nam porro tempora veniam
-    voluptas.
-  </h1>
+  <main class="page-main"></main>
 </Layout>
+
+<style>
+  .page-main {
+    flex: 1;
+    padding-top: 72px;
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    .page-main {
+      padding-top: 92px;
+    }
+  }
+</style>

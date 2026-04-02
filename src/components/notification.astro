@@ -1,0 +1,34 @@
+---
+const { ...attrs } = Astro.props;
+---
+
+<div class="_notification" {...attrs}>
+  <div class="_notification__body">
+    <slot />
+  </div>
+</div>
+
+<style>
+  ._notification {
+    position: relative;
+    pointer-events: auto;
+  }
+
+  ._notification__body {
+    position: absolute;
+    bottom: calc(100% + 4px);
+    left: -4px;
+    z-index: 21;
+    display: none;
+    width: max-content;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: var(--white-color);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition:
+      opacity var(--delay) var(--timing-func),
+      transform var(--delay) var(--timing-func);
+  }
+</style>

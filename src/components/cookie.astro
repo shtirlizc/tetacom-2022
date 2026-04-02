@@ -1,0 +1,54 @@
+---
+import Btn from "./btn.astro";
+import Notification from "./notification.astro";
+---
+
+<div class="_cookie">
+  <Notification>
+    <div class="_cookie__content">
+      <p>Мы используем файлы cookie.</p>
+      <p>
+        Подробнее
+        <a href="#"
+          >в нашей политике в отношении использования файлов «cookie»</a
+        >
+      </p>
+      <p>
+        <Btn>Принять</Btn>
+      </p>
+    </div>
+  </Notification>
+</div>
+
+<style>
+  ._cookie {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 21;
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  ._cookie__content {
+    width: 440px;
+    padding: 12px 24px;
+  }
+
+  ._cookie__content p {
+    margin: 1em 0;
+    line-height: 1.2em;
+  }
+
+  ._cookie__content a {
+    color: var(--primary-color);
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._cookie__content {
+      width: 280px;
+    }
+  }
+</style>

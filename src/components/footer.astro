@@ -1,0 +1,212 @@
+---
+import Container from "./container.astro";
+---
+
+<footer class="_footer">
+  <Container>
+    <h2 class="_footer__title">
+      Создадим или предоставим программное обеспечение<br />
+      для вашей компании в нефтегазовой сфере
+    </h2>
+
+    <button type="button" class="_footer__briefing">Связаться с нами</button>
+
+    <p class="_footer__email">
+      <a href="mailto:info@tetacom.pro">info@tetacom.pro</a>
+    </p>
+    <p class="_footer__phone">
+      <a href="tel:88002500224">8 800 250-02-24</a>
+    </p>
+
+    <div class="_footer__bottom">
+      <div class="_footer__nav">
+        <ul class="_footer__menu">
+          <li class="_footer__menu-item active">
+            <a href="#" class="_footer__menu-link">Главная</a>
+          </li>
+          <li class="_footer__menu-item">
+            <a href="#" class="_footer__menu-link">Команда</a>
+          </li>
+          <li class="_footer__menu-item">
+            <a href="#" class="_footer__menu-link">Вакансии</a>
+          </li>
+          <li class="_footer__menu-item">
+            <a href="#" class="_footer__menu-link">Контакты</a>
+          </li>
+        </ul>
+        <ul class="_footer__menu">
+          <li class="_footer__menu-item">
+            <a href="#" class="_footer__menu-link">Оферта</a>
+          </li>
+          <li class="_footer__menu-item">
+            <a href="#" class="_footer__menu-link">
+              Пользовательское соглашение
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <p class="_footer__copyright">
+        © 2018-2023, Тетаком. Все права защищены.
+      </p>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  ._footer {
+    margin-top: auto;
+    margin-bottom: 0;
+    overflow: hidden;
+    background-color: #1d212d;
+    padding: 80px 0;
+  }
+
+  ._footer__title {
+    margin: 0;
+    color: var(--white-color);
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._footer__briefing {
+    margin: 36px 0 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    font: inherit;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 33px;
+    text-decoration-line: underline;
+  }
+
+  ._footer__briefing:hover {
+    text-decoration-line: none;
+  }
+
+  ._footer__email {
+    margin: 98px 0 0;
+  }
+
+  ._footer__email a {
+    color: rgb(255 255 255 / 60%);
+    font-size: 16px;
+    line-height: 175%;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._footer__email a:hover,
+  ._footer__phone a:hover,
+  ._footer__menu-link:hover {
+    color: var(--primary-color);
+  }
+
+  ._footer__phone {
+    margin: 7px 0 0;
+  }
+
+  ._footer__phone a {
+    color: rgb(255 255 255 / 60%);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._footer__bottom {
+    margin-top: 40px;
+  }
+
+  ._footer__nav {
+    display: flex;
+    align-items: center;
+    gap: 12px 48px;
+  }
+
+  ._footer__menu {
+    display: flex;
+    align-items: center;
+    gap: 12px 48px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ._footer__menu-item.active a {
+    color: var(--primary-color);
+  }
+
+  ._footer__menu-link {
+    display: inline-block;
+    padding: 12px 0;
+    color: var(--white-color);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._footer__copyright {
+    margin: 48px 0 0;
+    color: var(--white-color);
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._footer {
+      text-align: center;
+    }
+
+    ._footer__title {
+      font-size: 32px;
+      line-height: 1.1em;
+    }
+
+    ._footer__briefing {
+      font-size: 24px;
+      line-height: 1.2em;
+    }
+
+    ._footer__email {
+      margin-top: 64px;
+    }
+
+    ._footer__phone a {
+      font-size: 28px;
+      line-height: 1.1em;
+    }
+
+    ._footer__nav,
+    ._footer__menu {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  /* touch */
+  @media (width < 1081px) {
+    ._footer__bottom {
+      margin-top: 40px;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._footer__bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    ._footer__copyright {
+      margin-top: 0;
+    }
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+const { ...attrs } = Astro.props;
+---
+
+<div class="_container" {...attrs}>
+  <slot />
+</div>
+
+<style>
+  ._container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1298px;
+    padding: 0 var(--space2x);
+  }
+</style>
