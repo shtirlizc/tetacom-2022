@@ -1,0 +1,114 @@
+---
+import whoAreWeImage from "../../assets/who-are-we/image.svg";
+
+const WhoAreWeImage = whoAreWeImage;
+---
+
+<section class="_who-are-we">
+  <div class="_who-are-we__info _prompt-block">
+    <p class="_prompt-block__hint">Кто мы?</p>
+
+    <h2 class="_prompt-block__title">
+      Тетаком — это сообщество экспертов в нефтяной отрасли, создающее цифровые
+      решения
+    </h2>
+
+    <p class="_prompt-block__description">
+      Мы занимаемся разработкой цифровых технологий и программных продуктов,
+      научно-исследовательскими и опытно-конструкторскими работами,
+      лабораторными исследованиями и экспертными услугами по проектированию
+      дизайнов ОПЗ, ГРП, РИР и глушения и других ГТМ
+    </p>
+  </div>
+
+  <div class="_who-are-we__image">
+    <WhoAreWeImage
+      width="1300"
+      height="757"
+      role="img"
+      aria-label="Tetacom ui-kit blocks"
+    />
+  </div>
+</section>
+
+<style>
+  ._prompt-block {
+    --padding-left: 200px;
+
+    display: grid;
+    grid-template-columns: var(--padding-left) 1fr;
+    gap: 20px;
+  }
+
+  ._prompt-block__hint {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin: 0;
+    padding-top: 6px;
+    font-size: 16px;
+    line-height: 1.4em;
+  }
+
+  ._prompt-block__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._prompt-block__description {
+    margin: 56px 0 0;
+    padding-right: 40%;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  ._who-are-we__image {
+    margin-top: 180px;
+  }
+
+  ._who-are-we__image :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._prompt-block {
+      grid-template-columns: 1fr;
+    }
+
+    ._prompt-block__hint {
+      padding-top: 0;
+    }
+
+    ._prompt-block__title {
+      font-size: 24px;
+      line-height: 1.1em;
+    }
+
+    ._prompt-block__description {
+      margin-top: 24px;
+      padding-right: 0;
+    }
+
+    ._who-are-we__image {
+      margin-top: 40px;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._prompt-block {
+      --padding-left: 120px;
+    }
+
+    ._prompt-block__description {
+      padding-right: 20%;
+    }
+
+    ._who-are-we__image {
+      margin-top: 92px;
+    }
+  }
+</style>

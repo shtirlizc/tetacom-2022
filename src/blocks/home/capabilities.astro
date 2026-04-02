@@ -1,0 +1,245 @@
+---
+import { Image } from "astro:assets";
+import product1 from "../../assets/products/product-1.png";
+import product2 from "../../assets/products/product-2.png";
+import product3 from "../../assets/products/product-3.svg";
+import product4 from "../../assets/products/product-4.png";
+
+const Product3 = product3;
+---
+
+<div class="_capabilities">
+  <div class="_capabilities__items js-sticky-track">
+    <article class="_capabilities__item">
+      <div class="_capabilities__item-content" style="background-color: #3c5df2">
+        <div class="_capabilities__item-info">
+          <h3 class="_capabilities__item-title">
+            Симулятор гидроразрыва<br />пласта
+          </h3>
+          <a href="#" class="_capabilities__item-link">
+            Обзор продукта
+            <span style="background-color: #353749">
+              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
+                <path
+                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="_capabilities__item-picture">
+          <Image src={product1} alt="" width={628} height={420} />
+        </div>
+      </div>
+    </article>
+
+    <article class="_capabilities__item">
+      <div class="_capabilities__item-content" style="background-color: #353749">
+        <div class="_capabilities__item-info">
+          <h3 class="_capabilities__item-title">
+            Симулятор обработки призабойных зон
+          </h3>
+          <a href="#" class="_capabilities__item-link">
+            Написать нам
+            <span style="background-color: #3c5df2">
+              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
+                <path
+                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="_capabilities__item-picture">
+          <Image src={product2} alt="" width={628} height={420} />
+        </div>
+      </div>
+    </article>
+
+    <article class="_capabilities__item">
+      <div class="_capabilities__item-content" style="background-color: #8792a9">
+        <div class="_capabilities__item-info">
+          <h3 class="_capabilities__item-title">
+            Удаленный мониторинг и аналитика бурения
+          </h3>
+          <a href="#" class="_capabilities__item-link">
+            Обзор продукта
+            <span style="background-color: #ffffff">
+              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
+                <path
+                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
+                  stroke="#8792a9"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="_capabilities__item-picture">
+          <Product3 aria-hidden="true" focusable="false" />
+        </div>
+      </div>
+    </article>
+
+    <article class="_capabilities__item">
+      <div class="_capabilities__item-content" style="background-color: #8a6eba">
+        <div class="_capabilities__item-info">
+          <h3 class="_capabilities__item-title">
+            Построение графика исследований
+          </h3>
+          <a href="#" class="_capabilities__item-link">
+            Обзор продукта
+            <span style="background-color: #353749">
+              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
+                <path
+                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </a>
+        </div>
+        <div class="_capabilities__item-picture">
+          <Image src={product4} alt="" width={628} height={420} />
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<style>
+  ._capabilities__items {
+    display: grid;
+    justify-content: center;
+    gap: var(--space3x);
+    margin-top: var(--space5x);
+  }
+
+  ._capabilities__item {
+    width: calc(100vw - 32px);
+    overflow: hidden;
+    border-radius: 20px;
+    color: var(--white-color);
+  }
+
+  ._capabilities__item-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 92px 60px;
+  }
+
+  ._capabilities__item-title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._capabilities__item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    color: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  ._capabilities__item-link span {
+    display: flex;
+    flex: 0 0 52px;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    transition: transform var(--delay) ease-in-out;
+  }
+
+  ._capabilities__item-link:hover span {
+    transform: translate(10px);
+  }
+
+  ._capabilities__item-picture :global(img),
+  ._capabilities__item-picture :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._capabilities__item-info {
+      padding: 32px;
+    }
+
+    ._capabilities__item-title {
+      font-size: 24px;
+      line-height: 1.1em;
+    }
+
+    ._capabilities__item-picture {
+      display: none;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._capabilities__item {
+      width: 628px;
+    }
+
+    ._capabilities__item-content {
+      display: grid;
+      grid-template-columns: 1fr 430px;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._capabilities__item-info {
+      padding: 44px 32px;
+    }
+
+    ._capabilities__item-title {
+      font-size: 32px;
+      line-height: 1.1em;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._capabilities__item {
+      width: 880px;
+    }
+  }
+
+  /* widescreen */
+  @media (width >= 1200px) {
+    ._capabilities__item {
+      width: 920px;
+    }
+  }
+
+  /* fullhd */
+  @media (width >= 1440px) {
+    ._capabilities__item {
+      width: 1190px;
+    }
+  }
+</style>

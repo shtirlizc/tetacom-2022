@@ -1,0 +1,97 @@
+---
+import Container from "../../components/container.astro";
+---
+
+<section class="_about-numbers">
+  <Container>
+    <h2 class="_about-numbers__title">О нас в цифрах</h2>
+
+    <ul class="_about-numbers__body">
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">7</span>
+        <span class="_about-numbers__item-text">продуктов</span>
+      </li>
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">40+</span>
+        <span class="_about-numbers__item-text">специалистов</span>
+      </li>
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">100+</span>
+        <span class="_about-numbers__item-text">пользователей</span>
+      </li>
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">30+</span>
+        <span class="_about-numbers__item-text">лабораторных исследований</span>
+      </li>
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">50+</span>
+        <span class="_about-numbers__item-text">выполненных НИОКР</span>
+      </li>
+      <li class="_about-numbers__item">
+        <span class="_about-numbers__item-number">4</span>
+        <span class="_about-numbers__item-text">страны присутствия</span>
+      </li>
+    </ul>
+  </Container>
+</section>
+
+<style>
+  ._about-numbers {
+    padding: calc(2 * var(--space5x)) 0;
+    background-color: #f8f8f8;
+  }
+
+  ._about-numbers__title {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+    text-align: center;
+  }
+
+  ._about-numbers__body {
+    display: grid;
+    gap: var(--space5x);
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ._about-numbers__item {
+    text-align: center;
+  }
+
+  ._about-numbers__item-number {
+    display: block;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._about-numbers__item-text {
+    display: block;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._about-numbers__body {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space5x) 0;
+      margin-top: 40px;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._about-numbers {
+      padding: 125px 0;
+    }
+
+    ._about-numbers__body {
+      gap: 70px 0;
+      margin-top: 70px;
+    }
+  }
+</style>

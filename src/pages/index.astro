@@ -1,11 +1,30 @@
 ---
+import AboutNumbers from "../blocks/home/about-numbers.astro";
+import Capabilities from "../blocks/home/capabilities.astro";
+import Competencies from "../blocks/home/competencies.astro";
+import Feedback from "../blocks/home/feedback.astro";
 import Layout from "../layouts/layout.astro";
-import StartScreen from "../blocks/index/start-screen.astro";
+import StartScreen from "../blocks/home/start-screen.astro";
+import Partners from "../blocks/home/partners.astro";
+import WhoAreWe from "../blocks/home/who-are-we.astro";
+import Container from "../components/container.astro";
 ---
 
 <Layout>
   <main class="page-main">
     <StartScreen />
+    <Container>
+      <WhoAreWe />
+    </Container>
+    <Competencies />
+    <Container>
+      <section>
+        <Capabilities />
+      </section>
+      <Feedback />
+      <Partners />
+    </Container>
+    <AboutNumbers />
   </main>
 </Layout>
 

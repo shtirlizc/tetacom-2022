@@ -1,0 +1,104 @@
+---
+const {
+  id,
+  name,
+  label,
+  type = "text",
+  multiline = false,
+  required = false,
+  hook,
+} = Astro.props;
+
+const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).join(" ");
+---
+
+<div class="_input">
+  {
+    multiline ? (
+      <textarea
+        id={id}
+        name={name}
+        placeholder=" "
+        required={required}
+      ></textarea>
+    ) : (
+      <input
+        class={inputClass}
+        type={type}
+        name={name}
+        id={id}
+        placeholder=" "
+        required={required}
+      />
+    )
+  }
+  <label for={id}>{label}</label>
+  <span class="_input__border"></span>
+</div>
+
+<style>
+  ._input {
+    --padding: 11px;
+
+    position: relative;
+  }
+
+  ._input input,
+  ._input textarea {
+    width: 100%;
+    height: 44px;
+    padding: 0 var(--padding);
+    border: 0;
+    border-bottom: 2px solid var(--text-color);
+    background-color: transparent;
+    color: var(--text-color);
+    font-family: var(--font-primary);
+    font-size: 16px;
+    font-weight: 600;
+    font-feature-settings: "liga" off;
+  }
+
+  ._input textarea {
+    resize: none;
+    padding: 10px;
+  }
+
+  ._input input:focus + label,
+  ._input textarea:focus + label {
+    transform: translateY(-20px) scale(0.7);
+  }
+
+  ._input input:focus ~ ._input__border,
+  ._input textarea:focus ~ ._input__border {
+    transform: scaleX(1);
+  }
+
+  ._input label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0 var(--padding);
+    color: var(--grey-color);
+    font-size: 16px;
+    font-weight: 600;
+    pointer-events: none;
+    transform: translateY(-20px) scale(0.7);
+    transform-origin: left top;
+    transition: transform var(--delay) var(--timing-func);
+  }
+
+  ._input__border {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform calc(1.5 * var(--delay)) var(--timing-func);
+  }
+</style>

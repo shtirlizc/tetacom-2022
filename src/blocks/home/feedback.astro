@@ -1,0 +1,160 @@
+---
+import Btn from "../../components/btn.astro";
+import Form from "../../components/form.astro";
+import Input from "../../components/input.astro";
+---
+
+<section class="_feedback-block">
+  <div class="_feedback-block__card">
+    <div class="_feedback-block__info">
+      <h2 class="_feedback-block__title">
+        Закажите демонстрацию наших продуктов
+      </h2>
+      <p class="_feedback-block__description">
+        Мы занимаемся разработкой цифровых технологий и программных продуктов,
+        научно-исследовательскими и опытно-конструкторскими работами,
+        лабораторными и опытно-конструкторскими работами, лабораторными
+      </p>
+    </div>
+
+    <div class="_feedback-block__form">
+      <div class="_feedback">
+        <h3 class="_feedback__title">Оставьте заявку</h3>
+
+        <div class="_feedback__form">
+          <Form hook="form">
+            <div class="_form__group">
+              <Input type="text" name="name" id="name" label="Имя" required />
+            </div>
+            <div class="_form__group">
+              <Input
+                type="tel"
+                name="phone"
+                id="phone"
+                label="Телефон"
+                hook="phone-mask"
+                required
+              />
+            </div>
+            <div class="_form__group">
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                label="E-mail"
+                required
+              />
+            </div>
+            <div class="_form__group _form__group--bottom-large">
+              <Input
+                multiline
+                name="message"
+                id="message"
+                label="Комментарий"
+                required
+              />
+            </div>
+            <div class="_form__group _form__group--bottom-large">
+              <Btn type="submit" block>Оставить заявку</Btn>
+            </div>
+            <div class="_form__group">
+              <p class="_form__rules">
+                Заполняя форму, вы соглашаетесь на
+                <a href="#">обработку персональных данных</a>
+              </p>
+            </div>
+          </Form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  ._feedback-block {
+    padding: 120px 0 88px;
+  }
+
+  ._feedback-block__card {
+    padding: 32px;
+    border-radius: 0;
+    background-color: #f8f8f8;
+  }
+
+  ._feedback-block__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._feedback-block__description {
+    margin: 60px 0 0;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  ._feedback-block__form {
+    padding-left: 58px;
+  }
+
+  ._feedback__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  ._feedback__form {
+    margin-top: 40px;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._feedback-block {
+      margin-right: calc(-1 * var(--space2x));
+      margin-left: calc(-1 * var(--space2x));
+      padding: 80px 0 40px;
+    }
+
+    ._feedback-block__form {
+      margin-top: 60px;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._feedback-block__card {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 40px;
+      padding: 32px 64px;
+      border-radius: 20px;
+    }
+  }
+
+  /* touch */
+  @media (width < 1081px) {
+    ._feedback-block__title {
+      font-size: 32px;
+      line-height: 1.1em;
+    }
+
+    ._feedback-block__description {
+      margin-top: 30px;
+    }
+
+    ._feedback-block__form {
+      padding-left: 0;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._feedback-block__card {
+      gap: 130px;
+      padding: 60px 110px;
+    }
+  }
+</style>

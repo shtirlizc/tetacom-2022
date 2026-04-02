@@ -1,0 +1,37 @@
+---
+const { action = "", hook, ...attrs } = Astro.props;
+const classes = ["_form", hook === "form" && "js-form"].filter(Boolean).join(" ");
+---
+
+<form action={action} class={classes} {...attrs}>
+  <slot />
+</form>
+
+<style>
+  ._form {
+    display: grid;
+    gap: var(--space4x);
+  }
+
+  :global(._form__group--bottom-large) {
+    margin-bottom: 12px;
+  }
+
+  :global(._form__group--center) {
+    display: flex;
+    justify-content: center;
+  }
+
+  :global(._form__rules) {
+    margin: 0;
+    color: rgb(0 0 0 / 60%);
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  :global(._form__rules a) {
+    color: var(--primary-color);
+    text-decoration: underline;
+  }
+</style>
