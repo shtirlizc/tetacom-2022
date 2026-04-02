@@ -1,21 +1,16 @@
 ---
 import Layout from "../layouts/layout.astro";
+import StartScreen from "../blocks/index/start-screen.astro";
 ---
 
 <Layout>
-  <main class="page-main"></main>
+  <main class="page-main">
+    <StartScreen />
+  </main>
 </Layout>
 
 <style>
   .page-main {
     flex: 1;
-    padding-top: 72px;
-  }
-
-  /* desktop */
-  @media (width >= 1081px) {
-    .page-main {
-      padding-top: 92px;
-    }
   }
 </style>

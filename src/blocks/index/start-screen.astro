@@ -1,0 +1,263 @@
+---
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import ProjectTag from "../../components/project-tag.astro";
+import pdfIcon from "../../assets/icons/pdf-icon.svg";
+import logoLarge from "../../assets/start-screen/logo-large.svg";
+import buroptimaIcon from "../../assets/project-teasers/icons/buroptima-icon.svg";
+import rockFracIcon from "../../assets/project-teasers/icons/rock-frac-icon.svg";
+import rockLisIcon from "../../assets/project-teasers/icons/rock-lis-icon.svg";
+import rockStimIcon from "../../assets/project-teasers/icons/rock-stim-icon.svg";
+import rockWowIcon from "../../assets/project-teasers/icons/rock-wow-icon.svg";
+
+const PdfIcon = pdfIcon;
+const LogoLarge = logoLarge;
+
+const projectTags = [
+  {
+    href: "#",
+    icon: rockStimIcon,
+    text: "RockStim",
+  },
+  {
+    href: "#",
+    icon: rockLisIcon,
+    text: "RockLis",
+  },
+  {
+    href: "#",
+    icon: rockFracIcon,
+    text: "RockFrac",
+  },
+  {
+    href: "#",
+    icon: rockWowIcon,
+    text: "RockWow",
+  },
+  {
+    href: "#",
+    icon: buroptimaIcon,
+    text: "БурОптима",
+  },
+];
+---
+
+<section class="_start-screen">
+  <Container>
+    <div class="_start-screen__content">
+      <div class="_start-screen__info">
+        <h1 class="_start-screen__title">
+          Проектируем и создаем программные решения для нефтегазового сектора
+        </h1>
+        <p class="_start-screen__description">Наука и IT встречаются здесь</p>
+        <p class="_start-screen__presentation">
+          <a href="#">
+            <span class="_start-screen__presentation-icon">
+              <PdfIcon aria-hidden="true" focusable="false" />
+            </span>
+            <span>Смотреть презентацию компании</span>
+          </a>
+        </p>
+      </div>
+
+      <div class="_start-screen__image">
+        <LogoLarge
+          width="345"
+          height="475"
+          role="img"
+          aria-label="Логотип компании"
+        />
+      </div>
+    </div>
+  </Container>
+
+  <div class="_start-screen__projects">
+    <div class="swiper js-start-screen-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <Btn class="js-open-modal" data-target="modal-feedback">
+            Заказать разработку
+          </Btn>
+        </div>
+        {
+          projectTags.map((project) => (
+            <div class="swiper-slide">
+              <ProjectTag
+                href={project.href}
+                icon={project.icon}
+                text={project.text}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  ._start-screen {
+    padding: 238px 0 140px;
+  }
+
+  ._start-screen__title {
+    margin: 0;
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 71px;
+    letter-spacing: -2px;
+  }
+
+  ._start-screen__description {
+    margin: 49px 0 0;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+  }
+
+  ._start-screen__presentation {
+    margin: 72px 0 0;
+    padding-left: 3px;
+  }
+
+  ._start-screen__presentation a {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--primary-color);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 16px;
+    text-decoration: none;
+  }
+
+  ._start-screen__presentation-icon {
+    display: inline-flex;
+    flex: 0 0 20px;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  ._start-screen__presentation-icon :global(svg) {
+    width: 20px;
+    height: 20px;
+  }
+
+  ._start-screen__presentation a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background-color: var(--primary-color);
+    transition: width calc(1.5 * var(--delay)) ease-in-out;
+  }
+
+  ._start-screen__presentation a:hover::after {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+
+  ._start-screen__image :global(svg) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ._start-screen__projects {
+    margin-top: 133px;
+  }
+
+  ._start-screen__projects :global(.swiper-wrapper) {
+    align-items: center;
+  }
+
+  ._start-screen__projects :global(.swiper) {
+    padding: 0 var(--space2x);
+  }
+
+  ._start-screen__projects :global(.swiper-slide) {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    width: auto;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._start-screen {
+      padding: 80px 0;
+    }
+
+    ._start-screen__content {
+      text-align: center;
+    }
+
+    ._start-screen__presentation a {
+      gap: 0;
+    }
+
+    ._start-screen__presentation-icon {
+      display: none;
+    }
+
+    ._start-screen__image {
+      display: none;
+    }
+
+    ._start-screen__projects {
+      margin-top: 80px;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._start-screen__content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._start-screen {
+      padding: 140px 0;
+    }
+  }
+
+  /* touch */
+  @media (width < 1081px) {
+    ._start-screen__title {
+      font-size: 42px;
+      line-height: 1.1em;
+    }
+  }
+
+  /* widescreen */
+  @media (width >= 1200px) {
+    ._start-screen__projects :global(.swiper-slide.swiper-slide-active) {
+      flex-grow: 1;
+    }
+  }
+
+  /* widescreen-only */
+  @media (width >= 1338px) and (width < 1440px) {
+    ._start-screen__projects :global(.swiper) {
+      padding: 0 calc((100vw - 1298px) / 2);
+    }
+  }
+
+  /* fullhd */
+  @media (width >= 1440px) {
+    ._start-screen__projects :global(.swiper) {
+      padding: 0 calc((100vw - 1298px) / 2);
+    }
+  }
+</style>

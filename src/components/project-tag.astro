@@ -1,0 +1,48 @@
+---
+const { href = "#", icon, text } = Astro.props;
+const Icon = icon;
+---
+
+<a href={href} class="_project-tag">
+  <span class="_project-tag__icon">
+    <Icon aria-hidden="true" focusable="false" />
+  </span>
+  <span class="_project-tag__text">{text}</span>
+</a>
+
+<style>
+  ._project-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 20px 4px 4px;
+    border-radius: 26px;
+    background-color: #f8f8f8;
+    text-decoration: none;
+    transition: background-color var(--delay) var(--timing-func);
+  }
+
+  ._project-tag:hover {
+    background-color: #f1f1f1;
+  }
+
+  ._project-tag__icon {
+    display: flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+  }
+
+  ._project-tag__icon :global(svg) {
+    width: 100%;
+    height: 100%;
+  }
+
+  ._project-tag__text {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 600;
+  }
+</style>
