@@ -113,6 +113,62 @@ import Hamburger from "./hamburger.astro";
   </Container>
 </header>
 
+<script>
+  (() => {
+    let isClosed = false;
+    const toggleBtn = document.getElementById("hamburger");
+    const bg = document.querySelector("._header__bg");
+    const nav = document.querySelector("._header__navigation");
+    const body = document.documentElement;
+
+    if (!toggleBtn || !bg || !nav || !body) {
+      return;
+    }
+
+    const openMenu = () => {
+      bg.classList.add("active");
+
+      window.setTimeout(() => {
+        bg.classList.add("visible");
+        nav.classList.add("active");
+        body.classList.add("mobile-menu");
+      }, 50);
+    };
+
+    const closeMenu = () => {
+      bg.classList.remove("visible");
+      nav.classList.remove("active");
+      body.classList.remove("mobile-menu");
+
+      window.setTimeout(() => {
+        bg.classList.remove("active");
+      }, 500);
+    };
+
+    toggleBtn.addEventListener("click", () => {
+      if (isClosed) {
+        toggleBtn.classList.remove("is-open");
+        toggleBtn.classList.add("is-closed");
+        isClosed = false;
+        closeMenu();
+        return;
+      }
+
+      toggleBtn.classList.remove("is-closed");
+      toggleBtn.classList.add("is-open");
+      isClosed = true;
+      openMenu();
+    });
+
+    bg.addEventListener("click", () => {
+      toggleBtn.classList.remove("is-open");
+      toggleBtn.classList.add("is-closed");
+      isClosed = false;
+      closeMenu();
+    });
+  })();
+</script>
+
 <style>
   ._header {
     position: fixed;
@@ -169,6 +225,15 @@ import Hamburger from "./hamburger.astro";
     display: none;
     background-color: var(--black-color);
     opacity: 0;
+    transition: opacity calc(1.5 * var(--delay)) var(--timing-func);
+  }
+
+  ._header__bg.active {
+    display: block;
+  }
+
+  ._header__bg.visible {
+    opacity: 0.5;
   }
 
   ._header__navigation {
@@ -270,6 +335,10 @@ import Hamburger from "./hamburger.astro";
       transition: right calc(1.5 * var(--delay)) var(--timing-func);
     }
 
+    ._header__navigation.active {
+      right: 0;
+    }
+
     ._header__navigation > *:not(:last-child)::after {
       display: none;
     }
@@ -285,6 +354,10 @@ import Hamburger from "./hamburger.astro";
     ._header__menu--mobile {
       display: block;
       width: 100%;
+    }
+
+    ._header__bg.active {
+      display: block;
     }
   }
 
