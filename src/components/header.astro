@@ -120,10 +120,27 @@ import Hamburger from "./hamburger.astro";
     left: 0;
     z-index: 10;
     width: 100%;
-    background-color: transparent;
-    transition:
-      top calc(3 * var(--delay)) var(--timing-func),
-      background-color calc(2 * var(--delay)) var(--timing-func);
+    background-color: var(--bg-color);
+
+    @supports ((animation-timeline: scroll()) and (animation-range: 0 100px)) {
+      background-color: transparent;
+      animation: header-bg 1s linear;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100px;
+      animation-fill-mode: both;
+    }
+  }
+
+  @keyframes header-bg {
+    from {
+      background-color: transparent;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0);
+    }
+
+    to {
+      background-color: var(--bg-color);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+    }
   }
 
   ._header__content {
@@ -189,11 +206,6 @@ import Hamburger from "./hamburger.astro";
     display: flex;
     align-items: center;
     gap: 48px;
-  }
-
-  ._header__menu-item.active ._header__menu-link,
-  ._header__submenu-item.active ._header__submenu-link {
-    color: var(--primary-color);
   }
 
   ._header__menu-link,
