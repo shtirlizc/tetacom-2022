@@ -120,11 +120,207 @@ const Product3 = product3;
   </div>
 </div>
 
+<script>
+  import { gsap } from "gsap";
+
+  const leftPoints = [13, 103, 33, 83, 128];
+  const offsetTop = 120;
+  const difference = 140;
+  const track = document.querySelector(".js-sticky-track");
+
+  if (track instanceof HTMLElement && !track.classList.contains("is-ready")) {
+    let cards = [];
+    let cardsHeightMap = [];
+    let currentCardNumber = null;
+
+    const calcCardsHeight = () => {
+      cardsHeightMap = [];
+
+      cards.forEach((card, index) => {
+        const lastItem = cardsHeightMap[cardsHeightMap.length - 1];
+        cardsHeightMap.push({
+          index,
+          height: lastItem ? card.offsetHeight + lastItem.height : card.offsetHeight,
+        });
+      });
+    };
+
+    const toFixedCards = () => {
+      cards.forEach((card, index) => {
+        const top = index * difference + offsetTop;
+        const clientRect = card.getBoundingClientRect();
+
+        card.style.position = "fixed";
+        card.style.left = `${clientRect.x}px`;
+        card.style.top = `${top}px`;
+      });
+    };
+
+    const toUnFixedCards = () => {
+      cards.forEach((card, index) => {
+        const top = index * difference;
+        const left = leftPoints[index % leftPoints.length];
+
+        card.style.position = "absolute";
+        card.style.top = `${top}px`;
+        card.style.left = `${left}px`;
+        card.style.zIndex = `${cards.length - index}`;
+      });
+    };
+
+    const shiftCards = (shiftBase) => {
+      const shiftValue = shiftBase + currentCardNumber * difference;
+
+      cards.forEach((card, index) => {
+        let transformValue;
+
+        if (index - currentCardNumber < 0) {
+          transformValue = -1000 * cards.length;
+        } else if (index - currentCardNumber === 0) {
+          transformValue = -5 * shiftBase - shiftValue;
+        } else {
+          transformValue = -1 * shiftValue;
+        }
+
+        gsap.to(card, {
+          transform: `translateY(${transformValue}px)`,
+        });
+      });
+    };
+
+    const clearShifts = () => {
+      const shiftValue = currentCardNumber * difference;
+
+      cards.forEach((card, index) => {
+        if (index >= currentCardNumber) {
+          gsap.to(card, {
+            transform: `translateY(${-1 * shiftValue}px)`,
+          });
+        }
+      });
+    };
+
+    const scrollTracking = () => {
+      const trackY = track.getBoundingClientRect().y;
+      const divider =
+        cardsHeightMap[currentCardNumber].height + trackY - offsetTop;
+
+      if (divider <= difference) {
+        shiftCards(Math.abs(divider - difference));
+        return;
+      }
+
+      clearShifts();
+    };
+
+    const listenTrackScrolling = () => {
+      const trackY = track.getBoundingClientRect().y;
+      const trackHeight = Number.parseInt(track.style.height || "0", 10);
+
+      if (trackY <= offsetTop && trackY + trackHeight > offsetTop) {
+        if (currentCardNumber === null) {
+          toFixedCards();
+        }
+
+        const currentCard = cardsHeightMap.find(
+          (card) => card.height > Math.abs(trackY - offsetTop),
+        );
+
+        if (currentCard) {
+          currentCardNumber = currentCard.index;
+        }
+      } else if (trackY > 0) {
+        if (currentCardNumber !== null) {
+          toUnFixedCards();
+        }
+
+        currentCardNumber = null;
+      }
+
+      if (currentCardNumber !== null) {
+        scrollTracking();
+      }
+    };
+
+    const destroySticky = () => {
+      track.style.marginBottom = "0";
+      track.style.height = "auto";
+      document.removeEventListener("scroll", listenTrackScrolling);
+
+      cards.forEach((card) => {
+        card.removeAttribute("style");
+        gsap.to(card, {
+          transform: "translate(0)",
+        });
+      });
+    };
+
+    const setup = () => {
+      track.style.marginBottom = "50vh";
+      cards = Array.from(track.children).filter(
+        (card) => card instanceof HTMLElement,
+      );
+
+      const trackHeight = cards.reduce((sum, element) => {
+        return sum + element.offsetHeight;
+      }, 0);
+
+      track.style.height = `${trackHeight}px`;
+
+      calcCardsHeight();
+
+      const trackY = track.getBoundingClientRect().y;
+      const lastCard = cardsHeightMap[cardsHeightMap.length - 1];
+
+      if (!lastCard) {
+        return;
+      }
+
+      const divider = lastCard.height + trackY - offsetTop;
+
+      toUnFixedCards();
+
+      if (trackY < 0) {
+        currentCardNumber = cards.length - 1;
+        toFixedCards();
+        shiftCards(Math.abs(divider - difference));
+      }
+
+      document.removeEventListener("scroll", listenTrackScrolling);
+      document.addEventListener("scroll", listenTrackScrolling, { passive: true });
+    };
+
+    const setMode = () => {
+      cards = Array.from(track.children).filter(
+        (card) => card instanceof HTMLElement,
+      );
+      calcCardsHeight();
+
+      if (window.innerWidth > 1080) {
+        setup();
+        return;
+      }
+
+      destroySticky();
+    };
+
+    let resizeTimeout = 0;
+    const onResize = () => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        setMode();
+      }, 50);
+    };
+
+    setMode();
+    window.addEventListener("resize", onResize);
+    track.classList.add("is-ready");
+  }
+</script>
+
 <style>
   ._capabilities__items {
-    display: grid;
-    justify-content: center;
-    gap: var(--space3x);
+    position: relative;
     margin-top: var(--space5x);
   }
 
@@ -184,6 +380,12 @@ const Product3 = product3;
 
   /* mobile */
   @media (width < 769px) {
+    ._capabilities__items {
+      display: grid;
+      justify-content: center;
+      gap: var(--space3x);
+    }
+
     ._capabilities__item-info {
       padding: 32px;
     }
@@ -200,6 +402,12 @@ const Product3 = product3;
 
   /* tablet */
   @media (width >= 769px) {
+    ._capabilities__items {
+      display: grid;
+      justify-content: center;
+      gap: var(--space3x);
+    }
+
     ._capabilities__item {
       width: 628px;
     }
@@ -224,6 +432,12 @@ const Product3 = product3;
 
   /* desktop */
   @media (width >= 1081px) {
+    ._capabilities__item {
+      position: absolute;
+      left: 0;
+      transform-style: preserve-3d;
+    }
+
     ._capabilities__item {
       width: 880px;
     }
