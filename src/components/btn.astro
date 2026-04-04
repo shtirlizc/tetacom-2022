@@ -1,18 +1,30 @@
 ---
+interface Props {
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  size?: "default" | "small" | "nav-menu";
+  variant?: "primary" | "outline" | "link" | "text";
+  shape?: "default" | "icon" | "circle";
+  block?: boolean;
+  class?: string;
+}
+
 const {
   href,
   type = "button",
   size = "default",
   variant = "primary",
+  shape = "default",
   block = false,
   class: className,
   ...attrs
-} = Astro.props;
+} = Astro.props as Props;
 
 const classes = [
   "_btn",
   size !== "default" && `_btn--${size}`,
   variant !== "primary" && `_btn--${variant}`,
+  shape !== "default" && `_btn--${shape}`,
   block && "_btn--block",
   className,
 ]
@@ -47,7 +59,7 @@ const classes = [
     color: var(--white-color);
     white-space: nowrap;
     cursor: pointer;
-    font-family: var(--font-primary);
+    font-family: var(--font-primary), sans-serif;
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -56,6 +68,11 @@ const classes = [
       border-color var(--delay) var(--timing-func),
       color var(--delay) var(--timing-func),
       background-color var(--delay) var(--timing-func);
+  }
+
+  ._btn :global(svg rect),
+  ._btn :global(svg path) {
+    transition: all var(--delay) var(--timing-func);
   }
 
   ._btn:hover {
@@ -67,6 +84,33 @@ const classes = [
     height: 36px;
     border-radius: 18px;
     padding: 0 18px;
+  }
+
+  ._btn--icon {
+    height: 52px;
+    padding: 0;
+    border-radius: 26px;
+  }
+
+  ._btn--icon :global(span) {
+    height: 52px;
+  }
+
+  ._btn--icon :global(span rect) {
+    fill: var(--primary-color);
+  }
+
+  ._btn--circle {
+    width: 52px;
+  }
+
+  ._btn--circle:hover :global(span rect) {
+    fill: transparent;
+  }
+
+  ._btn--circle:hover :global(span path) {
+    fill: var(--primary-color);
+    stroke: var(--primary-color);
   }
 
   ._btn--block {
