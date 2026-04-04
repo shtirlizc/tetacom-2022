@@ -1,5 +1,5 @@
 ---
-const { as = "div", class: className, bodyClass, ...attrs } = Astro.props;
+const { id, as = "div", class: className, bodyClass, ...attrs } = Astro.props;
 
 const Tag = as;
 const classes = ["_dropdown", className].filter(Boolean).join(" ");
@@ -8,7 +8,8 @@ const bodyClasses = ["_dropdown__body", bodyClass].filter(Boolean).join(" ");
 
 <Tag class={classes} {...attrs}>
   <slot name="trigger" />
-  <div class={bodyClasses}>
+
+  <div popover id={id} class={bodyClasses}>
     <slot />
   </div>
 </Tag>
@@ -31,33 +32,30 @@ const bodyClasses = ["_dropdown__body", bodyClass].filter(Boolean).join(" ");
   /* desktop */
   @media (width >= 1081px) {
     ._dropdown__body {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: -4px;
-      z-index: 21;
-      display: none;
+      border: none;
+      position-area: bottom span-right;
+      opacity: 0;
+      transform: translateY(-12px);
       width: max-content;
       overflow: hidden;
       border-radius: 4px;
       background-color: var(--white-color);
       box-shadow: var(--shadow);
-      opacity: 0;
-      transform: translateY(-10px);
       transition:
-        opacity var(--delay) var(--timing-func),
-        transform var(--delay) var(--timing-func);
-    }
+        opacity var(--delay) ease,
+        transform var(--delay) ease,
+        overlay var(--delay) ease allow-discrete,
+        display var(--delay) ease allow-discrete;
 
-    ._dropdown__body--right {
-      right: -4px;
-      left: auto;
-    }
+      &:popover-open {
+        opacity: 1;
+        transform: translateY(0);
 
-    ._dropdown:hover ._dropdown__body,
-    ._dropdown:focus-within ._dropdown__body {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
+        @starting-style {
+          opacity: 0;
+          transform: translateY(-12px);
+        }
+      }
     }
   }
 </style>
