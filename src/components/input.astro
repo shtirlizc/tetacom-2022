@@ -9,18 +9,15 @@ const {
   hook,
 } = Astro.props;
 
-const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).join(" ");
+const inputClass = [hook === "phone-mask" && "js-phone-mask"]
+  .filter(Boolean)
+  .join(" ");
 ---
 
 <div class="_input">
   {
     multiline ? (
-      <textarea
-        id={id}
-        name={name}
-        placeholder=" "
-        required={required}
-      ></textarea>
+      <textarea id={id} name={name} placeholder=" " required={required} />
     ) : (
       <input
         class={inputClass}
@@ -36,6 +33,63 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).jo
   <span class="_input__border"></span>
 </div>
 
+<script>
+  const getFields = (fields, tag) => {
+    return Array.from(fields)
+      .map((field) => field.getElementsByTagName(tag))
+      .filter((field) => field.length);
+  };
+
+  const combineFields = (textFields) => {
+    const inputs = getFields(textFields, "input");
+    const textareas = getFields(textFields, "textarea");
+
+    return [...inputs, ...textareas];
+  };
+
+  const fields = combineFields(document.getElementsByClassName("_input"));
+
+  Array.from(fields).forEach((field) => {
+    const [fieldItem] = field;
+
+    if (
+      !(
+        fieldItem instanceof HTMLInputElement ||
+        fieldItem instanceof HTMLTextAreaElement
+      )
+    ) {
+      return;
+    }
+
+    if (fieldItem.dataset.textFieldReady === "true") {
+      return;
+    }
+
+    if (fieldItem.value === "") {
+      fieldItem.classList.add("empty");
+    }
+
+    fieldItem.addEventListener("change", (evt) => {
+      if (
+        !(
+          evt.target instanceof HTMLInputElement ||
+          evt.target instanceof HTMLTextAreaElement
+        )
+      ) {
+        return;
+      }
+
+      if (evt.target.value === "") {
+        evt.target.classList.add("empty");
+      } else {
+        evt.target.classList.remove("empty");
+      }
+    });
+
+    fieldItem.dataset.textFieldReady = "true";
+  });
+</script>
+
 <style>
   ._input {
     --padding: 11px;
@@ -45,6 +99,7 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).jo
 
   ._input input,
   ._input textarea {
+    outline: none;
     width: 100%;
     height: 44px;
     padding: 0 var(--padding);
@@ -52,7 +107,7 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).jo
     border-bottom: 2px solid var(--text-color);
     background-color: transparent;
     color: var(--text-color);
-    font-family: var(--font-primary);
+    font-family: var(--font-primary), sans-serif;
     font-size: 16px;
     font-weight: 600;
     font-feature-settings: "liga" off;
@@ -61,6 +116,11 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).jo
   ._input textarea {
     resize: none;
     padding: 10px;
+  }
+
+  ._input input.empty + label,
+  ._input textarea.empty + label {
+    transform: translateY(0);
   }
 
   ._input input:focus + label,
@@ -94,6 +154,7 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"].filter(Boolean).jo
 
   ._input__border {
     position: absolute;
+    left: 0;
     bottom: 0;
     width: 100%;
     height: 2px;
