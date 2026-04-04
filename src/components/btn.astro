@@ -4,7 +4,7 @@ interface Props {
   type?: "button" | "submit" | "reset";
   size?: "default" | "small" | "nav-menu";
   variant?: "primary" | "outline" | "link" | "text";
-  shape?: "default" | "icon" | "circle";
+  shape?: "default" | "icon" | "circle" | "icon-circle";
   block?: boolean;
   class?: string;
 }
@@ -24,7 +24,8 @@ const classes = [
   "_btn",
   size !== "default" && `_btn--${size}`,
   variant !== "primary" && `_btn--${variant}`,
-  shape !== "default" && `_btn--${shape}`,
+  (shape === "icon" || shape === "icon-circle") && "_btn--icon",
+  (shape === "circle" || shape === "icon-circle") && "_btn--circle",
   block && "_btn--block",
   className,
 ]

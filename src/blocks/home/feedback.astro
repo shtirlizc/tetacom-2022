@@ -1,5 +1,6 @@
 ---
 import Btn from "../../components/btn.astro";
+import Feedback from "../../components/feedback.astro";
 import Form from "../../components/form.astro";
 import Input from "../../components/input.astro";
 ---
@@ -18,54 +19,50 @@ import Input from "../../components/input.astro";
     </div>
 
     <div class="_feedback-block__form">
-      <div class="_feedback">
-        <h3 class="_feedback__title">Оставьте заявку</h3>
-
-        <div class="_feedback__form">
-          <Form hook="form">
-            <div class="_form__group">
-              <Input type="text" name="name" id="name" label="Имя" required />
-            </div>
-            <div class="_form__group">
-              <Input
-                type="tel"
-                name="phone"
-                id="phone"
-                label="Телефон"
-                hook="phone-mask"
-                required
-              />
-            </div>
-            <div class="_form__group">
-              <Input
-                type="email"
-                name="email"
-                id="email"
-                label="E-mail"
-                required
-              />
-            </div>
-            <div class="_form__group _form__group--bottom-large">
-              <Input
-                multiline
-                name="message"
-                id="message"
-                label="Комментарий"
-                required
-              />
-            </div>
-            <div class="_form__group _form__group--bottom-large">
-              <Btn type="submit" block>Оставить заявку</Btn>
-            </div>
-            <div class="_form__group">
-              <p class="_form__rules">
-                Заполняя форму, вы соглашаетесь на
-                <a href="#">обработку персональных данных</a>
-              </p>
-            </div>
-          </Form>
-        </div>
-      </div>
+      <Feedback title="Оставьте заявку">
+        <Form hook="form">
+          <div class="_form__group">
+            <Input type="text" name="name" id="name" label="Имя" required />
+          </div>
+          <div class="_form__group">
+            <Input
+              type="tel"
+              name="phone"
+              id="phone"
+              label="Телефон"
+              hook="phone-mask"
+              required
+            />
+          </div>
+          <div class="_form__group">
+            <Input
+              type="email"
+              name="email"
+              id="email"
+              label="E-mail"
+              required
+            />
+          </div>
+          <div class="_form__group _form__group--bottom-large">
+            <Input
+              multiline
+              name="message"
+              id="message"
+              label="Комментарий"
+              required
+            />
+          </div>
+          <div class="_form__group _form__group--bottom-large">
+            <Btn type="submit" block>Оставить заявку</Btn>
+          </div>
+          <div class="_form__group">
+            <p class="_form__rules">
+              Заполняя форму, вы соглашаетесь на
+              <a href="#">обработку персональных данных</a>
+            </p>
+          </div>
+        </Form>
+      </Feedback>
     </div>
   </div>
 </section>
@@ -96,17 +93,6 @@ import Input from "../../components/input.astro";
 
   ._feedback-block__form {
     padding-left: 58px;
-  }
-
-  ._feedback__title {
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 28px;
-  }
-
-  ._feedback__form {
-    margin-top: 40px;
   }
 
   /* mobile */

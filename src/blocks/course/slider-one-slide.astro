@@ -1,0 +1,147 @@
+---
+import { Image } from "astro:assets";
+import Btn from "../../components/btn.astro";
+
+interface SlideItem {
+  image: ImageMetadata;
+  alt: string;
+}
+
+interface Props {
+  items: SlideItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<section class="_slider-one-slide">
+  <div class="_slider-one-slide__nav">
+    <Btn type="button" shape="icon-circle" class="js-prev-slide">
+      <span>
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="26"></rect>
+          <path
+            d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </span>
+    </Btn>
+  </div>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {
+        items.map(({ image, alt }) => (
+          <div class="swiper-slide">
+            <div class="_slider-one-slide__slide">
+              <Image src={image} alt={alt} />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div class="_slider-one-slide__nav">
+    <Btn type="button" shape="icon-circle" class="js-next-slide">
+      <span>
+        <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <rect width="52" height="52" rx="26"></rect>
+          <path
+            d="M16 26L36 26M36 26L27.6 18M36 26L27.6 34"
+            stroke="white"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"></path>
+        </svg>
+      </span>
+    </Btn>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+
+  const slider = document.querySelector("._slider-one-slide");
+
+  if (slider instanceof HTMLElement && slider.dataset.sliderReady !== "true") {
+    const swiperElement = slider.querySelector(".swiper");
+    const prevButton = slider.querySelector(".js-prev-slide");
+    const nextButton = slider.querySelector(".js-next-slide");
+
+    if (swiperElement instanceof HTMLElement) {
+      const swiper = new Swiper(swiperElement, {
+        speed: 300,
+        spaceBetween: 40,
+        autoHeight: true,
+        loop: true,
+      });
+
+      if (prevButton instanceof HTMLButtonElement) {
+        prevButton.addEventListener("click", () => {
+          swiper.slidePrev();
+        });
+      }
+
+      if (nextButton instanceof HTMLButtonElement) {
+        nextButton.addEventListener("click", () => {
+          swiper.slideNext();
+        });
+      }
+
+      slider.dataset.sliderReady = "true";
+    }
+  }
+</script>
+
+<style>
+  ._slider-one-slide {
+    display: grid;
+  }
+
+  .swiper {
+    overflow-x: auto;
+  }
+
+  .swiper-slide {
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  ._slider-one-slide__slide {
+    overflow: hidden;
+    border: 2px solid #353749;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  ._slider-one-slide__slide :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  ._slider-one-slide__nav {
+    display: none;
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._slider-one-slide {
+      grid-template-columns: 52px 1fr 52px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    ._slider-one-slide__nav {
+      display: block;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._slider-one-slide {
+      gap: 70px;
+    }
+  }
+</style>

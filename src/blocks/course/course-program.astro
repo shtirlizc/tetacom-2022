@@ -1,0 +1,118 @@
+---
+import TextContent from "../../components/text-content.astro";
+
+interface ProgramItem {
+  day: string;
+  title: string;
+  contentHtml?: string;
+}
+
+interface Props {
+  items: ProgramItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<section class="_course-program">
+  <h2 class="_course-program__title">Программа курса</h2>
+
+  <div class="_course-program__list">
+    {
+      items.map(({ day, title, contentHtml }, index) => (
+        <details class="_course-program__item" open={index === 0 && Boolean(contentHtml)}>
+          <summary class="_course-program__item-header">
+            <span class="_course-program__item-date">{day}</span>
+            <span class="_course-program__item-title">{title}</span>
+          </summary>
+          <div class="_course-program__item-text">
+            <TextContent rootClass="_course-program__item-content" html={contentHtml} />
+          </div>
+        </details>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  ._course-program__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1em;
+  }
+
+  ._course-program__list {
+    display: grid;
+    gap: 12px;
+    margin-top: 38px;
+  }
+
+  ._course-program__item {
+    overflow: hidden;
+    border-radius: 16px;
+    background: #f8f8f8;
+  }
+
+  ._course-program__item-header {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 24px;
+    overflow: hidden;
+    border-radius: 16px;
+    cursor: pointer;
+    list-style: none;
+    transition: background-color var(--delay) var(--timing-func);
+  }
+
+  ._course-program__item-header::-webkit-details-marker {
+    display: none;
+  }
+
+  ._course-program__item-header:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+
+  ._course-program__item-date,
+  ._course-program__item-title {
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._course-program__item-date {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+  }
+
+  ._course-program__item-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  ._course-program__item-text {
+    overflow: hidden;
+  }
+
+  ._course-program__item-content {
+    padding: 16px 24px;
+  }
+
+  ._course-program__item-content:empty {
+    display: none;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._course-program__title {
+      text-align: center;
+    }
+
+    ._course-program__item-title {
+      font-size: 20px;
+      line-height: 1em;
+    }
+  }
+</style>

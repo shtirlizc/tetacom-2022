@@ -1,0 +1,77 @@
+---
+interface FeedbackDescriptionItem {
+  key: string;
+  value: string;
+}
+
+interface Props {
+  title: string;
+  descriptionItems?: FeedbackDescriptionItem[];
+}
+
+const { title, descriptionItems = [] } = Astro.props as Props;
+---
+
+<div class="_feedback">
+  <h3 class="_feedback__title">{title}</h3>
+
+  {
+    descriptionItems.length > 0 && (
+      <ul class="_feedback__description">
+        {descriptionItems.map(({ key, value }) => (
+          <li class="_feedback__description-item">
+            <span class="_feedback__description-key">{key}</span>
+            <span class="_feedback__description-value">{value}</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="_feedback__form">
+    <slot />
+  </div>
+</div>
+
+<style>
+  ._feedback__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+  }
+
+  ._feedback__description {
+    margin: 32px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ._feedback__description-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  ._feedback__description-item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  ._feedback__description-key,
+  ._feedback__description-value {
+    font-size: 14px;
+    line-height: 114%;
+  }
+
+  ._feedback__description-key {
+    color: rgb(0 0 0 / 40%);
+  }
+
+  ._feedback__description-value {
+    font-weight: 600;
+  }
+
+  ._feedback__form {
+    margin-top: 40px;
+  }
+</style>

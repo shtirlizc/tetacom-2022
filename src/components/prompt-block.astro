@@ -1,11 +1,19 @@
 ---
+interface Props {
+  as?: "section" | "div" | "article";
+  rootClass?: string;
+  hint: string;
+  title: string;
+  description?: string;
+}
+
 const {
   as = "section",
   rootClass,
   hint,
   title,
   description,
-} = Astro.props;
+} = Astro.props as Props;
 
 const Tag = as;
 const classes = ["_prompt-block", rootClass].filter(Boolean).join(" ");
@@ -14,7 +22,7 @@ const classes = ["_prompt-block", rootClass].filter(Boolean).join(" ");
 <Tag class={classes}>
   <p class="_prompt-block__hint">{hint}</p>
   <h2 class="_prompt-block__title _title">{title}</h2>
-  <p class="_prompt-block__description">{description}</p>
+  {description && <p class="_prompt-block__description">{description}</p>}
 </Tag>
 
 <style>

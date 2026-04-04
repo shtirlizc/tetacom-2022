@@ -5,7 +5,7 @@ interface Props {
   rootClass?: string;
   backgroundColor?: string;
   title: string;
-  description: string;
+  description?: string;
   image: ImageMetadata;
   imageAlt?: string;
 }
@@ -20,12 +20,17 @@ const {
 } = Astro.props as Props;
 
 const classes = ["_horizontal-banner", rootClass].filter(Boolean).join(" ");
+const hasDescriptionSlot = Astro.slots.has("description");
+const hasFooterSlot = Astro.slots.has("footer");
 ---
 
 <article class={classes} style={backgroundColor && `background-color: ${backgroundColor}`}>
   <div class="_horizontal-banner__info">
     <h3 class="_horizontal-banner__title">{title}</h3>
-    <p class="_horizontal-banner__description">{description}</p>
+    <div class="_horizontal-banner__description">
+      {hasDescriptionSlot ? <slot name="description" /> : description && <p>{description}</p>}
+    </div>
+    {hasFooterSlot && <slot name="footer" />}
   </div>
   <div class="_horizontal-banner__image">
     <Image src={image} alt={imageAlt} />
@@ -52,8 +57,36 @@ const classes = ["_horizontal-banner", rootClass].filter(Boolean).join(" ");
 
   ._horizontal-banner__description {
     margin: 45px 0 0;
+  }
+
+  ._horizontal-banner__description :global(p),
+  ._horizontal-banner__description :global(ul) {
+    margin: 0;
     font-size: 18px;
     line-height: 156%;
+  }
+
+  ._horizontal-banner__description :global(li:not(:last-child)) {
+    margin-bottom: 12px;
+  }
+
+  :global(._horizontal-banner__bottom-title) {
+    margin: 45px 0 0;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+  }
+
+  :global(._horizontal-banner__action) {
+    margin-top: 40px;
+  }
+
+  :global(._horizontal-banner__action-text) {
+    margin: 16px 0 0;
+    color: rgb(255 255 255 / 70%);
+    font-size: 14px;
+    line-height: 1.4em;
+    text-align: center;
   }
 
   ._horizontal-banner__image {
@@ -76,6 +109,12 @@ const classes = ["_horizontal-banner", rootClass].filter(Boolean).join(" ");
 
     ._horizontal-banner__description {
       margin-top: 32px;
+    }
+
+    :global(._horizontal-banner__bottom-title) {
+      margin-top: 32px;
+      font-size: 24px;
+      line-height: 1.1em;
     }
 
     ._horizontal-banner__image {
