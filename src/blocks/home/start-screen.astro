@@ -95,6 +95,32 @@ const projectTags = [
   </div>
 </section>
 
+<script>
+  import Swiper from "swiper";
+  import { FreeMode } from "swiper/modules";
+
+  const startScreenSwiper = document.querySelector(".js-start-screen-swiper");
+
+  if (startScreenSwiper && !startScreenSwiper.classList.contains("is-ready")) {
+    startScreenSwiper.querySelectorAll(".swiper-slide").forEach((slide) => {
+      const tagEl = slide.firstElementChild;
+
+      if (tagEl instanceof HTMLElement) {
+        slide.style.width = `${tagEl.offsetWidth + 4}px`;
+      }
+    });
+
+    new Swiper(startScreenSwiper, {
+      modules: [FreeMode],
+      freeMode: true,
+      slidesPerView: "auto",
+      spaceBetween: 26,
+    });
+
+    startScreenSwiper.classList.add("is-ready");
+  }
+</script>
+
 <style>
   ._start-screen {
     padding: 238px 0 140px;
