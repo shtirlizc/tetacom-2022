@@ -1,0 +1,89 @@
+---
+interface LinkBlockItem {
+  rootClass?: string;
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  itemAttrs?: Record<string, string>;
+  target?: string;
+  rel?: string;
+}
+
+interface Props {
+  rootClass?: string;
+  items: LinkBlockItem[];
+}
+
+const { rootClass, items } = Astro.props as Props;
+const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
+---
+
+<ul class={classes}>
+  {
+    items.map(
+      ({ rootClass: itemClass, title, description, href, linkLabel, itemAttrs, target, rel }) => (
+        <li class={["_link-block__item", itemClass].filter(Boolean).join(" ")} {...itemAttrs}>
+          <h3 class="_link-block__title">{title}</h3>
+          <p class="_link-block__description">{description}</p>
+          <a href={href} class="_link-block__link" target={target} rel={rel}>
+            {linkLabel}
+          </a>
+        </li>
+      ),
+    )
+  }
+</ul>
+
+<style>
+  ._link-block {
+    display: grid;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ._link-block__item {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 24px 23px;
+    border-radius: 16px;
+    background-color: #f8f8f8;
+    transition:
+      background-color var(--delay) var(--timing-func),
+      color var(--delay) var(--timing-func);
+  }
+
+  ._link-block__item:hover {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+
+  ._link-block__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+  }
+
+  ._link-block__description {
+    margin: 15px 0 0;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  ._link-block__link {
+    position: absolute;
+    inset: 0;
+    font-size: 0;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._link-block__title {
+      font-size: 28px;
+      line-height: 1.2em;
+    }
+  }
+</style>
