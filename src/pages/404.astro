@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Head from "../components/head.astro";
+import Btn from "../components/btn.astro";
+import Container from "../components/container.astro";
+import notFoundImage from "../assets/errors/404.png";
+import "../styles/_global.css";
+---
+
+<!doctype html>
+<html lang="ru">
+  <Head />
+
+  <body class="_full-height">
+    <main>
+      <Container>
+        <div class="_not-found">
+          <div class="_not-found__picture">
+            <Image src={notFoundImage} alt="" width={451} height={386} />
+          </div>
+          <h1 class="_not-found__title">
+            Такой страницы не существует.
+            <br />
+            Проверьте правильность написания адреса или перейдите на главную
+          </h1>
+          <div class="_not-found__actions">
+            <Btn href="/">На главную</Btn>
+          </div>
+        </div>
+      </Container>
+    </main>
+  </body>
+</html>
+
+<style>
+  ._not-found {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  ._not-found__picture :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ._not-found__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5em;
+    text-align: center;
+  }
+
+  ._not-found__actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+</style>
