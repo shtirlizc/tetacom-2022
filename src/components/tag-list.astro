@@ -1,0 +1,59 @@
+---
+interface TagItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  rootClass?: string;
+  items: TagItem[];
+}
+
+const { rootClass, items } = Astro.props as Props;
+const classes = ["_tag-list", rootClass].filter(Boolean).join(" ");
+---
+
+<ul class={classes}>
+  {
+    items.map(({ label, href }) => (
+      <li class="_tag-list__item">
+        {href ? <a href={href}>{label}</a> : <span>{label}</span>}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ._tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ._tag-list__item :global(span),
+  ._tag-list__item :global(a) {
+    padding: 8px 16px;
+    border-radius: 16px;
+    background-color: #f8f8f8;
+    color: rgb(0 0 0 / 70%);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+
+  ._tag-list__item :global(span) {
+    cursor: default;
+  }
+
+  ._tag-list__item :global(a) {
+    transition: color var(--delay) ease-in-out;
+  }
+
+  ._tag-list__item :global(a:hover) {
+    color: var(--primary-color);
+  }
+</style>

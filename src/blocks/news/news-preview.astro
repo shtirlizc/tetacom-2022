@@ -1,0 +1,86 @@
+---
+import AuthorDate from "../../components/author-date.astro";
+import TagList from "../../components/tag-list.astro";
+
+interface TagItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  authorName: string;
+  authorAvatar: ImageMetadata;
+  dateText: string;
+  dateTime: string;
+  title: string;
+  intro: string;
+  tags: TagItem[];
+  href: string;
+}
+
+const {
+  authorName,
+  authorAvatar,
+  dateText,
+  dateTime,
+  title,
+  intro,
+  tags,
+  href,
+} = Astro.props as Props;
+---
+
+<article class="_news-preview">
+  <AuthorDate
+    authorName={authorName}
+    authorAvatar={authorAvatar}
+    dateText={dateText}
+    dateTime={dateTime}
+  />
+  <div class="_news-preview__body">
+    <h2 class="_news-preview__title">{title}</h2>
+    <TagList items={tags} />
+    <p class="_news-preview__intro">{intro}</p>
+  </div>
+  <a href={href} class="_news-preview__link">{title}</a>
+</article>
+
+<style>
+  ._news-preview {
+    position: relative;
+    display: grid;
+    gap: 16px;
+  }
+
+  ._news-preview:hover {
+    color: var(--primary-color);
+  }
+
+  ._news-preview__body {
+    display: grid;
+    gap: 12px;
+  }
+
+  ._news-preview__title {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: normal;
+    transition: color var(--delay) ease-in-out;
+  }
+
+  ._news-preview__intro {
+    margin: 0;
+    color: var(--black-color);
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  ._news-preview__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+  }
+</style>

@@ -10,7 +10,7 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
 
 {
   html ? (
-    <div class={classes} set:html={html}></div>
+    <div class={classes} set:html={html} />
   ) : (
     <div class={classes}>
       <slot />
@@ -131,6 +131,7 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
   ._text-content img {
     width: 100%;
     max-width: 100%;
+    height: auto;
     cursor: pointer;
   }
 
