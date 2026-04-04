@@ -1,0 +1,60 @@
+---
+import type { SvgComponent } from "astro/types";
+import HorizontalBanner from "./horizontal-banner.astro";
+import VerticalBanner from "./vertical-banner.astro";
+
+interface HorizontalBannerData {
+  dir: "horizontal";
+  rootClass?: string;
+  backgroundColor?: string;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  imageAlt?: string;
+}
+
+interface VerticalBannerWithImageData {
+  dir: "vertical";
+  title: string;
+  description: string;
+  hasImage: true;
+  image: SvgComponent;
+}
+
+interface VerticalBannerWithoutImageData {
+  dir: "vertical";
+  title: string;
+  description: string;
+  hasImage?: false;
+  image?: undefined;
+}
+
+type Props = {
+  banner:
+    | HorizontalBannerData
+    | VerticalBannerWithImageData
+    | VerticalBannerWithoutImageData;
+};
+
+const { banner } = Astro.props as Props;
+---
+
+{
+  banner.dir === "horizontal" ? (
+    <HorizontalBanner
+      rootClass={banner.rootClass}
+      backgroundColor={banner.backgroundColor}
+      title={banner.title}
+      description={banner.description}
+      image={banner.image}
+      imageAlt={banner.imageAlt}
+    />
+  ) : (
+    <VerticalBanner
+      title={banner.title}
+      description={banner.description}
+      hasImage={banner.hasImage}
+      image={banner.image}
+    />
+  )
+}

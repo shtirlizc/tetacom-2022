@@ -1,0 +1,79 @@
+---
+const {
+  as = "section",
+  rootClass,
+  hint,
+  title,
+  description,
+} = Astro.props;
+
+const Tag = as;
+const classes = ["_prompt-block", rootClass].filter(Boolean).join(" ");
+---
+
+<Tag class={classes}>
+  <p class="_prompt-block__hint">{hint}</p>
+  <h2 class="_prompt-block__title _title">{title}</h2>
+  <p class="_prompt-block__description">{description}</p>
+</Tag>
+
+<style>
+  ._prompt-block {
+    --padding-left: 200px;
+
+    display: grid;
+    grid-template-columns: var(--padding-left) 1fr;
+    gap: 20px;
+  }
+
+  ._prompt-block__hint {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    margin: 0;
+    padding-top: 6px;
+    font-size: 16px;
+    line-height: 1.4em;
+  }
+
+  ._prompt-block__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  ._prompt-block__description {
+    margin: 56px 0 0;
+    padding-right: 40%;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._prompt-block {
+      grid-template-columns: 1fr;
+    }
+
+    ._prompt-block__hint {
+      padding-top: 0;
+    }
+
+    ._prompt-block__title {
+      font-size: 24px;
+      line-height: 1.1em;
+    }
+
+    ._prompt-block__description {
+      margin-top: 24px;
+      padding-right: 0;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._prompt-block {
+      --padding-left: 120px;
+    }
+  }
+</style>

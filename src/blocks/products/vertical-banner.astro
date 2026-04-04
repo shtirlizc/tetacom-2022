@@ -1,0 +1,97 @@
+---
+import type { SvgComponent } from "astro/types";
+
+interface Props {
+  title: string;
+  description: string;
+  hasImage?: boolean;
+  image?: SvgComponent;
+}
+
+const {
+  title,
+  description,
+  hasImage = false,
+  image,
+} = Astro.props as Props;
+
+const classes = ["_vertical-banner", hasImage && "_vertical-banner--has-image"]
+  .filter(Boolean)
+  .join(" ");
+
+const ImageComponent = image;
+---
+
+<article class={classes}>
+  <h3 class="_vertical-banner__title">{title}</h3>
+  <p class="_vertical-banner__description">{description}</p>
+  {
+    hasImage && ImageComponent && (
+      <div class="_vertical-banner__image">
+        <ImageComponent aria-hidden="true" focusable="false" />
+      </div>
+    )
+  }
+</article>
+
+<style>
+  ._vertical-banner {
+    display: flex;
+    flex-direction: column;
+    padding: 60px 60px 0;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+  }
+
+  ._vertical-banner__title {
+    margin: 0;
+    color: var(--black-color);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+  }
+
+  ._vertical-banner__description {
+    margin-top: 50px;
+    padding-bottom: 60px;
+    color: var(--black-color);
+    font-size: 18px;
+    line-height: 156%;
+  }
+
+  ._vertical-banner--has-image ._vertical-banner__description {
+    margin-bottom: -20%;
+    padding-bottom: 0;
+  }
+
+  ._vertical-banner__image {
+    width: 100%;
+    max-width: var(--image-width);
+    margin: auto auto 0;
+    transform: translateY(50%);
+  }
+
+  ._vertical-banner__image :global(svg) {
+    width: 100%;
+    height: auto;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._vertical-banner {
+      padding: 20px;
+    }
+
+    ._vertical-banner__description {
+      margin-top: 32px;
+    }
+
+    ._vertical-banner--has-image {
+      margin-bottom: calc(var(--image-width) / 4);
+    }
+
+    ._vertical-banner--has-image ._vertical-banner__description {
+      margin-bottom: -10%;
+    }
+  }
+</style>

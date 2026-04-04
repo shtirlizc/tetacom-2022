@@ -1,0 +1,83 @@
+---
+interface InfoBlockItem {
+  titleLines: string[];
+  points: string[];
+}
+
+interface Props {
+  items: InfoBlockItem[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<div class="_info-block">
+  {
+    items.map((item) => (
+      <div class="_info-block__item">
+        <h2 class="_info-block__title">
+          {
+            item.titleLines.map((line, index) => (
+              <>
+                {index > 0 && <br />}
+                {line}
+              </>
+            ))
+          }
+        </h2>
+        <ul>
+          {item.points.map((point) => <li>{point}</li>)}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  ._info-block__item {
+    display: grid;
+    gap: 40px;
+  }
+
+  ._info-block__item:not(:last-child) {
+    margin-bottom: 60px;
+  }
+
+  ._info-block__item ul {
+    margin: 0;
+    padding: 20px 24px;
+    list-style: none;
+    border-radius: 16px;
+    background-color: #f8f8f8;
+  }
+
+  ._info-block__item li {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 28px;
+  }
+
+  ._info-block__item li:not(:last-child) {
+    margin-bottom: 12px;
+  }
+
+  ._info-block__title {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._info-block__item {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    ._info-block__item:not(:last-child) {
+      margin-bottom: 180px;
+    }
+  }
+</style>
