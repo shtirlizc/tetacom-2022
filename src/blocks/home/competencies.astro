@@ -300,8 +300,8 @@
 
   const mainSwiper = new Swiper("#main-slider", {
     modules: [Pagination],
-    spaceBetween: 0,
-    slidesPerView: "auto",
+    spaceBetween: 16,
+    slidesPerView: 1,
     speed: 300,
     slideToClickedSlide: true,
     pagination: {
@@ -311,12 +311,14 @@
     },
     breakpoints: {
       769: {
+        slidesPerView: "auto",
         centeredSlides: true,
         speed: 600,
         spaceBetween: 60,
         pagination: false,
       },
       1081: {
+        slidesPerView: "auto",
         centeredSlides: true,
         spaceBetween: 80,
         pagination: false,
@@ -376,9 +378,21 @@
         y: isNextDirection ? y : -1 * y,
         duration: 1,
         onComplete() {
+          console.log("onComplete");
           prevTextElement.remove();
+          chechTitle();
         },
       });
+    }
+  }
+
+  function chechTitle() {
+    const title = document.querySelector("._main-slider__title-text");
+
+    if (title && title.children.length > 1) {
+      Array.from(title.children)
+        .slice(0, -1)
+        .forEach((child) => child.remove());
     }
   }
 </script>
