@@ -47,7 +47,7 @@ import Container from "./container.astro";
       </div>
 
       <p class="_footer__copyright">
-        © 2018-2023, Тетаком. Все права защищены.
+        © 2018-<span id="copyright-year"></span>, Тетаком. Все права защищены.
       </p>
     </div>
   </Container>
@@ -206,3 +206,11 @@ import Container from "./container.astro";
     }
   }
 </style>
+
+<script>
+  const copyrightYear = document.getElementById("copyright-year");
+
+  if (copyrightYear) {
+    copyrightYear.innerText = String(new Date().getFullYear());
+  }
+</script>
