@@ -26,7 +26,7 @@
         </button>
       </div>
 
-      <div class="swiper _main-slider__swiper js-main-swiper">
+      <div id="main-slider" class="swiper _main-slider__swiper js-main-swiper">
         <div class="swiper-wrapper">
           <div
             class="swiper-slide _main-slider__slide swiper-slide-active"
@@ -92,6 +92,10 @@
 
   ._competencies__body {
     margin-top: var(--space4x);
+  }
+
+  ._main-slider {
+    display: grid;
   }
 
   ._main-slider-button-width {
@@ -175,16 +179,17 @@
     stroke: var(--primary-color);
   }
 
-  ._main-slider__title-text {
+  :global(._main-slider__title-text) {
     position: relative;
     width: 100%;
     height: 16px;
     font-size: 14px;
     line-height: 16px;
     text-align: left;
+    font-weight: 500;
   }
 
-  ._main-slider__title-text span {
+  :global(._main-slider__title-text span) {
     position: absolute;
     top: 0;
     left: 0;
@@ -212,9 +217,7 @@
 
   ._main-slider__swiper :global(.swiper-wrapper) {
     display: flex;
-    gap: var(--space4x);
     padding: 0 var(--space2x);
-    overflow-x: auto;
   }
 
   ._main-slider__slide {
@@ -258,7 +261,7 @@
   /* tablet */
   @media (width >= 769px) {
     ._main-slider-button-width {
-      width: 346px;
+      width: 380px;
     }
 
     ._main-slider__track {
@@ -287,3 +290,95 @@
     }
   }
 </style>
+
+<script>
+  import gsap from "gsap";
+  import Swiper from "swiper";
+  import { Pagination } from "swiper/modules";
+
+  const nextBtn = document.querySelector<HTMLElement>("#js-main-swiper-next");
+
+  const mainSwiper = new Swiper("#main-slider", {
+    modules: [Pagination],
+    spaceBetween: 0,
+    slidesPerView: "auto",
+    speed: 300,
+    slideToClickedSlide: true,
+    pagination: {
+      el: "._swiper-pagination",
+      type: "bullets",
+      clickable: true,
+    },
+    breakpoints: {
+      769: {
+        centeredSlides: true,
+        speed: 600,
+        spaceBetween: 60,
+        pagination: false,
+      },
+      1081: {
+        centeredSlides: true,
+        spaceBetween: 80,
+        pagination: false,
+        speed: 900,
+      },
+    },
+    on: {
+      slidePrevTransitionStart: (swiper) => {
+        changeTitle(Array.from(swiper.slides), false);
+      },
+      slideNextTransitionStart: (swiper) => {
+        changeTitle(Array.from(swiper.slides), true);
+      },
+    },
+  });
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      mainSwiper.slideNext();
+    });
+  }
+
+  function changeTitle(slides: HTMLElement[], isNextDirection: boolean) {
+    if (!nextBtn) {
+      return;
+    }
+
+    const currentSlideTitle = slides.find((slide) =>
+      slide.classList.contains("swiper-slide-active"),
+    )?.dataset.title;
+    const textWrapper = nextBtn.querySelector<HTMLElement>(
+      "._main-slider__title-text",
+    );
+    if (!textWrapper) {
+      return;
+    }
+
+    const prevTextElement = textWrapper.querySelector("span");
+    if (!prevTextElement) {
+      return;
+    }
+    if (currentSlideTitle && prevTextElement.innerText !== currentSlideTitle) {
+      const y = 60;
+
+      const nextText = document.createElement("span");
+      nextText.innerText = currentSlideTitle;
+      nextText.style.transform = `translate(${isNextDirection ? "-" : ""}${y}px)`;
+
+      textWrapper.appendChild(nextText);
+
+      gsap.fromTo(
+        nextText,
+        { x: 0, y: isNextDirection ? -1 * y : y },
+        { x: 0, y: 0, duration: 1 },
+      );
+      gsap.to(prevTextElement, {
+        y: isNextDirection ? y : -1 * y,
+        duration: 1,
+        onComplete() {
+          prevTextElement.remove();
+        },
+      });
+    }
+  }
+</script>
