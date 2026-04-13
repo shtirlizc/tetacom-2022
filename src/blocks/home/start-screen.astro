@@ -99,16 +99,20 @@ const projectTags = [
   import Swiper from "swiper";
   import { FreeMode } from "swiper/modules";
 
-  const startScreenSwiper = document.querySelector(".js-start-screen-swiper");
+  const startScreenSwiper = document.querySelector<HTMLElement>(
+    ".js-start-screen-swiper",
+  );
 
   if (startScreenSwiper && !startScreenSwiper.classList.contains("is-ready")) {
-    startScreenSwiper.querySelectorAll(".swiper-slide").forEach((slide) => {
-      const tagEl = slide.firstElementChild;
+    startScreenSwiper
+      .querySelectorAll<HTMLElement>(".swiper-slide")
+      .forEach((slide) => {
+        const tagEl = slide.firstElementChild;
 
-      if (tagEl instanceof HTMLElement) {
-        slide.style.width = `${tagEl.offsetWidth + 4}px`;
-      }
-    });
+        if (tagEl instanceof HTMLElement) {
+          slide.style.width = `${tagEl.offsetWidth + 4}px`;
+        }
+      });
 
     new Swiper(startScreenSwiper, {
       modules: [FreeMode],
@@ -129,7 +133,6 @@ const projectTags = [
   ._start-screen__title {
     margin: 0;
     font-size: 60px;
-    font-weight: 600;
     line-height: 71px;
     letter-spacing: -2px;
   }
@@ -154,7 +157,6 @@ const projectTags = [
     gap: 9px;
     color: var(--primary-color);
     font-size: 16px;
-    font-weight: 600;
     line-height: 16px;
     text-decoration: none;
   }

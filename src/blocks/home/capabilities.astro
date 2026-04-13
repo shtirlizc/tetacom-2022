@@ -11,7 +11,10 @@ const Product3 = product3;
 <div class="_capabilities">
   <div class="_capabilities__items js-sticky-track">
     <article class="_capabilities__item">
-      <div class="_capabilities__item-content" style="background-color: #3c5df2">
+      <div
+        class="_capabilities__item-content"
+        style="background-color: #3c5df2"
+      >
         <div class="_capabilities__item-info">
           <h3 class="_capabilities__item-title">
             Симулятор гидроразрыва<br />пласта
@@ -25,8 +28,7 @@ const Product3 = product3;
                   stroke="#ffffff"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
           </a>
@@ -38,7 +40,10 @@ const Product3 = product3;
     </article>
 
     <article class="_capabilities__item">
-      <div class="_capabilities__item-content" style="background-color: #353749">
+      <div
+        class="_capabilities__item-content"
+        style="background-color: #353749"
+      >
         <div class="_capabilities__item-info">
           <h3 class="_capabilities__item-title">
             Симулятор обработки призабойных зон
@@ -52,8 +57,7 @@ const Product3 = product3;
                   stroke="#ffffff"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
           </a>
@@ -65,7 +69,10 @@ const Product3 = product3;
     </article>
 
     <article class="_capabilities__item">
-      <div class="_capabilities__item-content" style="background-color: #8792a9">
+      <div
+        class="_capabilities__item-content"
+        style="background-color: #8792a9"
+      >
         <div class="_capabilities__item-info">
           <h3 class="_capabilities__item-title">
             Удаленный мониторинг и аналитика бурения
@@ -79,8 +86,7 @@ const Product3 = product3;
                   stroke="#8792a9"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
           </a>
@@ -92,7 +98,10 @@ const Product3 = product3;
     </article>
 
     <article class="_capabilities__item">
-      <div class="_capabilities__item-content" style="background-color: #8a6eba">
+      <div
+        class="_capabilities__item-content"
+        style="background-color: #8a6eba"
+      >
         <div class="_capabilities__item-info">
           <h3 class="_capabilities__item-title">
             Построение графика исследований
@@ -106,8 +115,7 @@ const Product3 = product3;
                   stroke="#ffffff"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
           </a>
@@ -140,7 +148,9 @@ const Product3 = product3;
         const lastItem = cardsHeightMap[cardsHeightMap.length - 1];
         cardsHeightMap.push({
           index,
-          height: lastItem ? card.offsetHeight + lastItem.height : card.offsetHeight,
+          height: lastItem
+            ? card.offsetHeight + lastItem.height
+            : card.offsetHeight,
         });
       });
     };
@@ -287,7 +297,9 @@ const Product3 = product3;
       }
 
       document.removeEventListener("scroll", listenTrackScrolling);
-      document.addEventListener("scroll", listenTrackScrolling, { passive: true });
+      document.addEventListener("scroll", listenTrackScrolling, {
+        passive: true,
+      });
     };
 
     const setMode = () => {
@@ -341,7 +353,6 @@ const Product3 = product3;
 
   ._capabilities__item-title {
     font-size: 40px;
-    font-weight: 600;
     line-height: 47px;
   }
 
@@ -352,7 +363,6 @@ const Product3 = product3;
     margin-top: 20px;
     color: inherit;
     font-size: 16px;
-    font-weight: 600;
     text-decoration: none;
   }
 

@@ -22,8 +22,20 @@ const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
 <ul class={classes}>
   {
     items.map(
-      ({ rootClass: itemClass, title, description, href, linkLabel, itemAttrs, target, rel }) => (
-        <li class={["_link-block__item", itemClass].filter(Boolean).join(" ")} {...itemAttrs}>
+      ({
+        rootClass: itemClass,
+        title,
+        description,
+        href,
+        linkLabel,
+        itemAttrs,
+        target,
+        rel,
+      }) => (
+        <li
+          class={["_link-block__item", itemClass].filter(Boolean).join(" ")}
+          {...itemAttrs}
+        >
           <h3 class="_link-block__title">{title}</h3>
           <p class="_link-block__description">{description}</p>
           <a href={href} class="_link-block__link" target={target} rel={rel}>
@@ -63,7 +75,6 @@ const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
   ._link-block__title {
     margin: 0;
     font-size: 32px;
-    font-weight: 600;
     line-height: 38px;
   }
 

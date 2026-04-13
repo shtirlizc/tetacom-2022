@@ -7,11 +7,7 @@ interface Props {
   mobileAlign?: "left" | "center";
 }
 
-const {
-  as = "h1",
-  rootClass,
-  mobileAlign = "left",
-} = Astro.props as Props;
+const { as = "h1", rootClass, mobileAlign = "left" } = Astro.props as Props;
 
 const Tag = as;
 const classes = ["_page-title", rootClass].filter(Boolean).join(" ");
@@ -25,7 +21,6 @@ const classes = ["_page-title", rootClass].filter(Boolean).join(" ");
   ._page-title {
     margin: 0;
     font-size: 60px;
-    font-weight: 600;
     line-height: 71px;
     letter-spacing: -2px;
   }

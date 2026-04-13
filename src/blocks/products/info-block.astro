@@ -16,17 +16,17 @@ const { items } = Astro.props as Props;
     items.map((item) => (
       <div class="_info-block__item">
         <h2 class="_info-block__title">
-          {
-            item.titleLines.map((line, index) => (
-              <>
-                {index > 0 && <br />}
-                {line}
-              </>
-            ))
-          }
+          {item.titleLines.map((line, index) => (
+            <>
+              {index > 0 && <br />}
+              {line}
+            </>
+          ))}
         </h2>
         <ul>
-          {item.points.map((point) => <li>{point}</li>)}
+          {item.points.map((point) => (
+            <li>{point}</li>
+          ))}
         </ul>
       </div>
     ))
@@ -64,7 +64,6 @@ const { items } = Astro.props as Props;
   ._info-block__title {
     margin: 0;
     font-size: 40px;
-    font-weight: 600;
     line-height: 47px;
   }
 

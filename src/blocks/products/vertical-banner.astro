@@ -8,12 +8,7 @@ interface Props {
   image?: SvgComponent;
 }
 
-const {
-  title,
-  description,
-  hasImage = false,
-  image,
-} = Astro.props as Props;
+const { title, description, hasImage = false, image } = Astro.props as Props;
 
 const classes = ["_vertical-banner", hasImage && "_vertical-banner--has-image"]
   .filter(Boolean)
@@ -47,7 +42,6 @@ const ImageComponent = image;
     margin: 0;
     color: var(--black-color);
     font-size: 32px;
-    font-weight: 600;
     line-height: 38px;
   }
 

@@ -20,13 +20,19 @@ const { items } = Astro.props as Props;
   <div class="_course-program__list">
     {
       items.map(({ day, title, contentHtml }, index) => (
-        <details class="_course-program__item" open={index === 0 && Boolean(contentHtml)}>
+        <details
+          class="_course-program__item"
+          open={index === 0 && Boolean(contentHtml)}
+        >
           <summary class="_course-program__item-header">
             <span class="_course-program__item-date">{day}</span>
             <span class="_course-program__item-title">{title}</span>
           </summary>
           <div class="_course-program__item-text">
-            <TextContent rootClass="_course-program__item-content" html={contentHtml} />
+            <TextContent
+              rootClass="_course-program__item-content"
+              html={contentHtml}
+            />
           </div>
         </details>
       ))
@@ -38,7 +44,6 @@ const { items } = Astro.props as Props;
   ._course-program__title {
     margin: 0;
     font-size: 40px;
-    font-weight: 600;
     line-height: 1em;
   }
 
@@ -89,7 +94,6 @@ const { items } = Astro.props as Props;
   ._course-program__item-title {
     margin: 0;
     font-size: 32px;
-    font-weight: 600;
   }
 
   ._course-program__item-text {
