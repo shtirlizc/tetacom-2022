@@ -1,5 +1,14 @@
 ---
 import Container from "../../components/container.astro";
+
+const aboutNumbers = [
+  { number: "7", text: "продуктов" },
+  { number: "40+", text: "специалистов" },
+  { number: "100+", text: "пользователей" },
+  { number: "30+", text: "лабораторных исследований" },
+  { number: "50+", text: "выполненных НИОКР" },
+  { number: "4", text: "страны присутствия" },
+];
 ---
 
 <section class="_about-numbers">
@@ -7,30 +16,12 @@ import Container from "../../components/container.astro";
     <h2 class="_about-numbers__title">О нас в цифрах</h2>
 
     <ul class="_about-numbers__body">
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">7</span>
-        <span class="_about-numbers__item-text">продуктов</span>
-      </li>
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">40+</span>
-        <span class="_about-numbers__item-text">специалистов</span>
-      </li>
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">100+</span>
-        <span class="_about-numbers__item-text">пользователей</span>
-      </li>
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">30+</span>
-        <span class="_about-numbers__item-text">лабораторных исследований</span>
-      </li>
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">50+</span>
-        <span class="_about-numbers__item-text">выполненных НИОКР</span>
-      </li>
-      <li class="_about-numbers__item">
-        <span class="_about-numbers__item-number">4</span>
-        <span class="_about-numbers__item-text">страны присутствия</span>
-      </li>
+      {aboutNumbers.map(({ number, text }) => (
+        <li class="_about-numbers__item">
+          <span class="_about-numbers__item-number">{number}</span>
+          <span class="_about-numbers__item-text">{text}</span>
+        </li>
+      ))}
     </ul>
   </Container>
 </section>
