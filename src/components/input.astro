@@ -34,13 +34,16 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"]
 </div>
 
 <script>
-  const getFields = (fields, tag) => {
+  const getFields = <TagName extends "input" | "textarea">(
+    fields: HTMLCollectionOf<Element>,
+    tag: TagName,
+  ) => {
     return Array.from(fields)
       .map((field) => field.getElementsByTagName(tag))
       .filter((field) => field.length);
   };
 
-  const combineFields = (textFields) => {
+  const combineFields = (textFields: HTMLCollectionOf<Element>) => {
     const inputs = getFields(textFields, "input");
     const textareas = getFields(textFields, "textarea");
 

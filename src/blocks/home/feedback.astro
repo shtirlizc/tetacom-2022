@@ -1,6 +1,6 @@
 ---
 import Btn from "../../components/btn.astro";
-import Feedback from "../../components/feedback.astro";
+import FeedbackCard from "../../components/feedback.astro";
 import Form from "../../components/form.astro";
 import Input from "../../components/input.astro";
 ---
@@ -19,7 +19,7 @@ import Input from "../../components/input.astro";
     </div>
 
     <div class="_feedback-block__form">
-      <Feedback title="Оставьте заявку">
+      <FeedbackCard title="Оставьте заявку">
         <Form hook="form">
           <div class="_form__group">
             <Input type="text" name="name" id="name" label="Имя" required />
@@ -62,7 +62,7 @@ import Input from "../../components/input.astro";
             </p>
           </div>
         </Form>
-      </Feedback>
+      </FeedbackCard>
     </div>
   </div>
 </section>

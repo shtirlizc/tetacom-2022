@@ -137,9 +137,14 @@ const Product3 = product3;
   const track = document.querySelector(".js-sticky-track");
 
   if (track instanceof HTMLElement && !track.classList.contains("is-ready")) {
-    let cards = [];
-    let cardsHeightMap = [];
-    let currentCardNumber = null;
+    type CardHeight = {
+      index: number;
+      height: number;
+    };
+
+    let cards: HTMLElement[] = [];
+    let cardsHeightMap: CardHeight[] = [];
+    let currentCardNumber: number | null = null;
 
     const calcCardsHeight = () => {
       cardsHeightMap = [];
@@ -178,15 +183,20 @@ const Product3 = product3;
       });
     };
 
-    const shiftCards = (shiftBase) => {
-      const shiftValue = shiftBase + currentCardNumber * difference;
+    const shiftCards = (shiftBase: number) => {
+      if (currentCardNumber === null) {
+        return;
+      }
+
+      const activeCardNumber = currentCardNumber;
+      const shiftValue = shiftBase + activeCardNumber * difference;
 
       cards.forEach((card, index) => {
         let transformValue;
 
-        if (index - currentCardNumber < 0) {
+        if (index - activeCardNumber < 0) {
           transformValue = -1000 * cards.length;
-        } else if (index - currentCardNumber === 0) {
+        } else if (index - activeCardNumber === 0) {
           transformValue = -5 * shiftBase - shiftValue;
         } else {
           transformValue = -1 * shiftValue;
@@ -199,10 +209,15 @@ const Product3 = product3;
     };
 
     const clearShifts = () => {
-      const shiftValue = currentCardNumber * difference;
+      if (currentCardNumber === null) {
+        return;
+      }
+
+      const activeCardNumber = currentCardNumber;
+      const shiftValue = activeCardNumber * difference;
 
       cards.forEach((card, index) => {
-        if (index >= currentCardNumber) {
+        if (index >= activeCardNumber) {
           gsap.to(card, {
             transform: `translateY(${-1 * shiftValue}px)`,
           });
@@ -211,9 +226,18 @@ const Product3 = product3;
     };
 
     const scrollTracking = () => {
+      if (currentCardNumber === null) {
+        return;
+      }
+
       const trackY = track.getBoundingClientRect().y;
-      const divider =
-        cardsHeightMap[currentCardNumber].height + trackY - offsetTop;
+      const currentCard = cardsHeightMap[currentCardNumber];
+
+      if (!currentCard) {
+        return;
+      }
+
+      const divider = currentCard.height + trackY - offsetTop;
 
       if (divider <= difference) {
         shiftCards(Math.abs(divider - difference));
@@ -268,7 +292,7 @@ const Product3 = product3;
     const setup = () => {
       track.style.marginBottom = "50vh";
       cards = Array.from(track.children).filter(
-        (card) => card instanceof HTMLElement,
+        (card): card is HTMLElement => card instanceof HTMLElement,
       );
 
       const trackHeight = cards.reduce((sum, element) => {
@@ -304,7 +328,7 @@ const Product3 = product3;
 
     const setMode = () => {
       cards = Array.from(track.children).filter(
-        (card) => card instanceof HTMLElement,
+        (card): card is HTMLElement => card instanceof HTMLElement,
       );
       calcCardsHeight();
 
