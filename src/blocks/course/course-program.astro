@@ -17,24 +17,26 @@ const { items } = Astro.props as Props;
 <section class="_course-program">
   <h2 class="_course-program__title">Программа курса</h2>
 
-  <div class="_course-program__list">
+  <div class="accordion-container _course-program__list js-accordion">
     {
-      items.map(({ day, title, contentHtml }, index) => (
-        <details
-          class="_course-program__item"
-          open={index === 0 && Boolean(contentHtml)}
-        >
-          <summary class="_course-program__item-header">
-            <span class="_course-program__item-date">{day}</span>
-            <span class="_course-program__item-title">{title}</span>
-          </summary>
-          <div class="_course-program__item-text">
+      items.map(({ day, title, contentHtml }) => (
+        <div class="ac _course-program__item">
+          <h2 class="ac-header _course-program__item-heading">
+            <button
+              type="button"
+              class="ac-trigger _course-program__item-header"
+            >
+              <span class="_course-program__item-date">{day}</span>
+              <span class="_course-program__item-title">{title}</span>
+            </button>
+          </h2>
+          <div class="ac-panel _course-program__item-text">
             <TextContent
               rootClass="_course-program__item-content"
               html={contentHtml}
             />
           </div>
-        </details>
+        </div>
       ))
     }
   </div>
@@ -59,23 +61,28 @@ const { items } = Astro.props as Props;
     background: #f8f8f8;
   }
 
+  ._course-program__item-heading {
+    margin: 0;
+  }
+
   ._course-program__item-header {
     display: grid;
     gap: 12px;
     width: 100%;
     padding: 20px 24px;
     overflow: hidden;
+    border: none;
     border-radius: 16px;
+    background: none;
+    color: inherit;
+    font-family: inherit;
+    text-align: left;
     cursor: pointer;
-    list-style: none;
     transition: background-color var(--delay) var(--timing-func);
   }
 
-  ._course-program__item-header::-webkit-details-marker {
-    display: none;
-  }
-
-  ._course-program__item-header:hover {
+  ._course-program__item-header:hover,
+  ._course-program__item.is-active ._course-program__item-header {
     background-color: var(--primary-color);
     color: var(--white-color);
   }
@@ -98,14 +105,11 @@ const { items } = Astro.props as Props;
 
   ._course-program__item-text {
     overflow: hidden;
+    transition: height 250ms var(--timing-func);
   }
 
-  ._course-program__item-content {
+  :global(._course-program__item-content) {
     padding: 16px 24px;
-  }
-
-  ._course-program__item-content:empty {
-    display: none;
   }
 
   /* mobile */
@@ -120,3 +124,17 @@ const { items } = Astro.props as Props;
     }
   }
 </style>
+
+<script>
+  import Accordion from "accordion-js";
+
+  new Accordion(
+    Array.from(
+      document.querySelectorAll<HTMLElement>("._course-program .js-accordion"),
+    ),
+    {
+      duration: 250,
+      showMultiple: true,
+    },
+  );
+</script>

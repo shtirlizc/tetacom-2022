@@ -39,18 +39,36 @@ const courseProgramItems = [
   {
     day: "2 день",
     title: "Обработки терригенных коллекторов и осложняющие факторы",
-    contentHtml: "",
+    contentHtml: `
+      <ul>
+        <li>Вводная лекция, как пользоваться симулятором RockStim</li>
+        <li>Особенности воздействия обработок в карбонатных коллекторах</li>
+        <li>Моделирование собственной скважины с учётом обработок</li>
+      </ul>
+    `,
   },
   {
     day: "3 день",
     title: "Лабораторные исследования, жидкостей и реагентов СКО, ОВП",
-    contentHtml: "",
+    contentHtml: `
+      <ul>
+        <li>Вводная лекция, как пользоваться симулятором RockStim</li>
+        <li>Особенности воздействия обработок в карбонатных коллекторах</li>
+        <li>Моделирование собственной скважины с учётом обработок</li>
+      </ul>
+    `,
   },
   {
     day: "4 день",
     title:
       "Моделирование и оптимизация эффектов от воздействия в симуляторе RockStim",
-    contentHtml: "",
+    contentHtml: `
+      <ul>
+        <li>Вводная лекция, как пользоваться симулятором RockStim</li>
+        <li>Особенности воздействия обработок в карбонатных коллекторах</li>
+        <li>Моделирование собственной скважины с учётом обработок</li>
+      </ul>
+    `,
   },
 ];
 
@@ -191,18 +209,20 @@ const courseFeedbackDescriptionItems = [
           <div class="_course__price">
             <h2 class="_course__price-title">Стоимость:</h2>
             <p class="_course__price-subtitle">70 000 ₽ за 4 дня обучения</p>
-            <TextContent rootClass="_course__price-text">
-              <h3>В курс входит:</h3>
-              <ul>
-                <li>Две недели пользования симулятором RockStim</li>
-                <li>
-                  Смоделируем для Вас цифровую модель скважины и подберем лучший
-                  дизайн кислотного воздействия
-                </li>
-                <li>Удостоверение о повышении квалификации</li>
-                <li>Электронные материалы курса</li>
-              </ul>
-            </TextContent>
+            <div class="_course__price-text">
+              <TextContent>
+                <h3>В курс входит:</h3>
+                <ul>
+                  <li>Две недели пользования симулятором RockStim</li>
+                  <li>
+                    Смоделируем для Вас цифровую модель скважины и подберем
+                    лучший дизайн кислотного воздействия
+                  </li>
+                  <li>Удостоверение о повышении квалификации</li>
+                  <li>Электронные материалы курса</li>
+                </ul>
+              </TextContent>
+            </div>
           </div>
           <div class="_course__feedback">
             <Feedback
@@ -308,7 +328,7 @@ const courseFeedbackDescriptionItems = [
 
   ._course__props-value {
     font-size: 18px;
-
+    font-weight: 500;
   }
 
   ._course__actions {
@@ -337,6 +357,7 @@ const courseFeedbackDescriptionItems = [
     margin: 29px 0 0;
     color: var(--primary-color);
     font-size: 32px;
+    font-weight: 500;
   }
 
   ._course__price-text {

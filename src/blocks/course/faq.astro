@@ -15,31 +15,33 @@ const { items } = Astro.props as Props;
 
 <section class="_faq">
   <h2 class="_faq__title">FAQ</h2>
-  <div class="_faq__body _accordion">
+  <div class="_faq__body _accordion js-accordion">
     {
       items.map(({ title, contentHtml }) => (
-        <details class="_accordion__item">
-          <summary class="_accordion__button">
-            {title}
-            <span class="_accordion__button-icon">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path
-                  d="M10 1V19M1 10H19"
-                  stroke="black"
-                  stroke-opacity="0.87"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </span>
-          </summary>
-          <div class="_accordion__panel">
+        <div class="ac _accordion__item">
+          <h3 class="ac-header _accordion__header">
+            <button type="button" class="_accordion__button ac-trigger">
+              {title}
+              <span class="_accordion__button-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path
+                    d="M10 1V19M1 10H19"
+                    stroke="black"
+                    stroke-opacity="0.87"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          </h3>
+          <div class="ac-panel _accordion__panel">
             <TextContent
               rootClass="_accordion__panel-content"
               html={contentHtml}
             />
           </div>
-        </details>
+        </div>
       ))
     }
   </div>
@@ -63,6 +65,10 @@ const { items } = Astro.props as Props;
     border-bottom: 1px solid rgb(0 0 0 / 10%);
   }
 
+  ._accordion__header {
+    margin: 0;
+  }
+
   ._accordion__button {
     position: relative;
     display: block;
@@ -73,14 +79,10 @@ const { items } = Astro.props as Props;
     background: none;
     color: var(--black-color);
     font-size: 32px;
+    font-family: inherit;
     text-align: left;
-    list-style: none;
     cursor: pointer;
     transition: color var(--delay) var(--timing-func);
-  }
-
-  ._accordion__button::-webkit-details-marker {
-    display: none;
   }
 
   ._accordion__button-icon {
@@ -119,20 +121,21 @@ const { items } = Astro.props as Props;
     stroke: var(--primary-color);
   }
 
-  details[open] ._accordion__button-icon svg {
+  ._accordion__button[aria-expanded="true"] ._accordion__button-icon svg {
     transform: rotate(45deg);
   }
 
   ._accordion__panel {
     overflow: hidden;
+    transition: height 250ms var(--timing-func);
   }
 
-  ._accordion__panel-content {
+  :global(._accordion__panel-content) {
     padding: var(--padding);
     padding-top: 0;
   }
 
-  ._accordion__panel-content:empty {
+  :global(._accordion__panel-content:empty) {
     display: none;
   }
 
@@ -152,3 +155,15 @@ const { items } = Astro.props as Props;
     }
   }
 </style>
+
+<script>
+  import Accordion from "accordion-js";
+
+  new Accordion(
+    Array.from(document.querySelectorAll<HTMLElement>("._faq .js-accordion")),
+    {
+      duration: 250,
+      showMultiple: true,
+    },
+  );
+</script>
