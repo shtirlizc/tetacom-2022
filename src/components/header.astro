@@ -64,31 +64,29 @@ import Hamburger from "./hamburger.astro";
               <span class="_header__menu-link">Продукты</span>
             </button>
 
-            <Fragment>
-              <ul class="_header__submenu">
-                <li class="_header__submenu-item first">
-                  <a href="#" class="_header__submenu-link">ГРП</a>
-                </li>
-                <li class="_header__submenu-item">
-                  <a href="#" class="_header__submenu-link">Буроптима</a>
-                </li>
-                <li class="_header__submenu-item">
-                  <a href="#" class="_header__submenu-link">Эксперия</a>
-                </li>
-                <li class="_header__submenu-item">
-                  <a href="#" class="_header__submenu-link">РИР</a>
-                </li>
-                <li class="_header__submenu-item">
-                  <a href="#" class="_header__submenu-link">Симулятор ОПЗ</a>
-                </li>
-                <li class="_header__submenu-item">
-                  <a href="#" class="_header__submenu-link">ЛИС</a>
-                </li>
-                <li class="_header__submenu-item last">
-                  <a href="#" class="_header__submenu-link">НИОКР</a>
-                </li>
-              </ul>
-            </Fragment>
+            <ul class="_header__submenu">
+              <li class="_header__submenu-item first">
+                <a href="#" class="_header__submenu-link">ГРП</a>
+              </li>
+              <li class="_header__submenu-item">
+                <a href="#" class="_header__submenu-link">Буроптима</a>
+              </li>
+              <li class="_header__submenu-item">
+                <a href="#" class="_header__submenu-link">Эксперия</a>
+              </li>
+              <li class="_header__submenu-item">
+                <a href="#" class="_header__submenu-link">РИР</a>
+              </li>
+              <li class="_header__submenu-item">
+                <a href="#" class="_header__submenu-link">Симулятор ОПЗ</a>
+              </li>
+              <li class="_header__submenu-item">
+                <a href="#" class="_header__submenu-link">ЛИС</a>
+              </li>
+              <li class="_header__submenu-item last">
+                <a href="#" class="_header__submenu-link">НИОКР</a>
+              </li>
+            </ul>
           </Dropdown>
           <li class="_header__menu-item">
             <a class="_header__menu-link" href="#">Команда</a>
@@ -300,7 +298,7 @@ import Hamburger from "./hamburger.astro";
   }
 
   ._header__submenu-link {
-    padding: calc(var(--space) / 2) 0;
+    padding: var(--space) 0;
   }
 
   ._header__hamburger {

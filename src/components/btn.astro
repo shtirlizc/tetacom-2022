@@ -6,11 +6,13 @@ interface Props {
   variant?: "primary" | "outline" | "link" | "text";
   shape?: "default" | "icon" | "circle" | "icon-circle";
   block?: boolean;
+  popovertarget?: string;
   class?: string;
 }
 
 const {
   href,
+  popovertarget,
   type = "button",
   size = "default",
   variant = "primary",
@@ -39,7 +41,12 @@ const classes = [
       <slot />
     </a>
   ) : (
-    <button type={type} class={classes} {...attrs}>
+    <button
+      popovertarget={popovertarget}
+      type={type}
+      class={classes}
+      {...attrs}
+    >
       <slot />
     </button>
   )

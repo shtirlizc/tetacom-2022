@@ -1,0 +1,220 @@
+---
+import Btn from "./btn.astro";
+import Feedback from "./feedback.astro";
+import Form from "./form.astro";
+import Input from "./input.astro";
+
+const closeIconPath =
+  "M12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929L20 18.5858L26.2929 12.2929C26.6834 11.9024 27.3166 11.9024 27.7071 12.2929C28.0976 12.6834 28.0976 13.3166 27.7071 13.7071L21.4142 20L27.7071 26.2929C28.0976 26.6834 28.0976 27.3166 27.7071 27.7071C27.3166 28.0976 26.6834 28.0976 26.2929 27.7071L20 21.4142L13.7071 27.7071C13.3166 28.0976 12.6834 28.0976 12.2929 27.7071C11.9024 27.3166 11.9024 26.6834 12.2929 26.2929L18.5858 20L12.2929 13.7071C11.9024 13.3166 11.9024 12.6834 12.2929 12.2929Z";
+---
+
+<div popover class="_modal" id="modal-feedback">
+  <div class="_modal__wrap">
+    <Feedback title="Связаться с нами">
+      <Form hook="form">
+        <div class="_form__group">
+          <Input type="text" name="name" id="modal-name" label="Имя" required />
+        </div>
+        <div class="_form__group">
+          <Input
+            type="tel"
+            name="phone"
+            id="modal-phone"
+            label="Телефон"
+            hook="phone-mask"
+            required
+          />
+        </div>
+        <div class="_form__group">
+          <Input
+            type="email"
+            name="email"
+            id="modal-email"
+            label="E-mail"
+            required
+          />
+        </div>
+        <div class="_form__group _form__group--bottom-large">
+          <Input
+            multiline
+            name="message"
+            id="modal-message"
+            label="Комментарий"
+            required
+          />
+        </div>
+        <div class="_form__group _form__group--bottom-large">
+          <Btn type="submit" block>Отправить сообщение</Btn>
+        </div>
+        <div class="_form__group">
+          <p class="_form__rules">
+            Заполняя форму, вы соглашаетесь на
+            <a href="#">обработку персональных данных</a>
+          </p>
+        </div>
+      </Form>
+    </Feedback>
+
+    <button
+      type="button"
+      class="_modal__close"
+      popovertarget="modal-feedback"
+      popovertargetaction="hide"
+      aria-label="Закрыть"
+    >
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="20"></rect>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d={closeIconPath}
+          fill="black"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div popover class="_modal" id="modal-success">
+  <div class="_modal__wrap">
+    <div class="_success">
+      <h3 class="_success__title">Ваш комментарий отправлен</h3>
+      <div class="_success__image">
+        <svg width="120" height="120" x="0px" y="0px" viewBox="0 0 507.2 507.2">
+          <circle style="fill: #32ba7c" cx="253.6" cy="253.6" r="253.6"
+          ></circle>
+          <path
+            style="fill: #0aa06e"
+            d="M188.8,368l130.4,130.4c108-28.8,188-127.2,188-244.8c0-2.4,0-4.8,0-7.2L404.8,152L188.8,368z"
+          ></path>
+          <g>
+            <path
+              style="fill: #ffffff"
+              d="M260,310.4c11.2,11.2,11.2,30.4,0,41.6l-23.2,23.2c-11.2,11.2-30.4,11.2-41.6,0L93.6,272.8
+		c-11.2-11.2-11.2-30.4,0-41.6l23.2-23.2c11.2-11.2,30.4-11.2,41.6,0L260,310.4z"
+            ></path>
+            <path
+              style="fill: #ffffff"
+              d="M348.8,133.6c11.2-11.2,30.4-11.2,41.6,0l23.2,23.2c11.2,11.2,11.2,30.4,0,41.6l-176,175.2
+		c-11.2,11.2-30.4,11.2-41.6,0l-23.2-23.2c-11.2-11.2-11.2-30.4,0-41.6L348.8,133.6z"
+            ></path>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="_modal__close"
+      popovertarget="modal-success"
+      popovertargetaction="hide"
+      aria-label="Закрыть"
+    >
+      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="20"></rect>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d={closeIconPath}
+          fill="black"></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<style>
+  ._modal {
+    position: fixed;
+    inset: 0;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background-color: transparent;
+    opacity: 0;
+    transform: scale(0.75);
+    transition:
+      opacity calc(2 * var(--delay)) var(--timing-func),
+      transform calc(2 * var(--delay)) var(--timing-func),
+      overlay calc(2 * var(--delay)) var(--timing-func) allow-discrete,
+      display calc(2 * var(--delay)) var(--timing-func) allow-discrete;
+  }
+
+  ._modal:popover-open {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @starting-style {
+    ._modal:popover-open {
+      opacity: 0;
+      transform: scale(0.75);
+    }
+  }
+
+  ._modal::backdrop {
+    background-color: rgb(0 0 0 / 50%);
+    opacity: 0;
+    backdrop-filter: blur(2px);
+    transition:
+      opacity calc(2 * var(--delay)) var(--timing-func),
+      overlay calc(2 * var(--delay)) var(--timing-func) allow-discrete,
+      display calc(2 * var(--delay)) var(--timing-func) allow-discrete;
+  }
+
+  ._modal:popover-open::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    ._modal:popover-open::backdrop {
+      opacity: 0;
+    }
+  }
+
+  ._modal__wrap {
+    position: relative;
+    width: 416px;
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 26px 20px 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-radius: 16px;
+    background-color: var(--bg-color);
+  }
+
+  ._modal__close {
+    position: absolute;
+    top: 20px;
+    right: 14px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  ._modal__close svg rect {
+    fill: transparent;
+    transition: fill var(--delay) var(--timing-func);
+  }
+
+  ._modal__close:hover svg rect {
+    fill: #f8f8f8;
+  }
+
+  ._success__title {
+    margin: 0;
+    padding: 0 24px;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  ._success__image {
+    margin-top: 32px;
+    text-align: center;
+  }
+</style>

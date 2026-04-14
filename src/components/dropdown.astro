@@ -19,7 +19,6 @@ const bodyClasses = ["_dropdown__body", bodyClass].filter(Boolean).join(" ");
     position: relative;
   }
 
-  /*TODO*/
   :global(._dropdown__open-btn) {
     margin: 0;
     padding: 0;
@@ -33,6 +32,7 @@ const bodyClasses = ["_dropdown__body", bodyClass].filter(Boolean).join(" ");
   @media (width >= 1081px) {
     ._dropdown__body {
       border: none;
+      padding: 0;
       position-area: bottom span-right;
       opacity: 0;
       transform: translateY(-12px);
