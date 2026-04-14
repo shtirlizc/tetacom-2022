@@ -1,58 +1,14 @@
 ---
-import Btn from "./btn.astro";
 import Feedback from "./feedback.astro";
-import Form from "./form.astro";
-import Input from "./input.astro";
+import BaseForm from "./base-form.astro";
 
-const closeIconPath =
-  "M12.2929 12.2929C12.6834 11.9024 13.3166 11.9024 13.7071 12.2929L20 18.5858L26.2929 12.2929C26.6834 11.9024 27.3166 11.9024 27.7071 12.2929C28.0976 12.6834 28.0976 13.3166 27.7071 13.7071L21.4142 20L27.7071 26.2929C28.0976 26.6834 28.0976 27.3166 27.7071 27.7071C27.3166 28.0976 26.6834 28.0976 26.2929 27.7071L20 21.4142L13.7071 27.7071C13.3166 28.0976 12.6834 28.0976 12.2929 27.7071C11.9024 27.3166 11.9024 26.6834 12.2929 26.2929L18.5858 20L12.2929 13.7071C11.9024 13.3166 11.9024 12.6834 12.2929 12.2929Z";
+import CloseIcon from "../assets/close-icon.svg";
 ---
 
 <div popover class="_modal" id="modal-feedback">
   <div class="_modal__wrap">
     <Feedback title="Связаться с нами">
-      <Form hook="form">
-        <div class="_form__group">
-          <Input type="text" name="name" id="modal-name" label="Имя" required />
-        </div>
-        <div class="_form__group">
-          <Input
-            type="tel"
-            name="phone"
-            id="modal-phone"
-            label="Телефон"
-            hook="phone-mask"
-            required
-          />
-        </div>
-        <div class="_form__group">
-          <Input
-            type="email"
-            name="email"
-            id="modal-email"
-            label="E-mail"
-            required
-          />
-        </div>
-        <div class="_form__group _form__group--bottom-large">
-          <Input
-            multiline
-            name="message"
-            id="modal-message"
-            label="Комментарий"
-            required
-          />
-        </div>
-        <div class="_form__group _form__group--bottom-large">
-          <Btn type="submit" block>Отправить сообщение</Btn>
-        </div>
-        <div class="_form__group">
-          <p class="_form__rules">
-            Заполняя форму, вы соглашаетесь на
-            <a href="#">обработку персональных данных</a>
-          </p>
-        </div>
-      </Form>
+      <BaseForm />
     </Feedback>
 
     <button
@@ -62,14 +18,25 @@ const closeIconPath =
       popovertargetaction="hide"
       aria-label="Закрыть"
     >
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="20"></rect>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d={closeIconPath}
-          fill="black"></path>
-      </svg>
+      <CloseIcon />
+    </button>
+  </div>
+</div>
+
+<div popover class="_modal" id="modal-demo">
+  <div class="_modal__wrap">
+    <Feedback title="Заявка на демонстрацию">
+      <BaseForm />
+    </Feedback>
+
+    <button
+      type="button"
+      class="_modal__close"
+      popovertarget="modal-feedback"
+      popovertargetaction="hide"
+      aria-label="Закрыть"
+    >
+      <CloseIcon />
     </button>
   </div>
 </div>
@@ -109,14 +76,7 @@ const closeIconPath =
       popovertargetaction="hide"
       aria-label="Закрыть"
     >
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="20"></rect>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d={closeIconPath}
-          fill="black"></path>
-      </svg>
+      <CloseIcon />
     </button>
   </div>
 </div>
@@ -194,15 +154,13 @@ const closeIconPath =
     border: 0;
     background: transparent;
     cursor: pointer;
-  }
+    font-size: 0;
+    border-radius: 50%;
+    transition: background-color var(--delay) var(--timing-func);
 
-  ._modal__close svg rect {
-    fill: transparent;
-    transition: fill var(--delay) var(--timing-func);
-  }
-
-  ._modal__close:hover svg rect {
-    fill: #f8f8f8;
+    &:hover {
+      background-color: #f8f8f8;
+    }
   }
 
   ._success__title {

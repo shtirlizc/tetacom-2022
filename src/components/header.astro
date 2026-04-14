@@ -1,5 +1,4 @@
 ---
-import Btn from "./btn.astro";
 import Container from "./container.astro";
 import Dropdown from "./dropdown.astro";
 import Hamburger from "./hamburger.astro";
@@ -52,7 +51,7 @@ import Hamburger from "./hamburger.astro";
       <nav class="_header__navigation">
         <ul class="_header__menu _header__menu--mobile">
           <li class="_header__menu-item active">
-            <a class="_header__menu-link" href="#">Главная</a>
+            <a class="_header__menu-link" href="/">Главная</a>
           </li>
           <Dropdown id="product-list" as="li" class="_header__menu-item">
             <button
@@ -89,24 +88,30 @@ import Hamburger from "./hamburger.astro";
             </ul>
           </Dropdown>
           <li class="_header__menu-item">
-            <a class="_header__menu-link" href="#">Команда</a>
+            <a class="_header__menu-link" href="/vacancies">Вакансии</a>
           </li>
           <li class="_header__menu-item">
-            <a class="_header__menu-link" href="#">Вакансии</a>
+            <a class="_header__menu-link" href="/course">Обучение</a>
           </li>
           <li class="_header__menu-item">
-            <a class="_header__menu-link" href="#">Контакты</a>
+            <a class="_header__menu-link" href="/">Блог</a>
+          </li>
+          <li class="_header__menu-item">
+            <a class="_header__menu-link" href="/">Новости</a>
+          </li>
+          <li class="_header__menu-item">
+            <a class="_header__menu-link" href="/contacts">Контакты</a>
           </li>
         </ul>
 
-        <ul class="_header__menu">
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="#">Регистрация</a>
-          </li>
-          <li class="_header__menu-item">
-            <Btn href="#" size="nav-menu">Вход</Btn>
-          </li>
-        </ul>
+        <!--<ul class="_header__menu">-->
+        <!--  <li class="_header__menu-item">-->
+        <!--    <a class="_header__menu-link" href="#">Регистрация</a>-->
+        <!--  </li>-->
+        <!--  <li class="_header__menu-item">-->
+        <!--    <Btn href="#" size="nav-menu">Вход</Btn>-->
+        <!--  </li>-->
+        <!--</ul>-->
       </nav>
 
       <div class="_header__hamburger">

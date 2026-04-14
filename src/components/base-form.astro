@@ -1,0 +1,42 @@
+---
+import Btn from "./btn.astro";
+import Input from "./input.astro";
+import Form from "./form.astro";
+---
+
+<Form hook="form">
+  <div class="_form__group">
+    <Input type="text" name="name" id="modal-name" label="Имя" required />
+  </div>
+  <div class="_form__group">
+    <Input
+      type="tel"
+      name="phone"
+      id="modal-phone"
+      label="Телефон"
+      hook="phone-mask"
+      required
+    />
+  </div>
+  <div class="_form__group">
+    <Input type="email" name="email" id="modal-email" label="E-mail" required />
+  </div>
+  <div class="_form__group _form__group--bottom-large">
+    <Input
+      multiline
+      name="message"
+      id="modal-message"
+      label="Комментарий"
+      required
+    />
+  </div>
+  <div class="_form__group _form__group--bottom-large">
+    <Btn type="submit" block>Отправить сообщение</Btn>
+  </div>
+  <div class="_form__group">
+    <p class="_form__rules">
+      Заполняя форму, вы соглашаетесь на
+      <a href="#">обработку персональных данных</a>
+    </p>
+  </div>
+</Form>

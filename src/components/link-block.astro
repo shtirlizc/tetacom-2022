@@ -3,7 +3,8 @@ interface LinkBlockItem {
   rootClass?: string;
   title: string;
   description: string;
-  href: string;
+  href?: string;
+  popovertarget?: string;
   linkLabel: string;
   itemAttrs?: Record<string, string>;
   target?: string;
@@ -27,22 +28,34 @@ const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
         title,
         description,
         href,
+        popovertarget,
         linkLabel,
         itemAttrs,
         target,
         rel,
-      }) => (
-        <li
-          class={["_link-block__item", itemClass].filter(Boolean).join(" ")}
-          {...itemAttrs}
-        >
-          <h3 class="_link-block__title">{title}</h3>
-          <p class="_link-block__description">{description}</p>
-          <a href={href} class="_link-block__link" target={target} rel={rel}>
-            {linkLabel}
-          </a>
-        </li>
-      ),
+      }) => {
+        const TagName = href ? "a" : "button";
+
+        return (
+          <li
+            class={["_link-block__item", itemClass].filter(Boolean).join(" ")}
+            {...itemAttrs}
+          >
+            <h3 class="_link-block__title">{title}</h3>
+            <p class="_link-block__description">{description}</p>
+            <TagName
+              href={href}
+              type={popovertarget && "button"}
+              popovertarget={popovertarget}
+              class="_link-block__link"
+              target={target}
+              rel={rel}
+            >
+              {linkLabel}
+            </TagName>
+          </li>
+        );
+      },
     )
   }
 </ul>
@@ -85,9 +98,12 @@ const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
   }
 
   ._link-block__link {
+    background-color: transparent;
     position: absolute;
     inset: 0;
     font-size: 0;
+    border: none;
+    cursor: pointer;
   }
 
   /* mobile */
