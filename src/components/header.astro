@@ -2,6 +2,29 @@
 import Container from "./container.astro";
 import Dropdown from "./dropdown.astro";
 import Hamburger from "./hamburger.astro";
+import { menuItems } from "../navigation";
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const homeMenuItem = menuItems.find(({ id }) => id === "home");
+const productsMenuItem = menuItems.find(({ id }) => id === "products");
+const headerLinkItems = menuItems.filter(
+  ({ id }) => id !== "home" && id !== "products",
+);
+
+const isActivePath = (href: string, exact = false) => {
+  if (exact || href === "/") {
+    return currentPath === href;
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
+
+const isProductsActive = productsMenuItem
+  ? isActivePath(productsMenuItem.href, productsMenuItem.exact)
+  : false;
+const isHomeActive = homeMenuItem
+  ? isActivePath(homeMenuItem.href, homeMenuItem.exact)
+  : false;
 ---
 
 <header class="_header">
@@ -50,17 +73,38 @@ import Hamburger from "./hamburger.astro";
 
       <nav class="_header__navigation">
         <ul class="_header__menu _header__menu--mobile">
-          <li class="_header__menu-item active">
-            <a class="_header__menu-link" href="/">Главная</a>
+          <li
+            class:list={[
+              "_header__menu-item",
+              { active: isHomeActive },
+            ]}
+          >
+            <a
+              class="_header__menu-link"
+              href={homeMenuItem?.href ?? "/"}
+              aria-current={isHomeActive ? "page" : undefined}
+            >
+              {homeMenuItem?.label ?? "Главная"}
+            </a>
           </li>
-          <Dropdown id="product-list" as="li" class="_header__menu-item">
+          <Dropdown
+            id="product-list"
+            as="li"
+            class:list={[
+              "_header__menu-item",
+              { active: isProductsActive },
+            ]}
+          >
             <button
               slot="trigger"
               type="button"
               class="_dropdown__open-btn"
               popovertarget="product-list"
+              aria-current={isProductsActive ? "page" : undefined}
             >
-              <span class="_header__menu-link">Продукты</span>
+              <span class="_header__menu-link">
+                {productsMenuItem?.label ?? "Продукты"}
+              </span>
             </button>
 
             <ul class="_header__submenu">
@@ -87,23 +131,26 @@ import Hamburger from "./hamburger.astro";
               </li>
             </ul>
           </Dropdown>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="/vacancies">Вакансии</a>
-          </li>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="/education/opz-course">
-              Обучение
-            </a>
-          </li>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="/blog">Блог</a>
-          </li>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="/news">Новости</a>
-          </li>
-          <li class="_header__menu-item">
-            <a class="_header__menu-link" href="/contacts">Контакты</a>
-          </li>
+          {
+            headerLinkItems.map(({ label, href, exact }) => (
+              <li
+                class:list={[
+                  "_header__menu-item",
+                  { active: isActivePath(href, exact) },
+                ]}
+              >
+                <a
+                  class="_header__menu-link"
+                  href={href}
+                  aria-current={
+                    isActivePath(href, exact) ? "page" : undefined
+                  }
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
 
         <!--<ul class="_header__menu">-->
@@ -297,6 +344,11 @@ import Hamburger from "./hamburger.astro";
 
   ._header__menu-link:hover,
   ._header__submenu-link:hover {
+    color: var(--primary-color);
+  }
+
+  ._header__menu-item.active > ._header__menu-link,
+  ._header__menu-item.active > ._dropdown__open-btn ._header__menu-link {
     color: var(--primary-color);
   }
 

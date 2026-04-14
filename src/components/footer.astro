@@ -1,5 +1,17 @@
 ---
 import Container from "./container.astro";
+import { menuItems } from "../navigation";
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const footerMenuItems = menuItems.filter(({ id }) => id !== "products");
+
+const isActivePath = (href: string, exact = false) => {
+  if (exact || href === "/") {
+    return currentPath === href;
+  }
+
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+};
 ---
 
 <footer class="_footer">
@@ -25,26 +37,26 @@ import Container from "./container.astro";
     <div class="_footer__bottom">
       <div class="_footer__nav">
         <ul class="_footer__menu">
-          <li class="_footer__menu-item active">
-            <a href="/" class="_footer__menu-link">Главная</a>
-          </li>
-          <li class="_footer__menu-item">
-            <a href="/vacancies" class="_footer__menu-link">Вакансии</a>
-          </li>
-          <li class="_footer__menu-item">
-            <a href="/education/opz-course" class="_footer__menu-link">
-              Обучение
-            </a>
-          </li>
-          <li class="_footer__menu-item">
-            <a href="/blog" class="_footer__menu-link">Блог</a>
-          </li>
-          <li class="_footer__menu-item">
-            <a href="/news" class="_footer__menu-link">Новости</a>
-          </li>
-          <li class="_footer__menu-item">
-            <a href="/contacts" class="_footer__menu-link">Контакты</a>
-          </li>
+          {
+            footerMenuItems.map(({ label, href, exact }) => (
+              <li
+                class:list={[
+                  "_footer__menu-item",
+                  { active: isActivePath(href, exact) },
+                ]}
+              >
+                <a
+                  href={href}
+                  class="_footer__menu-link"
+                  aria-current={
+                    isActivePath(href, exact) ? "page" : undefined
+                  }
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
         </ul>
         <ul class="_footer__menu">
           <li class="_footer__menu-item">
