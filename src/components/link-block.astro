@@ -45,7 +45,7 @@ const classes = ["_link-block", rootClass].filter(Boolean).join(" ");
             <p class="_link-block__description">{description}</p>
             <TagName
               href={href}
-              type={popovertarget && "button"}
+              type={popovertarget ? "button" : undefined}
               popovertarget={popovertarget}
               class="_link-block__link"
               target={target}

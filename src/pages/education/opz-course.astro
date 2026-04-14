@@ -1,0 +1,489 @@
+---
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import Feedback from "../../components/feedback.astro";
+import Form from "../../components/form.astro";
+import HorizontalBanner from "../../components/horizontal-banner.astro";
+import Input from "../../components/input.astro";
+import Layout from "../../layouts/layout.astro";
+import PageTitle from "../../components/page-title.astro";
+import PromptBlock from "../../components/prompt-block.astro";
+import TextContent from "../../components/text-content.astro";
+import CourseProgram from "../../blocks/course/course-program.astro";
+import Faq from "../../blocks/course/faq.astro";
+import SliderOneSlide from "../../blocks/course/slider-one-slide.astro";
+import product2Image from "../../assets/products/product-2.png";
+import resumeBgImage from "../../assets/course/resume-bg.png";
+import slide1Image from "../../assets/course/slide-1.jpg";
+import slide2Image from "../../assets/course/slide-2.jpg";
+import slide3Image from "../../assets/course/slide-3.jpg";
+
+const coursePrice = "87 000 ₽";
+const courseDuration = "5 дней";
+const courseFormat = "Очно";
+const courseNearestStart = "24 ноября 2025 г.";
+const courseBannerStart = "24 – 28 ноября 2025 г.";
+const coursePriceDescription = `${coursePrice} за ${courseDuration} обучения`;
+
+const courseDates = [
+  "27 – 31 января",
+  "24 – 28 марта",
+  "19 – 23 мая",
+  "28 июля – 1 августа",
+  "29 сентября – 3 октября",
+  "24 – 28 ноября",
+];
+
+const courseBonuses = [
+  "Две недели пользования симулятором RockStim",
+  "Смоделируем для Вас цифровую модель скважины и подберем лучший дизайн кислотного воздействия",
+  "Удостоверение о повышении квалификации",
+  "Электронные материалы курса",
+];
+
+const slides = [
+  { image: slide1Image, alt: "Скриншот учета кольматанта" },
+  { image: slide2Image, alt: "Скриншот дизайна меры хвостовика" },
+  { image: slide3Image, alt: "Скриншот результатов расчета" },
+];
+
+const courseProgramItems = [
+  {
+    day: "1 день",
+    title:
+      "Научные наработки проведения обработок в карбонатных и терригенных коллекторах",
+    contentHtml: `
+      <ol>
+        <li>Основные принципы КО известняков и доломитов;</li>
+        <li>Физика и химия кислот, реагентов, кинетика реакции;</li>
+        <li>Образование кислотных червоточин;</li>
+        <li>Повреждение пласта до и после КО;</li>
+        <li>Повреждение пласта в нагнетательных скважинах;</li>
+        <li>Обзор современных технологий КО;</li>
+        <li>Потокоотклоняющие технологии;</li>
+        <li>Присадки к КС;</li>
+        <li>Влияние температуры и давления на эффективность КО;</li>
+        <li>Естественная трещиноватость;</li>
+        <li>Основные принципы КО терригенного коллектора;</li>
+        <li>Причины снижения ФЕС пласта;</li>
+        <li>Типы кольматантов и способы их идентификации;</li>
+        <li>Обзор состава кислотных композиций для КО терригенного коллектора;</li>
+        <li>Принцип подбора реагентов в зависимости от типа кольматанта;</li>
+        <li>Образование вторичных осадков и методы их предотвращения;</li>
+        <li>Основные причины осложнений и низкой успешности ОПЗ;</li>
+        <li>Совместимость кислот и пластовых флюидов;</li>
+        <li>Типичные ошибки при подборе реагентов и технологий ОПЗ.</li>
+      </ol>
+    `,
+  },
+  {
+    day: "2 день",
+    title: "Лабораторные исследования, жидкостей и реагентов",
+    contentHtml: `
+      <ol>
+        <li>Приготовление кислотных составов заданной концентрации.</li>
+        <li>Определение концентрации кислотно-основным титрованием и экспресс-методом;</li>
+        <li>Скорость растворения стали. Основные принципы, метод.</li>
+        <li>Оценка эффективности ингибиторов коррозии;</li>
+        <li>Кинетика растворения горных пород кислотными составами.</li>
+        <li>Установка с вращающимся диском. Волюметрическая установка;</li>
+        <li>Технологические свойства кислотных составов: определение совместимости с пластовыми флюидами, термостабильность кислотных составов.</li>
+        <li>Основные принципы и методы оценки;</li>
+        <li>Приготовление загеленных составов;</li>
+        <li>Технологические свойства составов ОВП: определение совместимости с пластовыми флюидами, термостабильность.</li>
+        <li>Основные принципы и методы оценки;</li>
+        <li>Оценка эффективности загеленных составов для СКО, ОВП, ВПП;</li>
+        <li>Приготовление обратных эмульсий на водной основе.</li>
+      </ol>
+    `,
+  },
+  {
+    day: "3 день",
+    title: "Подходы моделирования обработок СКО, ОВП, ВПП",
+    contentHtml: `
+      <ol>
+        <li>Принципы моделирования СКО; математические, численные модели;</li>
+        <li>Принципы моделирования ОВП; математическая, численная модели;</li>
+        <li>Принципы моделирования ВПП; математическая, численная модели;</li>
+        <li>Используемая в моделировании информация о физико-химических свойствах систем. Включение в модели реальных данных, получаемых из лабораторных, геофизических исследований, а также промысловой информации.</li>
+      </ol>
+    `,
+  },
+  {
+    day: "4 день",
+    title:
+      "Практика моделирования и оптимизация эффектов кислотных воздействий",
+    contentHtml: `
+      <p>Практика моделирования и оптимизация эффектов кислотных воздействий</p>
+      <ul>
+        <li>Формирование модели пласта;</li>
+        <li>Нагнетательные тесты перед работами – анализ и методы интерпретации;</li>
+        <li>Оценка скин-фактора до и после обработки;</li>
+        <li>Принципы анализа фактического мероприятия (матчинг) по реальным данным расхода/давления;</li>
+        <li>Проектирование дизайна кислотной обработки в симуляторе;</li>
+        <li>Моделирование потокоотклоняющих систем;</li>
+        <li>Оптимизация дизайнов;</li>
+        <li>Прогноз образования кольматантов и стандартный дизайн ОПЗ;</li>
+        <li>Массовые расчеты дизайнов ОПЗ добывающего фонда;</li>
+        <li>Выполнение практического задания по разработке дизайна ОПЗ по данным реальных скважин</li>
+      </ul>
+    `,
+  },
+  {
+    day: "5 день",
+    title:
+      "Практика моделирования и оптимизация эффектов от воздействия ОВП, ВПП",
+    contentHtml: `
+      <p>Моделирование ОВП и ВПП:</p>
+      <ul>
+        <li>Составление дизайна работ по ОВП;</li>
+        <li>Моделирование ОВП в расчетном шаблоне;</li>
+        <li>Составление дизайна ВПП;</li>
+        <li>Моделирование ВПП в расчетном шаблоне</li>
+      </ul>
+      <p>Контрольное тестирование по пройденному материалу.</p>
+    `,
+  },
+];
+
+const faqItems = [
+  {
+    title: "Кто будет меня учить?",
+    contentHtml:
+      "<p>Эксперты и разработчики моделирования процессов, кандидаты физико-математических и технических наук.</p>",
+  },
+  {
+    title: "Каким требованиям мне нужно соответствовать?",
+    contentHtml: `
+      <p>Для лиц, желающих пройти обучение по программе повышения квалификации, необходим следующий комплект документов:</p>
+      <ul>
+        <li>копия диплома о среднем профессиональном или высшем образовании;</li>
+        <li>копия документа о смене фамилии/имени/отчества (если ФИО в дипломе не совпадают в текущими).</li>
+      </ul>
+    `,
+  },
+  {
+    title: "Чем подтверждено право на проведение образовательной деятельности?",
+    contentHtml:
+      "<p>Регистрационный номер лицензии на оказание образовательной деятельности: № Л035-01272-16/00254781 от 28.02.2022</p>",
+  },
+  {
+    title: "Какой документ выдается после прохождения курса?",
+    contentHtml:
+      "<p>Удостоверение о повышении квалификации государственного образца. Информация вносится в реестр ФИС ФРДО</p>",
+  },
+  {
+    title: "Имеют ли срок действия документы о квалификации?",
+    contentHtml: "<p>Срока действия документы о квалификации не имеют.</p>",
+  },
+];
+
+const courseFeedbackDescriptionItems = [
+  {
+    key: "Ближайший старт:",
+    value: courseNearestStart,
+  },
+  {
+    key: "Формат:",
+    value: courseFormat,
+  },
+  {
+    key: "Сколько учиться:",
+    value: courseDuration,
+  },
+];
+---
+
+<Layout>
+  <main class="page-main">
+    <Container>
+      <div class="_course">
+        <section class="_course__start">
+          <h3 class="_course__point">Программа повышения квалификации</h3>
+          <PageTitle as="h1" rootClass="_course__title">
+            Курс повышения квалификации: "Комплексный подход к проектированию
+            кислотных обработок с использованием цифровых симуляторов"
+          </PageTitle>
+          <p class="_course__description">
+            Для специалистов нефтегазодобывающих, нефтесервисных и
+            научно-проектных предприятий, имеющие среднее или высшее
+            специально-техническое образование, которые получат теоретические
+            знания и практические навыки моделирования кислотных обработок
+          </p>
+          <ul class="_course__props">
+            <li class="_course__props-item">
+              <span class="_course__props-key">Стоимость:</span>
+              <span class="_course__props-value">{coursePrice}</span>
+            </li>
+            <li class="_course__props-item">
+              <span class="_course__props-key">Даты проведения:</span>
+              <span class="_course__props-value">
+                {
+                  courseDates.map((date, index) => (
+                    <Fragment>
+                      • {date}
+                      {index < courseDates.length - 1 && <br />}
+                    </Fragment>
+                  ))
+                }
+              </span>
+            </li>
+            <li class="_course__props-item">
+              <span class="_course__props-key">Формат:</span>
+              <span class="_course__props-value">{courseFormat}</span>
+            </li>
+            <li class="_course__props-item">
+              <span class="_course__props-key">Сколько учиться:</span>
+              <span class="_course__props-value">{courseDuration}</span>
+            </li>
+          </ul>
+          <div class="_course__actions">
+            <Btn href="#more" variant="outline">Узнать подробнее</Btn>
+            <Btn href="#start">Начать учиться</Btn>
+          </div>
+        </section>
+
+        <SliderOneSlide items={slides} />
+
+        <PromptBlock
+          hint="О чем курс?"
+          title="Раскроем все тонкости обработок кислотами, реагентами и природе воздействия"
+          description="В течение курса слушатели узнают о современных научно-технических решениях в области СКО, ОПЗ, ОВП и ключевых показателях эффективности операций, освоят критерии оценки эффективности обработок в карбонатных и терригенных коллекторах, научаться создавать цифровые модели скважин и моделировать обработки в симуляторах RockStim"
+        />
+
+        <HorizontalBanner
+          backgroundColor="#353749"
+          title="Оформи сейчас и получи бонусы:"
+          image={product2Image}
+          imageAlt=""
+        >
+          <Fragment slot="description">
+            <ul>
+              {courseBonuses.map((bonus) => <li>{bonus}</li>)}
+            </ul>
+          </Fragment>
+          <Fragment slot="footer">
+            <h3 class="_horizontal-banner__bottom-title">
+              {coursePriceDescription}
+            </h3>
+            <div class="_horizontal-banner__action">
+              <Btn href="#start" block>Начать учиться</Btn>
+              <p class="_horizontal-banner__action-text">
+                {courseBannerStart}
+              </p>
+            </div>
+          </Fragment>
+        </HorizontalBanner>
+
+        <PromptBlock
+          hint="Для чего курс?"
+          title="Углубите экспертизу в оптимизации дизайнов кислотного воздействия в сложнопостроенных терригенных и карбонатных коллекторах. Разбираться в практических эффектах лабораторных экспериментов на приросты нефти."
+        />
+
+        <CourseProgram id="more" items={courseProgramItems} />
+
+        <Faq items={faqItems} />
+
+        <section
+          id="start"
+          class="_course__resume"
+          style={`background-image: url(${resumeBgImage.src});`}
+        >
+          <div class="_course__price">
+            <h2 class="_course__price-title">Стоимость:</h2>
+            <p class="_course__price-subtitle">{coursePriceDescription}</p>
+            <div class="_course__price-text">
+              <TextContent>
+                <h3>В курс входит:</h3>
+                <ul>
+                  {courseBonuses.map((bonus) => <li>{bonus}</li>)}
+                </ul>
+              </TextContent>
+            </div>
+          </div>
+          <div class="_course__feedback">
+            <Feedback
+              title="Запишитесь на курс"
+              descriptionItems={courseFeedbackDescriptionItems}
+            >
+              <Form hook="form">
+                <div class="_form__group">
+                  <Input
+                    type="text"
+                    name="name"
+                    id="course-name"
+                    label="Имя"
+                    required
+                  />
+                </div>
+                <div class="_form__group">
+                  <Input
+                    type="tel"
+                    name="phone"
+                    id="course-phone"
+                    label="Телефон"
+                    hook="phone-mask"
+                    required
+                  />
+                </div>
+                <div class="_form__group">
+                  <Input
+                    type="email"
+                    name="email"
+                    id="course-email"
+                    label="E-mail"
+                    required
+                  />
+                </div>
+                <div class="_form__group _form__group--bottom-large">
+                  <Btn type="submit" block>Записаться на курс</Btn>
+                </div>
+                <div class="_form__group">
+                  <p class="_form__rules">
+                    Заполняя форму, вы соглашаетесь на
+                    <a href="#">обработку персональных данных</a>
+                  </p>
+                </div>
+              </Form>
+            </Feedback>
+          </div>
+        </section>
+      </div>
+    </Container>
+  </main>
+</Layout>
+
+<style>
+  .page-main {
+    flex: 1;
+  }
+
+  ._course {
+    display: grid;
+    gap: 160px;
+    padding: 224px 0 180px;
+  }
+
+  ._course__point {
+    margin: 0;
+    color: var(--grey-color);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 114%;
+  }
+
+  :global(._course__title) {
+    margin-top: 10px;
+  }
+
+  ._course__description {
+    margin: 44px 0 0;
+    font-size: 18px;
+    line-height: 155%;
+  }
+
+  ._course__props {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    align-items: flex-start;
+    gap: 20px;
+    margin: 36px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgb(0 0 0 / 10%);
+    list-style: none;
+  }
+
+  ._course__props-item {
+    display: grid;
+    gap: 4px;
+  }
+
+  ._course__props-key {
+    color: var(--grey-color);
+    font-size: 18px;
+  }
+
+  ._course__props-value {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  ._course__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  ._course__resume {
+    display: grid;
+    gap: 48px;
+    padding: 60px 110px;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  }
+
+  ._course__price-title {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  ._course__price-subtitle {
+    margin: 29px 0 0;
+    color: var(--primary-color);
+    font-size: 32px;
+    font-weight: 500;
+  }
+
+  ._course__price-text {
+    margin-top: 47px;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._course {
+      gap: 64px;
+      padding: 80px 0;
+    }
+
+    ._course__resume {
+      padding: 16px;
+      border-radius: 12px;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._course__resume {
+      grid-template-columns: 3fr 2fr;
+      padding: 32px;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._course {
+      gap: 100px;
+      padding: 120px 0;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._course__description {
+      padding-right: 40%;
+    }
+
+    ._course__props {
+      gap: 45px;
+      margin-top: 58px;
+      border-top-width: 2px;
+    }
+
+    ._course__actions {
+      margin-top: 72px;
+    }
+  }
+</style>

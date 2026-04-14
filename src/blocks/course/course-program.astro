@@ -8,13 +8,14 @@ interface ProgramItem {
 }
 
 interface Props {
+  id?: string;
   items: ProgramItem[];
 }
 
-const { items } = Astro.props as Props;
+const { id, items } = Astro.props as Props;
 ---
 
-<section class="_course-program">
+<section id={id} class="_course-program">
   <h2 class="_course-program__title">Программа курса</h2>
 
   <div class="accordion-container _course-program__list js-accordion">
