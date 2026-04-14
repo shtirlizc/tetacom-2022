@@ -1,9 +1,10 @@
 ---
-import Btn from "../components/btn.astro";
-import Container from "../components/container.astro";
-import LinkBlock from "../components/link-block.astro";
-import PageTitle from "../components/page-title.astro";
-import Layout from "../layouts/layout.astro";
+import { getCollection } from "astro:content";
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import LinkBlock from "../../components/link-block.astro";
+import PageTitle from "../../components/page-title.astro";
+import Layout from "../../layouts/layout.astro";
 
 interface VacancyItem {
   rootClass?: string;
@@ -14,74 +15,21 @@ interface VacancyItem {
   itemAttrs?: Record<string, string>;
 }
 
-const vacancies: VacancyItem[] = [
-  {
-    rootClass: "_vacancies-page__item",
-    title: "Backend-разработчик",
-    description: ".NET Framework, React, CSS",
-    href: "#",
-    linkLabel: "Backend-разработчик",
-    itemAttrs: {
-      "data-vacancy": "dev",
-      "data-vacancy-name": "Отдел разработки",
-    },
+const vacancyEntries = await getCollection(
+  "vacancies",
+  ({ data }) => data.draft !== true,
+);
+
+const vacancies: VacancyItem[] = vacancyEntries.map(({ data }) => ({
+  rootClass: "_vacancies-page__item",
+  title: data.title,
+  description: data.description,
+  href: `/vacancies/${data.slug}/`,
+  linkLabel: data.title,
+  itemAttrs: {
+    "data-vacancy-name": data.department,
   },
-  {
-    rootClass: "_vacancies-page__item",
-    title: "Frontend-разработчик",
-    description: "Опыт: от 3 до 5 лет",
-    href: "#",
-    linkLabel: "Frontend-разработчик",
-    itemAttrs: {
-      "data-vacancy": "dev",
-      "data-vacancy-name": "Отдел разработки",
-    },
-  },
-  {
-    rootClass: "_vacancies-page__item",
-    title: "UX/UI-дизайнер",
-    description: "Figma, Adobe Photoshop, Adobe Illustrator",
-    href: "#",
-    linkLabel: "UX/UI-дизайнер",
-    itemAttrs: {
-      "data-vacancy": "dev",
-      "data-vacancy-name": "Отдел разработки",
-    },
-  },
-  {
-    rootClass: "_vacancies-page__item",
-    title: "QA-инженер",
-    description: ".NET Framework, React, CSS",
-    href: "#",
-    linkLabel: "QA-инженер",
-    itemAttrs: {
-      "data-vacancy": "dev",
-      "data-vacancy-name": "Отдел разработки",
-    },
-  },
-  {
-    rootClass: "_vacancies-page__item",
-    title: "Менеджер по продажам",
-    description: "Опыт: можно без опыта",
-    href: "#",
-    linkLabel: "Менеджер по продажам",
-    itemAttrs: {
-      "data-vacancy": "sale",
-      "data-vacancy-name": "Отдел продаж",
-    },
-  },
-  {
-    rootClass: "_vacancies-page__item",
-    title: "Бизнес-аналитик",
-    description: ".NET Framework, React, CSS",
-    href: "#",
-    linkLabel: "Бизнес-аналитик",
-    itemAttrs: {
-      "data-vacancy": "manager",
-      "data-vacancy-name": "Project-менеджер",
-    },
-  },
-];
+}));
 ---
 
 <Layout>

@@ -1,22 +1,39 @@
 ---
-import Btn from "../components/btn.astro";
-import Container from "../components/container.astro";
-import PageTitle from "../components/page-title.astro";
-import TextContent from "../components/text-content.astro";
-import Layout from "../layouts/layout.astro";
+import { getCollection, render } from "astro:content";
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import PageTitle from "../../components/page-title.astro";
+import TextContent from "../../components/text-content.astro";
+import Layout from "../../layouts/layout.astro";
+
+export async function getStaticPaths() {
+  const vacancies = await getCollection(
+    "vacancies",
+    ({ data }) => data.draft !== true,
+  );
+
+  return vacancies.map((vacancy) => ({
+    params: { slug: vacancy.data.slug },
+    props: { vacancy },
+  }));
+}
+
+const { vacancy } = Astro.props;
+const { Content } = await render(vacancy);
 ---
 
 <Layout>
   <main class="page-main">
     <Container>
       <div class="_vacancies-inner-page">
-        <p class="_vacancies-inner-page__department">Отдел разработки</p>
+        <p class="_vacancies-inner-page__department">
+          {vacancy.data.department}
+        </p>
         <PageTitle as="h1" rootClass="_vacancies-inner-page__title">
-          UX/UI-дизайнер
+          {vacancy.data.title}
         </PageTitle>
         <p class="_vacancies-inner-page__description">
-          Мы находимся в поиске дизайнера пользовательских интерфейсов в нашу
-          команду для проекта в нефтегазовой сфере
+          {vacancy.data.description}
         </p>
 
         <div class="_vacancies-inner-page__feedback">
@@ -34,7 +51,7 @@ import Layout from "../layouts/layout.astro";
             </span>
             Назад
           </Btn>
-          <Btn type="button" popovertarget="modal-feedback"> Откликнуться </Btn>
+          <Btn type="button" popovertarget="modal-feedback">Откликнуться</Btn>
           <Btn href="#" variant="link">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
@@ -74,34 +91,7 @@ import Layout from "../layouts/layout.astro";
 
         <div class="_vacancies-inner-page__content">
           <TextContent>
-            <h2>Задачи</h2>
-            <ul>
-              <li>
-                Разработка дизайна интерфейса для продукта в нефтегазовой сфере
-              </li>
-              <li>Развитие существующей дизайн-библиотеки</li>
-              <li>Развитие корпоративного сайта</li>
-            </ul>
-
-            <h2>Мы ожидаем</h2>
-            <ul>
-              <li>Опыт в области дизайна от 1 года до 3 лет</li>
-              <li>
-                Умение работать в Figma на уровне владения сетками, Auto
-                Layouts, Constraints и компонентами
-              </li>
-              <li>Наличие в портфолио работ со сложными интерфейсами</li>
-            </ul>
-
-            <h2>Мы предлагаем</h2>
-            <ul>
-              <li>Трудоустройство по ТК РФ</li>
-              <li>Обучение за счёт компании</li>
-              <li>Свободу действий в принятии решений</li>
-              <li>Профессиональную команду</li>
-              <li>Возможность развиваться вместе с нашей компанией</li>
-              <li>Достойную заработную плату</li>
-            </ul>
+            <Content />
           </TextContent>
         </div>
       </div>
