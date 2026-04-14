@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import AuthorDate from "../../components/author-date.astro";
 import Btn from "../../components/btn.astro";
 import Container from "../../components/container.astro";
+import ContentImageLightbox from "../../components/content-image-lightbox.astro";
 import Layout from "../../layouts/layout.astro";
 import PageTitle from "../../components/page-title.astro";
 import TagList from "../../components/tag-list.astro";
@@ -68,6 +69,7 @@ const { Content } = await render(post);
           <TextContent rootClass="_news-page-inner__content">
             <Content />
           </TextContent>
+          <ContentImageLightbox />
         </div>
       </div>
     </Container>

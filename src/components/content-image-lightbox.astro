@@ -1,0 +1,49 @@
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  const galleries = document.querySelectorAll<HTMLElement>(
+    "._news-page-inner__content",
+  );
+
+  galleries.forEach((gallery) => {
+    if (gallery.dataset.lightboxReady === "true") {
+      return;
+    }
+
+    const images = Array.from(gallery.querySelectorAll("img"));
+
+    images.forEach((image) => {
+      if (image.closest("a")) {
+        return;
+      }
+
+      const width = image.getAttribute("width") ?? String(image.naturalWidth);
+      const height =
+        image.getAttribute("height") ?? String(image.naturalHeight);
+      const link = document.createElement("a");
+
+      link.href = image.currentSrc || image.src;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.dataset.pswpWidth = width;
+      link.dataset.pswpHeight = height;
+      link.dataset.contentLightboxItem = "true";
+      link.setAttribute(
+        "aria-label",
+        `Открыть изображение: ${image.alt || "изображение"}`,
+      );
+
+      image.before(link);
+      link.append(image);
+    });
+
+    const lightbox = new PhotoSwipeLightbox({
+      gallery,
+      children: "a[data-content-lightbox-item]",
+      pswpModule: () => import("photoswipe"),
+    });
+
+    lightbox.init();
+    gallery.dataset.lightboxReady = "true";
+  });
+</script>
