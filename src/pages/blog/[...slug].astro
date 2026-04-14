@@ -22,8 +22,7 @@ const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("ru-RU", {
     day: "numeric",
     month: "long",
-    hour: "2-digit",
-    minute: "2-digit",
+    year: "numeric",
   }).format(date);
 
 const { post } = Astro.props;
