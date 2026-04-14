@@ -41,6 +41,24 @@ import CloseIcon from "../assets/close-icon.svg";
   </div>
 </div>
 
+<div popover class="_modal" id="modal-vacancy">
+  <div class="_modal__wrap">
+    <Feedback title="Откликнуться">
+      <BaseForm />
+    </Feedback>
+
+    <button
+      type="button"
+      class="_modal__close"
+      popovertarget="modal-feedback"
+      popovertargetaction="hide"
+      aria-label="Закрыть"
+    >
+      <CloseIcon />
+    </button>
+  </div>
+</div>
+
 <div popover class="_modal" id="modal-success">
   <div class="_modal__wrap">
     <div class="_success">

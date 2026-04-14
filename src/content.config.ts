@@ -10,6 +10,7 @@ const vacancies = defineCollection({
     description: z.string(),
     department: z.string(),
     draft: z.boolean(),
+    order: z.number(),
   }),
 });
 

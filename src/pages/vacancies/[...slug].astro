@@ -51,8 +51,13 @@ const { Content } = await render(vacancy);
             </span>
             Назад
           </Btn>
-          <Btn type="button" popovertarget="modal-feedback">Откликнуться</Btn>
-          <Btn href="#" variant="link">
+          <Btn type="button" popovertarget="modal-vacancy">Откликнуться</Btn>
+          <Btn
+            type="button"
+            variant="link"
+            data-vacancy-share
+            aria-label="Скопировать ссылку на вакансию"
+          >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path
                 d="M4.5 12.5C5.88071 12.5 7 11.3807 7 10C7 8.61929 5.88071 7.5 4.5 7.5C3.11929 7.5 2 8.61929 2 10C2 11.3807 3.11929 12.5 4.5 12.5Z"
@@ -85,7 +90,7 @@ const { Content } = await render(vacancy);
                 stroke-linecap="round"
                 stroke-linejoin="round"></path>
             </svg>
-            Поделиться вакансией
+            <span data-vacancy-share-label>Поделиться вакансией</span>
           </Btn>
         </div>
 
@@ -156,3 +161,54 @@ const { Content } = await render(vacancy);
     }
   }
 </style>
+
+<script>
+  const shareButton = document.querySelector("[data-vacancy-share]");
+  const shareButtonLabel = document.querySelector("[data-vacancy-share-label]");
+  const defaultShareLabel = shareButtonLabel?.textContent ?? "";
+
+  const copyText = async (text: string) => {
+    if (navigator.clipboard) {
+      await navigator.clipboard.writeText(text);
+      return;
+    }
+
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.top = "0";
+    textarea.style.left = "-9999px";
+
+    document.body.append(textarea);
+    textarea.select();
+    const fallbackCopy = (
+      document as Document & {
+        execCommand?: (commandId: string) => boolean;
+      }
+    ).execCommand;
+
+    fallbackCopy?.call(document, "copy");
+    textarea.remove();
+  };
+
+  shareButton?.addEventListener("click", async () => {
+    try {
+      await copyText(window.location.href);
+
+      if (shareButtonLabel) {
+        shareButtonLabel.textContent = "Ссылка скопирована";
+        window.setTimeout(() => {
+          shareButtonLabel.textContent = defaultShareLabel;
+        }, 2000);
+      }
+    } catch {
+      if (shareButtonLabel) {
+        shareButtonLabel.textContent = "Не удалось скопировать";
+        window.setTimeout(() => {
+          shareButtonLabel.textContent = defaultShareLabel;
+        }, 2000);
+      }
+    }
+  });
+</script>

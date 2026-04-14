@@ -20,25 +20,27 @@ const vacancyEntries = await getCollection(
   ({ data }) => data.draft !== true,
 );
 
-const vacancies: VacancyItem[] = vacancyEntries.map(({ data }) => ({
-  rootClass: "_vacancies-page__item",
-  title: data.title,
-  description: data.description,
-  href: `/vacancies/${data.slug}/`,
-  linkLabel: data.title,
-  itemAttrs: {
-    "data-vacancy-name": data.department,
-  },
-}));
+const vacancies: VacancyItem[] = vacancyEntries
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    rootClass: "_vacancies-page__item",
+    title: data.title,
+    description: data.description,
+    href: `/vacancies/${data.slug}/`,
+    linkLabel: data.title,
+    itemAttrs: {
+      "data-vacancy-name": data.department,
+    },
+  }));
 ---
 
 <Layout>
   <main class="page-main">
     <Container>
       <div class="_vacancies-page">
-        <PageTitle as="h1" rootClass="_vacancies-page__title"
-          >Вакансии</PageTitle
-        >
+        <PageTitle as="h1" rootClass="_vacancies-page__title">
+          Вакансии
+        </PageTitle>
 
         <div class="_vacancies-page__description">
           <p>
