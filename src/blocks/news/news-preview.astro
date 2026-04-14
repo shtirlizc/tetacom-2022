@@ -8,8 +8,6 @@ interface TagItem {
 }
 
 interface Props {
-  authorName: string;
-  authorAvatar: ImageMetadata;
   dateText: string;
   dateTime: string;
   title: string;
@@ -19,8 +17,6 @@ interface Props {
 }
 
 const {
-  authorName,
-  authorAvatar,
   dateText,
   dateTime,
   title,
@@ -31,12 +27,7 @@ const {
 ---
 
 <article class="_news-preview">
-  <AuthorDate
-    authorName={authorName}
-    authorAvatar={authorAvatar}
-    dateText={dateText}
-    dateTime={dateTime}
-  />
+  <AuthorDate dateText={dateText} dateTime={dateTime} />
   <div class="_news-preview__body">
     <h2 class="_news-preview__title">{title}</h2>
     <TagList items={tags} />

@@ -1,11 +1,10 @@
 ---
-import Btn from "../components/btn.astro";
-import Container from "../components/container.astro";
-import Layout from "../layouts/layout.astro";
-import PageTitle from "../components/page-title.astro";
-import NewsPreview from "../blocks/news/news-preview.astro";
-import avatar1Image from "../assets/news/avatars/avatar-1.jpg";
-import avatar2Image from "../assets/news/avatars/avatar-2.jpg";
+import { getCollection } from "astro:content";
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import Layout from "../../layouts/layout.astro";
+import PageTitle from "../../components/page-title.astro";
+import NewsPreview from "../../blocks/news/news-preview.astro";
 
 const filters = [
   { label: "Все новости", href: "#", active: true },
@@ -17,43 +16,25 @@ const filters = [
   { label: "RockWow", href: "#", tag: "RockWow" },
 ];
 
-const newsItems = [
-  {
-    authorName: "Марат Ситдиков",
-    authorAvatar: avatar1Image,
-    dateText: "7 Июля, 13:31",
-    dateTime: "7 Июля, 13:31",
-    title:
-      "Ретроспективный анализ двухстадийной солянокислотной обработки с закачкой",
-    tags: [{ label: "Образование" }, { label: "Наука и инновации" }],
-    intro:
-      "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id es. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatu",
-    href: "#",
-  },
-  {
-    authorName: "Роман Касливцев",
-    authorAvatar: avatar2Image,
-    dateText: "30 Июня, 13:06",
-    dateTime: "30 Июня, 13:06",
-    title:
-      "Как учесть возникающее явление раскрытия естественных трещин коллектора при моделировании ОПЗ?",
-    tags: [{ label: "RockFrac" }, { label: "RockStim" }],
-    intro:
-      "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatu",
-    href: "#",
-  },
-  {
-    authorName: "Данияр Галимханов",
-    authorAvatar: avatar2Image,
-    dateText: "23 Июня, 13:06",
-    dateTime: "23 Июня, 13:06",
-    title: "Ретроспективный анализ обработки горизонтальной нефтедобывающей скважины",
-    tags: [{ label: "RockStim" }, { label: "Наука и инновации" }],
-    intro:
-      "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatu",
-    href: "#",
-  },
-];
+const formatPostDate = (date: Date) =>
+  new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(date);
+
+const newsEntries = await getCollection("news", ({ data }) => !data.draft);
+const newsItems = newsEntries
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map(({ data }) => ({
+    dateText: formatPostDate(data.pubDate),
+    dateTime: data.pubDate.toISOString(),
+    title: data.title,
+    tags: data.tags.map((label) => ({ label })),
+    intro: data.description,
+    href: `/news/${data.slug}/`,
+  }));
 ---
 
 <Layout>
@@ -82,8 +63,6 @@ const newsItems = [
           {
             newsItems.map((item) => (
               <NewsPreview
-                authorName={item.authorName}
-                authorAvatar={item.authorAvatar}
                 dateText={item.dateText}
                 dateTime={item.dateTime}
                 title={item.title}

@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import authorAvatar from "../assets/logo.jpg";
 
 interface Props {
-  authorName: string;
-  authorAvatar: ImageMetadata;
   dateText: string;
   dateTime: string;
 }
 
-const { authorName, authorAvatar, dateText, dateTime } = Astro.props as Props;
+const { dateText, dateTime } = Astro.props as Props;
+const authorName = "Tetacom";
 ---
 
 <div class="_author-date">
@@ -16,7 +16,7 @@ const { authorName, authorAvatar, dateText, dateTime } = Astro.props as Props;
     <div class="_author-date__author-picture">
       <Image src={authorAvatar} alt={authorName} width={28} height={28} />
     </div>
-    <p class="_author-date__author-name">{authorName}</p>
+    <p class="_author-date__author-name">Tetacom</p>
   </div>
   <time datetime={dateTime} class="_author-date__date">{dateText}</time>
 </div>
@@ -37,6 +37,7 @@ const { authorName, authorAvatar, dateText, dateTime } = Astro.props as Props;
     width: 28px;
     height: 28px;
     overflow: hidden;
+    border-radius: 50%;
   }
 
   ._author-date__author-picture :global(img) {

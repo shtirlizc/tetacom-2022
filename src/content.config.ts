@@ -14,4 +14,23 @@ const vacancies = defineCollection({
   }),
 });
 
-export const collections = { vacancies };
+const articleSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  description: z.string(),
+  tags: z.array(z.string()),
+  pubDate: z.coerce.date(),
+  draft: z.boolean(),
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  schema: articleSchema,
+});
+
+const news = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/news" }),
+  schema: articleSchema,
+});
+
+export const collections = { vacancies, blog, news };
