@@ -56,18 +56,24 @@ const { Content } = await render(post);
             dateTime={post.data.pubDate.toISOString()}
           />
 
-          <PageTitle as="h1" rootClass="_news-page-inner__title">
-            {post.data.title}
-          </PageTitle>
+          <div class="_news-page-inner__title">
+            <PageTitle as="h1">
+              {post.data.title}
+            </PageTitle>
+          </div>
 
-          <TagList
-            rootClass="_news-page-inner__tags"
-            items={post.data.tags.map((label: string) => ({ label }))}
-          />
+          <div class="_news-page-inner__tags">
+            <TagList
+              items={post.data.tags.map((label: string) => ({ label }))}
+            />
+          </div>
 
-          <TextContent rootClass="_news-page-inner__content">
-            <Content />
-          </TextContent>
+          <div class="_news-page-inner__content">
+            <TextContent>
+              <Content />
+            </TextContent>
+          </div>
+
           <ContentImageLightbox />
         </div>
       </div>

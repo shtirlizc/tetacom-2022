@@ -34,20 +34,22 @@ const { Content } = await render(post);
     <Container>
       <div class="_news-page-inner">
         <div class="_news-page-inner__aside">
-          <Btn href="/blog/" variant="text" shape="icon">
-            <span>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <rect width="52" height="52" rx="26"></rect>
-                <path
-                  d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </span>
-            Назад
-          </Btn>
+          <div class="content">
+            <Btn href="/blog/" variant="text" shape="icon">
+              <span>
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                  <rect width="52" height="52" rx="26"></rect>
+                  <path
+                    d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              Назад
+            </Btn>
+          </div>
         </div>
 
         <div class="_news-page-inner__body">
@@ -56,18 +58,24 @@ const { Content } = await render(post);
             dateTime={post.data.pubDate.toISOString()}
           />
 
-          <PageTitle as="h1" rootClass="_news-page-inner__title">
-            {post.data.title}
-          </PageTitle>
+          <div class="_news-page-inner__title">
+            <PageTitle as="h1">
+              {post.data.title}
+            </PageTitle>
+          </div>
 
-          <TagList
-            rootClass="_news-page-inner__tags"
-            items={post.data.tags.map((label: string) => ({ label }))}
-          />
+          <div class="_news-page-inner__tags">
+            <TagList
+              items={post.data.tags.map((label: string) => ({ label }))}
+            />
+          </div>
 
-          <TextContent rootClass="_news-page-inner__content">
-            <Content />
-          </TextContent>
+          <div class="_news-page-inner__content">
+            <TextContent>
+              <Content />
+            </TextContent>
+          </div>
+
           <ContentImageLightbox />
         </div>
       </div>
@@ -88,6 +96,11 @@ const { Content } = await render(post);
 
   ._news-page-inner__aside {
     padding-right: 20px;
+
+    .content {
+      position: sticky;
+      top: 120px;
+    }
   }
 
   ._news-page-inner__body {
