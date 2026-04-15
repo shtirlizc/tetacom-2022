@@ -3,8 +3,8 @@ slug: "naznachenie-filtraczionnyix-issledovanij-dlya-effektivnyix-gtm"
 title: "Назначение фильтрационных исследований для эффективных ГТМ"
 description: ""
 tags:
-  - "RockStim"
-  - "Лабораторные исследования"
+  - rockstim
+  - laboratornye-issledovaniya
 pubDate: "2023-10-13T11:55:00.000Z"
 draft: false
 ---

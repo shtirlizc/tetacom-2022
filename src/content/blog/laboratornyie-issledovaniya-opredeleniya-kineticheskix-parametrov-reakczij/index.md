@@ -3,8 +3,8 @@ slug: "laboratornyie-issledovaniya-opredeleniya-kineticheskix-parametrov-reakczi
 title: "Лабораторные исследования определения кинетических параметров реакций"
 description: "Моделирование передовых технологий термопенокислотного (ТПКО) и термогазохимического (ТГХВ)  воздействия"
 tags:
-  - "RockFrac"
-  - "RockStim"
+  - rockfrac
+  - rockstim
 pubDate: "2023-09-25T09:32:16.000Z"
 draft: true
 ---

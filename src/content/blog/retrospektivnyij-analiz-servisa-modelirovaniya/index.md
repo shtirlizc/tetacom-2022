@@ -3,7 +3,7 @@ slug: "retrospektivnyij-analiz-servisa-modelirovaniya"
 title: "Ретроспективный анализ сервиса моделирования ОПЗ с отклонителем"
 description: ""
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2024-01-12T08:34:00.000Z"
 draft: false
 ---

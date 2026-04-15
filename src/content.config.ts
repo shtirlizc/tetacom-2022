@@ -1,6 +1,7 @@
 import { glob } from "astro/loaders";
 import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
+import { BLOG_TAG_SLUGS } from "./data/blog-tags";
 
 const vacancies = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/vacancies" }),
@@ -23,9 +24,13 @@ const articleSchema = z.object({
   draft: z.boolean(),
 });
 
+const blogArticleSchema = articleSchema.extend({
+  tags: z.array(z.enum(BLOG_TAG_SLUGS)),
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
-  schema: articleSchema,
+  schema: blogArticleSchema,
 });
 
 const news = defineCollection({

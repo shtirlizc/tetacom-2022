@@ -1,5 +1,13 @@
 ---
 import "../styles/_global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title = "Astro Basics", description, canonical } = Astro.props as Props;
 ---
 
 <head>
@@ -8,5 +16,7 @@ import "../styles/_global.css";
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   <meta name="generator" content={Astro.generator} />
-  <title>Astro Basics</title>
+  {description && <meta name="description" content={description} />}
+  {canonical && <link rel="canonical" href={canonical} />}
+  <title>{title}</title>
 </head>

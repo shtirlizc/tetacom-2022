@@ -3,7 +3,7 @@ slug: "retrospektivnyij-analiz-dvuxstadijnoj-solyanokislotnoj-obrabotki-s-primen
 title: "Ретроспективный анализ двухстадийной солянокислотной обработки с применением отклонителя"
 description: "Рассмотрим пример ретроспективного моделирования в Симуляторе ОПЗ \"RockStim\" дизайна двухстадийной солянокислотной обработки с применением отклонителя.\r\n"
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2023-07-07T08:34:00.000Z"
 draft: false
 ---

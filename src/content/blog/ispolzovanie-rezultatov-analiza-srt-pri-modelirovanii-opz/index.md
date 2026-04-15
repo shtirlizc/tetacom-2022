@@ -3,7 +3,7 @@ slug: "ispolzovanie-rezultatov-analiza-srt-pri-modelirovanii-opz"
 title: "Использование результатов анализа SRT при моделировании ОПЗ, ГРП, БСКО, СКО"
 description: "Ступенчатый тест на приемистость (SRT, STEP-RATE TEST, тест со ступенчатым повышением расхода)  при моделировании ОПЗ, ГРП, БСКО, СКО\r\n"
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2023-06-30T08:34:00.000Z"
 draft: false
 ---

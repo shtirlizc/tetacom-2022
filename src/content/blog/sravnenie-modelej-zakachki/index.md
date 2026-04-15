@@ -3,7 +3,7 @@ slug: "sravnenie-modelej-zakachki"
 title: "Сравнение моделей закачки 1D с перетоками и 2D многофазной"
 description: "Цифровые двойники процесса закачки кислоты в карбонатный и терригенный пласт при 1D и 2D фильтрации"
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2023-12-19T08:34:00.000Z"
 draft: false
 ---

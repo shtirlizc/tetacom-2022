@@ -3,7 +3,7 @@ slug: "modelirovanie-opz-s-zagelennoj-kislotoj"
 title: "Моделирование СКО с загеленной кислотой"
 description: ""
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2024-02-07"
 draft: false
 ---

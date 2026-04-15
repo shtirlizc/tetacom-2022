@@ -2,7 +2,7 @@
 import Container from "./container.astro";
 import Dropdown from "./dropdown.astro";
 import Hamburger from "./hamburger.astro";
-import { menuItems } from "../navigation";
+import { menuItems } from "../data/navigation";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const homeMenuItem = menuItems.find(({ id }) => id === "home");
@@ -73,12 +73,7 @@ const isHomeActive = homeMenuItem
 
       <nav class="_header__navigation">
         <ul class="_header__menu _header__menu--mobile">
-          <li
-            class:list={[
-              "_header__menu-item",
-              { active: isHomeActive },
-            ]}
-          >
+          <li class:list={["_header__menu-item", { active: isHomeActive }]}>
             <a
               class="_header__menu-link"
               href={homeMenuItem?.href ?? "/"}
@@ -90,10 +85,7 @@ const isHomeActive = homeMenuItem
           <Dropdown
             id="product-list"
             as="li"
-            class:list={[
-              "_header__menu-item",
-              { active: isProductsActive },
-            ]}
+            class:list={["_header__menu-item", { active: isProductsActive }]}
           >
             <button
               slot="trigger"
@@ -142,9 +134,7 @@ const isHomeActive = homeMenuItem
                 <a
                   class="_header__menu-link"
                   href={href}
-                  aria-current={
-                    isActivePath(href, exact) ? "page" : undefined
-                  }
+                  aria-current={isActivePath(href, exact) ? "page" : undefined}
                 >
                   {label}
                 </a>

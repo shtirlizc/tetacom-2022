@@ -1,6 +1,6 @@
 ---
 import Container from "./container.astro";
-import { menuItems } from "../navigation";
+import { menuItems } from "../data/navigation";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const footerMenuItems = menuItems.filter(({ id }) => id !== "products");
@@ -48,9 +48,7 @@ const isActivePath = (href: string, exact = false) => {
                 <a
                   href={href}
                   class="_footer__menu-link"
-                  aria-current={
-                    isActivePath(href, exact) ? "page" : undefined
-                  }
+                  aria-current={isActivePath(href, exact) ? "page" : undefined}
                 >
                   {label}
                 </a>

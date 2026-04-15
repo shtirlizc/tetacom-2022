@@ -49,10 +49,14 @@ const classes = ["_tag-list", rootClass].filter(Boolean).join(" ");
   }
 
   ._tag-list__item :global(a) {
-    transition: color var(--delay) ease-in-out;
+    border: 1px solid transparent;
+    transition:
+      color var(--delay) ease-in-out,
+      border var(--delay) ease-in-out;
   }
 
   ._tag-list__item :global(a:hover) {
     color: var(--primary-color);
+    border-color: var(--primary-color);
   }
 </style>

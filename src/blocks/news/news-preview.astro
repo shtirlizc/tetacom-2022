@@ -16,14 +16,7 @@ interface Props {
   href: string;
 }
 
-const {
-  dateText,
-  dateTime,
-  title,
-  intro,
-  tags,
-  href,
-} = Astro.props as Props;
+const { dateText, dateTime, title, intro, tags, href } = Astro.props as Props;
 ---
 
 <article class="_news-preview">
@@ -72,5 +65,10 @@ const {
     width: 100%;
     height: 100%;
     font-size: 0;
+  }
+
+  ._news-preview :global(._tag-list a) {
+    position: relative;
+    z-index: 1;
   }
 </style>

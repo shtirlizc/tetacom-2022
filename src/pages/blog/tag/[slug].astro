@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BlogFeed from "../../../blocks/news/blog-feed.astro";
+import Layout from "../../../layouts/layout.astro";
+import { getBlogTagBySlug } from "../../../data/blog-tags";
+
+const formatPostDate = (date: Date) =>
+  new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
+export async function getStaticPaths() {
+  const blogEntries = (
+    await getCollection("blog", ({ data }) => !data.draft)
+  ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const usedTagSlugs = Array.from(
+    new Set(blogEntries.flatMap(({ data }) => data.tags)),
+  );
+
+  return usedTagSlugs.map((slug) => ({
+    params: { slug },
+    props: {
+      blogEntries,
+      tag: getBlogTagBySlug(slug),
+      usedTagSlugs,
+    },
+  }));
+}
+
+const { blogEntries, tag: maybeTag, usedTagSlugs } = Astro.props;
+
+if (!maybeTag) {
+  throw new Error(`Unknown blog tag route: ${Astro.params.slug}`);
+}
+
+const tag = maybeTag;
+const filters = [
+  { label: "Все статьи", href: "/blog/", active: false },
+  ...usedTagSlugs.map((slug: string) => {
+    const currentTag = getBlogTagBySlug(slug);
+
+    return {
+      label: currentTag?.label ?? slug,
+      href: `/blog/tag/${slug}/`,
+      active: tag.slug === slug,
+    };
+  }),
+];
+const newsItems = blogEntries
+  .filter(({ data }) => data.tags.includes(tag.slug))
+  .map(({ data }) => ({
+    dateText: formatPostDate(data.pubDate),
+    dateTime: data.pubDate.toISOString(),
+    title: data.title,
+    tags: data.tags.map((slug: string) => {
+      const currentTag = getBlogTagBySlug(slug);
+
+      return {
+        label: currentTag?.label ?? slug,
+        href: `/blog/tag/${slug}/`,
+      };
+    }),
+    intro: data.description,
+    href: `/blog/${data.slug}/`,
+  }));
+const title = `Статьи по тегу ${tag.label}`;
+---
+
+<Layout
+  title={`Статьи по тегу ${tag.label}`}
+  description={`Материалы блога по теме ${tag.label}`}
+  canonical={new URL(`/blog/tag/${tag.slug}/`, Astro.site).toString()}
+>
+  <BlogFeed title={title} filters={filters} items={newsItems} />
+</Layout>

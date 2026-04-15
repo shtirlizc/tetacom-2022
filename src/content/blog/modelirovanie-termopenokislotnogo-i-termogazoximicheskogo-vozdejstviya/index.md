@@ -3,8 +3,8 @@ slug: "modelirovanie-termopenokislotnogo-i-termogazoximicheskogo-vozdejstviya"
 title: "Моделирование ТГХВ и ТПКО"
 description: "Моделирование передовых технологий термопенокислотного (ТПКО) и термогазохимического (ТГХВ)  воздействия"
 tags:
-  - "RockFrac"
-  - "RockStim"
+  - rockfrac
+  - rockstim
 pubDate: "2023-09-15T06:26:00.000Z"
 draft: false
 ---

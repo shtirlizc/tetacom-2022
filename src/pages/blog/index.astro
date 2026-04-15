@@ -1,20 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Btn from "../../components/btn.astro";
-import Container from "../../components/container.astro";
 import Layout from "../../layouts/layout.astro";
-import PageTitle from "../../components/page-title.astro";
-import NewsPreview from "../../blocks/news/news-preview.astro";
-
-const filters = [
-  { label: "Все новости", href: "#", active: true },
-  { label: "Образование", href: "#" },
-  { label: "Наука и инновации", href: "#" },
-  { label: "Достижения", href: "#" },
-  { label: "RockStim", href: "#" },
-  { label: "RockFrac", href: "#" },
-  { label: "RockWow", href: "#", tag: "RockWow" },
-];
+import BlogFeed from "../../blocks/news/blog-feed.astro";
+import { getBlogTagBySlug } from "../../data/blog-tags";
 
 const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("ru-RU", {
@@ -23,121 +11,42 @@ const formatPostDate = (date: Date) =>
     year: "numeric",
   }).format(date);
 
-const blogEntries = await getCollection("blog", ({ data }) => !data.draft);
-const newsItems = blogEntries
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .map(({ data }) => ({
-    dateText: formatPostDate(data.pubDate),
-    dateTime: data.pubDate.toISOString(),
-    title: data.title,
-    tags: data.tags.map((label) => ({ label })),
-    intro: data.description,
-    href: `/blog/${data.slug}/`,
-  }));
+const blogEntries = (
+  await getCollection("blog", ({ data }) => !data.draft)
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const usedTagSlugs = Array.from(
+  new Set(blogEntries.flatMap(({ data }) => data.tags)),
+);
+const filters = [
+  { label: "Все статьи", href: "/blog/", active: true },
+  ...usedTagSlugs.map((slug) => {
+    const tag = getBlogTagBySlug(slug);
+
+    return {
+      label: tag?.label ?? slug,
+      href: `/blog/tag/${slug}/`,
+      active: false,
+    };
+  }),
+];
+const newsItems = blogEntries.map(({ data }) => ({
+  dateText: formatPostDate(data.pubDate),
+  dateTime: data.pubDate.toISOString(),
+  title: data.title,
+  tagSlugs: data.tags,
+  tags: data.tags.map((slug) => {
+    const tag = getBlogTagBySlug(slug);
+
+    return {
+      label: tag?.label ?? slug,
+      href: `/blog/tag/${slug}/`,
+    };
+  }),
+  intro: data.description,
+  href: `/blog/${data.slug}/`,
+}));
 ---
 
-<Layout>
-  <main class="page-main">
-    <Container>
-      <div class="_news-page">
-        <div class="_news-page__title">
-          <PageTitle as="h1">Блог</PageTitle>
-        </div>
-
-        <div class="_news-page__filter">
-          {
-            filters.map(({ label, href, active = false, tag }) => (
-              <Btn
-                href={href}
-                size="small"
-                variant="text"
-                class={active ? "active" : undefined}
-                data-tag={tag}
-              >
-                {label}
-              </Btn>
-            ))
-          }
-        </div>
-
-        <div class="_news-page__feed">
-          {
-            newsItems.map((item) => (
-              <NewsPreview
-                dateText={item.dateText}
-                dateTime={item.dateTime}
-                title={item.title}
-                tags={item.tags}
-                intro={item.intro}
-                href={item.href}
-              />
-            ))
-          }
-        </div>
-      </div>
-    </Container>
-  </main>
+<Layout title="Блог" canonical={new URL("/blog/", Astro.site).toString()}>
+  <BlogFeed title="Блог" filters={filters} items={newsItems} />
 </Layout>
-
-<style>
-  .page-main {
-    flex: 1;
-  }
-
-  ._news-page {
-    padding: 180px 0 164px;
-  }
-
-  ._news-page__filter {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-top: 60px;
-  }
-
-  :global(._news-page__filter ._btn.active) {
-    border: 2px solid var(--primary-color);
-    background-color: var(--primary-color);
-    color: var(--white-color);
-  }
-
-  :global(._news-page__filter ._btn.active:hover) {
-    background-color: transparent;
-    color: var(--primary-color);
-  }
-
-  ._news-page__feed {
-    display: grid;
-    gap: 60px;
-    margin-top: 60px;
-  }
-
-  /* mobile */
-  @media (width < 769px) {
-    ._news-page {
-      padding: 80px 0;
-    }
-  }
-
-  /* tablet */
-  @media (width >= 769px) {
-    ._news-page__feed {
-      padding-right: 20%;
-    }
-  }
-
-  /* tablet-only */
-  @media (width >= 769px) and (width < 1081px) {
-    ._news-page {
-      padding: 120px 0;
-    }
-  }
-
-  /* desktop */
-  @media (width >= 1081px) {
-    ._news-page__feed {
-      padding-right: 35%;
-    }
-  }
-</style>
