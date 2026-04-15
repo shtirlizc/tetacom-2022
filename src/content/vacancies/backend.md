@@ -1,8 +1,8 @@
 ---
-slug: "backend-razrabotchik"
+slug: "backend-developer"
 title: "Backend Разработчик"
 description: "Мы находимся в поиске backend-разработчика в нашу команду для проекта в нефтегазовой сфере"
-department: "Отдел разработки"
+department: "development"
 draft: false
 order: 1
 ---

@@ -1,9 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-import Btn from "../../components/btn.astro";
-import Container from "../../components/container.astro";
-import LinkBlock from "../../components/link-block.astro";
-import PageTitle from "../../components/page-title.astro";
+import VacanciesFeed from "../../blocks/vacancies/vacancies-feed.astro";
+import { getVacancyDepartmentBySlug } from "../../data/vacancy-departments";
 import Layout from "../../layouts/layout.astro";
 
 interface VacancyItem {
@@ -20,142 +18,47 @@ const vacancyEntries = await getCollection(
   ({ data }) => data.draft !== true,
 );
 
-const vacancies: VacancyItem[] = vacancyEntries
-  .sort((a, b) => a.data.order - b.data.order)
-  .map(({ data }) => ({
-    rootClass: "_vacancies-page__item",
-    title: data.title,
-    description: data.description,
-    href: `/vacancies/${data.slug}/`,
-    linkLabel: data.title,
-    itemAttrs: {
-      "data-vacancy-name": data.department,
-    },
-  }));
+const sortedVacancyEntries = vacancyEntries.sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const usedDepartmentSlugs = Array.from(
+  new Set(sortedVacancyEntries.map(({ data }) => data.department)),
+);
+const getDepartmentCount = (slug: string) =>
+  sortedVacancyEntries.filter(({ data }) => data.department === slug).length;
+const filters = [
+  {
+    label: "Все вакансии",
+    href: "/vacancies/",
+    active: true,
+    count: sortedVacancyEntries.length,
+  },
+  ...usedDepartmentSlugs.map((slug) => {
+    const department = getVacancyDepartmentBySlug(slug);
+
+    return {
+      label: department?.label ?? slug,
+      href: `/vacancies/tag/${slug}/`,
+      active: false,
+      count: getDepartmentCount(slug),
+    };
+  }),
+];
+const vacancies: VacancyItem[] = sortedVacancyEntries.map(({ data }) => ({
+  rootClass: "_vacancies-page__item",
+  title: data.title,
+  description: data.description,
+  href: `/vacancies/${data.slug}/`,
+  linkLabel: data.title,
+  itemAttrs: {
+    "data-vacancy-name": data.department,
+  },
+}));
 ---
 
-<Layout>
-  <main class="page-main">
-    <Container>
-      <div class="_vacancies-page">
-        <div class="_vacancies-page__title">
-          <PageTitle as="h1">Вакансии</PageTitle>
-        </div>
-
-        <div class="_vacancies-page__description">
-          <p>
-            Уважаемые соискатели, если Вы заинтересованы с работе в нашей
-            компании, отправьте свое резюме на
-            <a href="mailto:info@tetacom.pro">info@tetacom.pro</a>
-          </p>
-          <p>
-            Список актуальных открытых вакансий можно посмотреть
-            <a
-              href="https://ufa.hh.ru/employer/4753085"
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              на нашей странице
-            </a>
-            на Head Hunter
-          </p>
-        </div>
-
-        <div class="_vacancies-page__body">
-          <div class="_vacancies-page__filter">
-            <Btn type="button" size="small" data-type="all">
-              Все вакансии
-              <span class="_vacancies-page__filter-number"
-                >{vacancies.length}</span
-              >
-            </Btn>
-          </div>
-
-          <div class="_vacancies-page__items">
-            <LinkBlock items={vacancies} />
-          </div>
-        </div>
-      </div>
-    </Container>
-  </main>
+<Layout
+  title="Вакансии"
+  canonical={new URL("/vacancies/", Astro.site).toString()}
+>
+  <VacanciesFeed title="Вакансии" filters={filters} vacancies={vacancies} />
 </Layout>
-
-<style>
-  .page-main {
-    flex: 1;
-  }
-
-  ._vacancies-page {
-    padding: 180px 0 164px;
-  }
-
-  ._vacancies-page__description {
-    display: grid;
-    gap: 0.5em;
-    margin-top: 28px;
-  }
-
-  ._vacancies-page__description p {
-    margin: 0;
-    font-size: 18px;
-    line-height: 155%;
-  }
-
-  ._vacancies-page__description a {
-    color: var(--text-color);
-    border-bottom: 1px solid var(--text-color);
-    transition:
-      color var(--delay),
-      border-color var(--delay);
-  }
-
-  ._vacancies-page__description a:hover {
-    color: var(--primary-color);
-    border-bottom-color: transparent;
-  }
-
-  ._vacancies-page__body {
-    margin-top: 60px;
-  }
-
-  ._vacancies-page__filter {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  ._vacancies-page__filter-number {
-    padding-left: 9px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 14px;
-    line-height: 16px;
-    transition: color var(--delay) var(--timing-func);
-  }
-
-  ._vacancies-page__filter
-    :global(._btn:hover ._vacancies-page__filter-number) {
-    color: var(--primary-color);
-  }
-
-  ._vacancies-page__items {
-    margin-top: 36px;
-  }
-
-  :global(._vacancies-page__item.hidden) {
-    display: none;
-  }
-
-  /* mobile */
-  @media (width < 769px) {
-    ._vacancies-page {
-      padding: 80px 0;
-    }
-  }
-
-  /* tablet-only */
-  @media (width >= 769px) and (width < 1081px) {
-    ._vacancies-page {
-      padding: 120px 0;
-    }
-  }
-</style>

@@ -3,6 +3,7 @@ import { defineCollection } from "astro:content";
 import { z } from "astro/zod";
 import { BLOG_TAG_SLUGS } from "./data/blog-tags";
 import { NEWS_TAG_SLUGS } from "./data/news-tags";
+import { VACANCY_DEPARTMENT_SLUGS } from "./data/vacancy-departments";
 
 const vacancies = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/vacancies" }),
@@ -10,7 +11,7 @@ const vacancies = defineCollection({
     slug: z.string(),
     title: z.string(),
     description: z.string(),
-    department: z.string(),
+    department: z.enum(VACANCY_DEPARTMENT_SLUGS),
     draft: z.boolean(),
     order: z.number(),
   }),

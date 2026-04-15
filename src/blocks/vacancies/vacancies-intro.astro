@@ -1,0 +1,59 @@
+---
+import PageTitle from "../../components/page-title.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props as Props;
+---
+
+<div class="_vacancies-page__title">
+  <PageTitle as="h1">{title}</PageTitle>
+</div>
+
+<div class="_vacancies-page__description">
+  <p>
+    Уважаемые соискатели, если Вы заинтересованы с работе в нашей компании,
+    отправьте свое резюме на
+    <a href="mailto:info@tetacom.pro">info@tetacom.pro</a>
+  </p>
+  <p>
+    Список актуальных открытых вакансий можно посмотреть
+    <a
+      href="https://ufa.hh.ru/employer/4753085"
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      на нашей странице
+    </a>
+    на Head Hunter
+  </p>
+</div>
+
+<style>
+  ._vacancies-page__description {
+    display: grid;
+    gap: 0.5em;
+    margin-top: 28px;
+  }
+
+  ._vacancies-page__description p {
+    margin: 0;
+    font-size: 18px;
+    line-height: 155%;
+  }
+
+  ._vacancies-page__description a {
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-color);
+    transition:
+      color var(--delay),
+      border-color var(--delay);
+  }
+
+  ._vacancies-page__description a:hover {
+    color: var(--primary-color);
+    border-bottom-color: transparent;
+  }
+</style>

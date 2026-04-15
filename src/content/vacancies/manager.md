@@ -1,8 +1,8 @@
 ---
-slug: "menedzher-po-prodazham"
+slug: "sales-manager"
 title: "Менеджер по продажам / Sales-manager"
 description: "Требуемый опыт работы: от 3 лет Полная занятость"
-department: "Отдел продаж"
+department: "sales"
 draft: false
 order: 5
 ---

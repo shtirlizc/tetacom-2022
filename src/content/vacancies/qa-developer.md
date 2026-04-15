@@ -1,8 +1,8 @@
 ---
-slug: "qa-inzhener"
+slug: "qa-developer"
 title: "QA инженер / Тестировщик"
 description: "Мы находимся в поиске QA-инженера в нашу команду для проектов в нефтегазовой сфере"
-department: "Отдел разработки"
+department: "development"
 draft: false
 order: 4
 ---

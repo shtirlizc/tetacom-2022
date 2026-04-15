@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import VacanciesFeed from "../../../blocks/vacancies/vacancies-feed.astro";
+import { getVacancyDepartmentBySlug } from "../../../data/vacancy-departments";
+import Layout from "../../../layouts/layout.astro";
+
+interface VacancyItem {
+  rootClass?: string;
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  itemAttrs?: Record<string, string>;
+}
+
+export async function getStaticPaths() {
+  const vacancyEntries = (
+    await getCollection("vacancies", ({ data }) => data.draft !== true)
+  ).sort((a, b) => a.data.order - b.data.order);
+  const usedDepartmentSlugs = Array.from(
+    new Set(vacancyEntries.map(({ data }) => data.department)),
+  );
+
+  return usedDepartmentSlugs.map((slug) => ({
+    params: { slug },
+    props: {
+      department: getVacancyDepartmentBySlug(slug),
+      usedDepartmentSlugs,
+      vacancyEntries,
+    },
+  }));
+}
+
+const {
+  department: maybeDepartment,
+  usedDepartmentSlugs,
+  vacancyEntries,
+} = Astro.props;
+
+if (!maybeDepartment) {
+  throw new Error(`Unknown vacancy department route: ${Astro.params.slug}`);
+}
+
+const department = maybeDepartment;
+const getDepartmentCount = (slug: string) =>
+  vacancyEntries.filter(({ data }) => data.department === slug).length;
+const filters = [
+  {
+    label: "Все вакансии",
+    href: "/vacancies/",
+    active: false,
+    count: vacancyEntries.length,
+  },
+  ...usedDepartmentSlugs.map((slug: string) => {
+    const currentDepartment = getVacancyDepartmentBySlug(slug);
+
+    return {
+      label: currentDepartment?.label ?? slug,
+      href: `/vacancies/tag/${slug}/`,
+      active: department.slug === slug,
+      count: getDepartmentCount(slug),
+    };
+  }),
+];
+const vacancies: VacancyItem[] = vacancyEntries
+  .filter(({ data }) => data.department === department.slug)
+  .map(({ data }) => ({
+    rootClass: "_vacancies-page__item",
+    title: data.title,
+    description: data.description,
+    href: `/vacancies/${data.slug}/`,
+    linkLabel: data.title,
+    itemAttrs: {
+      "data-vacancy-name": data.department,
+    },
+  }));
+const title = `Вакансии: ${department.label}`;
+---
+
+<Layout
+  title={title}
+  canonical={new URL(
+    `/vacancies/tag/${department.slug}/`,
+    Astro.site,
+  ).toString()}
+>
+  <VacanciesFeed title="Вакансии" filters={filters} vacancies={vacancies} />
+</Layout>

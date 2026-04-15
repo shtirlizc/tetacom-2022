@@ -1,8 +1,8 @@
 ---
-slug: "ux/ui-dizajner"
+slug: "ux/ui-designer"
 title: "UX/UI-дизайнер"
 description: "Мы находимся в поиске дизайнера пользовательских интерфейсов в нашу команду для проекта в нефтегазовой сфере"
-department: "Отдел разработки"
+department: "development"
 draft: true
 order: 3
 ---

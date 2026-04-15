@@ -1,0 +1,115 @@
+---
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import LinkBlock from "../../components/link-block.astro";
+import VacanciesIntro from "./vacancies-intro.astro";
+
+interface FilterItem {
+  label: string;
+  href: string;
+  active?: boolean;
+  count: number;
+}
+
+interface VacancyItem {
+  rootClass?: string;
+  title: string;
+  description: string;
+  href: string;
+  linkLabel: string;
+  itemAttrs?: Record<string, string>;
+}
+
+interface Props {
+  title: string;
+  filters: FilterItem[];
+  vacancies: VacancyItem[];
+}
+
+const { title, filters, vacancies } = Astro.props as Props;
+---
+
+<main class="page-main">
+  <Container>
+    <div class="_vacancies-page">
+      <VacanciesIntro title={title} />
+
+      <div class="_vacancies-page__body">
+        <div class="_vacancies-page__filter">
+          {
+            filters.map(({ label, href, active = false, count }) => (
+              <Btn
+                href={href}
+                size="small"
+                variant={active ? "primary" : "text"}
+              >
+                {label}
+                <span class="_vacancies-page__filter-number">{count}</span>
+              </Btn>
+            ))
+          }
+        </div>
+
+        <div class="_vacancies-page__items">
+          <LinkBlock items={vacancies} />
+        </div>
+      </div>
+    </div>
+  </Container>
+</main>
+
+<style>
+  .page-main {
+    flex: 1;
+  }
+
+  ._vacancies-page {
+    padding: 180px 0 164px;
+  }
+
+  ._vacancies-page__body {
+    margin-top: 60px;
+  }
+
+  ._vacancies-page__filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  ._vacancies-page__filter-number {
+    padding-left: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    line-height: 16px;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._vacancies-page__filter
+    :global(._btn--text ._vacancies-page__filter-number) {
+    color: rgb(0 0 0 / 50%);
+  }
+
+  ._vacancies-page__filter
+    :global(._btn:hover ._vacancies-page__filter-number) {
+    color: var(--primary-color);
+  }
+
+  ._vacancies-page__items {
+    margin-top: 36px;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._vacancies-page {
+      padding: 80px 0;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._vacancies-page {
+      padding: 120px 0;
+    }
+  }
+</style>

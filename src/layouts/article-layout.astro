@@ -7,6 +7,7 @@ import PageTitle from "../components/page-title.astro";
 import TagList from "../components/tag-list.astro";
 import TextContent from "../components/text-content.astro";
 import Layout from "./layout.astro";
+import BackIcon from "../assets/back-icon.svg";
 
 interface TagItem {
   label: string;
@@ -49,15 +50,7 @@ const {
               class="js-page-back-link"
             >
               <span>
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                  <rect width="52" height="52" rx="26"></rect>
-                  <path
-                    d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-                </svg>
+                <BackIcon />
               </span>
               Назад
             </Btn>

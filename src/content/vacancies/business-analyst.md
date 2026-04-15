@@ -1,8 +1,8 @@
 ---
-slug: "biznes-analitik"
+slug: "business-analyst"
 title: "Бизнес-аналитик"
 description: "Мы ищем опытного специалиста для комплексного улучшения бизнес-процессов в нашей компании"
-department: "Менеджмент и аналитика"
+department: "management"
 draft: true
 order: 6
 ---

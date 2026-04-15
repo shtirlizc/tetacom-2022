@@ -4,7 +4,9 @@ import Btn from "../../components/btn.astro";
 import Container from "../../components/container.astro";
 import PageTitle from "../../components/page-title.astro";
 import TextContent from "../../components/text-content.astro";
+import { getVacancyDepartmentBySlug } from "../../data/vacancy-departments";
 import Layout from "../../layouts/layout.astro";
+import BackIcon from "../../assets/back-icon.svg";
 
 export async function getStaticPaths() {
   const vacancies = await getCollection(
@@ -20,15 +22,23 @@ export async function getStaticPaths() {
 
 const { vacancy } = Astro.props;
 const { Content } = await render(vacancy);
+const department = getVacancyDepartmentBySlug(vacancy.data.department);
+
+if (!department) {
+  throw new Error(`Unknown vacancy department: ${vacancy.data.department}`);
+}
 ---
 
 <Layout>
   <main class="page-main">
     <Container>
       <div class="_vacancies-inner-page">
-        <p class="_vacancies-inner-page__department">
-          {vacancy.data.department}
-        </p>
+        <a
+          href={`/vacancies/tag/${department.slug}/`}
+          class="_vacancies-inner-page__department"
+        >
+          {department.label}
+        </a>
         <div class="_vacancies-inner-page__title">
           <PageTitle as="h1">
             {vacancy.data.title}
@@ -41,15 +51,7 @@ const { Content } = await render(vacancy);
         <div class="_vacancies-inner-page__feedback">
           <Btn href="/vacancies/" variant="text" shape="icon">
             <span>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                <rect width="52" height="52" rx="26"></rect>
-                <path
-                  d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
+              <BackIcon />
             </span>
             Назад
           </Btn>
@@ -116,10 +118,17 @@ const { Content } = await render(vacancy);
   }
 
   ._vacancies-inner-page__department {
+    display: inline-block;
     margin: 0;
     color: var(--grey-color);
     font-size: 14px;
     line-height: 171%;
+    text-decoration: none;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._vacancies-inner-page__department:hover {
+    color: var(--primary-color);
   }
 
   :global(._vacancies-inner-page__title) {
