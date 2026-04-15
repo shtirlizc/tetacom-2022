@@ -36,6 +36,7 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
   ._text-content h6:first-child,
   ._text-content ol:first-child,
   ._text-content ul:first-child,
+  ._text-content figure:first-child,
   ._text-content p:first-child {
     margin-top: 0;
   }
@@ -48,6 +49,7 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
   ._text-content h6:last-child,
   ._text-content ol:last-child,
   ._text-content ul:last-child,
+  ._text-content figure:last-child,
   ._text-content p:last-child {
     margin-bottom: 0;
   }
@@ -129,10 +131,23 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
     max-width: 100%;
     height: auto;
     cursor: pointer;
+    border-radius: 8px;
   }
 
-  ._text-content img.auto {
-    width: auto;
+  ._text-content figure {
+    margin: 1.5em 0;
+  }
+
+  ._text-content figure > a,
+  ._text-content figure img {
+    display: block;
+  }
+
+  ._text-content figcaption {
+    margin-top: 12px;
+    color: rgb(0 0 0 / 70%);
+    font-size: 16px;
+    line-height: 24px;
   }
 
   ._text-content a {
@@ -145,5 +160,13 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
     margin: auto;
     border: none;
     aspect-ratio: 16 / 9;
+  }
+
+  ._text-content video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1.5em auto;
+    border-radius: 8px;
   }
 </style>
