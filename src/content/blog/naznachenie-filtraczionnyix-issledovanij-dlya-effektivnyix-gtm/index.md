@@ -1,6 +1,6 @@
 ---
 slug: "naznachenie-filtraczionnyix-issledovanij-dlya-effektivnyix-gtm"
-title: "##### Назначение фильтрационных исследований для эффективных ГТМ"
+title: "Назначение фильтрационных исследований для эффективных ГТМ"
 description: ""
 tags:
   - "RockStim"
