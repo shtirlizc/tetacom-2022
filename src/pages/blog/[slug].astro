@@ -36,7 +36,12 @@ const { Content } = await render(post);
       <div class="_news-page-inner">
         <div class="_news-page-inner__aside">
           <div class="content">
-            <Btn href="/blog/" variant="text" shape="icon">
+            <Btn
+              href="/blog/"
+              variant="text"
+              shape="icon"
+              class="js-page-back-link"
+            >
               <span>
                 <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
                   <rect width="52" height="52" rx="26"></rect>
@@ -90,6 +95,26 @@ const { Content } = await render(post);
     </Container>
   </main>
 </Layout>
+
+<script>
+  const backLink = document.querySelector(".js-page-back-link");
+
+  if (backLink instanceof HTMLAnchorElement && document.referrer) {
+    try {
+      const referrerUrl = new URL(document.referrer);
+      const currentUrl = new URL(window.location.href);
+
+      if (
+        referrerUrl.origin === currentUrl.origin &&
+        referrerUrl.href !== currentUrl.href
+      ) {
+        backLink.href = `${referrerUrl.pathname}${referrerUrl.search}${referrerUrl.hash}`;
+      }
+    } catch {
+      backLink.href = "/blog/";
+    }
+  }
+</script>
 
 <style>
   .page-main {
