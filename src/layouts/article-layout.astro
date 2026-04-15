@@ -1,0 +1,178 @@
+---
+import AuthorDate from "../components/author-date.astro";
+import Btn from "../components/btn.astro";
+import Container from "../components/container.astro";
+import ContentImageLightbox from "../components/content-image-lightbox.astro";
+import PageTitle from "../components/page-title.astro";
+import TagList from "../components/tag-list.astro";
+import TextContent from "../components/text-content.astro";
+import Layout from "./layout.astro";
+
+interface TagItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  backHref: string;
+  dateText: string;
+  dateTime: string;
+  title: string;
+  tags: TagItem[];
+  seoTitle?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  backHref,
+  dateText,
+  dateTime,
+  title,
+  tags,
+  seoTitle,
+  description,
+  canonical,
+} = Astro.props as Props;
+---
+
+<Layout title={seoTitle} description={description} canonical={canonical}>
+  <main class="page-main">
+    <Container>
+      <div class="_news-page-inner">
+        <div class="_news-page-inner__aside">
+          <div class="content">
+            <Btn
+              href={backHref}
+              variant="text"
+              shape="icon"
+              class="js-page-back-link"
+            >
+              <span>
+                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                  <rect width="52" height="52" rx="26"></rect>
+                  <path
+                    d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                </svg>
+              </span>
+              Назад
+            </Btn>
+          </div>
+        </div>
+
+        <div class="_news-page-inner__body">
+          <AuthorDate dateText={dateText} dateTime={dateTime} />
+
+          <div class="_news-page-inner__title">
+            <PageTitle as="h1">
+              {title}
+            </PageTitle>
+          </div>
+
+          <div class="_news-page-inner__tags">
+            <TagList items={tags} />
+          </div>
+
+          <div class="_news-page-inner__content">
+            <TextContent>
+              <slot />
+            </TextContent>
+          </div>
+
+          <ContentImageLightbox />
+        </div>
+      </div>
+    </Container>
+  </main>
+</Layout>
+
+<script is:inline define:vars={{ backHref }}>
+  const backLink = document.querySelector(".js-page-back-link");
+
+  if (backLink instanceof HTMLAnchorElement && document.referrer) {
+    try {
+      const referrerUrl = new URL(document.referrer);
+      const currentUrl = new URL(window.location.href);
+
+      if (
+        referrerUrl.origin === currentUrl.origin &&
+        referrerUrl.href !== currentUrl.href
+      ) {
+        backLink.href = `${referrerUrl.pathname}${referrerUrl.search}${referrerUrl.hash}`;
+      }
+    } catch {
+      backLink.href = backHref;
+    }
+  }
+</script>
+
+<style>
+  .page-main {
+    flex: 1;
+  }
+
+  ._news-page-inner {
+    display: grid;
+    gap: 20px;
+    padding: 180px 0 164px;
+  }
+
+  ._news-page-inner__aside {
+    padding-right: 20px;
+
+    .content {
+      position: sticky;
+      top: 120px;
+    }
+  }
+
+  ._news-page-inner__body {
+    padding-top: 12px;
+  }
+
+  :global(._news-page-inner__title) {
+    margin-top: 10px;
+  }
+
+  ._news-page-inner__tags {
+    margin-top: 36px;
+  }
+
+  ._news-page-inner__content {
+    margin-top: 60px;
+  }
+
+  :global(._news-page-inner__figure-caption) {
+    color: rgb(0 0 0 / 70%);
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._news-page-inner {
+      padding: 80px 0;
+    }
+
+    :global(._news-page-inner__title) {
+      font-size: 36px;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._news-page-inner {
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._news-page-inner {
+      padding: 120px 0;
+    }
+  }
+</style>

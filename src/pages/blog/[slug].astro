@@ -1,14 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
-import AuthorDate from "../../components/author-date.astro";
-import Btn from "../../components/btn.astro";
-import Container from "../../components/container.astro";
-import ContentImageLightbox from "../../components/content-image-lightbox.astro";
-import Layout from "../../layouts/layout.astro";
-import PageTitle from "../../components/page-title.astro";
-import TagList from "../../components/tag-list.astro";
-import TextContent from "../../components/text-content.astro";
 import { getBlogTagBySlug } from "../../data/blog-tags";
+import ArticleLayout from "../../layouts/article-layout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -28,157 +21,22 @@ const formatPostDate = (date: Date) =>
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const tags = post.data.tags.map((slug: string) => {
+  const tag = getBlogTagBySlug(slug);
+
+  return {
+    label: tag?.label ?? slug,
+    href: `/blog/tag/${slug}/`,
+  };
+});
 ---
 
-<Layout>
-  <main class="page-main">
-    <Container>
-      <div class="_news-page-inner">
-        <div class="_news-page-inner__aside">
-          <div class="content">
-            <Btn
-              href="/blog/"
-              variant="text"
-              shape="icon"
-              class="js-page-back-link"
-            >
-              <span>
-                <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
-                  <rect width="52" height="52" rx="26"></rect>
-                  <path
-                    d="M36 26L16 26M16 26L24.4 34M16 26L24.4 18"
-                    stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"></path>
-                </svg>
-              </span>
-              Назад
-            </Btn>
-          </div>
-        </div>
-
-        <div class="_news-page-inner__body">
-          <AuthorDate
-            dateText={formatPostDate(post.data.pubDate)}
-            dateTime={post.data.pubDate.toISOString()}
-          />
-
-          <div class="_news-page-inner__title">
-            <PageTitle as="h1">
-              {post.data.title}
-            </PageTitle>
-          </div>
-
-          <div class="_news-page-inner__tags">
-            <TagList
-              items={post.data.tags.map((slug: string) => {
-                const tag = getBlogTagBySlug(slug);
-
-                return {
-                  label: tag?.label ?? slug,
-                  href: `/blog/tag/${slug}/`,
-                };
-              })}
-            />
-          </div>
-
-          <div class="_news-page-inner__content">
-            <TextContent>
-              <Content />
-            </TextContent>
-          </div>
-
-          <ContentImageLightbox />
-        </div>
-      </div>
-    </Container>
-  </main>
-</Layout>
-
-<script>
-  const backLink = document.querySelector(".js-page-back-link");
-
-  if (backLink instanceof HTMLAnchorElement && document.referrer) {
-    try {
-      const referrerUrl = new URL(document.referrer);
-      const currentUrl = new URL(window.location.href);
-
-      if (
-        referrerUrl.origin === currentUrl.origin &&
-        referrerUrl.href !== currentUrl.href
-      ) {
-        backLink.href = `${referrerUrl.pathname}${referrerUrl.search}${referrerUrl.hash}`;
-      }
-    } catch {
-      backLink.href = "/blog/";
-    }
-  }
-</script>
-
-<style>
-  .page-main {
-    flex: 1;
-  }
-
-  ._news-page-inner {
-    display: grid;
-    gap: 20px;
-    padding: 180px 0 164px;
-  }
-
-  ._news-page-inner__aside {
-    padding-right: 20px;
-
-    .content {
-      position: sticky;
-      top: 120px;
-    }
-  }
-
-  ._news-page-inner__body {
-    padding-top: 12px;
-  }
-
-  :global(._news-page-inner__title) {
-    margin-top: 10px;
-  }
-
-  ._news-page-inner__tags {
-    margin-top: 36px;
-  }
-
-  ._news-page-inner__content {
-    margin-top: 60px;
-  }
-
-  :global(._news-page-inner__figure-caption) {
-    color: rgb(0 0 0 / 70%);
-  }
-
-  /* mobile */
-  @media (width < 769px) {
-    ._news-page-inner {
-      padding: 80px 0;
-    }
-
-    :global(._news-page-inner__title) {
-      font-size: 36px;
-    }
-  }
-
-  /* tablet */
-  @media (width >= 769px) {
-    ._news-page-inner {
-      grid-template-columns: 220px 1fr;
-      gap: 0;
-    }
-  }
-
-  /* tablet-only */
-  @media (width >= 769px) and (width < 1081px) {
-    ._news-page-inner {
-      padding: 120px 0;
-    }
-  }
-</style>
+<ArticleLayout
+  backHref="/blog/"
+  dateText={formatPostDate(post.data.pubDate)}
+  dateTime={post.data.pubDate.toISOString()}
+  title={post.data.title}
+  tags={tags}
+>
+  <Content />
+</ArticleLayout>
