@@ -22,5 +22,3 @@ draft: false
 **С наступающим Новым годом! С праздником!**
 
 **Команда Тетаком**
-
-![](https://tetacom.pro/dist/uploads/news/articles/%D0%9D%D0%93%20%D0%BF%D0%BE%D0%B7%D0%B4%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%202024/Frame%2014505.png)
