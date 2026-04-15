@@ -3,10 +3,10 @@ slug: "obuchayushhij-kurs-po-gtm"
 title: "Обучающий курс по ГТМ 15-19 мая 2023 года"
 description: "Обучающий курс по ГТМ (геолого-техническим мероприятиям), г. Уфа 15-19 мая 2023 года."
 tags:
-  - "RockStim"
-  - "RockLis"
-  - "RockFrac"
-  - "Обучение"
+  - rockstim
+  - rocklis
+  - rockfrac
+  - education
 pubDate: "2023-05-20T10:14:00.000Z"
 draft: false
 ---

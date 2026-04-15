@@ -3,8 +3,8 @@ slug: "tetakom-i-gornyij-universitet-sotrudnichayut-v-sfere-obrazovaniya"
 title: "«Тетаком» и Горный университет сотрудничают в сфере образования"
 description: "Компания «Тетаком» поставила свои цифровые продукты в Горный университет под обучающие цели."
 tags:
-  - "Обучение"
-  - "RockStim"
+  - education
+  - rockstim
 pubDate: "2023-07-17T09:40:00.000Z"
 draft: false
 ---

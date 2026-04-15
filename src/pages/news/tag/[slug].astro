@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import BlogFeed from "../../../blocks/news/blog-feed.astro";
+import Layout from "../../../layouts/layout.astro";
+import { getNewsTagBySlug } from "../../../data/news-tags";
+
+const formatPostDate = (date: Date) =>
+  new Intl.DateTimeFormat("ru-RU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+
+export async function getStaticPaths() {
+  const newsEntries = (
+    await getCollection("news", ({ data }) => !data.draft)
+  ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const usedTagSlugs = Array.from(
+    new Set(newsEntries.flatMap(({ data }) => data.tags)),
+  );
+
+  return usedTagSlugs.map((slug) => ({
+    params: { slug },
+    props: {
+      newsEntries,
+      tag: getNewsTagBySlug(slug),
+      usedTagSlugs,
+    },
+  }));
+}
+
+const { newsEntries, tag: maybeTag, usedTagSlugs } = Astro.props;
+
+if (!maybeTag) {
+  throw new Error(`Unknown news tag route: ${Astro.params.slug}`);
+}
+
+const tag = maybeTag;
+const filters = [
+  { label: "Все новости", href: "/news/", active: false },
+  ...usedTagSlugs.map((slug: string) => {
+    const currentTag = getNewsTagBySlug(slug);
+
+    return {
+      label: currentTag?.label ?? slug,
+      href: `/news/tag/${slug}/`,
+      active: tag.slug === slug,
+    };
+  }),
+];
+const newsItems = newsEntries
+  .filter(({ data }) => data.tags.includes(tag.slug))
+  .map(({ data }) => ({
+    dateText: formatPostDate(data.pubDate),
+    dateTime: data.pubDate.toISOString(),
+    title: data.title,
+    tags: data.tags.map((slug: string) => {
+      const currentTag = getNewsTagBySlug(slug);
+
+      return {
+        label: currentTag?.label ?? slug,
+        href: `/news/tag/${slug}/`,
+      };
+    }),
+    intro: data.description,
+    href: `/news/${data.slug}/`,
+  }));
+const title = `Новости по тегу ${tag.label}`;
+---
+
+<Layout
+  title={title}
+  description={`Новости по теме ${tag.label}`}
+  canonical={new URL(`/news/tag/${tag.slug}/`, Astro.site).toString()}
+>
+  <BlogFeed title={title} filters={filters} items={newsItems} />
+</Layout>

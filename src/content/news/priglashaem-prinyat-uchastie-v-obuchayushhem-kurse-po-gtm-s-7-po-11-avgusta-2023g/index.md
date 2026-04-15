@@ -3,10 +3,10 @@ slug: "priglashaem-prinyat-uchastie-v-obuchayushhem-kurse-po-gtm-s-7-po-11-avgus
 title: "Приглашаем принять участие в обучающем курсе по ГТМ с 7 по 11 августа 2023 г"
 description: "Приглашаем вас принять участие в обучающем курсе по геолого-техническим мероприятиям (ГТМ), который состоится в городе Уфа с 7 по 11 августа 2023 года."
 tags:
-  - "Обучение"
-  - "RockFrac"
-  - "RockStim"
-  - "RockWow"
+  - education
+  - rockfrac
+  - rockstim
+  - rockwow
 pubDate: "2023-06-04T08:54:00.000Z"
 draft: false
 ---

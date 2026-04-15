@@ -3,9 +3,9 @@ slug: "kurs-gtm-7-11-avgusta-2023g"
 title: "Проведен курс по ГТМ с 7 по 11 августа 2023 г"
 description: "Обучающий курс по ГТМ (геолого-техническим мероприятиям), г. Уфа 7-11 августа 2023 года."
 tags:
-  - "RockFrac"
-  - "RockStim"
-  - "RockWow"
+  - rockfrac
+  - rockstim
+  - rockwow
 pubDate: "2023-08-12T17:11:00.000Z"
 draft: false
 ---

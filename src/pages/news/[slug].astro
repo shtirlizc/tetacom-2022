@@ -8,6 +8,7 @@ import Layout from "../../layouts/layout.astro";
 import PageTitle from "../../components/page-title.astro";
 import TagList from "../../components/tag-list.astro";
 import TextContent from "../../components/text-content.astro";
+import { getNewsTagBySlug } from "../../data/news-tags";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news", ({ data }) => !data.draft);
@@ -34,7 +35,12 @@ const { Content } = await render(post);
     <Container>
       <div class="_news-page-inner">
         <div class="_news-page-inner__aside">
-          <Btn href="/news/" variant="text" shape="icon">
+          <Btn
+            href="/news/"
+            variant="text"
+            shape="icon"
+            class="js-page-back-link"
+          >
             <span>
               <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
                 <rect width="52" height="52" rx="26"></rect>
@@ -64,7 +70,14 @@ const { Content } = await render(post);
 
           <div class="_news-page-inner__tags">
             <TagList
-              items={post.data.tags.map((label: string) => ({ label }))}
+              items={post.data.tags.map((slug: string) => {
+                const tag = getNewsTagBySlug(slug);
+
+                return {
+                  label: tag?.label ?? slug,
+                  href: `/news/tag/${slug}/`,
+                };
+              })}
             />
           </div>
 
@@ -80,6 +93,26 @@ const { Content } = await render(post);
     </Container>
   </main>
 </Layout>
+
+<script>
+  const backLink = document.querySelector(".js-page-back-link");
+
+  if (backLink instanceof HTMLAnchorElement && document.referrer) {
+    try {
+      const referrerUrl = new URL(document.referrer);
+      const currentUrl = new URL(window.location.href);
+
+      if (
+        referrerUrl.origin === currentUrl.origin &&
+        referrerUrl.href !== currentUrl.href
+      ) {
+        backLink.href = `${referrerUrl.pathname}${referrerUrl.search}${referrerUrl.hash}`;
+      }
+    } catch {
+      backLink.href = "/news/";
+    }
+  }
+</script>
 
 <style>
   .page-main {

@@ -1,9 +1,9 @@
 ---
 slug: "simulyator-opz-rockstim-vnesenie-v-reestr-po-minczifryi"
-title: "Симулятор ОПЗ \"RockStim\": внесён в реестр ПО Минцифры"
+title: 'Симулятор ОПЗ "RockStim": внесён в реестр ПО Минцифры'
 description: "Минцифры рекомендует RockStim"
 tags:
-  - "RockStim"
+  - rockstim
 pubDate: "2023-07-20T10:41:00.000Z"
 draft: false
 ---

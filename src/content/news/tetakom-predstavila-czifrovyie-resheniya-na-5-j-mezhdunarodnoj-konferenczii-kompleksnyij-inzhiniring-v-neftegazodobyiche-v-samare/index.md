@@ -3,9 +3,9 @@ slug: "tetakom-predstavila-czifrovyie-resheniya-na-5-j-mezhdunarodnoj-konferencz
 title: 'Демонстрация цифровых решений на 5-й международной конференции "Комплексный инжиниринг в нефтегазодобыче" в Самаре'
 description: 'Тетаком продемонстрировала цифровые продукты на площадке АО "Гипровостокнефть" для моделирования скважинных операций'
 tags:
-  - "RockFrac"
-  - "RockStim"
-  - "RockWow"
+  - rockfrac
+  - rockstim
+  - rockwow
 pubDate: "2023-08-25T11:23:00.000Z"
 draft: false
 ---

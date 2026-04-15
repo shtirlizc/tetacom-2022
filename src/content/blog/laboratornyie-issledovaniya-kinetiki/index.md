@@ -3,7 +3,7 @@ slug: "laboratornyie-issledovaniya-kinetiki"
 title: "Лабораторные исследования кинетических параметров реакций"
 description: "Лабораторные исследования кинетических параметров реакций, выполняемые для адаптации математических моделей моделирования ОПЗ,СКО\r\n"
 tags:
-  - laboratornye-issledovaniya
+  - lab-research
   - rockstim
 pubDate: "2023-09-25T08:34:00.000Z"
 draft: false

@@ -3,8 +3,8 @@ slug: "proveden-tretij-texnicheskij-kurs-po-gtm-s-23-27-oktyabrya-2023g"
 title: "Проведен третий технический курс по ГТМ с 23 - 27 октября 2023 г"
 description: ""
 tags:
-  - "RockStim"
-  - "Обучение"
+  - rockstim
+  - education
 pubDate: "2023-11-01T08:49:00.000Z"
 draft: false
 ---

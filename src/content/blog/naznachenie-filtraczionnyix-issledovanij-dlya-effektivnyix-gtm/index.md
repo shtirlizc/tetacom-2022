@@ -4,7 +4,7 @@ title: "Назначение фильтрационных исследовани
 description: ""
 tags:
   - rockstim
-  - laboratornye-issledovaniya
+  - lab-research
 pubDate: "2023-10-13T11:55:00.000Z"
 draft: false
 ---

@@ -3,7 +3,7 @@ const BLOG_TAGS = [
   { label: "RockFrac", slug: "rockfrac" },
   {
     label: "Лабораторные исследования",
-    slug: "laboratornye-issledovaniya",
+    slug: "lab-research",
   },
 ] as const;
 

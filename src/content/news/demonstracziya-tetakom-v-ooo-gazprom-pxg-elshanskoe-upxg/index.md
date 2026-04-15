@@ -3,10 +3,10 @@ slug: "demonstracziya-tetakom-v-ooo-gazprom-pxg-elshanskoe-upxg"
 title: 'Демонстрация Тетаком в ООО "Газпром ПХГ" "Елшанское УПХГ"'
 description: 'На базе филиала ООО "Газпром ПХГ" "Елшанское УПХГ" в г. Саратов состоялся показ программных продуктов Компании Тетаком.'
 tags:
-  - "RockFrac"
-  - "RockLis"
-  - "RockStim"
-  - "RockWow"
+  - rockfrac
+  - rocklis
+  - rockstim
+  - rockwow
 pubDate: "2023-06-21T15:22:00.000Z"
 draft: false
 ---
