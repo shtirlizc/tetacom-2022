@@ -2,10 +2,10 @@
 import Container from "../../components/container.astro";
 
 const aboutNumbers = [
-  { number: "7", text: "продуктов" },
-  { number: "40+", text: "специалистов" },
-  { number: "100+", text: "пользователей" },
-  { number: "30+", text: "лабораторных исследований" },
+  { number: "12", text: "Программных комплексов" },
+  { number: "40+", text: "Специалистов в команде" },
+  { number: "100+", text: "Обученных пользователей" },
+  { number: "80+", text: "Лабораторных исследований" },
   { number: "50+", text: "выполненных НИОКР" },
   { number: "4", text: "страны присутствия" },
 ];
@@ -16,12 +16,14 @@ const aboutNumbers = [
     <h2 class="_about-numbers__title">О нас в цифрах</h2>
 
     <ul class="_about-numbers__body">
-      {aboutNumbers.map(({ number, text }) => (
-        <li class="_about-numbers__item">
-          <span class="_about-numbers__item-number">{number}</span>
-          <span class="_about-numbers__item-text">{text}</span>
-        </li>
-      ))}
+      {
+        aboutNumbers.map(({ number, text }) => (
+          <li class="_about-numbers__item">
+            <span class="_about-numbers__item-number">{number}</span>
+            <span class="_about-numbers__item-text">{text}</span>
+          </li>
+        ))
+      }
     </ul>
   </Container>
 </section>
