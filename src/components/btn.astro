@@ -7,12 +7,14 @@ interface Props {
   shape?: "default" | "icon" | "circle" | "icon-circle";
   block?: boolean;
   popovertarget?: string;
+  target?: "_blank" | "_top" | "_parent" | "_self";
   class?: string;
 }
 
 const {
   href,
   popovertarget,
+  target,
   type = "button",
   size = "default",
   variant = "primary",
@@ -37,7 +39,7 @@ const classes = [
 
 {
   href ? (
-    <a href={href} class={classes} {...attrs}>
+    <a href={href} target={target} class={classes} {...attrs}>
       <slot />
     </a>
   ) : (

@@ -1,4 +1,5 @@
 ---
+import { getCollection } from "astro:content";
 import Container from "./container.astro";
 import Dropdown from "./dropdown.astro";
 import Hamburger from "./hamburger.astro";
@@ -25,6 +26,15 @@ const isProductsActive = productsMenuItem
 const isHomeActive = homeMenuItem
   ? isActivePath(homeMenuItem.href, homeMenuItem.exact)
   : false;
+const productSubmenuItems = (
+  await getCollection("products", ({ data }) => !data.draft)
+)
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    label: data.menuTitle || data.title,
+    href: `/products/${data.slug}/`,
+    active: isActivePath(`/products/${data.slug}`),
+  }));
 ---
 
 <header class="_header">
@@ -100,27 +110,28 @@ const isHomeActive = homeMenuItem
             </button>
 
             <ul class="_header__submenu">
-              <li class="_header__submenu-item first">
-                <a href="#" class="_header__submenu-link">ГРП</a>
-              </li>
-              <li class="_header__submenu-item">
-                <a href="#" class="_header__submenu-link">Буроптима</a>
-              </li>
-              <li class="_header__submenu-item">
-                <a href="#" class="_header__submenu-link">Эксперия</a>
-              </li>
-              <li class="_header__submenu-item">
-                <a href="#" class="_header__submenu-link">РИР</a>
-              </li>
-              <li class="_header__submenu-item">
-                <a href="#" class="_header__submenu-link">Симулятор ОПЗ</a>
-              </li>
-              <li class="_header__submenu-item">
-                <a href="#" class="_header__submenu-link">ЛИС</a>
-              </li>
-              <li class="_header__submenu-item last">
-                <a href="#" class="_header__submenu-link">НИОКР</a>
-              </li>
+              {
+                productSubmenuItems.map(({ label, href, active }, index) => (
+                  <li
+                    class:list={[
+                      "_header__submenu-item",
+                      {
+                        active,
+                        first: index === 0,
+                        last: index === productSubmenuItems.length - 1,
+                      },
+                    ]}
+                  >
+                    <a
+                      href={href}
+                      class="_header__submenu-link"
+                      aria-current={active ? "page" : undefined}
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </Dropdown>
           {
@@ -338,7 +349,8 @@ const isHomeActive = homeMenuItem
   }
 
   ._header__menu-item.active > ._header__menu-link,
-  ._header__menu-item.active > ._dropdown__open-btn ._header__menu-link {
+  ._header__menu-item.active > ._dropdown__open-btn ._header__menu-link,
+  ._header__submenu-item.active > ._header__submenu-link {
     color: var(--primary-color);
   }
 

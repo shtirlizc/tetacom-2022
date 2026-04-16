@@ -37,6 +37,19 @@ const { items } = Astro.props as Props;
   ._info-block__item {
     display: grid;
     gap: 40px;
+
+    /* desktop */
+    @media (width >= 1081px) {
+      &:nth-child(even) {
+        ._info-block__title {
+          text-align: right;
+        }
+
+        ul {
+          order: -1;
+        }
+      }
+    }
   }
 
   ._info-block__item:not(:last-child) {
@@ -55,6 +68,11 @@ const { items } = Astro.props as Props;
     font-size: 18px;
     font-weight: 400;
     line-height: 28px;
+    padding-left: 8px;
+
+    &::marker {
+      content: "- ";
+    }
   }
 
   ._info-block__item li:not(:last-child) {

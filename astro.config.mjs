@@ -11,5 +11,6 @@ export default defineConfig({
   },
   redirects: {
     "/education": "/education/opz-course",
+    "/products": "/products/rockstim",
   },
 });

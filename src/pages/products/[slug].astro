@@ -1,0 +1,543 @@
+---
+import { getCollection } from "astro:content";
+import Btn from "../../components/btn.astro";
+import Container from "../../components/container.astro";
+import InlineText from "../../components/inline-text.astro";
+import PageTitle from "../../components/page-title.astro";
+import PromptBlock from "../../components/prompt-block.astro";
+import VideoPlayer from "../../components/video-player.astro";
+import InfoBlock from "../../blocks/products/info-block.astro";
+import Layout from "../../layouts/layout.astro";
+
+export async function getStaticPaths() {
+  const products = await getCollection("products", ({ data }) => !data.draft);
+
+  return products.map((product) => ({
+    params: { slug: product.data.slug },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+const data = product.data;
+const pageTitle = data.metaTitle || data.title;
+const pageDescription = data.metaDescription || data.description;
+const productImageModules = import.meta.glob(
+  "/src/content/products/**/images/*",
+  {
+    eager: true,
+  },
+);
+
+type ProductImageModule = {
+  default?: {
+    src?: string;
+    width?: number;
+    height?: number;
+  };
+};
+
+const resolveImageModule = (image?: string) => {
+  if (!image || !image.startsWith("./images/")) {
+    return undefined;
+  }
+
+  return productImageModules[
+    `/src/content/products/${data.slug}/${image.replace("./", "")}`
+  ] as ProductImageModule | undefined;
+};
+
+const resolveImage = (image?: string) => {
+  if (!image) {
+    return image;
+  }
+
+  if (!image.startsWith("./images/")) {
+    return image;
+  }
+
+  return resolveImageModule(image)?.default?.src ?? image;
+};
+const getImageSize = (image?: string) => {
+  const imageData = resolveImageModule(image)?.default;
+
+  if (!imageData?.width || !imageData.height) {
+    return undefined;
+  }
+
+  return {
+    width: imageData.width,
+    height: imageData.height,
+  };
+};
+const getSrcset = (image?: string, image2x?: string) =>
+  image && image2x
+    ? `${resolveImage(image)} 1x, ${resolveImage(image2x)} 2x`
+    : undefined;
+const demoImageLightboxSrc = resolveImage(data.demoImage2x || data.demoImage);
+const demoImageLightboxSize =
+  getImageSize(data.demoImage2x) ?? getImageSize(data.demoImage);
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="page-main">
+    <div class="_product-page">
+      <Container>
+        <div class="_product-page__title">
+          <PageTitle as="h1" mobileAlign="center">
+            {data.title}
+          </PageTitle>
+        </div>
+        <p class="_product-page__description">
+          {data.description}
+        </p>
+
+        <div class="_product-page__actions">
+          {
+            data.productLink && (
+              <Btn href={data.productLink} target="_blank" variant="outline">
+                Вход в сервис
+              </Btn>
+            )
+          }
+          <Btn popovertarget="modal-demo">Заказать демонстрацию</Btn>
+        </div>
+
+        {
+          (data.demoVideo || data.demoImage) && (
+            <div class="_product-page__picture">
+              {data.demoVideo ? (
+                <VideoPlayer
+                  src={data.demoVideo}
+                  poster={resolveImage(data.demoImage)}
+                  label={data.title}
+                />
+              ) : (
+                <a
+                  class="_product-page__picture-link"
+                  href={demoImageLightboxSrc}
+                  data-product-image-lightbox
+                  data-pswp-width={demoImageLightboxSize?.width}
+                  data-pswp-height={demoImageLightboxSize?.height}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Открыть изображение: ${data.title}`}
+                >
+                  <img
+                    src={resolveImage(data.demoImage)}
+                    srcset={getSrcset(data.demoImage, data.demoImage2x)}
+                    alt={data.title}
+                  />
+                </a>
+              )}
+            </div>
+          )
+        }
+
+        {
+          data.prompt1 && (
+            <PromptBlock
+              rootClass="_product-page__prompt-1"
+              hint={data.prompt1.label}
+              title={data.prompt1.title}
+              description={data.prompt1.description}
+            />
+          )
+        }
+
+        {
+          data.banners.length > 0 && (
+            <section class="_product-page__banners">
+              {data.banners.map((banner) => (
+                <article
+                  class:list={[
+                    "_product-page__banner",
+                    `_product-page__banner--${banner.type}`,
+                  ]}
+                  style={
+                    banner.type === "horizontal" && banner.backgroundColor
+                      ? `background-color: ${banner.backgroundColor}`
+                      : undefined
+                  }
+                >
+                  <div class="_product-page__banner-info">
+                    <h3 class="_product-page__banner-title">{banner.title}</h3>
+                    <p class="_product-page__banner-description">
+                      <InlineText content={banner.description} />
+                    </p>
+                  </div>
+                  {banner.image && (
+                    <div class="_product-page__banner-image">
+                      <img
+                        src={resolveImage(banner.image)}
+                        srcset={getSrcset(banner.image, banner.image2x)}
+                        alt=""
+                      />
+                    </div>
+                  )}
+                </article>
+              ))}
+            </section>
+          )
+        }
+
+        {
+          data.prompt2 && (
+            <PromptBlock
+              rootClass="_product-page__prompt-2"
+              hint={data.prompt2.label}
+              title={data.prompt2.title}
+              description={data.prompt2.description}
+            />
+          )
+        }
+      </Container>
+
+      {
+        data.modules.length > 0 && (
+          <section class="_product-page__modules">
+            <Container>
+              {data.modulesTitle && (
+                <h2 class="_product-page__modules-title">
+                  {data.modulesTitle}
+                </h2>
+              )}
+              <div class="_product-page__modules-body">
+                {data.modules.map(({ title, description, image }) => (
+                  <div class="_product-page__module">
+                    {image && (
+                      <div class="_product-page__module-image">
+                        <img src={resolveImage(image)} alt="" />
+                      </div>
+                    )}
+                    <h3 class="_product-page__module-title">{title}</h3>
+                    <p class="_product-page__module-description">
+                      {description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </section>
+        )
+      }
+
+      {
+        data.infoBlocks.length > 0 && (
+          <Container>
+            <section class="_product-page__info-block">
+              <InfoBlock items={data.infoBlocks} />
+            </section>
+          </Container>
+        )
+      }
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox";
+
+  document
+    .querySelectorAll<HTMLElement>("._product-page__picture")
+    .forEach((gallery) => {
+      if (gallery.dataset.lightboxReady === "true") {
+        return;
+      }
+
+      const lightboxItems = gallery.querySelectorAll<HTMLAnchorElement>(
+        "a[data-product-image-lightbox]",
+      );
+
+      if (lightboxItems.length === 0) {
+        return;
+      }
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery,
+        children: "a[data-product-image-lightbox]",
+        pswpModule: () => import("photoswipe"),
+      });
+
+      lightbox.init();
+      gallery.dataset.lightboxReady = "true";
+    });
+</script>
+
+<style>
+  .page-main {
+    flex: 1;
+  }
+
+  ._product-page {
+    padding: 220px 0 0;
+  }
+
+  :global(._product-page__title) {
+    margin: 0;
+  }
+
+  ._product-page__description {
+    margin: 45px 0 0;
+    font-size: 18px;
+    line-height: 1.6em;
+  }
+
+  ._product-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 72px;
+  }
+
+  ._product-page__picture {
+    margin-top: 162px;
+  }
+
+  ._product-page__picture > img,
+  ._product-page__picture-link,
+  ._product-page__picture :global(._video-player) {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  ._product-page__picture-link {
+    cursor: zoom-in;
+
+    border: 2px solid var(--black-color);
+  }
+
+  ._product-page__picture :global(img) {
+    width: 100%;
+    height: auto;
+  }
+
+  :global(._product-page__prompt-1) {
+    margin-top: 160px;
+  }
+
+  ._product-page__banners {
+    --image-width: 520px;
+
+    display: grid;
+    gap: 20px;
+    margin-top: 160px;
+  }
+
+  ._product-page__banner {
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  ._product-page__banner--horizontal {
+    color: var(--white-color);
+  }
+
+  ._product-page__banner--vertical {
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    background-color: #f8f8f8;
+    color: var(--black-color);
+  }
+
+  ._product-page__banner-info {
+    padding: 60px;
+  }
+
+  ._product-page__banner--vertical ._product-page__banner-info {
+    padding: 0;
+  }
+
+  ._product-page__banner-title {
+    margin: 0;
+    font-size: 32px;
+    line-height: 38px;
+  }
+
+  ._product-page__banner-description {
+    margin: 45px 0 0;
+    font-size: 18px;
+    line-height: 156%;
+
+    a {
+      color: var(--primary-color);
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+
+  ._product-page__banner-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    align-self: stretch;
+  }
+
+  ._product-page__banner-image img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ._product-page__modules {
+    margin-top: 220px;
+    padding: 100px 0 140px;
+    background-color: #f8f8f8;
+  }
+
+  ._product-page__modules-title {
+    margin: 0;
+    font-size: 40px;
+    line-height: 47px;
+    text-align: center;
+  }
+
+  ._product-page__modules-body {
+    display: grid;
+    gap: 100px 20px;
+    margin-top: 100px;
+  }
+
+  ._product-page__module {
+    padding: 0 32px 40px;
+    border-radius: 20px;
+    background-color: var(--bg-color);
+  }
+
+  ._product-page__module-image {
+    width: 100%;
+    max-width: 190px;
+    height: 140px;
+    margin: auto;
+    transform: translateY(-55%);
+  }
+
+  ._product-page__module-image :global(svg) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  ._product-page__module-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  ._product-page__module-title {
+    margin: -11% 0 0;
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  ._product-page__module-description {
+    margin: 28px 0 0;
+    font-size: 18px;
+    line-height: 156%;
+  }
+
+  ._product-page__info-block {
+    margin: 60px 0;
+  }
+
+  /* mobile */
+  @media (width < 769px) {
+    ._product-page {
+      padding: 80px 0 0;
+    }
+
+    ._product-page__description {
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    ._product-page__actions {
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    ._product-page__picture {
+      margin-top: 64px;
+    }
+
+    :global(._product-page__prompt-1) {
+      margin-top: 64px;
+    }
+
+    ._product-page__banners {
+      --image-width: 240px;
+      margin-top: 64px;
+    }
+
+    ._product-page__banner-info,
+    ._product-page__banner--vertical {
+      padding: 20px;
+    }
+
+    ._product-page__modules {
+      margin-top: 80px;
+      padding: 50px 0 70px;
+    }
+
+    ._product-page__module-title {
+      margin: -70px 0 0;
+    }
+  }
+
+  /* tablet */
+  @media (width >= 769px) {
+    ._product-page__banners {
+      grid-template-columns: 1fr 1fr;
+      padding-bottom: calc(var(--image-width) / 4);
+    }
+
+    ._product-page__banner--horizontal {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      align-items: center;
+      gap: 40px;
+      grid-column: 1 / 3;
+    }
+  }
+
+  /* tablet-only */
+  @media (width >= 769px) and (width < 1081px) {
+    ._product-page {
+      padding: 120px 0 0;
+    }
+
+    ._product-page__picture {
+      margin-top: 92px;
+    }
+
+    ._product-page__modules-body {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 128px 20px;
+      margin-top: 140px;
+    }
+  }
+
+  /* desktop */
+  @media (width >= 1081px) {
+    ._product-page__description {
+      padding-right: 40%;
+    }
+
+    ._product-page__banners {
+      padding-bottom: calc(var(--image-width) / 2);
+    }
+
+    ._product-page__modules-body {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 140px;
+    }
+
+    ._product-page__info-block {
+      margin: 180px 0;
+    }
+  }
+</style>

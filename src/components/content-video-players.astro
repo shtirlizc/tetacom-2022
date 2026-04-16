@@ -1,0 +1,40 @@
+---
+
+---
+
+<script>
+  import { initVideoPlayers } from "../scripts/video-player";
+
+  document
+    .querySelectorAll<HTMLElement>("._news-page-inner__content ._text-content")
+    .forEach((content) => {
+      const videos = Array.from(content.querySelectorAll("video"));
+
+      videos.forEach((video) => {
+        if (video.closest("[data-video-player]")) {
+          return;
+        }
+
+        const player = document.createElement("div");
+
+        player.className = "_video-player _video-player--content";
+        player.dataset.videoPlayer = "true";
+
+        video.controls = true;
+        video.playsInline = true;
+
+        if (!video.hasAttribute("preload")) {
+          video.preload = "metadata";
+        }
+
+        if (!video.hasAttribute("aria-label")) {
+          video.setAttribute("aria-label", video.title || "Видео");
+        }
+
+        video.before(player);
+        player.append(video);
+      });
+
+      initVideoPlayers(content);
+    });
+</script>
