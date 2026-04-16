@@ -80,6 +80,18 @@ const products = defineCollection({
       "drilling",
       "rockplan",
     ]),
+    capabilityCard: z.object({
+      image: z.enum([
+        "product-1",
+        "product-2",
+        "product-3",
+        "product-4",
+        "product-5",
+      ]),
+      backgroundColor: z.string(),
+      linkBackgroundColor: z.string(),
+      arrowColor: z.string(),
+    }),
     metaTitle: z.string().optional(),
     metaDescription: z.string().optional(),
     productLink: z.string().optional(),

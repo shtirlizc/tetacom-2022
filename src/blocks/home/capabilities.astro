@@ -1,130 +1,103 @@
 ---
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import product1 from "../../assets/products/product-1.png";
-import product2 from "../../assets/products/product-2.png";
+import product2 from "../../assets/products/product-2.jpg";
 import product3 from "../../assets/products/product-3.svg";
 import product4 from "../../assets/products/product-4.png";
+import product5 from "../../assets/products/product-5.svg";
 
 const Product3 = product3;
+const Product5 = product5;
+
+const capabilityImages = {
+  "product-1": {
+    type: "image",
+    src: product1,
+  },
+  "product-2": {
+    type: "image",
+    src: product2,
+  },
+  "product-3": {
+    type: "component",
+    Component: Product3,
+  },
+  "product-4": {
+    type: "image",
+    src: product4,
+  },
+  "product-5": {
+    type: "component",
+    Component: Product5,
+  },
+} as const;
+
+const capabilityCards = (
+  await getCollection("products", ({ data }) => !data.draft)
+)
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    title: data.title,
+    href: `/products/${data.slug}/`,
+    imageAlt: data.menuTitle || data.title,
+    backgroundColor: data.capabilityCard.backgroundColor,
+    linkBackgroundColor: data.capabilityCard.linkBackgroundColor,
+    arrowColor: data.capabilityCard.arrowColor,
+    image: capabilityImages[data.capabilityCard.image],
+  }));
 ---
 
 <div class="_capabilities">
   <div class="_capabilities__items js-sticky-track">
-    <article class="_capabilities__item">
-      <div
-        class="_capabilities__item-content"
-        style="background-color: #3c5df2"
-      >
-        <div class="_capabilities__item-info">
-          <h3 class="_capabilities__item-title">
-            Симулятор гидроразрыва<br />пласта
-          </h3>
-          <a href="/products/rockfrac/" class="_capabilities__item-link">
-            Обзор продукта
-            <span style="background-color: #353749">
-              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
-                <path
-                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </a>
-        </div>
-        <div class="_capabilities__item-picture">
-          <Image src={product1} alt="" width={628} height={420} />
-        </div>
-      </div>
-    </article>
+    {
+      capabilityCards.map((card) => {
+        const image = card.image;
+        const ImageComponent =
+          image.type === "component" ? image.Component : null;
 
-    <article class="_capabilities__item">
-      <div
-        class="_capabilities__item-content"
-        style="background-color: #353749"
-      >
-        <div class="_capabilities__item-info">
-          <h3 class="_capabilities__item-title">
-            Симулятор обработки призабойных зон
-          </h3>
-          <a href="/products/rockstim/" class="_capabilities__item-link">
-            Обзор продукта
-            <span style="background-color: #3c5df2">
-              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
-                <path
-                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </a>
-        </div>
-        <div class="_capabilities__item-picture">
-          <Image src={product2} alt="" width={628} height={420} />
-        </div>
-      </div>
-    </article>
-
-    <article class="_capabilities__item">
-      <div
-        class="_capabilities__item-content"
-        style="background-color: #8792a9"
-      >
-        <div class="_capabilities__item-info">
-          <h3 class="_capabilities__item-title">
-            Удаленный мониторинг и аналитика бурения
-          </h3>
-          <a href="/products/drilling/" class="_capabilities__item-link">
-            Обзор продукта
-            <span style="background-color: #ffffff">
-              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
-                <path
-                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
-                  stroke="#8792a9"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </a>
-        </div>
-        <div class="_capabilities__item-picture">
-          <Product3 aria-hidden="true" focusable="false" />
-        </div>
-      </div>
-    </article>
-
-    <article class="_capabilities__item">
-      <div
-        class="_capabilities__item-content"
-        style="background-color: #8a6eba"
-      >
-        <div class="_capabilities__item-info">
-          <h3 class="_capabilities__item-title">
-            Построение графика исследований
-          </h3>
-          <a href="/products/rockplan/" class="_capabilities__item-link">
-            Обзор продукта
-            <span style="background-color: #353749">
-              <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
-                <path
-                  d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-              </svg>
-            </span>
-          </a>
-        </div>
-        <div class="_capabilities__item-picture">
-          <Image src={product4} alt="" width={628} height={420} />
-        </div>
-      </div>
-    </article>
+        return (
+          <article class="_capabilities__item">
+            <div
+              class="_capabilities__item-content"
+              style={`background-color: ${card.backgroundColor}`}
+            >
+              <div class="_capabilities__item-info">
+                <h3 class="_capabilities__item-title">{card.title}</h3>
+                <a href={card.href} class="_capabilities__item-link">
+                  Обзор продукта
+                  <span style={`background-color: ${card.linkBackgroundColor}`}>
+                    <svg width="23" height="18" viewBox="0 0 23 18" fill="none">
+                      <path
+                        d="M1.5 9L21.5 9M21.5 9L13.1 1M21.5 9L13.1 17"
+                        stroke={card.arrowColor}
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+              <div class="_capabilities__item-picture">
+                {image.type === "image" ? (
+                  <Image
+                    src={image.src}
+                    alt={card.imageAlt}
+                    width={628}
+                    height={420}
+                  />
+                ) : (
+                  ImageComponent && (
+                    <ImageComponent aria-hidden="true" focusable="false" />
+                  )
+                )}
+              </div>
+            </div>
+          </article>
+        );
+      })
+    }
   </div>
 </div>
 
@@ -405,11 +378,15 @@ const Product3 = product3;
     transform: translate(10px);
   }
 
+  ._capabilities__item-picture {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   ._capabilities__item-picture :global(img),
   ._capabilities__item-picture :global(svg) {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
   }
 
   /* mobile */
@@ -466,6 +443,13 @@ const Product3 = product3;
 
   /* desktop */
   @media (width >= 1081px) {
+    ._capabilities__item-title {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
     ._capabilities__item {
       position: absolute;
       left: 0;
