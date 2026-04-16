@@ -1,45 +1,36 @@
 ---
+import { getCollection } from "astro:content";
 import Btn from "../../components/btn.astro";
 import Container from "../../components/container.astro";
 import ProjectTag from "../../components/project-tag.astro";
 import pdfIcon from "../../assets/icons/pdf-icon.svg";
 import logoLarge from "../../assets/start-screen/logo-large.svg";
-import buroptimaIcon from "../../assets/project-teasers/icons/buroptima-icon.svg";
+import drillingIcon from "../../assets/project-teasers/icons/drilling-icon.svg";
 import rockFracIcon from "../../assets/project-teasers/icons/rock-frac-icon.svg";
 import rockLisIcon from "../../assets/project-teasers/icons/rock-lis-icon.svg";
+import rockPlanIcon from "../../assets/project-teasers/icons/rock-plan-icon.svg";
 import rockStimIcon from "../../assets/project-teasers/icons/rock-stim-icon.svg";
 import rockWowIcon from "../../assets/project-teasers/icons/rock-wow-icon.svg";
 
 const PdfIcon = pdfIcon;
 const LogoLarge = logoLarge;
 
-const projectTags = [
-  {
-    href: "#",
-    icon: rockStimIcon,
-    text: "RockStim",
-  },
-  {
-    href: "#",
-    icon: rockLisIcon,
-    text: "RockLis",
-  },
-  {
-    href: "#",
-    icon: rockFracIcon,
-    text: "RockFrac",
-  },
-  {
-    href: "#",
-    icon: rockWowIcon,
-    text: "RockWow",
-  },
-  {
-    href: "#",
-    icon: buroptimaIcon,
-    text: "БурОптима",
-  },
-];
+const projectTagIcons = {
+  rockstim: rockStimIcon,
+  rocklis: rockLisIcon,
+  rockfrac: rockFracIcon,
+  rockwow: rockWowIcon,
+  drilling: drillingIcon,
+  rockplan: rockPlanIcon,
+};
+
+const projectTags = (await getCollection("products", ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    href: `/products/${data.slug}/`,
+    icon: projectTagIcons[data.projectTagIcon],
+    text: data.menuTitle || data.title,
+  }));
 ---
 
 <section class="_start-screen">

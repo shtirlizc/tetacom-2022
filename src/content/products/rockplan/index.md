@@ -5,6 +5,7 @@ menuTitle: "RockPlan"
 description: "RockPlan - инновационный продут формирования оптимального графика движения буровых с учетом технико-экономических сценариев"
 draft: false
 order: 5
+projectTagIcon: "rockplan"
 metaTitle: "Автографик бурения RockPlan - экономит деньги на логистику"
 metaDescription: "Автоматизированная система планирования и мониторинга расписания строительства скважин, движения буровых установок и бригад"
 productLink: "https://gb.tetacom.pro/auth/sign-in"
