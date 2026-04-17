@@ -7,6 +7,7 @@ interface Props {
   shape?: "default" | "icon" | "circle" | "icon-circle";
   block?: boolean;
   popovertarget?: string;
+  popovertargetaction?: "hide" | "show" | "toggle";
   target?: "_blank" | "_top" | "_parent" | "_self";
   class?: string;
 }
@@ -14,6 +15,7 @@ interface Props {
 const {
   href,
   popovertarget,
+  popovertargetaction,
   target,
   type = "button",
   size = "default",
@@ -45,6 +47,7 @@ const classes = [
   ) : (
     <button
       popovertarget={popovertarget}
+      popovertargetaction={popovertargetaction}
       type={type}
       class={classes}
       {...attrs}

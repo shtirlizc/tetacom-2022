@@ -1,34 +1,44 @@
 ---
-const { ...attrs } = Astro.props;
+interface Props {
+  id: string;
+}
+
+const { id } = Astro.props;
 ---
 
-<div class="_notification" {...attrs}>
-  <div class="_notification__body">
-    <slot />
-  </div>
+<div class="_notification" id={id} popover="manual">
+  <slot />
 </div>
 
 <style>
   ._notification {
-    position: relative;
-    pointer-events: auto;
-  }
-
-  ._notification__body {
-    position: absolute;
-    bottom: calc(100% + 4px);
-    left: -4px;
-    z-index: 21;
-    display: none;
+    position: fixed;
+    inset: auto auto 20px 16px;
+    padding: 0;
+    border: 0;
     width: max-content;
     overflow: hidden;
     border-radius: 4px;
     background-color: var(--white-color);
     box-shadow: var(--shadow);
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(12px);
     transition:
       opacity var(--delay) var(--timing-func),
-      transform var(--delay) var(--timing-func);
+      transform var(--delay) var(--timing-func),
+      overlay var(--delay) var(--timing-func) allow-discrete,
+      display var(--delay) var(--timing-func) allow-discrete;
+  }
+
+  ._notification:popover-open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @starting-style {
+    ._notification:popover-open {
+      opacity: 0;
+      transform: translateY(12px);
+    }
   }
 </style>

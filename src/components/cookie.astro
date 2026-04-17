@@ -1,10 +1,12 @@
 ---
 import Btn from "./btn.astro";
 import Notification from "./notification.astro";
+
+const cookieId = "teta_cookie";
 ---
 
 <div class="_cookie">
-  <Notification>
+  <Notification id={cookieId}>
     <div class="_cookie__content">
       <p>Мы используем файлы cookie.</p>
       <p>
@@ -14,21 +16,29 @@ import Notification from "./notification.astro";
         </a>
       </p>
       <p>
-        <Btn>Принять</Btn>
+        <Btn popovertarget={cookieId} popovertargetaction="hide"> Принять </Btn>
       </p>
     </div>
   </Notification>
 </div>
 
+<script define:vars={{ cookieId }}>
+  const popoverEl = document.getElementById(cookieId);
+
+  const savedCookie = localStorage.getItem(cookieId);
+  if (!savedCookie) {
+    popoverEl.showPopover();
+
+    popoverEl.addEventListener("toggle", (event) => {
+      if (event.newState === "closed") {
+        localStorage.setItem(cookieId, "saved");
+      }
+    });
+  }
+</script>
+
 <style>
   ._cookie {
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    z-index: 21;
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
   }
 
   ._cookie__content {
@@ -43,6 +53,10 @@ import Notification from "./notification.astro";
 
   ._cookie__content a {
     color: var(--primary-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   /* mobile */

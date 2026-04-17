@@ -266,7 +266,12 @@ const productSubmenuItems = (
 
   ._header__logo {
     z-index: 1;
-    height: 26px;
+    height: 28px;
+
+    /* tablet */
+    @media (width >= 769px) {
+      height: 32px;
+    }
   }
 
   ._header__logo svg path {
