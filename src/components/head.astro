@@ -13,8 +13,20 @@ const { title = "Astro Basics", description, canonical } = Astro.props as Props;
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="96x96"
+    href="/favicon/favicon-96x96.png"
+  />
+  <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/favicon/apple-touch-icon.png"
+  />
+  <link rel="manifest" href="/favicon/site.webmanifest" />
   <meta name="generator" content={Astro.generator} />
   {description && <meta name="description" content={description} />}
   {canonical && <link rel="canonical" href={canonical} />}
