@@ -42,7 +42,7 @@ const projectTags = (await getCollection("products", ({ data }) => !data.draft))
         </h1>
         <p class="_start-screen__description">Наука и IT встречаются здесь</p>
         <p class="_start-screen__presentation">
-          <a href="#">
+          <a href="/files/presentation.pdf" target="_blank">
             <span class="_start-screen__presentation-icon">
               <PdfIcon aria-hidden="true" focusable="false" />
             </span>
@@ -146,6 +146,7 @@ const projectTags = (await getCollection("products", ({ data }) => !data.draft))
     gap: 9px;
     color: var(--primary-color);
     font-size: 16px;
+    font-weight: 500;
     line-height: 16px;
     text-decoration: none;
   }
