@@ -7,9 +7,19 @@ export const getBasePath = () => {
 };
 
 export const getSitePath = (pathname = "/") => {
+  const basePath = getBasePath();
+  const normalizedBasePath = basePath.replace(/^\/+|\/+$/g, "");
   const normalizedPathname = pathname.replace(/^\/+/, "");
 
-  return `${getBasePath()}${normalizedPathname}`;
+  if (
+    normalizedBasePath &&
+    (normalizedPathname === normalizedBasePath ||
+      normalizedPathname.startsWith(`${normalizedBasePath}/`))
+  ) {
+    return `/${normalizedPathname}`;
+  }
+
+  return `${basePath}${normalizedPathname}`;
 };
 
 export const getSiteUrl = (pathname = "/", site?: URL | string) =>

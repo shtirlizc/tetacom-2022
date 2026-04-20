@@ -2,6 +2,11 @@
 import Container from "../components/container.astro";
 import Layout from "../layouts/layout.astro";
 import LinkBlock from "../components/link-block.astro";
+import { getSiteUrl } from "../utils/site-url";
+
+const pageTitle = "Контакты";
+const pageDescription =
+  "Свяжитесь с Тетаком, чтобы узнать больше о продуктах, обучении и разработке решений для нефтегазовой отрасли";
 
 const contactLinks = [
   {
@@ -25,7 +30,11 @@ const contactLinks = [
 ];
 ---
 
-<Layout>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={getSiteUrl("/contacts/", Astro.site)}
+>
   <main class="page-main">
     <Container>
       <div class="_contacts-page">

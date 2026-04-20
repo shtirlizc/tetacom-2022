@@ -7,6 +7,7 @@ import TextContent from "../../components/text-content.astro";
 import { getVacancyDepartmentBySlug } from "../../data/vacancy-departments";
 import Layout from "../../layouts/layout.astro";
 import BackIcon from "../../assets/back-icon.svg";
+import { getSiteUrl } from "../../utils/site-url";
 
 export async function getStaticPaths() {
   const vacancies = await getCollection(
@@ -29,7 +30,11 @@ if (!department) {
 }
 ---
 
-<Layout>
+<Layout
+  title={vacancy.data.title}
+  description={vacancy.data.description}
+  canonical={getSiteUrl(`/vacancies/${vacancy.data.slug}/`, Astro.site)}
+>
   <main class="page-main">
     <Container>
       <div class="_vacancies-inner-page">

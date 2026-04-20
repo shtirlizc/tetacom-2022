@@ -1,37 +1,69 @@
 ---
 import "../styles/_global.css";
-import { getSitePath } from "../utils/site-url";
+import { getSitePath, getSiteUrl } from "../utils/site-url";
 
 interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
-const { title = "Astro Basics", description, canonical } = Astro.props as Props;
+const DEFAULT_TITLE = "Тетаком: облачные сервисы для нефтегазовой отрасли";
+const DEFAULT_DESCRIPTION =
+  "Облачные решения компании Тетаком для нефтегазовой промышленности позволяют снижать себестоимость добычи природных энергоресурсов";
+const DEFAULT_IMAGE = "/cover.jpg";
+const THEME_COLOR = "#ffffff";
+const normalizeMetaContent = (value: string) =>
+  value.replace(/\s+/g, " ").trim();
+
+const {
+  title = DEFAULT_TITLE,
+  description = DEFAULT_DESCRIPTION,
+  canonical,
+  image = DEFAULT_IMAGE,
+  type = "website",
+} = Astro.props as Props;
+const pageTitle = normalizeMetaContent(title);
+const pageDescription = normalizeMetaContent(description);
+const pageUrl = canonical ?? getSiteUrl(Astro.url.pathname, Astro.site);
+const imageUrl = /^https?:\/\//.test(image)
+  ? image
+  : getSiteUrl(image, Astro.site);
+const faviconSvgHref = getSitePath("favicon/favicon.svg");
+const faviconPngHref = getSitePath("favicon/favicon-96x96.png");
+const faviconIcoHref = getSitePath("favicon/favicon.ico");
+const appleTouchIconHref = getSitePath("favicon/apple-touch-icon.png");
+const manifestHref = getSitePath("favicon/site.webmanifest");
 const sitemapHref = getSitePath("sitemap-index.xml");
 ---
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="96x96"
-    href="/favicon/favicon-96x96.png"
-  />
-  <link rel="icon" href="/favicon/favicon.ico" sizes="any" />
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="/favicon/apple-touch-icon.png"
-  />
-  <link rel="manifest" href="/favicon/site.webmanifest" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href={faviconSvgHref} />
+  <link rel="icon" type="image/png" sizes="96x96" href={faviconPngHref} />
+  <link rel="icon" href={faviconIcoHref} sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconHref} />
+  <link rel="manifest" href={manifestHref} />
   <link rel="sitemap" href={sitemapHref} />
   <meta name="generator" content={Astro.generator} />
-  {description && <meta name="description" content={description} />}
-  {canonical && <link rel="canonical" href={canonical} />}
-  <title>{title}</title>
+  <meta name="description" content={pageDescription} />
+  <meta name="theme-color" content={THEME_COLOR} />
+  <meta name="msapplication-TileColor" content={THEME_COLOR} />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={imageUrl} />
+  <meta property="og:site_name" content="Тетаком" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={pageUrl} />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={pageDescription} />
+  <meta name="twitter:image" content={imageUrl} />
+  <link rel="canonical" href={pageUrl} />
+  <title>{pageTitle}</title>
 </head>

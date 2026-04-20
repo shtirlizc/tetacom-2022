@@ -17,6 +17,12 @@ import resumeBgImage from "../../assets/course/resume-bg.png";
 import slide1Image from "../../assets/course/slide-1.jpg";
 import slide2Image from "../../assets/course/slide-2.jpg";
 import slide3Image from "../../assets/course/slide-3.jpg";
+import { getSiteUrl } from "../../utils/site-url";
+
+const pageTitle =
+  "Курс повышения квалификации по проектированию кислотных обработок";
+const pageDescription =
+  "Курс для специалистов нефтегазодобывающих, нефтесервисных и научно-проектных предприятий по моделированию кислотных обработок в цифровых симуляторах";
 
 const coursePrice = "87 000 ₽";
 const courseDuration = "5 дней";
@@ -194,7 +200,11 @@ const courseFeedbackDescriptionItems = [
 ];
 ---
 
-<Layout>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={getSiteUrl("/education/opz-course/", Astro.site)}
+>
   <main class="page-main">
     <Container>
       <div class="_course">

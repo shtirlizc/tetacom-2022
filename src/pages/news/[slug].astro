@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import { getNewsTagBySlug } from "../../data/news-tags";
 import ArticleLayout from "../../layouts/article-layout.astro";
+import { getSiteUrl } from "../../utils/site-url";
 
 export async function getStaticPaths() {
   const posts = await getCollection("news", ({ data }) => !data.draft);
@@ -37,6 +38,10 @@ const tags = post.data.tags.map((slug: string) => {
   dateTime={post.data.pubDate.toISOString()}
   title={post.data.title}
   tags={tags}
+  seoTitle={post.data.title}
+  description={post.data.description}
+  canonical={getSiteUrl(`/news/${post.data.slug}/`, Astro.site)}
+  type="article"
 >
   <Content />
 </ArticleLayout>

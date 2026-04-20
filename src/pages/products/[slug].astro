@@ -8,6 +8,7 @@ import PromptBlock from "../../components/prompt-block.astro";
 import VideoPlayer from "../../components/video-player.astro";
 import InfoBlock from "../../blocks/products/info-block.astro";
 import Layout from "../../layouts/layout.astro";
+import { getSiteUrl } from "../../utils/site-url";
 
 export async function getStaticPaths() {
   const products = await getCollection("products", ({ data }) => !data.draft);
@@ -79,7 +80,11 @@ const demoImageLightboxSize =
   getImageSize(data.demoImage2x) ?? getImageSize(data.demoImage);
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  canonical={getSiteUrl(`/products/${data.slug}/`, Astro.site)}
+>
   <main class="page-main">
     <div class="_product-page">
       <Container>

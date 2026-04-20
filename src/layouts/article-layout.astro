@@ -24,6 +24,8 @@ interface Props {
   seoTitle?: string;
   description?: string;
   canonical?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
 const {
@@ -35,10 +37,18 @@ const {
   seoTitle,
   description,
   canonical,
+  image,
+  type = "article",
 } = Astro.props as Props;
 ---
 
-<Layout title={seoTitle} description={description} canonical={canonical}>
+<Layout
+  title={seoTitle}
+  description={description}
+  canonical={canonical}
+  image={image}
+  type={type}
+>
   <main class="page-main">
     <Container>
       <div class="_news-page-inner">
