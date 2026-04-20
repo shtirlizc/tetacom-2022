@@ -4,6 +4,7 @@ import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import Popovers from "../components/popovers.astro";
+import Scripts from "../components/scripts.astro";
 
 interface Props {
   title?: string;
@@ -34,6 +35,8 @@ const { title, description, canonical, image, type } = Astro.props as Props;
     <Footer />
     <Popovers />
     <Cookie />
+
+    <Scripts />
   </body>
 </html>
 

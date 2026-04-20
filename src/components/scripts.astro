@@ -1,0 +1,43 @@
+<!-- BEGIN OF APICRM CODE INTEGRATOR -->
+<script is:inline>
+  (function (a, m, o, c, r, m) {
+    a[m] = {
+      id: "388623",
+      hash: "da9fe149686bbb6a601cda586c3030634ef95af1b6e8968b15b0759bb6d13088",
+      locale: "ru",
+      inline: true,
+      setMeta: function (p) {
+        this.params = (this.params || []).concat([p]);
+      },
+    };
+    a[o] =
+      a[o] ||
+      function () {
+        (a[o].q = a[o].q || []).push(arguments);
+      };
+    var d = a.document,
+      s = d.createElement("script");
+    s.async = true;
+    s.id = m + "_script";
+    s.src = "https://gso.amocrm.ru/js/button.js?1687340930";
+    d.head && d.head.appendChild(s);
+  })(window, 0, "amoSocialButton", 0, 0, "amo_social_button");
+</script>
+<script is:inline>
+  (function (a, m, o) {
+    m.apicrm_callback = function () {
+      try {
+        m.II = new ApiCRMIntegration(o);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    var n = a.getElementsByTagName("script")[0],
+      e = a.createElement("script");
+    e.type = "text/javascript";
+    e.async = true;
+    e.src = "//apicrm.ru/js/interface/" + o + ".js?v=" + Date.now();
+    n.parentNode.insertBefore(e, n);
+  })(document, window, "24d620113f1a900da9f7abe7fe712587");
+</script>
+<!-- END OF APICRM CODE INTEGRATOR -->
