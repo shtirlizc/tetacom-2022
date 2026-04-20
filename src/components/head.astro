@@ -1,5 +1,6 @@
 ---
 import "../styles/_global.css";
+import { getSitePath } from "../utils/site-url";
 
 interface Props {
   title?: string;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { title = "Astro Basics", description, canonical } = Astro.props as Props;
+const sitemapHref = getSitePath("sitemap-index.xml");
 ---
 
 <head>
@@ -27,6 +29,7 @@ const { title = "Astro Basics", description, canonical } = Astro.props as Props;
     href="/favicon/apple-touch-icon.png"
   />
   <link rel="manifest" href="/favicon/site.webmanifest" />
+  <link rel="sitemap" href={sitemapHref} />
   <meta name="generator" content={Astro.generator} />
   {description && <meta name="description" content={description} />}
   {canonical && <link rel="canonical" href={canonical} />}

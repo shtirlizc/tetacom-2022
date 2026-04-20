@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BlogFeed from "../../../blocks/news/blog-feed.astro";
 import Layout from "../../../layouts/layout.astro";
 import { getBlogTagBySlug } from "../../../data/blog-tags";
+import { getSiteUrl } from "../../../utils/site-url";
 
 const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("ru-RU", {
@@ -71,7 +72,7 @@ const title = `Статьи по тегу ${tag.label}`;
 <Layout
   title={`Статьи по тегу ${tag.label}`}
   description={`Материалы блога по теме ${tag.label}`}
-  canonical={new URL(`/blog/tag/${tag.slug}/`, Astro.site).toString()}
+  canonical={getSiteUrl(`/blog/tag/${tag.slug}/`, Astro.site)}
 >
   <BlogFeed title={title} filters={filters} items={newsItems} />
 </Layout>

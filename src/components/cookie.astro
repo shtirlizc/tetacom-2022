@@ -22,7 +22,7 @@ const cookieId = "teta_cookie";
   </Notification>
 </div>
 
-<script define:vars={{ cookieId }}>
+<script is:inline define:vars={{ cookieId }}>
   const popoverEl = document.getElementById(cookieId);
 
   const savedCookie = localStorage.getItem(cookieId);

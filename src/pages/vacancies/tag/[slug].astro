@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import VacanciesFeed from "../../../blocks/vacancies/vacancies-feed.astro";
 import { getVacancyDepartmentBySlug } from "../../../data/vacancy-departments";
 import Layout from "../../../layouts/layout.astro";
+import { getSiteUrl } from "../../../utils/site-url";
 
 interface VacancyItem {
   rootClass?: string;
@@ -79,10 +80,7 @@ const title = `Вакансии: ${department.label}`;
 
 <Layout
   title={title}
-  canonical={new URL(
-    `/vacancies/tag/${department.slug}/`,
-    Astro.site,
-  ).toString()}
+  canonical={getSiteUrl(`/vacancies/tag/${department.slug}/`, Astro.site)}
 >
   <VacanciesFeed title="Вакансии" filters={filters} vacancies={vacancies} />
 </Layout>

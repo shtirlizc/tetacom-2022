@@ -8,11 +8,12 @@ import StartScreen from "../blocks/home/start-screen.astro";
 import Partners from "../blocks/home/partners.astro";
 import WhoAreWe from "../blocks/home/who-are-we.astro";
 import Container from "../components/container.astro";
+import { getSiteUrl } from "../utils/site-url";
 
 const title = "Тетаком: облачные сервисы для нефтегазовой отрасли";
 const description =
   "Облачные решения компании Тетаком для нефтегазовой промышленности позволяют снижать себестоимость добычи природных энергоресурсов";
-const canonical = Astro.site ? new URL("/", Astro.site).toString() : undefined;
+const canonical = getSiteUrl("/", Astro.site);
 ---
 
 <Layout title={title} description={description} canonical={canonical}>

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import BlogFeed from "../../blocks/news/blog-feed.astro";
 import Layout from "../../layouts/layout.astro";
 import { getNewsTagBySlug } from "../../data/news-tags";
+import { getSiteUrl } from "../../utils/site-url";
 
 const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("ru-RU", {
@@ -46,6 +47,6 @@ const newsItems = newsEntries.map(({ data }) => ({
 }));
 ---
 
-<Layout title="Новости" canonical={new URL("/news/", Astro.site).toString()}>
+<Layout title="Новости" canonical={getSiteUrl("/news/", Astro.site)}>
   <BlogFeed title="Новости" filters={filters} items={newsItems} />
 </Layout>
