@@ -1,0 +1,18 @@
+---
+const tetacomFormConfig = {
+  site: Astro.site ? new URL(Astro.site).hostname : "",
+  turnstileScriptSrc:
+    "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit",
+};
+---
+
+<script is:inline define:vars={{ tetacomFormConfig }}>
+  window.tetacomFormConfig = tetacomFormConfig;
+</script>
+
+<script>
+  import { initTetacomForms } from "../scripts/form";
+
+  initTetacomForms();
+  document.addEventListener("astro:page-load", initTetacomForms);
+</script>

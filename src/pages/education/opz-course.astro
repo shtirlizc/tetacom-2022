@@ -318,7 +318,12 @@ const courseFeedbackDescriptionItems = [
               title="Запишитесь на курс"
               descriptionItems={courseFeedbackDescriptionItems}
             >
-              <Form hook="form">
+              <Form
+                hook="form"
+                data-form-id="feedback"
+                data-product="opz-course"
+              >
+                <input type="hidden" name="message" value="Запись на курс" />
                 <div class="_form__group">
                   <Input
                     type="text"

@@ -1,6 +1,8 @@
 ---
 const { action = "", hook, ...attrs } = Astro.props;
-const classes = ["_form", hook === "form" && "js-form"].filter(Boolean).join(" ");
+const classes = ["_form", hook === "form" && "js-form"]
+  .filter(Boolean)
+  .join(" ");
 ---
 
 <form action={action} class={classes} {...attrs}>
@@ -33,5 +35,21 @@ const classes = ["_form", hook === "form" && "js-form"].filter(Boolean).join(" "
   :global(._form__rules a) {
     color: var(--primary-color);
     text-decoration: underline;
+  }
+
+  :global(._form__turnstile) {
+    min-height: 65px;
+  }
+
+  :global(._form__error) {
+    margin: 0;
+    color: #d93025;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  :global(._form__error[hidden]) {
+    display: none;
   }
 </style>

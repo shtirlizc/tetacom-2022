@@ -3,6 +3,7 @@ import Cookie from "../components/cookie.astro";
 import Head from "../components/head.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import FormConfig from "../components/form-config.astro";
 import Popovers from "../components/popovers.astro";
 import Scripts from "../components/scripts.astro";
 
@@ -37,6 +38,7 @@ const { title, description, canonical, image, type } = Astro.props as Props;
     <Cookie />
 
     <Scripts />
+    <FormConfig />
   </body>
 </html>
 
