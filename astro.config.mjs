@@ -5,8 +5,7 @@ import { rehypeImageFigures } from "./src/plugins/rehype-image-figures.js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://shtirlizc.github.io",
-  base: "/tetacom-2022",
+  site: "https://tetacom.pro/",
   integrations: [sitemap()],
   markdown: {
     rehypePlugins: [rehypeImageFigures],
