@@ -1,7 +1,0 @@
-@mixin container-padding {
-  padding: 0 var(--space2x);
-
-  @include fullhd {
-    padding: 0;
-  }
-}
