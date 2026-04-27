@@ -9,9 +9,8 @@ const {
   hook,
 } = Astro.props;
 
-const inputClass = [hook === "phone-mask" && "js-phone-mask"]
-  .filter(Boolean)
-  .join(" ");
+const isPhoneInput = hook === "phone-mask";
+const inputClass = [isPhoneInput && "js-phone-mask"].filter(Boolean).join(" ");
 ---
 
 <div class="_input">
@@ -26,6 +25,9 @@ const inputClass = [hook === "phone-mask" && "js-phone-mask"]
         id={id}
         placeholder=" "
         required={required}
+        data-maska={isPhoneInput ? "+7 (###) ###-##-##" : undefined}
+        autocomplete={isPhoneInput ? "tel" : undefined}
+        inputmode={isPhoneInput ? "tel" : undefined}
       />
     )
   }

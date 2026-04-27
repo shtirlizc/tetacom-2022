@@ -1,3 +1,5 @@
+import { MaskInput } from "maska";
+
 export type TetacomFormId =
   | "feedback"
   | "develop_request"
@@ -63,8 +65,10 @@ type TetacomWindow = Window & {
 };
 
 const TURNSTILE_SCRIPT_ID = "turnstile-api";
+const PHONE_DIGITS_COUNT = 10;
 
 const initializedForms = new WeakSet<HTMLFormElement>();
+const initializedPhoneMasks = new WeakMap<HTMLFormElement, MaskInput>();
 let turnstileScriptPromise: Promise<TurnstileApi> | undefined;
 
 export function createTetacomContactPayload(
@@ -155,12 +159,14 @@ function initTetacomForm(form: HTMLFormElement): void {
     renderTurnstile(turnstileContainer, state, errorElement);
   };
 
+  initPhoneMask(form);
   scheduleTurnstileRender(form, renderTurnstileOnce);
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     clearError(errorElement);
     renderTurnstileOnce();
+    validatePhoneInputs(form);
 
     if (!form.reportValidity()) {
       return;
@@ -434,6 +440,9 @@ function resetForm(
     >("input:not([type='hidden']), textarea")
     .forEach((field) => {
       field.classList.add("empty");
+      if (field instanceof HTMLInputElement && isPhoneInput(field)) {
+        setPhoneValidity(field);
+      }
     });
   resetTurnstile(state);
 }
@@ -472,4 +481,65 @@ function setError(errorElement: HTMLElement, message: string): void {
 function clearError(errorElement: HTMLElement): void {
   errorElement.textContent = "";
   errorElement.hidden = true;
+}
+
+function initPhoneMask(form: HTMLFormElement): void {
+  const phoneInputs = form.querySelectorAll<HTMLInputElement>(".js-phone-mask");
+
+  if (!phoneInputs.length) {
+    return;
+  }
+
+  initializedPhoneMasks.set(
+    form,
+    new MaskInput(phoneInputs, {
+      preProcess: normalizeRussianPhoneDigits,
+    }),
+  );
+
+  phoneInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+      setPhoneValidity(input);
+    });
+    input.addEventListener("change", () => {
+      setPhoneValidity(input);
+    });
+    setPhoneValidity(input);
+  });
+}
+
+function validatePhoneInputs(form: HTMLFormElement): void {
+  form.querySelectorAll<HTMLInputElement>(".js-phone-mask").forEach((input) => {
+    setPhoneValidity(input);
+  });
+}
+
+function setPhoneValidity(input: HTMLInputElement): void {
+  if (
+    !input.value.trim() ||
+    getRussianPhoneDigits(input.value).length === PHONE_DIGITS_COUNT
+  ) {
+    input.setCustomValidity("");
+    return;
+  }
+
+  input.setCustomValidity("Введите телефон полностью");
+}
+
+function normalizeRussianPhoneDigits(value: string): string {
+  return getRussianPhoneDigits(value);
+}
+
+function getRussianPhoneDigits(value: string): string {
+  const digits = value.replace(/\D/g, "");
+
+  if (digits.startsWith("7") || digits.startsWith("8")) {
+    return digits.slice(1, PHONE_DIGITS_COUNT + 1);
+  }
+
+  return digits.slice(0, PHONE_DIGITS_COUNT);
+}
+
+function isPhoneInput(input: HTMLInputElement): boolean {
+  return input.classList.contains("js-phone-mask");
 }
