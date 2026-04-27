@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Container from "./container.astro";
 import Dropdown from "./dropdown.astro";
 import Hamburger from "./hamburger.astro";
+import HeaderProductsSubmenu from "./header-products-submenu.astro";
 import { menuItems } from "../data/navigation";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -109,31 +110,12 @@ const productSubmenuItems = (
               </span>
             </button>
 
-            <ul class="_header__submenu">
-              {
-                productSubmenuItems.map(({ label, href, active }, index) => (
-                  <li
-                    class:list={[
-                      "_header__submenu-item",
-                      {
-                        active,
-                        first: index === 0,
-                        last: index === productSubmenuItems.length - 1,
-                      },
-                    ]}
-                  >
-                    <a
-                      href={href}
-                      class="_header__submenu-link"
-                      aria-current={active ? "page" : undefined}
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
+            <HeaderProductsSubmenu items={productSubmenuItems} />
           </Dropdown>
+          <HeaderProductsSubmenu
+            items={productSubmenuItems}
+            class="_header__submenu--mobile"
+          />
           {
             headerLinkItems.map(({ label, href, exact }) => (
               <li
@@ -293,6 +275,11 @@ const productSubmenuItems = (
 
   ._header__bg.active {
     display: block;
+
+    /* desktop */
+    @media (width >= 1081px) {
+      display: none;
+    }
   }
 
   ._header__bg.visible {
@@ -323,8 +310,7 @@ const productSubmenuItems = (
     background-color: rgb(0 0 0 / 10%);
   }
 
-  ._header__menu,
-  ._header__submenu {
+  ._header__menu {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -336,8 +322,7 @@ const productSubmenuItems = (
     gap: 48px;
   }
 
-  ._header__menu-link,
-  ._header__submenu-link {
+  ._header__menu-link {
     display: block;
     padding: var(--space2x) 0;
     color: var(--black-color);
@@ -348,23 +333,22 @@ const productSubmenuItems = (
     transition: color var(--delay) var(--timing-func);
   }
 
-  ._header__menu-link:hover,
-  ._header__submenu-link:hover {
+  ._header__menu-link:hover {
     color: var(--primary-color);
+  }
+
+  ._dropdown__open-btn {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    cursor: pointer;
   }
 
   ._header__menu-item.active > ._header__menu-link,
-  ._header__menu-item.active > ._dropdown__open-btn ._header__menu-link,
-  ._header__submenu-item.active > ._header__submenu-link {
+  ._header__menu-item.active > ._dropdown__open-btn ._header__menu-link {
     color: var(--primary-color);
-  }
-
-  ._header__submenu {
-    padding: var(--space) var(--space2x);
-  }
-
-  ._header__submenu-link {
-    padding: var(--space) 0;
   }
 
   ._header__hamburger {

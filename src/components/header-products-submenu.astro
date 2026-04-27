@@ -1,0 +1,72 @@
+---
+interface ProductSubmenuItem {
+  label: string;
+  href: string;
+  active: boolean;
+}
+
+interface Props {
+  items: ProductSubmenuItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+
+const classes = ["_header__submenu", className].filter(Boolean);
+---
+
+<ul class:list={classes}>
+  {
+    items.map(({ label, href, active }, index) => (
+      <li
+        class:list={[
+          "_header__submenu-item",
+          {
+            active,
+            first: index === 0,
+            last: index === items.length - 1,
+          },
+        ]}
+      >
+        <a
+          href={href}
+          class="_header__submenu-link"
+          aria-current={active ? "page" : undefined}
+        >
+          {label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ._header__submenu {
+    margin: 0;
+    padding: var(--space) var(--space2x);
+    list-style: none;
+  }
+
+  ._header__submenu--mobile {
+    /* desktop */
+    @media (width >= 1081px) {
+      display: none;
+    }
+  }
+
+  ._header__submenu-link {
+    display: block;
+    padding: var(--space) 0;
+    color: var(--black-color);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: color var(--delay) var(--timing-func);
+  }
+
+  ._header__submenu-link:hover,
+  ._header__submenu-item.active > ._header__submenu-link {
+    color: var(--primary-color);
+  }
+</style>

@@ -19,18 +19,14 @@ const bodyClasses = ["_dropdown__body", bodyClass].filter(Boolean).join(" ");
     position: relative;
   }
 
-  :global(._dropdown__open-btn) {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    font: inherit;
-    cursor: pointer;
+  ._dropdown__body {
+    display: none;
   }
 
   /* desktop */
   @media (width >= 1081px) {
     ._dropdown__body {
+      display: revert;
       border: none;
       padding: 0;
       position-area: bottom span-right;
