@@ -69,6 +69,7 @@ const PHONE_DIGITS_COUNT = 10;
 
 const initializedForms = new WeakSet<HTMLFormElement>();
 const initializedPhoneMasks = new WeakMap<HTMLFormElement, MaskInput>();
+let demoRequestProductSyncInitialized = false;
 let turnstileScriptPromise: Promise<TurnstileApi> | undefined;
 
 export function createTetacomContactPayload(
@@ -127,6 +128,8 @@ export async function sendTetacomContact(
 }
 
 export function initTetacomForms(): void {
+  initDemoRequestProductSync();
+
   const forms = document.querySelectorAll<HTMLFormElement>("form.js-form");
 
   forms.forEach((form) => {
@@ -136,6 +139,38 @@ export function initTetacomForms(): void {
 
     initializedForms.add(form);
     initTetacomForm(form);
+  });
+}
+
+function initDemoRequestProductSync(): void {
+  if (demoRequestProductSyncInitialized) {
+    return;
+  }
+
+  demoRequestProductSyncInitialized = true;
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const trigger = target.closest<HTMLElement>('[popovertarget="modal-demo"]');
+
+    if (!trigger) {
+      return;
+    }
+
+    const demoProductInput = document
+      .getElementById("modal-demo")
+      ?.querySelector<HTMLInputElement>('form.js-form input[name="product"]');
+
+    if (!demoProductInput) {
+      return;
+    }
+
+    demoProductInput.value = trigger.dataset.product ?? "";
   });
 }
 

@@ -8,7 +8,7 @@ import CloseIcon from "../assets/close-icon.svg";
 <div popover class="_modal" id="modal-feedback">
   <div class="_modal__wrap">
     <Feedback title="Связаться с нами">
-      <BaseForm formId="develop_request" />
+      <BaseForm formId="feedback" />
     </Feedback>
 
     <button
@@ -23,10 +23,28 @@ import CloseIcon from "../assets/close-icon.svg";
   </div>
 </div>
 
+<div popover class="_modal" id="modal-develop">
+  <div class="_modal__wrap">
+    <Feedback title="Заказать разработку">
+      <BaseForm formId="develop_request" />
+    </Feedback>
+
+    <button
+      type="button"
+      class="_modal__close"
+      popovertarget="modal-develop"
+      popovertargetaction="hide"
+      aria-label="Закрыть"
+    >
+      <CloseIcon />
+    </button>
+  </div>
+</div>
+
 <div popover class="_modal" id="modal-demo">
   <div class="_modal__wrap">
     <Feedback title="Заявка на демонстрацию">
-      <BaseForm formId="demo_request" />
+      <BaseForm formId="demo_request" product="" />
     </Feedback>
 
     <button
@@ -58,6 +76,8 @@ import CloseIcon from "../assets/close-icon.svg";
     </button>
   </div>
 </div>
+
+
 
 <div popover class="_modal" id="modal-success">
   <div class="_modal__wrap">

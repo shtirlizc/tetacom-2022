@@ -6,12 +6,18 @@ import type { TetacomFormId } from "../scripts/form";
 
 interface Props {
   formId?: TetacomFormId;
+  product?: string;
 }
 
-const { formId = "feedback" } = Astro.props as Props;
+const { formId = "feedback", product } = Astro.props as Props;
 ---
 
 <Form hook="form" data-form-id={formId}>
+  {
+    product !== undefined && (
+      <input type="hidden" name="product" value={product} />
+    )
+  }
   <div class="_form__group">
     <Input type="text" name="name" id="modal-name" label="Имя" required />
   </div>
