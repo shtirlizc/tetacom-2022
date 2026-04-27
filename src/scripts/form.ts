@@ -47,6 +47,17 @@ export interface TetacomContactFormValues {
 interface TetacomContactResponse {
   success?: boolean;
   error?: string;
+  fields?: Record<string, string[]>;
+}
+
+class TetacomContactError extends Error {
+  fields?: Record<string, string[]>;
+
+  constructor(message: string, fields?: Record<string, string[]>) {
+    super(message);
+    this.name = "TetacomContactError";
+    this.fields = fields;
+  }
 }
 
 interface TurnstileApi {
@@ -121,7 +132,10 @@ export async function sendTetacomContact(
     .catch(() => ({}))) as TetacomContactResponse;
 
   if (!response.ok || !result.success) {
-    throw new Error(result.error || "Не удалось отправить форму");
+    throw new TetacomContactError(
+      result.error || "Не удалось отправить форму",
+      result.fields,
+    );
   }
 
   return result;
@@ -223,10 +237,7 @@ function initTetacomForm(form: HTMLFormElement): void {
       resetForm(form, state);
       showSuccessPopover(form);
     } catch (error) {
-      setError(
-        errorElement,
-        error instanceof Error ? error.message : "Не удалось отправить форму",
-      );
+      setError(errorElement, getContactErrorMessage(error));
       resetTurnstile(state);
     } finally {
       setFormPending(form, submitButton, false);
@@ -285,6 +296,47 @@ function getOptionalFormDataValue(
   const value = getFormDataValue(formData, name);
 
   return value || undefined;
+}
+
+function getContactErrorMessage(error: unknown): string {
+  if (error instanceof TetacomContactError) {
+    const fieldMessages = formatFieldErrors(error.fields);
+
+    return fieldMessages || error.message;
+  }
+
+  return error instanceof Error ? error.message : "Не удалось отправить форму";
+}
+
+function formatFieldErrors(
+  fields: Record<string, string[]> | undefined,
+): string {
+  if (!fields) {
+    return "";
+  }
+
+  return Object.entries(fields)
+    .flatMap(([fieldName, messages]) =>
+      messages.map((message) => `${getFieldLabel(fieldName)}: ${message}`),
+    )
+    .join("\n");
+}
+
+function getFieldLabel(fieldName: string): string {
+  switch (fieldName) {
+    case "name":
+      return "Имя";
+    case "phone":
+      return "Телефон";
+    case "email":
+      return "E-mail";
+    case "message":
+      return "Комментарий";
+    case "captchaToken":
+      return "Проверка";
+    default:
+      return fieldName;
+  }
 }
 
 function getSearchParam(
