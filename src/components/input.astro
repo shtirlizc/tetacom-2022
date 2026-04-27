@@ -132,6 +132,10 @@ const inputClass = [isPhoneInput && "js-phone-mask"].filter(Boolean).join(" ");
     transform: translateY(-20px) scale(0.7);
   }
 
+  ._input textarea ~ ._input__border {
+    bottom: 9px;
+  }
+
   ._input input:focus ~ ._input__border,
   ._input textarea:focus ~ ._input__border {
     transform: scaleX(1);
