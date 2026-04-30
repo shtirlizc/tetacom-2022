@@ -1,93 +1,93 @@
 ---
-title: "WellStim Design of Radial Drilling"
+title: "Дизайн радиального бурения в WellStim"
 slug: "wellstim-radial-drilling"
-description: "Trajectory design and post-drilling inflow performance analysis for a radial drilling operation with skin factor assessment."
+description: "Проектирование траекторий и анализ притока после бурения радиальных каналов с оценкой скин-фактора."
 pubDate: 2025-07-11
 draft: true
 tags: ["cases"]
 
 meta:
-  title: "WellStim Design of Radial Drilling"
-  description: "Simulation and optimization of radial channel drilling using WellStim software, including inflow and skin performance evaluation before and after radial completion."
+  title: "Дизайн радиального бурения в WellStim"
+  description: "Моделирование и оптимизация бурения радиальных каналов в WellStim, включая оценку притока и Skin до и после радиального заканчивания."
   keywords:
     [
-      "radial drilling",
+      "радиальное бурение",
       "WellStim",
-      "skin factor",
-      "inflow performance",
-      "reservoir stimulation",
-      "horizontal well",
-      "completion design",
+      "скин-фактор",
+      "характеристика притока",
+      "стимуляция пласта",
+      "горизонтальная скважина",
+      "дизайн заканчивания",
       "Central Asia",
-      "oil sandstone reservoir",
+      "нефтяной терригенный коллектор",
     ]
   publicImageName: "./images/01.jpg"
 ---
 
-### The challenge
+### Задача
 
-The **radial drilling completion** was designed to enhance inflow performance and reduce the high skin values previously identified in the producing interval.
+**Радиальное заканчивание** было спроектировано для улучшения характеристики притока и снижения высоких значений Skin, ранее выявленных в продуктивном интервале.
 
-- **Area:** Central Asia -
-- **Reservoir:** Oil sandstone
-- **Depth:** MD – 19,482.61 ft, TVDSS – 18,819.52 ft
-- **Initial Skin:** +2.83
-- **Objective:** Improve inflow performance and evaluate skin reduction through radial channel drilling
+- **Регион:** Центральная Азия
+- **Коллектор:** нефтяной терригенный
+- **Глубина:** MD – 19,482.61 ft, TVDSS – 18,819.52 ft
+- **Начальный Skin:** +2.83
+- **Цель:** улучшить характеристику притока и оценить снижение Skin за счет бурения радиальных каналов
 
-![3D visualization of radial channel trajectories](./images/01.jpg)
+![3D-визуализация траекторий радиальных каналов](./images/01.jpg)
 
-### The solution
+### Решение
 
-A retrospective analysis of the well's production regime determined the **initial skin factor as +2.83**.
-Using **WellStim**, a model of the main wellbore and three radial channels was created to simulate the **geometry** and **hydraulic behavior** of the stimulation system.
+Ретроспективный анализ режима работы скважины позволил определить **начальный скин-фактор +2.83**.
+В **WellStim** была создана модель основного ствола и трех радиальных каналов для моделирования **геометрии** и **гидравлического поведения** системы стимуляции.
 
-![Lithological structure and main well trajectory](./images/Picture2.jpg)
+![Литологическое строение и траектория основного ствола](./images/Picture2.jpg)
 
-#### Parameters of Radial Channel Trajectories
+#### Параметры траекторий радиальных каналов
 
-| Parameter                             | Channel 1 | Channel 2 | Channel 3 |
-| ------------------------------------- | --------- | --------- | --------- |
-| Measured depth of exit point (ft)     | 5741.47   | 5741.47   | 5721.78   |
-| Borehole length (ft)                  | 45.93     | 45.93     | 45.93     |
-| Exit angle from borehole (zenith, °)  | 0.07      | 0.07      | 0.05      |
-| Exit angle from borehole (azimuth, °) | 52.60     | 52.60     | 196.44    |
-| Angle build-up (zenith, °)            | 88.20     | 88.10     | 88.12     |
-| Angle build-up (azimuth, °)           | 0.00      | 120.00    | -120.00   |
-| Channel diameter (ft)                 | 0.23      | 0.23      | 0.23      |
+| Параметр                             | Канал 1 | Канал 2 | Канал 3 |
+| ------------------------------------ | ------- | ------- | ------- |
+| Измеренная глубина точки выхода (ft) | 5741.47 | 5741.47 | 5721.78 |
+| Длина канала (ft)                    | 45.93   | 45.93   | 45.93   |
+| Угол выхода из ствола (зенит, °)     | 0.07    | 0.07    | 0.05    |
+| Угол выхода из ствола (азимут, °)    | 52.60   | 52.60   | 196.44  |
+| Набор угла (зенит, °)                | 88.20   | 88.10   | 88.12   |
+| Набор угла (азимут, °)               | 0.00    | 120.00  | -120.00 |
+| Диаметр канала (ft)                  | 0.23    | 0.23    | 0.23    |
 
-![3D visualization of designed radial channels](./images/Picture3.jpg)
+![3D-визуализация спроектированных радиальных каналов](./images/Picture3.jpg)
 
-The **main wellbore trajectory** and **reservoir petrophysical model** served as inputs for the simulation of **radial trajectories** and subsequent **inflow performance evaluation**.
+**Траектория основного ствола** и **петрофизическая модель коллектора** использовались как входные данные для моделирования **радиальных траекторий** и последующей **оценки характеристики притока**.
 
-![Well operating regime before radial perforation](./images/Picture4.jpg)
+![Режим работы скважины до радиальной перфорации](./images/Picture4.jpg)
 
-### The results
+### Результаты
 
-Following the drilling and completion of three radial channels, **inflow performance improved substantially**.
-The **skin factor decreased from +2.83 to -3.11**, confirming efficient removal of near-wellbore damage and improved reservoir connectivity.
+После бурения и заканчивания трех радиальных каналов **характеристика притока существенно улучшилась**.
+**Скин-фактор снизился с +2.83 до -3.11**, что подтвердило эффективное устранение повреждения ПЗП и улучшение гидродинамической связи с коллектором.
 
-| Parameter        | Before Radial Perforation | After Radial Perforation |
-| ---------------- | ------------------------- | ------------------------ |
-| Fluid rate (bpd) | 94.35                     | 214.04                   |
-| Oil rate (bpd)   | 13.21                     | 29.97                    |
-| Skin             | +2.83                     | -3.11                    |
+| Параметр             | До радиальной перфорации | После радиальной перфорации |
+| -------------------- | ------------------------ | --------------------------- |
+| Дебит жидкости (bpd) | 94.35                    | 214.04                      |
+| Дебит нефти (bpd)    | 13.21                    | 29.97                       |
+| Skin                 | +2.83                    | -3.11                       |
 
-![Production analysis – actual vs calculated](./images/Picture5.jpg)
+![Анализ добычи — факт и расчет](./images/Picture5.jpg)
 
-**Key achievements:**
+**Ключевые результаты:**
 
-- **127% increase** in fluid production rate
-- **127% increase** in oil production rate
-- **Complete skin removal** and negative skin achieved (from +2.83 to -3.11)
-- **Three radial channels** successfully drilled and completed
-- **Improved reservoir connectivity** and near-wellbore flow conditions
+- **Рост дебита жидкости на 127%**
+- **Рост дебита нефти на 127%**
+- **Полное устранение Skin** и достижение отрицательного Skin (с +2.83 до -3.11)
+- **Три радиальных канала** успешно пробурены и закончены
+- **Улучшена гидродинамическая связь с коллектором** и условия притока в ПЗП
 
-### Summary
+### Итоги
 
-This case demonstrates **WellStim's capability** to:
+Этот кейс демонстрирует возможности **WellStim**:
 
-- Design and simulate **radial drilling trajectories** with precision
-- Model **inflow and skin performance** before and after completion
-- Quantitatively evaluate **productivity improvements** achieved by radial stimulation
+- Точно проектировать и моделировать **траектории радиального бурения**
+- Моделировать **приток и динамику Skin** до и после заканчивания
+- Количественно оценивать **прирост продуктивности**, достигнутый за счет радиальной стимуляции
 
-The **radial drilling operation** led to substantial production gains while effectively creating new drainage pathways in the sandstone reservoir, confirming the effectiveness of **WellStim's radial drilling design and simulation workflow** for optimizing productivity.
+**Операция радиального бурения** привела к существенному приросту добычи и эффективному созданию новых дренажных каналов в терригенном коллекторе, подтвердив эффективность **workflow проектирования и моделирования радиального бурения в WellStim** для оптимизации продуктивности.

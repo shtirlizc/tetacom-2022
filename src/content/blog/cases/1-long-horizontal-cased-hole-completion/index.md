@@ -1,70 +1,70 @@
 ---
-title: "Long horizontal cased-hole completion"
+title: "Длинная горизонтальная скважина с обсаженным стволом"
 slug: "long-horizontal-cased-hole-completion"
-description: "WellStim acidizing design of a long horizontal cased-hole completion"
+description: "Дизайн кислотной обработки длинной горизонтальной скважины с обсаженным стволом в WellStim"
 pubDate: 2025-05-20
 draft: true
 tags: ["cases"]
 
 meta:
-  title: "Long horizontal cased-hole completion"
-  description: "WellStim acidizing design of a long horizontal cased-hole completion"
+  title: "Длинная горизонтальная скважина с обсаженным стволом"
+  description: "Дизайн кислотной обработки длинной горизонтальной скважины с обсаженным стволом в WellStim"
   keywords:
-    ["acid stimulation", "acidizing", "well productivity", "oil recovery"]
+    ["кислотная стимуляция", "кислотная обработка", "продуктивность скважины", "нефтеотдача"]
   publicImageName: "./images/case.jpg"
 ---
 
-### The challenge
+### Задача
 
-An acid treatment with acid gel was performed without prior simulation which resulted in lower production and economical improvements than expected. This case shows post-job analysis by simulation in WellStim, including production and NPV optimization.
+Кислотная обработка с применением кислотного геля была выполнена без предварительного моделирования, что привело к более низкому приросту добычи и экономическому эффекту, чем ожидалось. В этом кейсе показан пост-анализ операции в WellStim, включая оптимизацию добычи и NPV.
 
-- **Area:** North Europe
-- **Reservoir:** Oil Carbonates
-- **Depth:** MD – 13,100 ft, TVDSS – 8956 ft
-- **Wellbore completion:** slanted well completed with liner
+- **Регион:** Северная Европа
+- **Коллектор:** нефтяные карбонаты
+- **Глубина:** MD – 13,100 ft, TVDSS – 8956 ft
+- **Заканчивание скважины:** наклонная скважина с хвостовиком
 
-![3D view of the well configuration](./images/1.jpg)
+![3D-вид конфигурации скважины](./images/1.jpg)
 
-### The solution
+### Решение
 
-The production decline trend for 5 years was set and the design was calculated based on the actual acid treatment schedule.
+Был задан тренд падения добычи за 5 лет, а дизайн рассчитан на основе фактического графика кислотной обработки.
 
-![Production history match (dots are actual data, lines are calculated data)](./images/2.jpg)
+![Адаптация истории добычи (точки — фактические данные, линии — расчетные данные)](./images/2.jpg)
 
-The pumping schedule was optimized to increase the efficiency of acid treatment. The following relationship charts were produced:
+Для повышения эффективности кислотной обработки был оптимизирован график закачки. Были построены следующие зависимости:
 
-![Acid volume (x-axis) vs NPV (y-axis)](./images/3.jpg)
+![Объем кислоты (ось x) и NPV (ось y)](./images/3.jpg)
 
-![Injection rate (x) vs Skin (y)](./images/4.jpg)
+![Темп закачки (x) и Skin (y)](./images/4.jpg)
 
-![Acid gel volume (x) vs NPV (y)](./images/5.jpg)
+![Объем кислотного геля (ось x) и NPV (ось y)](./images/5.jpg)
 
-Optimization resulted in the following adjustments:
+По результатам оптимизации были предложены следующие корректировки:
 
-- Reduce the number of acid and acid gel stages
-- Decrease the acid volume to 15,840 gal in two stages (7,920 gal + 7,920 gal)
-- Pump acid gel before acid, not after
-- Increase the acid gel volume to 15,840 gal in two stages (13,200 gal + 2,640 gal)
+- Сократить количество стадий кислоты и кислотного геля
+- Уменьшить объем кислоты до 15,840 gal в две стадии (7,920 gal + 7,920 gal)
+- Закачивать кислотный гель до кислоты, а не после нее
+- Увеличить объем кислотного геля до 15,840 gal в две стадии (13,200 gal + 2,640 gal)
 
-### The results
+### Результаты
 
-WellStim optimization improved acid coverage, increased oil production and NPV.
+Оптимизация в WellStim улучшила охват кислотной обработкой, увеличила добычу нефти и NPV.
 
-![Integrated profile with simulation results, actual at the top, optimal at the bottom](./images/6.jpg)
+![Интегральный профиль с результатами моделирования: фактический вариант сверху, оптимальный снизу](./images/6.jpg)
 
-| Parameter                                          | Actual, not optimized | Optimal design |
-| -------------------------------------------------- | --------------------- | -------------- |
-| Oil rate, bbl/day                                  | 815                   | 996            |
-| Skin                                               | -1.1                  | -2.1           |
-| NPV, ‘000 USD                                      | 354                   | 1532           |
-| Additional oil production over 14 months, ‘000 bbl | 31                    | 114            |
-| Max wormhole depth, ft                             | 2.7                   | 7.0            |
+| Параметр                                            | Факт, без оптимизации | Оптимальный дизайн |
+| --------------------------------------------------- | --------------------- | ------------------ |
+| Дебит нефти, bbl/day                                | 815                   | 996                |
+| Skin                                                | -1.1                  | -2.1               |
+| NPV, ‘000 USD                                       | 354                   | 1532               |
+| Дополнительная добыча нефти за 14 месяцев, ‘000 bbl | 31                    | 114                |
+| Максимальная глубина червоточины, ft                | 2.7                   | 7.0                |
 
-The optimal design was calibrated based on the actual trend of post-stimulation production decline.
+Оптимальный дизайн был откалиброван по фактическому тренду падения добычи после стимуляции.
 
-![Production analysis (trendlines are based on the actual data)](./images/7.jpg)
+![Анализ добычи (трендовые линии построены по фактическим данным)](./images/7.jpg)
 
-| Parameter                                          | Actual, not optimized | Optimal design |
-| -------------------------------------------------- | --------------------- | -------------- |
-| NPV, ‘000 USD                                      | 978                   | 2335           |
-| Additional oil production over 14 months, ‘000 bbl | 73                    | 170            |
+| Параметр                                            | Факт, без оптимизации | Оптимальный дизайн |
+| --------------------------------------------------- | --------------------- | ------------------ |
+| NPV, ‘000 USD                                       | 978                   | 2335               |
+| Дополнительная добыча нефти за 14 месяцев, ‘000 bbl | 73                    | 170                |

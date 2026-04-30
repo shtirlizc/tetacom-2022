@@ -1,63 +1,63 @@
 ---
-title: "Bullhead Acidizing with Diverter in Central Asia"
+title: "Кислотная обработка bullhead с отклонителем в Центральной Азии"
 slug: "bullhead-acidizing-central-asia"
-description: "WellStim acidizing design and validation for a horizontal open-hole well in carbonate reservoir"
+description: "Дизайн и валидация кислотной обработки в WellStim для горизонтальной скважины с открытым стволом в карбонатном коллекторе"
 pubDate: 2025-06-11
 draft: true
 tags: ["cases"]
 
 meta:
-  title: "Bullhead Acidizing with Diverter in Central Asia"
-  description: "WellStim acidizing design and validation showing 97.7% convergence with actual post-treatment production"
+  title: "Кислотная обработка bullhead с отклонителем в Центральной Азии"
+  description: "Дизайн и валидация кислотной обработки в WellStim со сходимостью 97.7% с фактической добычей после обработки"
   keywords:
     [
-      "acid stimulation",
-      "well stimulation",
-      "carbonate reservoir",
-      "open-hole",
-      "diverter",
+      "кислотная стимуляция",
+      "стимуляция скважины",
+      "карбонатный коллектор",
+      "открытый ствол",
+      "отклонитель",
       "WellStim",
       "bullhead acid job",
     ]
   publicImageName: "./images/9.jpg"
 ---
 
-### The challenge
+### Задача
 
-A bullhead acid treatment with diverter pumped through the annulus was performed using the **WellStim** design. The post-stimulation production results showed **97.7% convergence** with the modeled values.
+Кислотная обработка bullhead с отклонителем, закачанным через затрубное пространство, была выполнена по дизайну **WellStim**. Результаты добычи после стимуляции показали **97.7% сходимости** с расчетными значениями.
 
-- **Area:** Central Asia
-- **Reservoir:** Oil Carbonates
-- **Depth:** MD – 4,400 ft, TVDSS – 2,500 ft
-- **Wellbore completion:** Horizontal open-hole
-- **Lateral length:** 440 ft
-- **Casing:** 4.5" @ 4,000 ft
-- **Tubing:** 2.5" @ 3,900 ft
+- **Регион:** Центральная Азия
+- **Коллектор:** нефтяные карбонаты
+- **Глубина:** MD – 4,400 ft, TVDSS – 2,500 ft
+- **Заканчивание скважины:** горизонтальный открытый ствол
+- **Длина горизонтального участка:** 440 ft
+- **Обсадная колонна:** 4.5" @ 4,000 ft
+- **НКТ:** 2.5" @ 3,900 ft
 
-![3D view of the wellbore configuration](./images/Picture1.jpg)
+![3D-вид конфигурации ствола скважины](./images/Picture1.jpg)
 
-### The solution
+### Решение
 
-Production data history match was performed for the last 8.5 years. Key parameters including fluid rate, oil rate, water cut, pore pressure, bottomhole flowing pressure were matched with previous stimulations in the well. Skin change was estimated before and after every historical stimulation. The **current skin** was estimated as **2.1**.
+Была выполнена адаптация истории добычи за последние 8.5 лет. Ключевые параметры, включая дебит жидкости, дебит нефти, обводненность, поровое давление и забойное давление на режиме, были согласованы с предыдущими обработками скважины. Изменение Skin оценивалось до и после каждой исторической стимуляции. **Текущий Skin** был оценен как **2.1**.
 
-![Production analysis (dots are actual data, lines are calculated data)](./images/Picture2.jpg)
+![Анализ добычи (точки — фактические данные, линии — расчетные данные)](./images/Picture2.jpg)
 
-The acid job was done using WellStim design. Post-stimulation analysis of the actual treatment data showed high convergency of design vs actual parameters.
+Кислотная обработка была выполнена по дизайну WellStim. Пост-анализ фактических данных обработки показал высокую сходимость проектных и фактических параметров.
 
-![Before and After treatment parameters](./images/7.jpg)
+![Параметры до и после обработки](./images/7.jpg)
 
-![Treatment plot](./images/Picture3.jpg)
+![График обработки](./images/Picture3.jpg)
 
-![Integrated profile with stimulation results](./images/Picture4.jpg)
+![Интегральный профиль с результатами стимуляции](./images/Picture4.jpg)
 
-### The results
+### Результаты
 
-Actual production data was uploaded to WellStim a few months after the treatment. WellStim production analytics module estimated the convergence of design vs actual parameters.
+Фактические данные добычи были загружены в WellStim через несколько месяцев после обработки. Модуль аналитики добычи WellStim оценил сходимость проектных и фактических параметров.
 
-![Production analysis including post-treatment data](./images/Picture6.jpg)
+![Анализ добычи с учетом данных после обработки](./images/Picture6.jpg)
 
-![Actual vs Design parameters comparison](./images/8.jpg)
+![Сравнение фактических и проектных параметров](./images/8.jpg)
 
-**Design vs Actual oil production convergence is 97.7%.**
+**Сходимость проектной и фактической добычи нефти составила 97.7%.**
 
-The ability to calibrate a model to the geological and mechanical characteristics of the reservoir—using laboratory study results and accurate historical production data analysis, including current skin assessment—enables a high degree of convergence between predicted and actual parameters after acid treatment.
+Возможность откалибровать модель по геологическим и механическим характеристикам коллектора с использованием результатов лабораторных исследований и точного анализа исторических данных добычи, включая оценку текущего Skin, обеспечивает высокую степень сходимости прогнозных и фактических параметров после кислотной обработки.

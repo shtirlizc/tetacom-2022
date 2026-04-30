@@ -1,44 +1,44 @@
 ---
-title: "How to manage B2B IT projects in industrial environments: The WellDesk experience"
+title: "Как управлять B2B IT-проектами в промышленной среде: опыт WellDesk"
 slug: "managing-b2b-it-projects"
-description: "Developing IT solutions for industry is not just programming. It’s work at the intersection of engineering, scientific disciplines, and technological expertise. At WellDesk, we create products that are deeply integrated into oil and gas industry processes and have a direct impact on production results."
+description: "Разработка IT-решений для промышленности — это не просто программирование. Это работа на стыке инженерии, научных дисциплин и технологической экспертизы. В WellDesk мы создаем продукты, глубоко интегрированные в процессы нефтегазовой отрасли и напрямую влияющие на производственные результаты."
 pubDate: 2025-05-27
 draft: true
 tags: ["company"]
 meta:
-  title: "How to manage B2B IT projects in industrial environments: The WellDesk experience"
-  description: "Developing IT solutions for industry is not just programming. It’s work at the intersection of engineering, scientific disciplines, and technological expertise. At WellDesk, we create products that are deeply integrated into oil and gas industry processes and have a direct impact on production results."
-  keywords: ["B2B IT Projects"]
+  title: "Как управлять B2B IT-проектами в промышленной среде: опыт WellDesk"
+  description: "Разработка IT-решений для промышленности — это не просто программирование. Это работа на стыке инженерии, научных дисциплин и технологической экспертизы. В WellDesk мы создаем продукты, глубоко интегрированные в процессы нефтегазовой отрасли и напрямую влияющие на производственные результаты."
+  keywords: ["B2B IT-проекты"]
   publicImageName: "./images/preview.jpg"
 ---
 
-## Our key focus areas include:
+## Наши ключевые направления:
 
-- Modeling of near-wellbore zone treatment
-- Modeling of water shutoff operations
-- Drilling optimization
-- Automation of laboratory processes
+- Моделирование обработки призабойной зоны пласта
+- Моделирование водоизоляционных работ
+- Оптимизация бурения
+- Автоматизация лабораторных процессов
 
-Behind each of these solutions lies not just a sleek interface, but complex physics, geology, logistics — and millions of lines of code. This isn’t just “software”; it’s pure digital engineering.
+За каждым из этих решений стоит не только удобный интерфейс, но и сложная физика, геология, логистика и миллионы строк кода. Это не просто "software", а полноценный цифровой инжиниринг.
 
-## Why does project management require a unique approach here?
+## Почему управление такими проектами требует особого подхода?
 
-In high-risk industries like oil and gas, the cost of mistakes can be prohibitively high. That’s why at WellDesk we’ve developed our own principles for managing IT projects, enabling us to create truly reliable and valuable products:
+В отраслях с высоким уровнем технологических рисков, таких как нефтегазовая промышленность, цена ошибки может быть крайне высокой. Поэтому в WellDesk мы выработали собственные принципы управления IT-проектами, которые позволяют создавать действительно надежные и ценные продукты:
 
-- Rapid Iterations — Without Compromising Accuracy
-  We use agile methodologies (Agile, Scrum) but understand that in industry, an MVP is not a prototype — it’s a fully functional tool that must be ready for deployment. That’s why we move fast but never allow ourselves to oversimplify algorithms or sacrifice engineering integrity.
+- Быстрые итерации без потери точности
+  Мы используем гибкие методологии (Agile, Scrum), но понимаем, что в промышленности MVP — это не прототип, а полнофункциональный инструмент, готовый к внедрению. Поэтому мы движемся быстро, но не допускаем чрезмерного упрощения алгоритмов и потери инженерной корректности.
 
-- IT and Domain Experts — One Team
-  Our projects don’t divide “IT” and “business.” Developers, geologists, engineers, and chemists work side by side. This is the only way to translate real physical processes into algorithms, interfaces, and models.
+- IT-специалисты и отраслевые эксперты в одной команде
+  В наших проектах нет разделения на "IT" и "бизнес". Разработчики, геологи, инженеры и химики работают вместе. Только так реальные физические процессы можно корректно перевести в алгоритмы, интерфейсы и модели.
 
-- Documentation as the Foundation of Stability
-  We don’t treat documentation as a “checkbox.” In industrial environments, products live for years, and only detailed, systematic documentation allows them to scale, update, and serve as a reliable basis for new features.
+- Документация как основа стабильности
+  Мы не относимся к документации как к формальной галочке. В промышленной среде продукты живут годами, и только подробная, системная документация позволяет им масштабироваться, обновляться и служить надежной базой для новых функций.
 
-- MVP is Not a “Trial Run”
-  Every initial release is prepared as though it’s going into production tomorrow. It must be integrable, secure, and maintainable. This requires mature project thinking, scalable architecture, and constant engagement with users.
+- MVP — не "пробный запуск"
+  Каждый первый релиз готовится так, как будто завтра он пойдет в промышленную эксплуатацию. Он должен быть интегрируемым, безопасным и сопровождаемым. Для этого нужны зрелое проектное мышление, масштабируемая архитектура и постоянная работа с пользователями.
 
-## Reliability. Accuracy. Integration.
+## Надежность. Точность. Интеграция.
 
-Digital solutions in industry don’t operate “separately” from the business. They must be fully integrated into existing chains: data, processes, roles. That’s why we focus not only on code but also on deployment, training, support, and scaling from the very beginning.
+Цифровые решения в промышленности не работают "отдельно" от бизнеса. Они должны быть полностью встроены в существующие цепочки: данные, процессы, роли. Поэтому мы с самого начала фокусируемся не только на коде, но и на внедрении, обучении, поддержке и масштабировании.
 
-If you work in industrial digitalization and would like to discuss approaches, solutions, or potential collaboration, we’d be happy to connect!
+Если вы работаете в промышленной цифровизации и хотите обсудить подходы, решения или потенциальное сотрудничество, будем рады выйти на связь.

@@ -1,299 +1,297 @@
 ---
-title: "1D and 2D Modeling in Well Acidification: A Comparative Analysis"
+title: "1D- и 2D-моделирование кислотной обработки скважин: сравнительный анализ"
 slug: "1d-2d-modeling-well-acidification"
-description: "A comprehensive comparative analysis of one-dimensional (1D) and two-dimensional (2D) models used in the simulation of oil well acidification processes. Understanding when to use each approach for optimal acidification results."
+description: "Комплексный сравнительный анализ одномерных (1D) и двумерных (2D) моделей, применяемых при моделировании процессов кислотной обработки нефтяных скважин. Разбор того, когда использовать каждый подход для оптимального результата кислотной обработки."
 pubDate: 2025-05-05
 tags: ["engineering"]
 draft: true
 meta:
-  title: "1D and 2D Modeling in Well Acidification: A Comparative Analysis - WellDesk"
-  description: "Comprehensive comparison of 1D vs 2D modeling approaches for well acidification. Learn when to use each method for optimal well stimulation results."
+  title: "1D- и 2D-моделирование кислотной обработки скважин: сравнительный анализ - WellDesk"
+  description: "Сравнение подходов 1D и 2D к моделированию кислотной обработки скважин: когда применять каждый метод для оптимального результата стимуляции."
   keywords:
     [
-      "well acidification",
-      "numerical modeling",
-      "1D simulation",
-      "2D simulation",
-      "reservoir engineering",
-      "wellbore stimulation",
-      "carbonate acidification",
-      "sandstone acidification",
+      "кислотная обработка скважин",
+      "численное моделирование",
+      "1D-симуляция",
+      "2D-симуляция",
+      "инжиниринг коллектора",
+      "стимуляция скважин",
+      "кислотная обработка карбонатов",
+      "кислотная обработка терригенных пластов",
     ]
   publicImageName: "./images/capa.jpg"
 ---
 
-## Abstract
+## Аннотация
 
-This paper presents a comprehensive comparative analysis of one-dimensional (1D) and two-dimensional (2D) models used in the simulation of oil well acidification processes. Acidification is a crucial stimulation technique for increasing the productivity of carbonate and sandstone reservoirs. We analyze the mathematical foundations, physicochemical considerations, limitations, and relative benefits of each modeling approach. Results demonstrate that while 1D models offer computational simplicity and rapid results, 2D models provide a more realistic representation of flow patterns and rock matrix dissolution, especially in heterogeneous formations. The choice between methodologies should be based on the specific objectives of the operation, the geological characteristics of the reservoir, and the available computational resources. This study contributes to the optimization of well acidification processes and the development of more efficient strategies in hydrocarbon reservoir management.
+В статье представлен сравнительный анализ одномерных (1D) и двумерных (2D) моделей, применяемых для симуляции кислотной обработки нефтяных скважин. Кислотная обработка является важной технологией стимуляции, повышающей продуктивность карбонатных и терригенных коллекторов. Рассмотрены математические основы, физико-химические факторы, ограничения и относительные преимущества каждого подхода. Результаты показывают, что 1D-модели обеспечивают вычислительную простоту и быстрый результат, тогда как 2D-модели реалистичнее описывают структуру потоков и растворение матрицы породы, особенно в неоднородных пластах. Выбор методики должен определяться целями операции, геологическими характеристиками коллектора и доступными вычислительными ресурсами. Работа способствует оптимизации кислотных обработок и развитию более эффективных стратегий управления продуктивностью залежей углеводородов.
 
-**Keywords:** Well acidification; Numerical modeling; 1D simulation; 2D simulation; Reservoir engineering
+**Ключевые слова:** кислотная обработка скважин; численное моделирование; 1D-симуляция; 2D-симуляция; инжиниринг коллектора
 
-## 1. Introduction
+## 1. Введение
 
-Well acidification is a stimulation technique widely used in the petroleum industry to increase reservoir productivity, particularly in carbonate and sandstone formations. The process involves injecting acidic solutions into the reservoir to dissolve rock material, create preferential flow channels (wormholes), and increase formation permeability near the well (Economides & Nolte, 2000).
+Кислотная обработка скважин широко применяется в нефтегазовой отрасли для повышения продуктивности, особенно в карбонатных и терригенных пластах. Процесс предполагает закачку кислотных растворов в пласт для растворения породы, формирования предпочтительных каналов фильтрации (червоточин) и увеличения проницаемости вблизи скважины (Economides & Nolte, 2000).
 
-Mathematical modeling and computational simulation of these processes are essential tools for optimizing acid treatment designs, predicting their results, and minimizing operational risks. However, the complexity of the physicochemical phenomena involved, including heterogeneous reactions, mass transport, and alterations in porous media geometry, represents a significant challenge for reservoir engineers.
+Математическое моделирование и вычислительная симуляция этих процессов являются ключевыми инструментами оптимизации дизайна кислотных обработок, прогноза результата и снижения операционных рисков. Однако сложность физико-химических явлений, включая гетерогенные реакции, массоперенос и изменение геометрии порового пространства, создает существенные вызовы для инженеров.
 
-Modeling approaches vary in complexity, from one-dimensional (1D) models to complete three-dimensional (3D) models. 1D models represent the simplest approximation, focusing primarily on radial mass transport and chemical reactions along a single spatial dimension. On the other hand, 2D models incorporate additional heterogeneities and two-dimensional effects, allowing a more realistic representation of wormhole formation and fluid-rock interactions.
+Подходы к моделированию различаются по сложности: от одномерных (1D) моделей до полноценных трехмерных (3D). 1D-модели являются наиболее простой аппроксимацией и в основном описывают радиальный массоперенос и химические реакции вдоль одной пространственной координаты. 2D-модели, напротив, учитывают дополнительные неоднородности и двумерные эффекты, позволяя реалистичнее описывать формирование червоточин и взаимодействие флюида с породой.
 
-This paper presents a detailed comparative analysis between 1D and 2D modeling approaches for acidification process simulation, evaluating their theoretical bases, numerical implementations, limitations, and applicability to different field scenarios.
+## 2. Теоретические основы кислотной обработки скважин
 
-## 2. Theoretical Foundations of Well Acidification
+### 2.1 Базовые принципы
 
-### 2.1 Basic Principles
+Кислотная обработка основана на реакции кислоты с минералами породы коллектора. В карбонатах, состоящих преимущественно из кальцита (CaCO₃) и доломита (CaMg(CO₃)₂), обычно применяют соляную кислоту (HCl):
 
-Well acidification is based on the reaction between an acid and the constituent minerals of the reservoir rock. In carbonate formations, composed mainly of calcite (CaCO₃) and dolomite (CaMg(CO₃)₂), hydrochloric acid (HCl) is commonly used, according to the following reactions:
-
-For calcite:
+Для кальцита:
 
 $$
 {CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂}
 $$
 
-For dolomite:
+Для доломита:
 
 $$
 {CaMg(CO₃)₂ + 4HCl → CaCl₂ + MgCl₂ + 2H₂O + 2CO₂}
 $$
 
-In sandstone formations, composed mainly of quartz (SiO₂) and clay minerals, hydrofluoric acid (HF) or mixtures of HCl and HF, known as "mud acid," are typically used (Schechter, 1992).
+В терригенных пластах, состоящих главным образом из кварца (SiO₂) и глинистых минералов, обычно используют плавиковую кислоту (HF) или смеси HCl и HF, известные как "mud acid" (Schechter, 1992).
 
-### 2.2 Dissolution Regimes
+### 2.2 Режимы растворения
 
-The effectiveness of acid treatment strongly depends on the predominant dissolution regime, which is controlled by the competition between the chemical reaction rate and the mass transport rate. Three main regimes are identified:
+Эффективность кислотной обработки зависит от преобладающего режима растворения, который определяется конкуренцией между скоростью химической реакции и скоростью массопереноса. Выделяют три основных режима:
 
-1. **Reaction-limited regime:** Occurs at low flow rates or with low-reactivity acids. The chemical reaction rate is the limiting factor, resulting in uniform dissolution of the rock matrix.
+1. **Реакционно-ограниченный режим:** возникает при низких расходах или при использовании кислот с низкой реакционной способностью. Ограничивающим фактором является скорость химической реакции, что приводит к более равномерному растворению матрицы.
 
-2. **Mass-transport-limited regime:** Occurs at intermediate flow rates. The rate of acid transport to the rock surface is the limiting factor, favoring wormhole formation.
+2. **Режим, ограниченный массопереносом:** возникает при промежуточных расходах. Скорость доставки кислоты к поверхности породы становится ограничивающим фактором, что способствует формированию червоточин.
 
-3. **Flow-limited regime:** Occurs at high flow rates. The pressure required to maintain flow through the pores is the limiting factor, resulting in formation fracturing.
+3. **Режим, ограниченный фильтрацией:** возникает при высоких расходах. Давление, необходимое для поддержания потока через поры, становится лимитирующим фактором и может привести к разрыву пласта.
 
-The ideal dissolution regime for most acidification operations is the mass-transport-limited regime, which promotes the formation of efficient flow channels with minimal acid volume (Paccaloni & Tambini, 1993).
+Оптимальным для большинства кислотных обработок является режим, ограниченный массопереносом: он обеспечивает формирование эффективных каналов фильтрации при минимальном объеме кислоты (Paccaloni & Tambini, 1993).
 
-## 3. One-Dimensional (1D) Modeling
+## 3. Одномерное (1D) моделирование
 
 ![](./images/1D.jpg)
 
-_Figure 2: Results from 1D acidification modeling showing simplified radial representation with uniform dissolution patterns and homogeneous acid distribution. Note the symmetrical wormhole development and constant penetration depth across the reservoir._
+_Рисунок 2: результаты 1D-моделирования кислотной обработки с упрощенным радиальным представлением, равномерным растворением и однородным распределением кислоты. Видны симметричное развитие червоточин и постоянная глубина проникновения по пласту._
 
-### 3.1 Principles and Mathematical Formulation
+### 3.1 Принципы и математическая постановка
 
-1D acidification models typically consider radial flow toward the well, assuming azimuthal and vertical homogeneity. The set of equations governing this process includes:
+1D-модели кислотной обработки обычно рассматривают радиальный приток к скважине, предполагая азимутальную и вертикальную однородность. Система уравнений включает:
 
-1. Fluid continuity equation:
-
-$$
-{\frac{∂}{∂r}(rϕvr) = 0}
-$$
-
-2. Mass transport equation for acid:
+1. Уравнение неразрывности флюида:
 
 $$
-{\frac{∂}{∂t}(ϕCa) + \frac{1}{r} \frac{∂}{∂r}(rϕvrCa) = \frac{1}{r} \frac{∂}{∂r}(rϕDe \frac{∂Ca}{∂r}) - Ra}
+{rac{∂}{∂r}(rϕvr) = 0}
 $$
 
-3. Porosity evolution equation:
+2. Уравнение массопереноса кислоты:
 
 $$
-{\frac{∂ϕ}{∂t} = βRa}
+{rac{∂}{∂t}(ϕCa) + rac{1}{r} rac{∂}{∂r}(rϕvrCa) = rac{1}{r} rac{∂}{∂r}(rϕDe rac{∂Ca}{∂r}) - Ra}
 $$
 
-4. Darcy's law for flow in porous media:
+3. Уравнение эволюции пористости:
 
 $$
-{vr = -\frac{k}{μ} \frac{∂p}{∂r}}
+{rac{∂ϕ}{∂t} = βRa}
 $$
 
-where φ is porosity, vr is radial fluid velocity, Ca is acid concentration, De is the effective dispersion coefficient, Ra is the reaction rate, β is the stoichiometric dissolution coefficient, k is permeability, μ is fluid viscosity, and p is pressure.
+4. Закон Дарси для фильтрации в пористой среде:
 
-### 3.2 Numerical Methods for 1D Models
+$$
+{vr = -rac{k}{μ} rac{∂p}{∂r}}
+$$
 
-The numerical solution of 1D models generally employs the finite difference method (FDM) or the finite volume method (FVM). Discretization of the radial domain is often performed with logarithmic spacing to better represent gradients near the well.
+где φ — пористость, vr — радиальная скорость флюида, Ca — концентрация кислоты, De — эффективный коэффициент дисперсии, Ra — скорость реакции, β — стехиометрический коэффициент растворения, k — проницаемость, μ — вязкость флюида, p — давление.
 
-For solving the coupled system of partial differential equations, explicit, implicit, or semi-implicit schemes can be used. The semi-implicit IMPEC (IMplicit Pressure, Explicit Concentration) scheme is particularly popular due to its balance between accuracy and computational efficiency (Settari et al., 1984).
+### 3.2 Численные методы для 1D-моделей
 
-### 3.3 Advantages and Limitations of 1D Models
+Для численного решения 1D-моделей обычно используют метод конечных разностей (FDM) или метод конечных объемов (FVM). Радиальную область часто дискретизируют с логарифмическим шагом, чтобы лучше описать градиенты вблизи скважины.
 
-**Advantages:**
+Для решения связанной системы дифференциальных уравнений в частных производных применяют явные, неявные или полунеявные схемы. Полунеявная схема IMPEC (IMplicit Pressure, Explicit Concentration) популярна благодаря балансу точности и вычислительной эффективности (Settari et al., 1984).
 
-- Conceptual and computational simplicity
-- Low computational cost
-- Ease of implementation and interpretation
-- Suitable for rapid parametric analyses
+### 3.3 Преимущества и ограничения 1D-моделей
 
-**Limitations:**
+**Преимущества:**
 
-- Inability to represent azimuthal and vertical heterogeneities
-- Excessive simplification of wormhole geometry
-- Disregard of gravitational effects
-- Limited representation of competitive reactions and product precipitation
+- Концептуальная и вычислительная простота
+- Низкие вычислительные затраты
+- Простота реализации и интерпретации
+- Удобство для быстрых параметрических расчетов
 
-## 4. Two-Dimensional (2D) Modeling
+**Ограничения:**
+
+- Невозможность описать азимутальные и вертикальные неоднородности
+- Чрезмерное упрощение геометрии червоточин
+- Игнорирование гравитационных эффектов
+- Ограниченное описание конкурирующих реакций и выпадения продуктов реакции
+
+## 4. Двумерное (2D) моделирование
 
 ![](./images/2D.jpg)
 
-_Figure 1: Results from 2D acidification modeling demonstrating complex heterogeneous acid penetration patterns. The visualization shows detailed wormhole formation across different reservoir layers with variable porosity and permeability. Left panels display temporal dynamics while right panels show concentration distribution and lateral extent maps._
+_Рисунок 1: результаты 2D-моделирования кислотной обработки, демонстрирующие сложные неоднородные профили проникновения кислоты. Визуализация показывает детальное формирование червоточин в разных слоях коллектора с переменной пористостью и проницаемостью._
 
-### 4.1 Principles and Mathematical Formulation
+### 4.1 Принципы и математическая постановка
 
-2D acidification models expand the representation to two spatial dimensions, typically radial-vertical (r-z) or radial-azimuthal (r-θ), allowing the incorporation of heterogeneities in the vertical or azimuthal direction, respectively.
+2D-модели расширяют представление до двух пространственных координат, обычно радиально-вертикальной (r-z) или радиально-азимутальной (r-θ), что позволяет учитывать неоднородности по вертикали или азимуту.
 
-For a radial-vertical 2D model, the governing equations include:
+Для радиально-вертикальной 2D-модели управляющие уравнения включают:
 
-1. Fluid continuity equation:
-
-$$
-{\frac{∂}{∂r}(rϕvr) + \frac{∂}{∂z}(rϕvz) = 0}
-$$
-
-2. Mass transport equation for acid:
+1. Уравнение неразрывности флюида:
 
 $$
-{\frac{∂}{∂t}(ϕCa) + \frac{1}{r} \frac{∂}{∂r}(rϕvrCa) + \frac{∂}{∂z}(ϕvzCa) = \frac{1}{r} \frac{∂}{∂r}(rϕDer \frac{∂Ca}{∂r}) + \frac{∂}{∂z}(ϕDez \frac{∂Ca}{∂z}) - Ra}
+{rac{∂}{∂r}(rϕvr) + rac{∂}{∂z}(rϕvz) = 0}
 $$
 
-3. Fluid velocity equations (Darcy's law):
+2. Уравнение массопереноса кислоты:
 
 $$
-{vr = - \frac{kr}{μ} \frac{∂p}{∂r}}
+{rac{∂}{∂t}(ϕCa) + rac{1}{r} rac{∂}{∂r}(rϕvrCa) + rac{∂}{∂z}(ϕvzCa) = rac{1}{r} rac{∂}{∂r}(rϕDer rac{∂Ca}{∂r}) + rac{∂}{∂z}(ϕDez rac{∂Ca}{∂z}) - Ra}
+$$
+
+3. Уравнения скорости флюида (закон Дарси):
+
+$$
+{vr = - rac{kr}{μ} rac{∂p}{∂r}}
 $$
 
 $$
-{vz = -\frac{kz}{μ} (\frac{∂p}{∂z} + ρg)}
+{vz = -rac{kz}{μ} (rac{∂p}{∂z} + ρg)}
 $$
 
-where vz is vertical velocity, Der and Dez are the effective dispersion coefficients in the radial and vertical directions, kr and kz are permeabilities in the radial and vertical directions, ρ is fluid density, and g is gravitational acceleration.
+где vz — вертикальная скорость, Der и Dez — эффективные коэффициенты дисперсии в радиальном и вертикальном направлениях, kr и kz — проницаемости по соответствующим направлениям, ρ — плотность флюида, g — ускорение свободного падения.
 
-### 4.2 Numerical Methods for 2D Models
+### 4.2 Численные методы для 2D-моделей
 
-The numerical solution of 2D models generally employs the finite volume method (FVM) or the finite element method (FEM). Spatial discretization must be sufficiently refined to adequately capture concentration and pressure gradients, especially in wormhole formation regions.
+Для численного решения 2D-моделей обычно применяют метод конечных объемов (FVM) или метод конечных элементов (FEM). Пространственная дискретизация должна быть достаточно детальной, чтобы корректно описывать градиенты концентрации и давления, особенно в зонах формирования червоточин.
 
-Mesh adaptation techniques can be employed to refine discretization in regions of interest, such as reactive boundaries or high heterogeneity zones. Efficient solution algorithms, such as multigrid or domain decomposition methods, are frequently used to reduce computational cost (Guo et al., 2014).
+Для областей интереса, таких как реакционные границы или зоны высокой неоднородности, могут использоваться адаптивные сетки. Для снижения вычислительных затрат часто применяют эффективные алгоритмы решения, включая многосеточные методы и методы декомпозиции области (Guo et al., 2014).
 
-### 4.3 Advantages and Limitations of 2D Models
+### 4.3 Преимущества и ограничения 2D-моделей
 
-**Advantages:**
+**Преимущества:**
 
-- Representation of heterogeneities in two dimensions
-- Ability to simulate gravitational effects
-- Better characterization of wormhole geometry and propagation
-- Possibility of modeling layers with different properties
+- Учет неоднородностей в двух измерениях
+- Возможность моделировать гравитационные эффекты
+- Более точное описание геометрии и распространения червоточин
+- Возможность моделировать слои с различными свойствами
 
-**Limitations:**
+**Ограничения:**
 
-- Greater computational complexity compared to 1D models
-- Need for more detailed reservoir data
-- Difficulty in completely characterizing the 3D geometry of wormholes
-- Simplifications still present for complex phenomena such as secondary branch digestion
+- Более высокая вычислительная сложность по сравнению с 1D-моделями
+- Потребность в более детальных данных о коллекторе
+- Сложность полного описания 3D-геометрии червоточин
+- Сохраняющиеся упрощения для сложных явлений, таких как развитие вторичных ответвлений
 
-## 5. Comparative Analysis of 1D and 2D Models
+## 5. Сравнительный анализ 1D- и 2D-моделей
 
 ![](./images/novo.jpg)
 
-_Figure 3: Side-by-side comparison of 2D (left) and 1D (right) modeling results for the same reservoir scenario, clearly demonstrating the enhanced accuracy and detail captured by 2D modeling._
+_Рисунок 3: сопоставление результатов 2D-моделирования (слева) и 1D-моделирования (справа) для одного сценария коллектора, наглядно показывающее более высокую точность и детализацию 2D-подхода._
 
-### 5.1 Accuracy in Predicting Concentration and Porosity Profiles
+### 5.1 Точность прогноза профилей концентрации и пористости
 
-Comparative studies demonstrate that 2D models provide a significantly more accurate representation of acid concentration profiles and porosity evolution over time, especially in heterogeneous formations. 1D models tend to underestimate acid penetration in high-permeability layers and overestimate dissolution in low-permeability regions (Fredd & Fogler, 1999).
+Сравнительные исследования показывают, что 2D-модели значительно точнее описывают профили концентрации кислоты и эволюцию пористости во времени, особенно в неоднородных пластах. 1D-модели склонны недооценивать проникновение кислоты в высокопроницаемые слои и переоценивать растворение в низкопроницаемых зонах (Fredd & Fogler, 1999).
 
-The differences are particularly notable in cases where significant permeability anisotropy or vertical stratification exists. In these situations, 2D models capture effects such as preferential breakthrough in specific layers and subsequent flow diversion, phenomena that cannot be represented in 1D models.
+Различия особенно заметны при существенной анизотропии проницаемости или вертикальной слоистости. В таких условиях 2D-модели учитывают прорыв в отдельных слоях и последующее перераспределение потока — явления, которые невозможно представить в 1D-модели.
 
-### 5.2 Computational Efficiency
+### 5.2 Вычислительная эффективность
 
-Computational efficiency represents one of the most significant differences between 1D and 2D approaches. 1D models typically require orders of magnitude fewer computational resources, allowing rapid simulations and extensive parametric analyses.
+Вычислительная эффективность — одно из наиболее существенных различий между 1D- и 2D-подходами. 1D-модели требуют на порядки меньше вычислительных ресурсов, позволяя быстро выполнять симуляции и широкие параметрические исследования.
 
-To illustrate this difference, consider that a 1D model with 100 radial cells can be solved in seconds on a standard personal computer. A comparable 2D model, with 100 radial cells and 50 vertical cells (totaling 5000 cells), may require minutes or even hours for the same simulation, depending on the problem complexity and numerical methods employed (Panga et al., 2005).
+Например, 1D-модель со 100 радиальными ячейками может быть решена за секунды на обычном персональном компьютере. Сопоставимая 2D-модель со 100 радиальными и 50 вертикальными ячейками (всего 5000 ячеек) может требовать минуты или даже часы в зависимости от сложности задачи и выбранных численных методов (Panga et al., 2005).
 
-### 5.3 Applicability to Different Field Scenarios
+### 5.3 Применимость к разным промысловым сценариям
 
-The choice between 1D and 2D modeling should consider the specific characteristics of the field scenario in question:
+Выбор между 1D- и 2D-моделированием должен учитывать особенности конкретного промыслового сценария:
 
-**1D models are more suitable for:**
+**1D-модели лучше подходят для:**
 
-- Relatively homogeneous formations
-- Vertical wells in thin layers
-- Rapid estimates for initial treatment design
-- Sensitivity analyses and parametric optimization
+- Относительно однородных пластов
+- Вертикальных скважин в тонких пластах
+- Быстрой предварительной оценки дизайна обработки
+- Анализа чувствительности и параметрической оптимизации
 
-**2D models are more suitable for:**
+**2D-модели лучше подходят для:**
 
-- Formations with significant vertical heterogeneity
-- Horizontal or highly inclined wells
-- Naturally fractured reservoirs
-- Detailed evaluation of wormhole patterns
-- Studies of sweep efficiency and zonal coverage
+- Пластов с выраженной вертикальной неоднородностью
+- Горизонтальных или сильно наклонных скважин
+- Естественно трещиноватых коллекторов
+- Детальной оценки структуры червоточин
+- Исследований эффективности охвата и обработки зон
 
-### 5.4 Capability to Incorporate Complex Physicochemical Phenomena
+### 5.4 Учет сложных физико-химических явлений
 
-2D models offer greater flexibility to incorporate complex physicochemical phenomena that can significantly influence the acidification outcome:
+2D-модели дают большую гибкость при учете сложных физико-химических явлений, существенно влияющих на результат кислотной обработки:
 
-1. **Thermal effects:** 2D models can accommodate temperature variations in the reservoir and the coupling between exothermic reactions and the temperature field.
+1. **Тепловые эффекты:** 2D-модели могут учитывать температурные вариации в коллекторе и связь экзотермических реакций с температурным полем.
 
-2. **Secondary product precipitation:** The formation and precipitation of products such as fluosilicates in sandstone acidification can be modeled with greater precision in 2D.
+2. **Выпадение вторичных продуктов:** образование и выпадение продуктов, например фторсиликатов при кислотной обработке терригенных пластов, можно точнее моделировать в 2D.
 
-3. **Competitive reactions:** Systems with multiple competitive reactions, as in carbonate formations with different minerals, benefit from 2D representation.
+3. **Конкурирующие реакции:** системы с несколькими конкурирующими реакциями, как в карбонатах с разными минералами, выигрывают от двумерного представления.
 
-4. **Formation damage mechanisms:** Phenomena such as clay swelling and fines migration can be better represented in 2D models.
+4. **Механизмы повреждения пласта:** набухание глин и миграция мелких частиц лучше описываются 2D-моделями.
 
-## 6. Case Studies
+## 6. Кейсы
 
-### 6.1 Acidification of Carbonates in a Stratified Reservoir
+### 6.1 Кислотная обработка карбонатов в слоистом коллекторе
 
-A case study conducted in an offshore carbonate field in the Campos Basin, Brazil, illustrates the differences between 1D and 2D modeling. The reservoir presented three main layers with contrasting permeabilities: 10 mD (top), 150 mD (middle), and 5 mD (bottom).
+Кейс на морском карбонатном месторождении в бассейне Кампос, Бразилия, показывает различия между 1D- и 2D-моделированием. Коллектор включал три основных слоя с контрастной проницаемостью: 10 mD (верхний), 150 mD (средний) и 5 mD (нижний).
 
-The 1D modeling predicted uniform acid penetration with an average depth of 1.2 m. The 2D modeling, however, revealed a highly heterogeneous pattern, with penetration of up to 3.7 m in the intermediate layer and less than 0.5 m in the low-permeability layers. Post-treatment core results confirmed the heterogeneous pattern predicted by the 2D model.
+1D-модель предсказала равномерное проникновение кислоты со средней глубиной 1.2 m. 2D-модель, напротив, показала резко неоднородную картину: проникновение до 3.7 m в промежуточном слое и менее 0.5 m в низкопроницаемых слоях. Результаты керна после обработки подтвердили неоднородный профиль, спрогнозированный 2D-моделью.
 
-This case demonstrates that 1D simplification can lead to inadequate estimates of acid volume and injection rates needed, especially in formations with high vertical heterogeneity.
+Этот пример показывает, что 1D-упрощение может приводить к некорректной оценке необходимого объема кислоты и темпов закачки, особенно в пластах с высокой вертикальной неоднородностью.
 
-### 6.2 Acidification of Sandstones with Variable Damage Zones
+### 6.2 Кислотная обработка терригенных пластов с переменными зонами повреждения
 
-A second case study in a sandstone field in the Gulf of Mexico involved a well with variable damage along the producing zone. The region near the top presented severe damage (skin = 20) due to drilling fluid invasion, while the lower region presented moderate damage (skin = 5).
+Второй кейс на терригенном месторождении в Мексиканском заливе рассматривал скважину с переменным повреждением вдоль продуктивной зоны. Верхняя часть имела сильное повреждение (skin = 20) из-за проникновения бурового раствора, нижняя — умеренное повреждение (skin = 5).
 
-The 1D modeling predicted a uniform improvement in the skin factor, with a final value of approximately 2 after treatment. The 2D modeling, on the other hand, predicted almost complete damage removal in the lower region (final skin close to 0), but only a partial reduction in the upper region (final skin of approximately 8).
+1D-модель предсказала равномерное улучшение Skin с конечным значением около 2 после обработки. 2D-модель, напротив, спрогнозировала почти полное снятие повреждения в нижней части (конечный Skin около 0), но только частичное снижение в верхней зоне (конечный Skin около 8).
 
-The post-treatment production profile confirmed the behavior predicted by the 2D model, with significantly greater contribution from the lower section of the interval. This case illustrates the importance of 2D modeling for optimizing treatment design in scenarios with heterogeneous damage.
+Профиль добычи после обработки подтвердил поведение, предсказанное 2D-моделью: вклад нижней части интервала оказался значительно выше. Этот кейс показывает важность 2D-моделирования при оптимизации дизайна обработки в условиях неоднородного повреждения.
 
-## 7. Recent Advances and Future Trends
+## 7. Современные достижения и будущие тренды
 
-### 7.1 Hybrid and Adaptive Models
+### 7.1 Гибридные и адаптивные модели
 
-An emerging trend is the development of hybrid models that combine different levels of spatial detail. These models use 2D representation in regions of interest (such as high heterogeneity zones) and 1D simplifications in more homogeneous regions, optimizing the balance between accuracy and computational efficiency.
+Развивающимся направлением являются гибридные модели, объединяющие разные уровни пространственной детализации. В зонах интереса, например в областях высокой неоднородности, они используют 2D-представление, а в более однородных областях — 1D-упрощения, оптимизируя баланс между точностью и вычислительной эффективностью.
 
-Adaptive algorithms that dynamically adjust spatial and temporal discretization during simulation have also been proposed. These approaches automatically refine the mesh in regions with steep gradients or intense reactions, improving accuracy without the computational cost of uniform refinement (Maheshwari et al., 2016).
+Также предложены адаптивные алгоритмы, динамически изменяющие пространственную и временную дискретизацию во время симуляции. Они автоматически уточняют сетку в областях с резкими градиентами или интенсивными реакциями, повышая точность без затрат, характерных для равномерного измельчения сетки (Maheshwari et al., 2016).
 
-### 7.2 Coupling with Reservoir Simulators
+### 7.2 Связь с симуляторами коллектора
 
-The coupling of acidification models with conventional reservoir simulators represents a significant advance. This integration allows evaluation of the long-term effects of acid treatments on production behavior and final hydrocarbon recovery.
+Связь моделей кислотной обработки с традиционными гидродинамическими симуляторами коллектора является важным шагом вперед. Такая интеграция позволяет оценивать долгосрочное влияние кислотных обработок на добычу и конечное извлечение углеводородов.
 
-Challenges include developing efficient methodologies to transfer information between different scales and incorporating modified petrophysical properties into reservoir models. Multi-scale approaches and upscaling techniques have been investigated for this purpose.
+Ключевые вызовы включают разработку эффективных методик передачи информации между масштабами и включение измененных петрофизических свойств в модели коллектора. Для этих задач исследуются многомасштабные подходы и методы апскейлинга.
 
-### 7.3 Incorporation of Artificial Intelligence Techniques
+### 7.3 Применение искусственного интеллекта
 
-The application of artificial intelligence techniques, such as neural networks and genetic algorithms, has gained prominence in acidification modeling. These tools can be used for:
+Использование методов искусственного интеллекта, таких как нейронные сети и генетические алгоритмы, становится все более заметным в моделировании кислотных обработок. Эти инструменты применяются для:
 
-1. **Parameter optimization:** Identification of optimal conditions (acid volume, injection rate, composition) to maximize treatment efficiency.
+1. **Оптимизации параметров:** определения оптимальных условий (объем кислоты, темп закачки, состав) для максимальной эффективности обработки.
 
-2. **Surrogate models:** Development of simplified models, trained with detailed simulation results, that can provide rapid responses for real-time applications.
+2. **Суррогатных моделей:** разработки упрощенных моделей, обученных на результатах детальных симуляций, которые дают быстрый ответ для задач реального времени.
 
-3. **Uncertainty characterization:** Quantification and propagation of uncertainties in reservoir properties and model parameters to evaluate the reliability of predictions.
+3. **Оценки неопределенности:** количественного учета и распространения неопределенностей в свойствах коллектора и параметрах модели для оценки надежности прогноза.
 
-## 8. Conclusions
+## 8. Выводы
 
-This comparative analysis of 1D and 2D modeling approaches for well acidification allows the establishment of the following conclusions:
+Сравнительный анализ 1D- и 2D-подходов к моделированию кислотной обработки скважин позволяет сформулировать следующие выводы:
 
-1. 1D models offer computational simplicity and speed, being suitable for preliminary analyses, homogeneous formations, and processes where spatial variation in a single direction is predominant.
+1. 1D-модели обеспечивают вычислительную простоту и скорость, поэтому подходят для предварительного анализа, однородных пластов и процессов, где пространственная изменчивость преимущественно одномерна.
 
-2. 2D models provide a more realistic representation in complex scenarios, especially in heterogeneous formations, stratified reservoirs, and situations with significant variations in multiple spatial directions.
+2. 2D-модели дают более реалистичное описание сложных сценариев, особенно в неоднородных пластах, слоистых коллекторах и ситуациях со значимыми вариациями в нескольких пространственных направлениях.
 
-3. The choice between 1D and 2D approaches should consider the balance between necessary precision and available resources, as well as the specific characteristics of the reservoir and the analysis objectives.
+3. Выбор между 1D и 2D должен учитывать баланс между необходимой точностью и доступными ресурсами, а также особенности коллектора и цели анализа.
 
-4. In many practical cases, especially involving heterogeneous reservoirs, the additional investment in 2D modeling is justified by the better prediction of treatment results and consequent optimization of operational parameters.
+4. Во многих практических случаях, особенно в неоднородных коллекторах, дополнительные затраты на 2D-моделирование оправданы лучшим прогнозом результатов обработки и последующей оптимизацией операционных параметров.
 
-5. Recent advances in numerical methods and computational capacity have reduced the traditional limitations of 2D models, making them progressively more accessible for routine applications.
+5. Современные достижения в численных методах и вычислительных мощностях снизили традиционные ограничения 2D-моделей, делая их все более доступными для регулярного применения.
 
-Future trends point to the development of adaptive models that combine different levels of spatial and temporal detail, integration with conventional reservoir simulators, and incorporation of artificial intelligence techniques for optimization and uncertainty quantification.
+Будущие тренды указывают на развитие адаптивных моделей, объединяющих разные уровни пространственной и временной детализации, интеграцию с традиционными симуляторами коллектора и использование искусственного интеллекта для оптимизации и оценки неопределенности.
 
-## References
+## Источники
 
 - Economides, M. J., & Nolte, K. G. (2000). _Reservoir stimulation_ (3rd ed.). Wiley.
 - Fredd, C. N., & Fogler, H. S. (1999). Optimum conditions for wormhole formation in carbonate porous media: Influence of transport and reaction. _SPE Journal_, 4(03), 196-205.

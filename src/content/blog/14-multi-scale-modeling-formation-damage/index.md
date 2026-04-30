@@ -1,334 +1,322 @@
 ---
-title: "Multi-Scale Modeling of Formation Damage Mechanisms and Matrix Acid Response"
+title: "Многомасштабное моделирование механизмов повреждения пласта и отклика на матричную кислотную обработку"
 slug: "multi-scale-modeling-formation-damage"
-description: "A comprehensive multi-scale modeling framework addressing formation damage mechanisms and their remediation through matrix acid treatments, from pore-scale to reservoir-scale."
+description: "Комплексная многомасштабная модель механизмов повреждения пласта и их устранения матричными кислотными обработками — от порового масштаба до масштаба коллектора."
 pubDate: 2025-05-15
 draft: true
 tags: ["engineering"]
 meta:
-  title: "Multi-Scale Modeling of Formation Damage Mechanisms and Matrix Acid Response - WellDesk"
-  description: "Multi-scale modeling approach for simulating and mitigating formation damage through acid stimulation in oil and gas reservoirs."
+  title: "Многомасштабное моделирование механизмов повреждения пласта и отклика на матричную кислотную обработку - WellDesk"
+  description: "Многомасштабный подход к моделированию и снижению повреждения пласта с помощью кислотной стимуляции в нефтегазовых коллекторах."
   keywords:
     [
-      "formation damage",
-      "matrix acidizing",
-      "pore-scale modeling",
-      "multi-scale modeling",
-      "reservoir engineering",
-      "well stimulation",
-      "permeability impairment",
-      "acid treatment design",
+      "повреждение пласта",
+      "матричная кислотная обработка",
+      "моделирование порового масштаба",
+      "многомасштабное моделирование",
+      "инжиниринг коллектора",
+      "стимуляция скважин",
+      "снижение проницаемости",
+      "дизайн кислотной обработки",
     ]
   publicImageName: "./images/cap.jpg"
 ---
 
-## 1. Abstract
+## 1. Аннотация
 
-Formation damage significantly impacts well productivity and hydrocarbon recovery, with predominant manifestation in the near-wellbore zone, necessitating a comprehensive understanding of the underlying mechanisms and their remediation through matrix acidizing. This paper presents a multi-scale modeling framework that integrates formation damage processes with matrix acid response from pore-scale to reservoir-scale. Our approach couples mechanistic models of clay swelling, particle migration, and chemical precipitation with acid transport and reaction kinetics. The developed 1D/2D models demonstrate how different damage mechanisms affect permeability reduction and optimize matrix acidizing parameters for various damage types. Results indicate that treatment effectiveness varies significantly based on damage type, with clay-related damage responding optimally to HF-HCl systems, while carbonate scaling requires tailored acid formulations. Special attention is given to secondary formation damage risks associated with improper acid treatment design. The integrated modeling approach provides a robust framework for diagnosing formation damage and designing optimal matrix acidizing treatments, offering a practical tool for field applications.
+Повреждение пласта существенно влияет на продуктивность скважин и извлечение углеводородов, причем чаще всего проявляется в призабойной зоне. Поэтому для эффективной матричной кислотной обработки необходимо понимать механизмы повреждения и способы их устранения. В статье представлена многомасштабная модель, объединяющая процессы повреждения пласта и отклик на кислоту от порового масштаба до масштаба коллектора. Подход связывает механистические модели набухания глин, миграции частиц и химического осадкообразования с переносом кислоты и кинетикой реакций. Разработанные 1D/2D-модели показывают, как разные механизмы повреждения снижают проницаемость, и позволяют оптимизировать параметры матричной кислотной обработки для разных типов повреждения. Результаты показывают, что эффективность обработки существенно зависит от природы повреждения: глинистое повреждение лучше реагирует на системы HF-HCl, тогда как карбонатные отложения требуют специализированных кислотных составов. Особое внимание уделено рискам вторичного повреждения пласта при некорректном дизайне обработки. Интегрированный подход дает практический инструмент диагностики повреждения и проектирования оптимальных матричных кислотных обработок.
 
-**Keywords:** Formation damage, Matrix acidizing, Multi-scale modeling, Permeability impairment, Acid stimulation, Near-wellbore zone, Reservoir engineering, Secondary formation damage, Plugging risks
+**Ключевые слова:** повреждение пласта, матричная кислотная обработка, многомасштабное моделирование, снижение проницаемости, кислотная стимуляция, призабойная зона, инжиниринг коллектора, вторичное повреждение пласта, риски кольматации
 
-## 2. Introduction
+## 2. Введение
 
-Formation damage represents one of the most critical challenges in petroleum engineering, affecting both well productivity and ultimate hydrocarbon recovery. This phenomenon occurs primarily in the nearwellbore zone, encompassing various mechanisms including clay swelling, particle migration, and chemical precipitation, each requiring specific remediation strategies. Matrix acidizing has emerged as the primary technique for removing formation damage, yet its effectiveness depends heavily on accurately characterizing the damage type and selecting appropriate acid systems. Paradoxically, improper acidizing treatments can exacerbate formation damage through secondary reactions and precipitation events, necessitating a comprehensive approach to treatment design.
+Повреждение пласта — одна из ключевых проблем нефтегазовой инженерии, влияющая на продуктивность скважин и конечное извлечение углеводородов. Это явление обычно возникает в призабойной зоне и включает набухание глин, миграцию частиц и химическое осадкообразование, причем каждый механизм требует собственной стратегии устранения. Матричная кислотная обработка является основной технологией удаления повреждения, но ее эффективность сильно зависит от корректной диагностики типа повреждения и выбора кислотной системы. При неверном дизайне кислотная обработка может, наоборот, усилить повреждение из-за вторичных реакций и выпадения осадков, что требует комплексного подхода к проектированию.
 
-### 2.1. Factors Influencing Formation Damage
+### 2.1. Факторы, влияющие на повреждение пласта
 
-The complexity of formation damage arises from its multi-scale nature and numerous contributing factors. Fluid-related factors include chemical incompatibility between injected fluids and formation waters, injection water quality regarding suspended solids and contaminants, salinity variations, dissolved gas content, and operational temperatures and pressures. Formation-related factors encompass rock mineralogy, porosity and permeability characteristics, formation heterogeneity, presence of mobile fines, and wettability characteristics. Operational parameters such as injection and production rates, pressure differentials, production history, and completion practices significantly influence damage severity.
+Сложность повреждения пласта связана с его многомасштабной природой и большим числом факторов. К факторам, связанным с флюидами, относятся химическая несовместимость закачиваемых и пластовых вод, качество воды по взвешенным твердым частицам и загрязнениям, изменения солености, содержание растворенного газа, рабочие температуры и давления. К факторам пласта относятся минералогия породы, пористость и проницаемость, неоднородность, наличие подвижных мелких частиц и смачиваемость. Операционные параметры — темпы закачки и добычи, перепады давления, история эксплуатации и методы заканчивания — также сильно влияют на тяжесть повреждения.
 
-### 2.2. Extreme Cases of Formation Damage
+### 2.2. Экстремальные случаи повреждения
 
-Historical case studies demonstrate the potential severity of formation damage. In Prudhoe Bay, Alaska (1980), a horizontal producer experienced catastrophic damage after workover operations using incompatible completion fluid, reducing production from 500 to less than 5 barrels per day in two weeks. The North Sea Brent formation (1995) witnessed complete well shutdown when barium-rich formation water injection caused massive barium sulfate precipitation, reducing permeability from 200 mD to less than 0.1 mD. Brazilian pre-salt fields (2015) experienced total production cessation in an exploratory well following cement-formation fluid interaction, with damage extending beyond the 10-meter radius.
+Исторические кейсы показывают, насколько тяжелым может быть повреждение. В Prudhoe Bay, Alaska (1980), горизонтальная добывающая скважина получила катастрофическое повреждение после ремонта с несовместимой жидкостью заканчивания: добыча снизилась с 500 до менее 5 barrels per day за две недели. На формации Brent в Северном море (1995) скважина полностью остановилась после закачки пластовой воды с высоким содержанием бария, вызвавшей массивное выпадение сульфата бария и снижение проницаемости с 200 mD до менее 0.1 mD. На бразильских подсолевых месторождениях (2015) разведочная скважина полностью прекратила добычу после взаимодействия цемента с пластовыми флюидами, причем повреждение распространилось за радиус 10 meters.
 
-## 3. Theoretical Framework
+## 3. Теоретическая основа
 
-### 3.1. Formation Damage Mechanisms
+### 3.1. Механизмы повреждения пласта
 
-Formation damage mechanisms operate across multiple scales, from molecular interactions between fluids and rock minerals at the microscale to flow redistribution and permeability reduction at the continuum scale. These mechanisms are particularly critical in the near-wellbore zone, where differential pressures and exposure to drilling fluids amplify damage effects.
+Механизмы повреждения работают на нескольких масштабах: от молекулярного взаимодействия флюидов и минералов на микроуровне до перераспределения потоков и снижения проницаемости на масштабе континуума. Особенно критичны они в призабойной зоне, где перепады давления и контакт с буровыми флюидами усиливают повреждение.
 
-Clay swelling represents a dominant damage mechanism in sandstone reservoirs, particularly when formation waters with different ionic strengths contact native clays. The swelling process can be described by a kinetic equation:
+Набухание глин — один из основных механизмов повреждения в терригенных коллекторах, особенно при контакте глин с водами иной ионной силы. Процесс описывается кинетическим уравнением:
 
 $$
 {\frac{\partial V_{clay}}{\partial t} = k_{clay}(1 - \frac{V_{clay}}{V_{clay,max}})C_{salt}^{-n}}
 $$
 
-where `V*{clay}` represents the clay volume fraction, `k*{clay}` is the swelling rate constant, `V*{clay,max}` denotes the maximum clay volume, `C\*{salt}` is the salt concentration, and n is the reaction order.
+где `V*{clay}` — объемная доля глин, `k*{clay}` — константа скорости набухания, `V*{clay,max}` — максимальный объем глин, `C\*{salt}` — концентрация соли, n — порядок реакции.
 
-Particle migration occurs when mobile fines are transported by flowing fluids and subsequently deposited in pore throats. The population balance equation describes this process:
+Миграция частиц возникает, когда подвижные мелкие частицы переносятся потоком и затем осаждаются в поровых горлах. Процесс описывается уравнением баланса популяции:
 
 $$
 {\frac{\partial C_p}{\partial t} + \nabla \cdot (vC_p) = -\lambda C_p \rho_f}
 $$
 
-where C_p is the particle concentration, v is the fluid velocity vector, λ is the deposition rate coefficient, and ρ_f is the formation density.
+где C_p — концентрация частиц, v — вектор скорости флюида, λ — коэффициент осаждения, ρ_f — плотность пласта.
 
-Chemical precipitation becomes significant when fluids with different compositions mix, leading to insoluble compound formation. This process follows reaction-transport dynamics:
+Химическое осадкообразование становится значимым при смешении флюидов разного состава и образовании нерастворимых соединений. Процесс подчиняется реакционно-транспортной динамике:
 
 $$
 {\frac{\partial C_s}{\partial t} + v \cdot \nabla C_s = D\nabla^2 C_s - k_{precip}\sqrt{(IAP - K_{sp})}}
 $$
 
-where C*s is the solute concentration, D is the dispersion coefficient, `k*{precip}`is the precipitation rate constant, IAP is the ion activity product, and`K\_{sp}` is the solubility product constant.
+где C_s — концентрация растворенного вещества, D — коэффициент дисперсии, `k*{precip}` — константа скорости осаждения, IAP — произведение ионной активности, `K\_{sp}` — произведение растворимости.
 
-### 3.2. Permeability Evolution
+### 3.2. Эволюция проницаемости
 
-The relationship between porosity and permeability during damage formation follows a modified Kozeny-Carman equation:
+Связь пористости и проницаемости при формировании повреждения описывается модифицированным уравнением Kozeny-Carman:
 
 $$
 {k = k_0 (\frac{\phi}{\phi_0})^3 \frac{(1-\phi_0)^2}{(1-\phi)^2}}
 $$
 
-This relationship captures the non-linear dependence of permeability on porosity changes induced by damage mechanisms.
+Оно отражает нелинейную зависимость проницаемости от изменения пористости, вызванного механизмами повреждения.
 
-### 3.3. Matrix Acidizing Models
+### 3.3. Модели матричной кислотной обработки
 
-Matrix acidizing involves acid injection to dissolve formation minerals and restore permeability. The acid transport in porous media is governed by the advection-dispersion-reaction equation:
+Матричная кислотная обработка предполагает закачку кислоты для растворения минералов и восстановления проницаемости. Перенос кислоты в пористой среде описывается уравнением адвекции-дисперсии-реакции:
 
 $$
 {\frac{\partial C_A}{\partial t} + v \cdot \nabla C_A = D\nabla^2 C_A - R_A}
 $$
 
-Dissolution kinetics for typical mineral reactions follow:
+Кинетика растворения типичных минералов имеет вид:
 
 $$
 {R_A = k_{as}(1 - \frac{C_A}{C_{A,eq}})^m}
 $$
 
-where `k*{as}` is the surface reaction rate, `C\*{A,eq}` is the equilibrium concentration, and m is the reaction order.
+где `k*{as}` — скорость поверхностной реакции, `C\*{A,eq}` — равновесная концентрация, m — порядок реакции.
 
-### 3.4. Secondary Damage Risk Mechanisms During Acidizing
+### 3.4. Риски вторичного повреждения при кислотной обработке
 
-While matrix acidizing aims to restore formation permeability, improperly designed treatments can induce secondary damage through various mechanisms. These secondary plugging risks represent a critical aspect of acid treatment design and require integration into the modeling framework.
+Хотя матричная кислотная обработка направлена на восстановление проницаемости, некорректный дизайн может вызвать вторичное повреждение. Эти риски кольматации необходимо включать в модель.
 
-#### 3.4.1. Precipitation of Reaction Products
+#### 3.4.1. Выпадение продуктов реакции
 
-Acid-mineral reactions generate reaction products that may precipitate under specific conditions. The precipitation risk can be quantified through a modified saturation index approach:
+Реакции кислоты с минералами образуют продукты, которые при определенных условиях могут выпадать в осадок. Риск осадкообразования можно оценить через модифицированный индекс насыщения:
 
 $$
 {SI = log(\frac{IAP}{K_{sp,i}})}
 $$
 
-where SI is the saturation index, IAP is the ion activity product, and `K\_{sp,i}` is the solubility product of potential precipitate i.
+где SI — индекс насыщения, IAP — произведение ионной активности, `K\_{sp,i}` — произведение растворимости потенциального осадка i.
 
-For complex systems with multiple reaction pathways, the sequential dissolution-precipitation kinetics follow:
+Для сложных систем с несколькими путями реакции последовательная кинетика растворения-осаждения описывается так:
 
 $$
 {\frac{\partial C_{ppt}}{\partial t} = k_{ppt}[max(0, SI - SI_{crit})]^n \cdot f(T, pH)}
 $$
 
-where `C*{ppt}` is the precipitate concentration, `k*{ppt}` is the precipitation rate constant, `SI\_{crit}` is the critical saturation index for nucleation, n is the reaction order, and f(T, pH) represents temperature and pH dependency functions.
+где `C*{ppt}` — концентрация осадка, `k*{ppt}` — константа скорости осаждения, `SI\_{crit}` — критический индекс насыщения для зародышеобразования, n — порядок реакции, f(T, pH) — функции зависимости от температуры и pH.
 
-The most common problematic precipitates include:
+Наиболее распространенные проблемные осадки:
 
-1. Iron precipitates (Fe(OH)₃, Fe₂O₃): Formed when acidizing fluids react with formation minerals or tubulars containing iron, particularly problematic at pH > 2
+1. Осадки железа (Fe(OH)₃, Fe₂O₃): образуются при реакции кислотных флюидов с минералами пласта или трубами, содержащими железо; особенно проблемны при pH > 2
+2. Силикагель (SiO₂·nH₂O): возникает при реакциях HF с алюмосиликатами по мере роста pH отработанной кислоты
+3. Фторид кальция (CaF₂): образуется при контакте смесей HF/HCl с кальцийсодержащими минералами
+4. Асфальтены и sludge: выпадают при контакте кислоты с нефтью без достаточных anti-sludge добавок
 
-2. Silica gel (SiO₂·nH₂O): Results from HF reactions with aluminosilicates when spent acid pH increases
+#### 3.4.2. Мобилизация и миграция мелких частиц
 
-3. Calcium fluoride (CaF₂): Forms when HF/HCl mixtures contact calcium-bearing minerals
+Кислотная обработка может усиливать миграцию мелких частиц через несколько механизмов:
 
-4. Asphaltene and sludge: Precipitates when acid contacts crude oil without adequate anti-sludge agents
+1. Растворение матрицы: высвобождение закрепленных частиц
+2. pH-шок: изменение поверхностного заряда при быстром изменении pH
+3. Изменение ионной силы: изменение толщины двойного электрического слоя
 
-#### 3.4.2. Fines Mobilization and Migration
-
-Acidizing can exacerbate fines migration through several mechanisms, including:
-
-1. Matrix dissolution: Loosening of embedded particles
-2. pH shock: Surface charge alterations from rapid pH changes
-3. Ionic strength variations: Changes in electrical double layer thickness
-
-The modified particle migration model incorporating these acidizing-specific effects becomes:
+Модифицированная модель миграции частиц с учетом кислотных эффектов:
 
 $$
 {\frac{\partial C_p}{\partial t} + \nabla \cdot (vC_p) = -\lambda C_p \rho_f + S(pH, C_A) \cdot C_{p,bound}}
 $$
 
-where S(pH, C_A) is the acid-induced particle release source term, calculated as:
+где S(pH, C_A) — источник высвобождения частиц под действием кислоты:
 
 $$
 {S(pH, C_A) = k_{mob} \cdot |\frac{\partial pH}{\partial t}| \cdot f(\frac{C_A}{C_{A,0}})}
 $$
 
-with `k\_{mob}` representing the mobilization coefficient.
+с `k\_{mob}` — коэффициентом мобилизации.
 
-#### 3.4.3. Wormhole Collapse and Face Dissolution
+#### 3.4.3. Нестабильность червоточин и поверхностное растворение
 
-In carbonate formations, acid dissolution can create highly conductive wormhole channels. However, these may collapse under formation stress or become ineffective through face dissolution when improper acid systems or injection rates are used. The critical collapse pressure for wormhole stability follows the relationship:
+В карбонатных пластах кислота создает высокопроводящие червоточины. Однако они могут разрушаться под действием горного напряжения или становиться неэффективными из-за поверхностного растворения при неверном составе кислоты или темпе закачки. Критическое давление разрушения описывается:
 
 $$
 {P_{cr} = \sigma_t \cdot (\frac{r_w}{r_{wh}})^n \cdot f(\pi_{wh})}
 $$
 
-where `P*{cr}` is the critical collapse pressure, σ_t is the tensile strength of the formation, r_w and `r\*{wh}` are the wellbore and wormhole radii respectively, n is an empirical exponent, and `f(π\_{wh})` is a function of wormhole porosity.
+где `P*{cr}` — критическое давление разрушения, σ_t — прочность пласта на растяжение, r_w и `r\*{wh}` — радиусы ствола и червоточины, n — эмпирический показатель, `f(π\_{wh})` — функция пористости червоточины.
 
-The probability of face dissolution versus optimal wormholing can be predicted through the dimensionless Damköhler number:
+Вероятность поверхностного растворения вместо оптимального червоточинообразования можно прогнозировать через число Дамкёлера:
 
 $$
 {Da = \frac{k_{as}}{k_{mt}}}
 $$
 
-where `k*{as}` is the surface reaction rate and `k\*{mt}` is the mass transfer coefficient. Optimal wormholing occurs within a narrow range of Da values (typically 0.1-10), while face dissolution dominates at high Da values (>100).
+где `k*{as}` — скорость поверхностной реакции, `k\*{mt}` — коэффициент массопереноса. Оптимальное червоточинообразование наблюдается в узком диапазоне Da (обычно 0.1-10), тогда как поверхностное растворение доминирует при высоких Da (>100).
 
-### 3.5. Coupled Model Integration
+### 3.5. Интеграция связанной модели
 
-The integrated framework couples damage formation with acid response through a comprehensive system describing permeability field evolution:
+Интегрированная модель связывает формирование повреждения и кислотный отклик через систему, описывающую эволюцию поля проницаемости:
 
 $$
 {\frac{\partial k}{\partial t} = f(\text{damage mechanisms}) + g(\text{acid dissolution}) - h(\text{secondary damage})}
 $$
 
-This coupling accounts for spatial and temporal interactions between damage processes and acid treatments. As illustrated in Figure 1, our multi-scale approach integrates three distinct scales of modeling:
+Эта связь учитывает пространственно-временные взаимодействия между повреждением и кислотной обработкой. Как показано на рисунке 1, многомасштабный подход объединяет три уровня моделирования.
 
 ![](./images/SEC.jpg)
 
-**Figure 1:** Multi-scale integration of formation damage mechanisms and matrix acid response across pore scale, near-wellbore zone, and reservoir scale.
+**Рисунок 1:** многомасштабная интеграция механизмов повреждения пласта и отклика на матричную кислотную обработку на поровом масштабе, в призабойной зоне и на масштабе коллектора.
 
-At the pore scale, clay swelling, particle migration, and chemical precipitation are modeled through mechanistic equations capturing their fundamental physics. Clay swelling is represented by kinetic volumetric changes, particle migration follows population balance dynamics, and chemical precipitation obeys reaction-transport mechanisms.
+На поровом масштабе набухание глин, миграция частиц и химическое осадкообразование описываются механистическими уравнениями. В призабойной зоне эти процессы совместно снижают проницаемость по модифицированной зависимости Kozeny-Carman. На масштабе коллектора они объединяются с кислотным растворением и определяют общую эволюцию проницаемости, что позволяет оптимизировать параметры обработки под конкретные типы повреждения и их распределение.
 
-In the near-wellbore zone, these processes collectively reduce permeability according to the modified Kozeny-Carman relationship. Damage patterns form concentric zones, with clay swelling typically in outer regions and chemical precipitation closer to the wellbore.
+Модель использует специализированные кислотные системы для каждого типа повреждения и количественно оценивает эффективность обработки. Расчеты показывают, что системы HF-HCl обеспечивают восстановление 70-85% при глинистом повреждении, миграция частиц требует контакта 4-6 hours, а температурный контроль 50-70°C оптимизирует кинетику растворения.
 
-At reservoir scale, these mechanisms combine with acid dissolution to determine overall permeability evolution, enabling optimization of treatment parameters based on specific damage types and their distribution.
+## 4. Численная реализация
 
-Our model incorporates tailored acid systems for each damage type and quantifies treatment effectiveness. Results show HF-HCl systems achieve 70-85% recovery for clay damage, particle migration requires 4-6 hour contact times, and temperature control between 50-70°C optimizes dissolution kinetics.
+### 4.1. Дискретизация и методы решения
 
-This approach allows operators to diagnose specific damage mechanisms and design targeted acid treatments for their particular formation conditions.
+Управляющие уравнения в 1D используют противопоточную конечно-разностную схему второго порядка для адвективных членов и центральные разности для диффузионных членов. В 2D применяется метод конечных элементов Galerkin с квадратичными треугольными элементами. Для временной дискретизации используется неявный метод Crank-Nicolson, обеспечивающий безусловную устойчивость.
 
-## 4. Numerical Implementation
+Алгоритм решения итерационно чередует расчет уравнений эволюции повреждения и переноса кислоты. Нелинейные механизмы решаются методом Newton-Raphson с критерием сходимости нормы невязки ниже 10^-8. Система переноса-реакции решается GMRES с предобусловливанием до относительного изменения концентрации ниже 10^-6.
 
-### 4.1. Discretization and Solution Methods
+### 4.2. Граничные и начальные условия
 
-The governing equations employ upwind second-order finite difference schemes for advective terms and central differences for diffusive terms in 1D models, while 2D implementations utilize Galerkin finite element methods with quadratic triangular elements. Temporal discretization employs the implicit Crank-Nicolson method for unconditional stability.
+Модель требует задания граничных условий на стволе, где задаются темпы закачки или давления, и на границах коллектора, где обычно применяется условие нулевого потока. Призабойная зона рассматривается отдельно из-за концентрации эффектов повреждения.
 
-The solution algorithm alternates between solving damage evolution equations and acid transport equations through an iterative approach. Newton-Raphson method addresses non-linear mechanisms with convergence criteria of residual norms below 10^-8. GMRES with preconditioning handles the transport-reaction matrix system, iterating until relative concentration changes fall below 10^-6.
+### 4.3. Вычислительная валидация
 
-### 4.2. Boundary and Initial Conditions
+Валидация включает проверку сходимости по сетке с адаптивным h-p уточнением, скорость сходимости более 1.8, относительные ошибки ниже 1% для сеток более 10^5 элементов, а также сравнение с аналитическими решениями, экспериментальными данными и коммерческими симуляторами.
 
-The model requires boundary condition specification at the wellbore, where injection rates or pressures are prescribed, and at reservoir boundaries where no-flux conditions typically apply. The near-wellbore zone receives special attention due to concentrated damage effects in this region.
+## 5. Результаты и анализ
 
-### 4.3. Computational Validation
+### 5.1. Отклик повреждения, вызванного глинами
 
-Model validation includes mesh convergence testing with adaptive h-p refinement achieving convergence rates exceeding 1.8, relative errors below 1% for meshes with over 10^5 elements, and benchmarking against analytical solutions, experimental data, and commercial simulators.
+Моделирование показывает, что набухание глин преимущественно снижает проницаемость ПЗП, обычно на радиусе 0.5-2.0 meters от стенки скважины. Обработки HF-HCl эффективно восстанавливают проницаемость: 70-85% восстановления при 3-5% HF в сочетании с 12-15% HCl и оптимальном времени контакта 2-4 hours.
 
-## 5. Results and Analysis
+### 5.2. Миграция частиц
 
-### 5.1. Clay-Induced Damage Response
+Миграция мелких частиц создает более глубокие зоны повреждения, чем набухание глин, обычно 2-5 meters по радиусу. Эффективные обработки требуют более низких концентраций кислоты, чтобы избежать быстрого фронта реакции, обходящего поврежденные зоны; оптимальны длительные контакты 4-6 hours и последовательные протоколы HCl/HF.
 
-Model simulations reveal clay swelling primarily affects near-wellbore zone permeability, with damage typically extending 0.5 to 2.0 meters radially from the wellbore wall. HF-HCl treatments demonstrate significant permeability restoration effectiveness, achieving 70-85% recovery using HF concentrations of 3-5% combined with HCl concentrations of 12-15%, with optimal contact times ranging from 2 to 4 hours.
+### 5.3. Устранение химического осадкообразования
 
-### 5.2. Particle Migration Patterns
+Осаждение карбоната кальция имеет сложные пространственные профили, зависящие от зон смешения и локальной химии. Эффективные обработки используют хелатирующие агенты, такие как EDTA или GLDA, в сочетании с HCl preflush; температурный диапазон 50-70°C оптимален для максимизации растворения и снижения нежелательных побочных реакций.
 
-Fine particle migration creates deeper damage zones compared to clay swelling, typically extending 2 to 5 meters radially. Effective acid treatments for particle-induced damage require lower acid concentrations to prevent rapid reaction fronts that bypass damaged regions, with extended contact times of 4 to 6 hours and sequential HCl/HF injection protocols yielding optimal results.
+### 5.4. Оценка риска вторичного повреждения
 
-### 5.3. Chemical Precipitation Remediation
+Модель позволяет количественно оценивать риск вторичного повреждения при кислотных обработках и выявлять критические пороги.
 
-Calcium carbonate precipitation shows complex spatial patterns depending on mixing zones and local chemistry. Effective treatments utilize chelating agents such as EDTA or GLDA combined with HCl preflush, with temperature control within 50-70°C proving optimal for maximizing dissolution rates while minimizing undesirable side reactions.
+#### 5.4.1. Кольматация из-за осадкообразования
 
-### 5.4. Secondary Formation Damage Risk Assessment
+Анализ чувствительности показывает, что избыточные концентрации HF в терригенных обработках (>5%) вместе с недостаточным pre-flush резко повышают риск выпадения силикагеля и фторида кальция. Модель прогнозирует, что каждый 1% роста HF выше оптимума может снизить проницаемость в критических зонах на 15-30%.
 
-Our modeling framework enables quantitative assessment of secondary formation damage risks during acidizing treatments. Simulations of various treatment scenarios reveal critical risk thresholds and optimal treatment windows.
+Промысловая валидация подтверждает прогнозы: в кейсе Северного моря избыточная HF-концентрация (7%) вызвала сильное вторичное повреждение, снизив продуктивность после обработки ниже исходного уровня. Карта проницаемости показала кольцевую зону вторичного повреждения на расстоянии примерно 0.3-0.7 meters от ствола, совпадающую с расчетным фронтом осаждения.
 
-#### 5.4.1. Precipitation-Induced Plugging
+### 5.4.2. Миграция частиц, вызванная кислотой
 
-Sensitivity analyses demonstrate that improper HF concentrations in sandstone treatments (>5%) combined with inadequate pre-flushes significantly increase silica gel and calcium fluoride precipitation risks. Figure 8 illustrates the complex interplay between HF concentration, temperature, and precipitation potential. The model predicts that for every 1% increase in HF concentration above the optimal value, secondary precipitation can reduce permeability by 15-30% in critical zones.
+Параметрические исследования показывают, что высокие темпы закачки, создающие резкие pH-градиенты (>3 pH units/cm), увеличивают мобилизацию частиц на 300-500% по сравнению с оптимизированными протоколами. Критический порог возникает при темпах выше 0.25 bbl/min/ft толщины пласта в песчаниках с содержанием глин более 8%.
 
-Field validation confirms these predictions, as demonstrated in a North Sea case where excessive HF concentration (7%) resulted in severe secondary damage, reducing post-treatment productivity to below pre-treatment levels. The permeability mapping revealed a distinct annular region of secondary damage approximately 0.3-0.7 meters from the wellbore, corresponding precisely to the predicted precipitation front.
+Показательный кейс в Мексиканском заливе: высокотемповая кислотная закачка (0.5 bbl/min/ft) вызвала катастрофическую миграцию частиц и полностью нивелировала эффект обработки. Повторная обработка с модельно-оптимизированным темпом (0.15 bbl/min/ft) и ступенчатым повышением концентрации успешно восстановила добычу без запуска вторичной миграции.
 
-### 5.4.2. Acid-Induced Fines Migration
+#### 5.4.3. Оценка устойчивости червоточин
 
-Parametric studies show that rapid acid injection rates leading to sharp pH gradients (>3 pH units/cm) increase fines mobilization by 300-500% compared to optimized injection protocols. The critical threshold appears at injection rates exceeding 0.25 bbl/min/ft of formation thickness in sandstones with more than 8% clay content.
+Для карбонатных обработок модель определяет критическое отношение давления закачки к прочности пласта, при котором возникает разрушение червоточин. Безразмерное число устойчивости (Ns = Pinj/σt) критично: значения выше 0.4 существенно повышают вероятность разрушения.
 
-A particularly illustrative case occurred in a Gulf of Mexico well where high-rate acid injection (0.5 bbl/min/ft) created catastrophic fines migration, completely negating treatment benefits. Subsequent retreatment using model-optimized rates (0.15 bbl/min/ft) with staged concentration increases successfully restored production without triggering secondary migration.
+Симуляции с геомеханической связью показывают, что вероятность разрушения экспоненциально растет с радиусом червоточины и плотностью их расположения. Оптимальная обработка балансирует эффективность растворения и механическую устойчивость, что подтверждено применением на карбонатных месторождениях Ближнего Востока.
 
-#### 5.4.3. Wormhole Instability Assessment
+### 5.5. Интегрированный многомасштабный анализ
 
-For carbonate treatments, our model identifies the critical ratio of injection pressure to formation stress that triggers wormhole collapse. The dimensionless stability number (Ns = Pinj/σt) proves critical, with values exceeding 0.4 significantly increasing collapse probability.
+Интегрированная модель показывает масштабную зависимость повреждения и кислотного отклика. На поровом масштабе доминируют быстрые реакции, а на масштабе Darcy общий процесс контролируется ограничениями переноса. ПЗП действует как критический фильтр, где концентрируются все эффекты и формируется максимальное сопротивление потоку.
 
-Simulations incorporating geomechanical coupling demonstrate that collapse probability increases exponentially with wormhole radius and spacing density. The optimal treatment balances dissolution effectiveness with mechanical stability, as validated in Middle East carbonate field applications.
+### 5.6. Случаи сильного повреждения и восстановление
 
-### 5.5. Integrated Multi-Scale Analysis
+На терригенных пластах Суматры отмечалось катастрофическое повреждение при ГРП: добыча снизилась с 800 до 0 barrels per day за 72 hours из-за массивного выпадения алюмосиликатов и образования силикагеля. Восстановительная обработка включала модифицированную HF-HCl кислотную систему, фторсульфоновую кислоту и специальные ПАВ, что восстановило 65% продуктивности.
 
-The integrated model reveals scale-dependent nature of damage mechanisms and acid response. At the pore scale, rapid reactions dominate, while at the Darcy scale, transport limitations control the overall process. The near-wellbore zone acts as a critical filter where all these effects concentrate, creating a zone of maximum flow resistance.
+В карбонатах Персидского залива необратимое повреждение возникло после закачки плохо подготовленной морской воды: совместное выпадение сульфатов, образование бактериальной биопленки и ускоренная коррозия привели к нулевой добыче. Стратегия восстановления включала механическое удаление биопленки, интенсивную биоцидную обработку и кислотную обработку хелантом EDTA, что восстановило скважину до 40% исходной производительности.
 
-### 5.6. Severe Damage Cases and Recovery
+## 6. Промысловое применение и валидация
 
-Field experiences in Sumatran sandstone formations demonstrated catastrophic damage during hydraulic fracturing operations, with production declining from 800 to 0 barrels per day in 72 hours due to massive aluminosilicate precipitation and silica gel formation. Recovery treatment involved modified HF-HCl acidizing, fluorosulfonic acid treatment, and specific surfactant injection, achieving 65% productivity restoration.
+### 6.1. Обработка пласта с высоким содержанием глин
 
-Persian Gulf carbonate formations experienced irreversible damage after poorly treated seawater injection, with combined sulfate precipitation, bacterial biofilm formation, and accelerated corrosion leading to zero production. Recovery strategies included mechanical biofilm removal, intensive biocide treatment, and EDTA chelant acidizing, restoring the well to 40% of original capacity.
+Скважина в терригенном пласте с высоким содержанием глин показала практическую применимость модели. Исходная продуктивность 0.5 bbl/day/psi из-за сильного глинистого повреждения выросла до 3.2 bbl/day/psi при использовании оптимизированной системой HF-HCl, что соответствует шестикратному улучшению.
 
-## 6. Field Applications and Validation
+### 6.2. Стимуляция карбонатного коллектора
 
-### 6.1. High-Clay Formation Treatment
+В карбонатном коллекторе со сложным осадкообразованием модель помогла спроектировать индивидуальную хелатную кислотную систему. Многостадийный протокол с разными концентрациями кислот и добавками дал рост продуктивности в 4.5 раза и подтвердил прогнозные возможности модели.
 
-A high-clay sandstone formation well demonstrated the modeling framework's practical utility. Initial productivity of 0.5 bbl/day/psi due to severe clay-related damage improved to 3.2 bbl/day/psi using model-predicted optimized HF-HCl systems, representing a sixfold improvement.
+### 6.3. Протоколы предотвращения вторичного повреждения
 
-### 6.2. Carbonate Reservoir Stimulation
+На основе моделирования и промысловой валидации разработаны протоколы снижения риска вторичного повреждения при кислотных обработках.
 
-In a carbonate reservoir with complex precipitation patterns, the model guided customized chelating acid system design. Multi-stage treatment protocol with varying acid concentrations and additives resulted in 4.5x productivity improvement, validating the model's predictive capabilities.
+#### 6.3.1. Требования к анализу пласта до обработки
 
-### 6.3. Secondary Damage Prevention Protocols
+Комплексный минералогический анализ задает критические пороги выбора кислоты и концентрации. XRD и SEM-EDX дают данные о типах глин, акцессорных минералах и предшественниках потенциальных осадков. Slim tube тесты оценивают совместимость кислоты и нефти, а capillary suction time (CST) — чувствительность к мобилизации мелких частиц.
 
-Based on extensive modeling and field validation, we developed integrated protocols to minimize secondary damage risks during acidizing treatments. These protocols incorporate:
+#### 6.3.2. Многостадийный дизайн обработки
 
-#### 6.3.1. Pre-Treatment Formation Analysis Requirements
+Полевой подход использует ступени с нарастающей концентрацией вместо традиционной обработки одной концентрацией. Начальные низкоконцентрированные стадии (30-50% от максимальной проектной концентрации) подготавливают пути фильтрации и минимизируют фронты растворения-осаждения. Каждая следующая стадия повышает концентрацию не более чем на 25% до целевой.
 
-Comprehensive mineralogical analysis establishes critical thresholds for acid selection and concentration. X-ray diffraction (XRD) and scanning electron microscopy with energy dispersive X-ray spectroscopy (SEM-EDX) provide essential data on clay types, accessory minerals, and potential precipitate precursors. Slim tube displacement tests evaluate acid-oil compatibility, while capillary suction time (CST) tests assess fines mobilization sensitivity.
+Валидация более чем на 30 скважинах показала снижение частоты вторичного повреждения на 78% по сравнению с традиционными обработками при сопоставимой эффективности удаления первичного повреждения.
 
-#### 6.3.2. Multi-Stage Treatment Design
+#### 6.3.3. Мониторинг в реальном времени и адаптивное управление
 
-Our field-validated approach employs graduated concentration stages rather than conventional single-concentration treatments. Initial low-concentration stages (30-50% of maximum design concentration) prepare flow pathways while minimizing dissolution-precipitation fronts. Each subsequent stage increases concentration by no more than 25% until reaching target strength.
+Интеграция DTS и DAS с прогнозными моделями позволяет корректировать параметры закачки в реальном времени. Система мониторинга выявляет аномальные отклики давления, указывающие на осадкообразование, и запускает автоматическую коррекцию расхода. На промысле такая система предотвратила 8 из 12 потенциальных тяжелых событий вторичного повреждения, что подтверждено последующими испытаниями добычи.
 
-Field validations in over 30 wells demonstrate this approach reduces secondary damage incidence by 78% compared to conventional treatments while achieving equivalent primary damage removal effectiveness.
+### 6.4. Рекомендации по оптимизации
 
-#### 6.3.3. Real-Time Monitoring and Adaptive Control
+Промысловая валидация сформировала workflow: диагностика типа повреждения по анализу неустановившегося давления, выбор кислотной системы по механизму повреждения, оптимизация темпа закачки по модели коллектора и корректировки по данным мониторинга в реальном времени.
 
-Integration of distributed temperature sensing (DTS) and distributed acoustic sensing (DAS) with predictive models enables real-time adjustment of injection parameters. The monitoring system identifies anomalous pressure responses indicative of precipitation, triggering automated flowrate adjustments. In field implementations, this system prevented 8 of 12 potential severe secondary damage events, as confirmed by subsequent production testing.
+### 6.5. Предотвращение тяжелого повреждения
 
-### 6.4. Optimization Guidelines
+Протоколы предотвращения, основанные на экстремальных кейсах, включают детальную характеристику пласта, тестирование совместимости флюидов, строгую фильтрацию закачиваемой воды, непрерывный мониторинг и планы быстрого реагирования со специализированными кислотными системами и подготовленными бригадами.
 
-Field validation established a workflow beginning with damage type diagnosis using pressure transient analysis, followed by acid system selection based on damage mechanisms. Injection rate optimization utilizes reservoir models while real-time monitoring adjustments ensure treatment effectiveness.
+## 7. Ограничения и допущения модели
 
-### 6.5. Severe Damage Prevention
+### 7.1. Фундаментальные ограничения
 
-Prevention protocols based on extreme case studies incorporate detailed formation characterization, fluid compatibility testing, rigorous injection water filtration, continuous monitoring systems, and rapid response plans with specialized acid systems and trained response teams.
+Модель учитывает вариации поля проницаемости, но предполагает пространственную непрерывность твердой фазы и недостаточно описывает сложные геологические структуры, такие как разломы, естественные трещины или слои с экстремальным контрастом свойств. Неопределенности входных данных, особенно кинетических параметров, которые трудно определить in-situ, дают около 30% ошибки прогноза при ограниченных данных характеристики.
 
-## 7. Model Limitations and Assumptions
+Физические ограничения включают неполный учет температурных эффектов при фазовых изменениях и сложной кинетике, отсутствие полной геомеханической связи напряжений и уплотнения, а также упрощение электрохимических взаимодействий глинистых минералов. Модель предполагает локальное термодинамическое равновесие, ламинарный режим при Reynolds ниже 10, изотропную проницаемость на масштабе Darcy и несжимаемые флюиды при изменениях давления ниже 10% от начального.
 
-### 7.1. Fundamental Limitations
+### 7.2. Стратегии снижения неопределенности
 
-The model's heterogeneity handling considers permeability field variations but assumes solid phase spatial continuity, inadequately capturing complex geological structures like faults, natural fractures, or extreme property contrast layers. Data input uncertainties, particularly in kinetic parameters difficult to determine in-situ, introduce approximately 30% predictive error margins when characterization data is limited.
+Для сильно неоднородных пластов модель использует статистический апскейлинг по функциям потока, методы гомогенизации для зон с высоким контрастом и многоконтинуумные подходы для трещиноватых зон. Проблемы точности данных решаются через Monte Carlo анализ чувствительности, Bayesian calibration по историческим данным добычи и применение коэффициентов запаса в протоколах обработки.
 
-Physical limitations include neglecting temperature effects on phase changes or complex kinetics, omitting geomechanical coupling effects like stresses and compaction, and simplifying complex electrochemical interactions between clay minerals. The model assumes local thermodynamic equilibrium, laminar flow regimes with Reynolds numbers below 10, isotropic permeability at the Darcy scale, and incompressible fluids for pressure changes below 10% of initial pressure.
+### 7.3. Валидация в экстремальных условиях
 
-### 7.2. Mitigation Strategies
+Полевые тесты при сильном повреждении показали точность 70-85%. Диапазоны применимости включают проницаемость 0.1-5000 mD, глубины 500-4000 m, температуры 20-150°C и pH флюидов от 0 до 7.
 
-For highly heterogeneous formations, the model implements statistical upscaling based on flow functions, incorporates homogenization methods for high-contrast zones, and employs multi-continuum approaches for fractured zones. Data precision challenges are addressed through Monte Carlo sensitivity analysis for uncertainty propagation, Bayesian calibration using historical production data, and safety factor implementation in treatment protocols.
+## 8. Выводы
 
-### 7.3. Validation Under Extreme Conditions
+Разработанная многомасштабная модель дает комплексный подход к пониманию и оптимизации матричных кислотных обработок для разных типов повреждения пласта с учетом фундаментальных ограничений. Включение механизмов вторичного повреждения существенно улучшает дизайн обработки, позволяя выявлять и снижать риски осадкообразования и миграции частиц. Ключевые выводы: преимущество профилактики через корректную характеристику пласта, необходимость индивидуальных протоколов для экстремальных случаев и критическая роль многомасштабной интеграции при анализе сложного повреждения.
 
-Field case testing under severe damage conditions achieved 70-85% accuracy, with applicability limits including permeability ranges from 0.1 mD to 5000 mD, depths from 500 m to 4000 m, temperatures from 20°C to 150°C, and fluid pH between 0 and 7.
+Важные выводы по предотвращению вторичного повреждения:
 
-## 8. Conclusions
+1. Определены критические пороги концентрации HF (3-5%), выше которых риск осадкообразования растет экспоненциально
+2. Установлены оптимальные протоколы темпа закачки с учетом содержания глин и чувствительности пласта
+3. Разработаны многостадийные дизайны, минимизирующие pH-шоки и скачки ионной силы
+4. Количественно оценены параметры устойчивости червоточин в карбонатах
 
-The developed multi-scale modeling framework provides a comprehensive approach to understanding and optimizing matrix acidizing treatments for various formation damage types, acknowledging its fundamental limitations. The integration of secondary formation damage mechanisms into the model significantly enhances treatment design by identifying and mitigating precipitation and fines migration risks. Key findings include the superiority of prevention through proper characterization, the necessity of customized treatment protocols for extreme cases, and the essential nature of multi-scale integration for understanding complex damage scenarios.
+Эти результаты переведены в промысловые протоколы, которые снижают частоту неудачных обработок и повышают извлечение углеводородов.
 
-Critical insights regarding secondary damage prevention include:
+## 9. Направления дальнейших исследований
 
-1. The identification of critical HF concentration thresholds (3-5%) beyond which precipitation risks increase exponentially
+Дальнейшее развитие должно включать геомеханическую связь для учета уплотнения и инициирования трещин, вызванных повреждением, внедрение искусственного интеллекта для автоматического распознавания паттернов повреждения и прогноза их эволюции в реальном времени, а также расширение модели на трещиноватые коллекторы с учетом связи матрица-трещина. Перспективны распределенное оптоволоконное зондирование, наночастичные трассеры и высокопроизводительные вычисления на GPU.
 
-2. The establishment of optimal injection rate protocols based on clay content and sensitivity
+Дополнительно следует исследовать инновационные системы добавок для предотвращения вторичного повреждения: оптимизацию хелатирующих агентов, продвинутые стабилизаторы глин и интеллектуальные инкапсулированные системы, высвобождающие стабилизаторы в ответ на локальные химические условия. Интеграция с machine learning позволит постоянно улучшать модель по промысловым результатам и создавать обратную связь для все более эффективных дизайнов обработки.
 
-3. The development of multi-stage treatment designs that minimize pH and ionic strength shocks
-
-4. The quantification of wormhole stability parameters in carbonates
-
-These findings have translated into field-implementable protocols that demonstrably reduce treatment failure rates and enhance hydrocarbon recovery.
-
-## 9. Future Research Directions
-
-Future developments should focus on geomechanical coupling integration for capturing damage-induced compaction and stress-dependent fracture initiation, artificial intelligence implementation for automatic damage pattern recognition and real-time evolution prediction, and model expansion to fractured reservoir systems with matrix-fracture coupling. Emerging technologies including distributed optical fiber sensing, nanoparticle tracers, and high-performance computing on GPUs offer promising avenues for enhanced modeling capabilities.
-
-Additional research should explore innovative additive systems for preventing secondary damage, including chelating agent optimization, advanced clay stabilizers, and intelligent encapsulated systems that release stabilizing agents in response to local chemical conditions. Integration with machine learning approaches will enable continuous model improvement based on field results, creating a feedback loop for increasingly effective treatment designs.
-
-## References
+## Источники
 
 - Civan, F. (2016). Reservoir Formation Damage. Gulf Professional Publishing.
 - Schechter, R.S. (1992). Oil Well Stimulation. Prentice Hall.
