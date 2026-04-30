@@ -154,6 +154,16 @@ const classes = ["_text-content", rootClass].filter(Boolean).join(" ");
     color: var(--primary-color);
   }
 
+  ._text-content .katex-display {
+    max-width: 100%;
+    margin: 1em 0;
+    padding: 16px;
+    overflow-x: auto;
+    border: 1px solid rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    background-color: rgb(0 0 0 / 2%);
+  }
+
   ._text-content iframe {
     width: 100%;
     height: auto;
