@@ -1,5 +1,4 @@
 export const menuItems = [
-  { id: "home", label: "Главная", href: "/", exact: true },
   { id: "products", label: "Продукты", href: "/products", exact: false },
   { id: "vacancies", label: "Вакансии", href: "/vacancies", exact: false },
   {

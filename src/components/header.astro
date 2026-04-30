@@ -7,7 +7,6 @@ import HeaderProductsSubmenu from "./header-products-submenu.astro";
 import { menuItems } from "../data/navigation";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
-const homeMenuItem = menuItems.find(({ id }) => id === "home");
 const productsMenuItem = menuItems.find(({ id }) => id === "products");
 const headerLinkItems = menuItems.filter(
   ({ id }) => id !== "home" && id !== "products",
@@ -23,9 +22,6 @@ const isActivePath = (href: string, exact = false) => {
 
 const isProductsActive = productsMenuItem
   ? isActivePath(productsMenuItem.href, productsMenuItem.exact)
-  : false;
-const isHomeActive = homeMenuItem
-  ? isActivePath(homeMenuItem.href, homeMenuItem.exact)
   : false;
 const productSubmenuItems = (
   await getCollection("products", ({ data }) => !data.draft)
@@ -84,15 +80,6 @@ const productSubmenuItems = (
 
       <nav class="_header__navigation">
         <ul class="_header__menu _header__menu--mobile">
-          <li class:list={["_header__menu-item", { active: isHomeActive }]}>
-            <a
-              class="_header__menu-link"
-              href={homeMenuItem?.href ?? "/"}
-              aria-current={isHomeActive ? "page" : undefined}
-            >
-              {homeMenuItem?.label ?? "Главная"}
-            </a>
-          </li>
           <Dropdown
             id="product-list"
             as="li"
