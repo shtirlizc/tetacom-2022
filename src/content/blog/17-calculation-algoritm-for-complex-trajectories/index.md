@@ -3,7 +3,7 @@ title: "Calculation algorithm for complex trajectories"
 slug: "calculation-algoritm-for-complex-trajectories"
 description: "A segmented well modeling algorithm for calculating productivity of complex-trajectory wells in multilayer reservoirs, accounting for inflow geometry, skin factors, anisotropy, and wellbore friction losses."
 pubDate: 2026-03-23
-draft: false
+draft: true
 tags: ["engineering", "petroleum", "reservoir-engineering", "well-modeling"]
 meta:
   title: "Calculation algorithm for complex trajectories"

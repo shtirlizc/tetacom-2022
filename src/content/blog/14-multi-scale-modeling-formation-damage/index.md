@@ -3,7 +3,7 @@ title: "Multi-Scale Modeling of Formation Damage Mechanisms and Matrix Acid Resp
 slug: "multi-scale-modeling-formation-damage"
 description: "A comprehensive multi-scale modeling framework addressing formation damage mechanisms and their remediation through matrix acid treatments, from pore-scale to reservoir-scale."
 pubDate: 2025-05-15
-draft: false
+draft: true
 tags: ["engineering"]
 meta:
   title: "Multi-Scale Modeling of Formation Damage Mechanisms and Matrix Acid Response - WellDesk"

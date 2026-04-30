@@ -5,7 +5,6 @@ description: "A comprehensive comparative analysis of one-dimensional (1D) and t
 pubDate: 2025-05-05
 tags: ["engineering"]
 draft: true
-
 meta:
   title: "1D and 2D Modeling in Well Acidification: A Comparative Analysis - WellDesk"
   description: "Comprehensive comparison of 1D vs 2D modeling approaches for well acidification. Learn when to use each method for optimal well stimulation results."

@@ -3,7 +3,7 @@ title: "Long horizontal cased-hole completion"
 slug: "long-horizontal-cased-hole-completion"
 description: "WellStim acidizing design of a long horizontal cased-hole completion"
 pubDate: 2025-05-20
-draft: false
+draft: true
 tags: ["cases"]
 
 meta:
@@ -52,19 +52,19 @@ WellStim optimization improved acid coverage, increased oil production and NPV.
 
 ![Integrated profile with simulation results, actual at the top, optimal at the bottom](./images/6.jpg)
 
-| Parameter | Actual, not optimized | Optimal design |
-| --- | --- | --- |
-| Oil rate, bbl/day | 815 | 996 |
-| Skin | -1.1 | -2.1 |
-| NPV, ‘000 USD | 354 | 1532 |
-| Additional oil production over 14 months, ‘000 bbl | 31 | 114 |
-| Max wormhole depth, ft | 2.7 | 7.0 |
+| Parameter                                          | Actual, not optimized | Optimal design |
+| -------------------------------------------------- | --------------------- | -------------- |
+| Oil rate, bbl/day                                  | 815                   | 996            |
+| Skin                                               | -1.1                  | -2.1           |
+| NPV, ‘000 USD                                      | 354                   | 1532           |
+| Additional oil production over 14 months, ‘000 bbl | 31                    | 114            |
+| Max wormhole depth, ft                             | 2.7                   | 7.0            |
 
 The optimal design was calibrated based on the actual trend of post-stimulation production decline.
 
 ![Production analysis (trendlines are based on the actual data)](./images/7.jpg)
 
-| Parameter | Actual, not optimized | Optimal design |
-| --- | --- | --- |
-| NPV, ‘000 USD | 978 | 2335 |
-| Additional oil production over 14 months, ‘000 bbl | 73 | 170 |
+| Parameter                                          | Actual, not optimized | Optimal design |
+| -------------------------------------------------- | --------------------- | -------------- |
+| NPV, ‘000 USD                                      | 978                   | 2335           |
+| Additional oil production over 14 months, ‘000 bbl | 73                    | 170            |

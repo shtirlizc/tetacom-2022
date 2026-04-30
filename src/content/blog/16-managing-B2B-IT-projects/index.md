@@ -3,7 +3,7 @@ title: "How to manage B2B IT projects in industrial environments: The WellDesk e
 slug: "managing-b2b-it-projects"
 description: "Developing IT solutions for industry is not just programming. It’s work at the intersection of engineering, scientific disciplines, and technological expertise. At WellDesk, we create products that are deeply integrated into oil and gas industry processes and have a direct impact on production results."
 pubDate: 2025-05-27
-draft: false
+draft: true
 tags: ["company"]
 meta:
   title: "How to manage B2B IT projects in industrial environments: The WellDesk experience"

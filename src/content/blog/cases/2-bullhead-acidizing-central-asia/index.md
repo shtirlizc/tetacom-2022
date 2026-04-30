@@ -3,7 +3,7 @@ title: "Bullhead Acidizing with Diverter in Central Asia"
 slug: "bullhead-acidizing-central-asia"
 description: "WellStim acidizing design and validation for a horizontal open-hole well in carbonate reservoir"
 pubDate: 2025-06-11
-draft: false
+draft: true
 tags: ["cases"]
 
 meta:
