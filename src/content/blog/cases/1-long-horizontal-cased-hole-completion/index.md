@@ -14,27 +14,16 @@ meta:
   publicImageName: "./images/case.jpg"
 ---
 
-import { Columns } from "@/components/columns/index.js";
-
 ### The challenge
 
 An acid treatment with acid gel was performed without prior simulation which resulted in lower production and economical improvements than expected. This case shows post-job analysis by simulation in WellStim, including production and NPV optimization.
 
-<Columns center>
-  <div slot="left">
-    - **Area:** North Europe
+- **Area:** North Europe
+- **Reservoir:** Oil Carbonates
+- **Depth:** MD – 13,100 ft, TVDSS – 8956 ft
+- **Wellbore completion:** slanted well completed with liner
 
-    - **Reservoir:** Oil Carbonates
-
-    - **Depth:** MD – 13,100 ft, TVDSS – 8956 ft
-
-    - **Wellbore completion:** slanted well completed with liner
-
-  </div>
-  <div slot="right">
-    ![3D view of the well configuration](./images/1.jpg)
-  </div>
-</Columns>
+![3D view of the well configuration](./images/1.jpg)
 
 ### The solution
 
@@ -42,20 +31,13 @@ The production decline trend for 5 years was set and the design was calculated b
 
 ![Production history match (dots are actual data, lines are calculated data)](./images/2.jpg)
 
-<Columns center>
-  <div slot="left">
-    The pumping schedule was optimized to increase the efficiency of acid
-    treatment. The following relationship charts were produced:
-  </div>
-  <div slot="right">
-    ![Acid volume (x-axis) vs NPV (y-axis)](./images/3.jpg)
-  </div>
-</Columns>
+The pumping schedule was optimized to increase the efficiency of acid treatment. The following relationship charts were produced:
 
-<Columns>
-  <div slot="left">![Injection rate (x) vs Skin (y)](./images/4.jpg)</div>
-  <div slot="right">![Acid gel volume (x) vs NPV (y)](./images/5.jpg)</div>
-</Columns>
+![Acid volume (x-axis) vs NPV (y-axis)](./images/3.jpg)
+
+![Injection rate (x) vs Skin (y)](./images/4.jpg)
+
+![Acid gel volume (x) vs NPV (y)](./images/5.jpg)
 
 Optimization resulted in the following adjustments:
 
@@ -68,79 +50,21 @@ Optimization resulted in the following adjustments:
 
 WellStim optimization improved acid coverage, increased oil production and NPV.
 
-<Columns>
-  <div slot="left">
-    ![Integrated profile with simulation results, actual at the top, optimal at
-    the bottom](./images/6.jpg)
-  </div>
-  <div slot="right">
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Actual, not optimized</th>
-          <th>Optimal design</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Oil rate, bbl/day </td>
-          <td>815</td>
-          <td>996</td>
-        </tr>
-        <tr>
-          <td>Skin</td>
-          <td>-1.1</td>
-          <td>-2.1</td>
-        </tr>
-        <tr>
-          <td>NPV, ‘000 USD</td>
-          <td>354</td>
-          <td>1532</td>
-        </tr>
-        <tr>
-          <td>Additional oil production over 14 months, ‘000 bbl </td>
-          <td>31</td>
-          <td>114</td>
-        </tr>
-        <tr>
-          <td>Max wormhole depth, ft </td>
-          <td>2.7</td>
-          <td>7.0</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</Columns>
+![Integrated profile with simulation results, actual at the top, optimal at the bottom](./images/6.jpg)
+
+| Parameter | Actual, not optimized | Optimal design |
+| --- | --- | --- |
+| Oil rate, bbl/day | 815 | 996 |
+| Skin | -1.1 | -2.1 |
+| NPV, ‘000 USD | 354 | 1532 |
+| Additional oil production over 14 months, ‘000 bbl | 31 | 114 |
+| Max wormhole depth, ft | 2.7 | 7.0 |
 
 The optimal design was calibrated based on the actual trend of post-stimulation production decline.
 
-<Columns>
-  <div slot="left">
-    ![Production analysis (trendlines are based on the actual
-    data)](./images/7.jpg)
-  </div>
-  <div slot="right">
-    <table>
-      <thead>
-        <tr>
-          <th>Parameter</th>
-          <th>Actual, not optimized</th>
-          <th>Optimal design</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>NPV, ‘000 USD</td>
-          <td>978</td>
-          <td>2335</td>
-        </tr>
-        <tr>
-          <td>Additional oil production over 14 months, ‘000 bbl </td>
-          <td>73</td>
-          <td>170</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</Columns>
+![Production analysis (trendlines are based on the actual data)](./images/7.jpg)
+
+| Parameter | Actual, not optimized | Optimal design |
+| --- | --- | --- |
+| NPV, ‘000 USD | 978 | 2335 |
+| Additional oil production over 14 months, ‘000 bbl | 73 | 170 |

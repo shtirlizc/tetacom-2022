@@ -22,23 +22,19 @@ meta:
   publicImageName: "./images/9.jpg"
 ---
 
-import { Columns } from "@/components/columns/index.js";
-
 ### The challenge
 
 A bullhead acid treatment with diverter pumped through the annulus was performed using the **WellStim** design. The post-stimulation production results showed **97.7% convergence** with the modeled values.
 
-<Columns center>
-  <div slot="left">
-    - **Area:** Central Asia - **Reservoir:** Oil Carbonates - **Depth:** MD –
-    4,400 ft, TVDSS – 2,500 ft - **Wellbore completion:** Horizontal open-hole -
-    **Lateral length:** 440 ft - **Casing:** 4.5" @ 4,000 ft - **Tubing:** 2.5"
-    @ 3,900 ft
-  </div>
-  <div slot="right">
-    ![3D view of the wellbore configuration](./images/Picture1.jpg)
-  </div>
-</Columns>
+- **Area:** Central Asia
+- **Reservoir:** Oil Carbonates
+- **Depth:** MD – 4,400 ft, TVDSS – 2,500 ft
+- **Wellbore completion:** Horizontal open-hole
+- **Lateral length:** 440 ft
+- **Casing:** 4.5" @ 4,000 ft
+- **Tubing:** 2.5" @ 3,900 ft
+
+![3D view of the wellbore configuration](./images/Picture1.jpg)
 
 ### The solution
 

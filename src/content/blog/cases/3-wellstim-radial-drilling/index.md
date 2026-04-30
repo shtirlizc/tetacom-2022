@@ -24,23 +24,17 @@ meta:
   publicImageName: "./images/01.jpg"
 ---
 
-import { Columns } from "@/components/columns/index.js";
-
 ### The challenge
 
 The **radial drilling completion** was designed to enhance inflow performance and reduce the high skin values previously identified in the producing interval.
 
-<Columns center>
-  <div slot="left">
-    - **Area:** Central Asia - **Reservoir:** Oil sandstone - **Depth:** MD –
-    19,482.61 ft, TVDSS – 18,819.52 ft - **Initial Skin:** +2.83 -
-    **Objective:** Improve inflow performance and evaluate skin reduction
-    through radial channel drilling
-  </div>
-  <div slot="right">
-    ![3D visualization of radial channel trajectories](./images/01.jpg)
-  </div>
-</Columns>
+- **Area:** Central Asia -
+- **Reservoir:** Oil sandstone
+- **Depth:** MD – 19,482.61 ft, TVDSS – 18,819.52 ft
+- **Initial Skin:** +2.83
+- **Objective:** Improve inflow performance and evaluate skin reduction through radial channel drilling
+
+![3D visualization of radial channel trajectories](./images/01.jpg)
 
 ### The solution
 
