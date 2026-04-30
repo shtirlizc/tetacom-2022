@@ -8,9 +8,7 @@ import { menuItems } from "../data/navigation";
 
 const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
 const productsMenuItem = menuItems.find(({ id }) => id === "products");
-const headerLinkItems = menuItems.filter(
-  ({ id }) => id !== "home" && id !== "products",
-);
+const headerLinkItems = menuItems.filter(({ id }) => id !== "products");
 
 const isActivePath = (href: string, exact = false) => {
   if (exact || href === "/") {
