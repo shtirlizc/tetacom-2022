@@ -3,10 +3,8 @@ title: "Acid Stimulation in Modern Petroleum Production"
 slug: "acid-stimulation"
 description: "A comprehensive analysis of acid stimulation techniques in modern petroleum production, covering historical development, fundamental principles, candidate selection, treatment design, and real-world applications with industry case studies and performance metrics."
 pubDate: 2025-04-22
-image:
-  url: "./images/image.jpg"
-  alt: "Modern acid stimulation equipment and process in petroleum production"
-tags: ["Engineering", "Industry", "Petroleum", "Production"]
+draft: false
+tags: ["engineering", "industry", "petroleum", "production"]
 meta:
   title: "Acid Stimulation in Modern Petroleum Production - WellDesk"
   description: "Explore advanced acid stimulation techniques, case studies, and performance metrics in modern petroleum production with over a century of proven results."

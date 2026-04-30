@@ -4,6 +4,11 @@ import { getBlogTagBySlug } from "../../data/blog-tags";
 import ArticleLayout from "../../layouts/article-layout.astro";
 import { getSiteUrl } from "../../utils/site-url";
 
+const blogImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/content/blog/**/*.{jpg,jpeg,png,webp,gif}",
+  { eager: true },
+);
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
 
@@ -22,6 +27,19 @@ const formatPostDate = (date: Date) =>
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const getPostImage = (publicImageName?: string) => {
+  if (!publicImageName) {
+    return undefined;
+  }
+
+  const imagePath = publicImageName.replace(/^\.\//, "");
+  const imageEntry = Object.entries(blogImages).find(
+    ([path]) => path.endsWith(`/${imagePath}`) && path.includes(post.data.slug),
+  );
+  const image = imageEntry?.[1];
+
+  return image?.default.src;
+};
 const tags = post.data.tags.map((slug: string) => {
   const tag = getBlogTagBySlug(slug);
 
@@ -41,6 +59,7 @@ const tags = post.data.tags.map((slug: string) => {
   seoTitle={post.data.title}
   description={post.data.description}
   canonical={getSiteUrl(`/blog/${post.data.slug}/`, Astro.site)}
+  image={getPostImage(post.data.meta?.publicImageName)}
   type="article"
 >
   <Content />

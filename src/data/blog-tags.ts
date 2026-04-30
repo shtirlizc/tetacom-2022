@@ -5,6 +5,17 @@ const BLOG_TAGS = [
     label: "Лабораторные исследования",
     slug: "lab-research",
   },
+  { label: "Engineering", slug: "engineering" },
+  { label: "Industry", slug: "industry" },
+  { label: "Petroleum", slug: "petroleum" },
+  { label: "Production", slug: "production" },
+  { label: "Coiled Tubing", slug: "coiled-tubing" },
+  { label: "Acidizing", slug: "acidizing" },
+  { label: "Well Stimulation", slug: "well-stimulation" },
+  { label: "Cases", slug: "cases" },
+  { label: "Company", slug: "company" },
+  { label: "Reservoir Engineering", slug: "reservoir-engineering" },
+  { label: "Well Modeling", slug: "well-modeling" },
 ] as const;
 
 export const getBlogTagBySlug = (slug: string) =>

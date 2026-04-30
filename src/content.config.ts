@@ -24,6 +24,14 @@ const articleSchema = z.object({
   tags: z.array(z.string()),
   pubDate: z.coerce.date(),
   draft: z.boolean(),
+  meta: z
+    .object({
+      title: z.string(),
+      description: z.string(),
+      keywords: z.array(z.string()),
+      publicImageName: z.string(),
+    })
+    .optional(),
 });
 
 const blogArticleSchema = articleSchema.extend({

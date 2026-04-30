@@ -3,10 +3,8 @@ title: "WellStim Design of Radial Drilling"
 slug: "wellstim-radial-drilling"
 description: "Trajectory design and post-drilling inflow performance analysis for a radial drilling operation with skin factor assessment."
 pubDate: 2025-07-11
-image:
-  url: "./images/01.jpg"
-  alt: "3D visualization of radial channel trajectories"
-tags: ["Cases"]
+draft: false
+tags: ["cases"]
 
 meta:
   title: "WellStim Design of Radial Drilling"

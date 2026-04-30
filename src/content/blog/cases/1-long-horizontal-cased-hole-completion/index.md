@@ -3,10 +3,8 @@ title: "Long horizontal cased-hole completion"
 slug: "long-horizontal-cased-hole-completion"
 description: "WellStim acidizing design of a long horizontal cased-hole completion"
 pubDate: 2025-05-20
-image:
-  url: "./images/case.jpg"
-  alt: "Acid stimulation process in oil well"
-tags: ["Cases"]
+draft: false
+tags: ["cases"]
 
 meta:
   title: "Long horizontal cased-hole completion"

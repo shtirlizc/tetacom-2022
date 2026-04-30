@@ -3,10 +3,7 @@ title: "1D and 2D Modeling in Well Acidification: A Comparative Analysis"
 slug: "1d-2d-modeling-well-acidification"
 description: "A comprehensive comparative analysis of one-dimensional (1D) and two-dimensional (2D) models used in the simulation of oil well acidification processes. Understanding when to use each approach for optimal acidification results."
 pubDate: 2025-05-05
-image:
-  url: "./images/capa.jpg"
-  alt: "1D and 2D acidification modeling results comparison"
-tags: ["Engineering"]
+tags: ["engineering"]
 draft: true
 
 meta:
