@@ -10,9 +10,7 @@ const blogImages = import.meta.glob<{ default: ImageMetadata }>(
 );
 
 export async function getStaticPaths() {
-  // TODO временно открыл черновики
-  // const posts = await getCollection("blog", ({ data }) => !data.draft);
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
 
   return posts.map((post) => ({
     params: { slug: post.data.slug },
