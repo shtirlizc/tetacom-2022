@@ -6,6 +6,7 @@ import Footer from "../components/footer.astro";
 import FormConfig from "../components/form-config.astro";
 import Popovers from "../components/popovers.astro";
 import Scripts from "../components/scripts.astro";
+import YandexMetrika from "../components/yandex-metrika.astro";
 
 interface Props {
   title?: string;
@@ -29,6 +30,7 @@ const { title, description, canonical, image, type } = Astro.props as Props;
   />
 
   <body class="full-height">
+    <YandexMetrika />
     <Header />
 
     <slot />
