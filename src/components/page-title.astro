@@ -35,8 +35,12 @@ const classes = ["_page-title", rootClass].filter(Boolean).join(" ");
 
   /* mobile */
   @media (width < 769px) {
-    ._page-title[data-mobile-align="center"] {
-      text-align: center;
+    ._page-title {
+      font-size: 36px;
+
+      &[data-mobile-align="center"] {
+        text-align: center;
+      }
     }
   }
 </style>
