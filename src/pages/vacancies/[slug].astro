@@ -200,11 +200,11 @@ if (!department) {
     textarea.select();
     const fallbackCopy = (
       document as Document & {
-        execCommand?: (commandId: string) => boolean;
+        execCommand?: () => boolean;
       }
     ).execCommand;
 
-    fallbackCopy?.call(document, "copy");
+    fallbackCopy?.call(document);
     textarea.remove();
   };
 
