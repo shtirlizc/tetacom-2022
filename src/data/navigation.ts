@@ -1,4 +1,5 @@
 export const menuItems = [
+  { id: "service", label: "Моделирование", href: "/service", exact: false },
   { id: "products", label: "Продукты", href: "/products", exact: false },
   { id: "vacancies", label: "Вакансии", href: "/vacancies", exact: false },
   {
