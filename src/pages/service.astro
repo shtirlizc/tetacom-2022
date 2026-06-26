@@ -305,21 +305,21 @@ const customerResults = [
 
         <section class="_model-cta" aria-labelledby="cta-title">
           <div class="_model-cta__content">
-            <h2 id="cta-title" class="_model-cta__title">
-              Оставьте свою заявку, и мы проведем для Вас онлайн-демонстрацию
-              сервиса на примере Вашей Компании!
-            </h2>
-            <Btn popovertarget="modal-demo" data-product={pageTitle}>
-              Оставить заявку
-            </Btn>
+            <div>
+              <h2 id="cta-title" class="_model-cta__title">
+                Оставьте свою заявку
+              </h2>
+              <p class="_model-cta__description">
+                Мы проведем для Вас онлайн-демонстрацию сервиса на примере Вашей
+                Компании.
+              </p>
+            </div>
+            <div>
+              <Btn popovertarget="modal-demo" data-product={pageTitle}>
+                Оставить заявку
+              </Btn>
+            </div>
           </div>
-          <address class="_model-cta__contacts">
-            <p class="_model-cta__person">Ситдиков Марат</p>
-            <p>к.т.н., директор</p>
-            <a href="tel:+79177919073">+7 917 791 90 73</a>
-            <a href="mailto:info@tetacom.pro">info@tetacom.pro</a>
-            <a href="https://tetacom.pro">tetacom.pro</a>
-          </address>
         </section>
       </Container>
     </div>
@@ -884,49 +884,12 @@ const customerResults = [
     gap: 34px;
   }
 
-  ._model-cta__contacts {
-    display: grid;
-    align-content: end;
-    gap: 12px;
-    margin: 0;
+  ._model-cta__description {
+    max-width: 720px;
+    margin: 20px 0 0;
     color: rgb(0 0 0 / 70%);
-    font-size: 18px;
-    font-style: normal;
-    line-height: 1.4em;
-  }
-
-  ._model-cta__contacts p {
-    margin: 0;
-  }
-
-  ._model-cta__person {
-    color: var(--black-color);
-    font-size: 28px;
-    line-height: 1.2em;
-    font-weight: 600;
-  }
-
-  ._model-cta__contacts a {
-    width: fit-content;
-    color: inherit;
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 4px;
-    transition:
-      color var(--delay) var(--timing-func),
-      text-decoration-color var(--delay) var(--timing-func);
-  }
-
-  ._model-cta__contacts a:hover,
-  ._model-cta__contacts a:focus-visible {
-    color: var(--primary-color);
-    text-decoration-color: currentColor;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    ._model-cta__contacts a {
-      transition: none;
-    }
+    font-size: 19px;
+    line-height: 1.58em;
   }
 
   /* mobile */
@@ -997,6 +960,12 @@ const customerResults = [
       text-align: center;
     }
 
+    ._model-cta__description {
+      margin-inline: auto;
+      font-size: 17px;
+      text-align: center;
+    }
+
     ._model-metrics,
     ._model-losses,
     ._model-cases,
@@ -1031,19 +1000,12 @@ const customerResults = [
       font-size: 26px;
     }
 
-    ._model-card-title,
-    ._model-cta__person {
+    ._model-card-title {
       font-size: 24px;
     }
 
     ._model-cta {
       border-radius: 18px;
-    }
-
-    ._model-cta__contacts {
-      justify-items: center;
-      font-size: 17px;
-      text-align: center;
     }
   }
 
@@ -1061,8 +1023,7 @@ const customerResults = [
     }
 
     ._model-cases,
-    ._model-action,
-    ._model-cta {
+    ._model-action {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -1123,11 +1084,6 @@ const customerResults = [
 
     ._model-action {
       grid-template-columns: minmax(0, 1fr) 380px;
-    }
-
-    ._model-cta {
-      align-items: end;
-      grid-template-columns: minmax(0, 1fr) 360px;
     }
   }
 </style>
