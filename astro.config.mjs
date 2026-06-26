@@ -18,4 +18,9 @@ export default defineConfig({
     "/education": "/education/opz-course/",
     "/products": "/products/rockstim/",
   },
+  vite: {
+    build: {
+      cssMinify: "esbuild",
+    },
+  },
 });
